@@ -1,0 +1,90 @@
+🌙 Ayse Sule Ekiz — Prism Portfolio Website
+📌 Project Title & Description
+Prism Portfolio Website
+
+This is a multi-page personal portfolio website showcasing my work in graphic design, ceramics, painting, charcoal, and digital art.
+The website also includes an interactive Half Moon mini-game, a contact form, and my artistic + technical background.
+
+What it does
+
+    Displays my artwork in organized gallery pages
+    Provides descriptions for each piece (technical + artistic)
+    Presents my background, goals, and artistic journey
+    Allows visitors to contact me through a responsive form
+    Includes a moon-phase mini-game inspired by Google’s Half Moon
+
+Why I built it
+
+    I built this project to create a professional art portfolio that represents both my design skills and my computer science abilities.
+    The goal is to have a personal platform that blends: 🎨 Art + 🖥 Technology + 🌗 Light/Dark visual themes.
+
+🛠 Tech Stack Used
+
+HTML5 – Structure of the website
+    CSS3 & TailwindCSS – Styling, layout, responsiveness
+    JavaScript (Vanilla) – Interactive features & game logic
+    Custom Components – Galleries, cards, dark mode logic
+    Lucide Icons – Clean iconography
+    Canva – Visual design for presentation materials
+
+✨ Features
+
+    Fully responsive multi-page layout
+    Light/Dark Mode toggle
+    Mobile navigation menu
+    Detailed artwork descriptions
+    Interactive Half Moon Game
+    Contact Form with placeholders
+    Custom branding (colors, typography, logo)
+    Masonry grid gallery system
+        Gallery pages for:
+        Graphic Design & Printmaking
+        Sculpting & Ceramics
+        Paintings & Charcoal
+
+🚀 How to Run the Project
+
+    Option 1 — Open Locally (No setup needed)
+        Download the project folder
+        Open index.html in any browser
+        Navigation, styling, galleries, and scripts work automatically
+
+    Option 2 — Deploy Online (Optional)
+        You can host the website using:
+        GitHub Pages
+        Netlify
+        Vercel
+        (If you deploy it later, add the link here.)
+
+    Setup Needed
+        No backend or external environment required — the project is fully front-end.
+
+👩‍💻 Team Members
+
+    This is an individual project. Ayse Sule Ekiz — All design, coding, artwork, layout, and interaction logic
+
+🧠 Challenges & Learning
+    Challenges
+
+        Designing consistent color themes for light/dark mode
+        Creating a clean, responsive gallery layout
+        Writing meaningful technical + artistic artwork descriptions
+        Building an interactive game from scratch
+        Making the UI look unified across multiple art categories
+        Structuring large HTML files while keeping them readable
+
+    What I Learned
+        Advanced layout techniques using TailwindCSS
+        Better UI/UX practices for accessible design
+        How to write scalable HTML for multi-page projects
+        How to blend art/design with programming
+        JavaScript event handling, card shuffling, and game logic
+        Building a personal brand visual identity
+
+🚧 Future Improvements
+
+    Add animations to gallery transitions
+    Create a dark-mode-aware background animation
+    Add more interactive art-related mini-games
+    Expand artwork descriptions with video or process GIFs
+    Implement filtering/tag search on gallery pages

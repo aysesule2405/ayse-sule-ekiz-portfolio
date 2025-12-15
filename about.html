@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayse Sule Ekiz | About / Contact</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Shared styles (dark mode, nav, cards, etc.) -->
+  <link rel="stylesheet" href="styles/main.css" />
+      <style>
+        /* Define Navigation Link Styling */
+        .nav-link {
+            color: #4b5563; /* text-gray-600 */
+            transition: color 0.2s, background-color 0.2s;
+        }
+        .nav-link:hover {
+            background-color: #fce7f3; /* A soft background for hover */
+            color: #850F01;
+        }
+        .nav-link.active {
+            background-color: #FFA618; /* Accent color for active link */
+            color: #FFF; /* White text on accent background */
+        }
+
+        /* Custom CSS for the logo background pattern */
+        .logo-background-pattern {
+            background-image: url('./images/logo.jpg');
+            background-repeat: repeat;
+            background-blend-mode: multiply;
+            opacity: 0.1; /* Make it very subtle */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Push behind content */
+        }
+    </style>
+
+  <!-- Icons + scripts -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/load-fragments.js"></script>
+  <script src="js/theme-toggle.js"></script>
+  <script src="js/nav-enhancements.js"></script>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("hm-cards");
+    const statusEl = document.getElementById("hm-status");
+    const restartBtn = document.getElementById("hm-restart");
+
+    if (!container || !statusEl || !restartBtn) return;
+
+    // Ordered from darkest to brightest
+    const phases = [
+      { id: 0, label: "New Moon", icon: "🌑" },
+      { id: 1, label: "Waxing Crescent", icon: "🌒" },
+      { id: 2, label: "First Quarter", icon: "🌓" },
+      { id: 3, label: "Waxing Gibbous", icon: "🌔" },
+      { id: 4, label: "Full Moon", icon: "🌕" },
+      { id: 5, label: "Waning Gibbous", icon: "🌖" },
+      { id: 6, label: "Last Quarter", icon: "🌗" },
+      { id: 7, label: "Waning Crescent", icon: "🌘" }
+    ];
+
+    let expectedIndex = 0; // which phase we expect next (0 = New Moon)
+
+    function updateStatus() {
+      if (expectedIndex === 0) {
+        statusEl.textContent =
+          "Click the moon cards in order from New Moon (dark) to Full Moon (bright).";
+      } else if (expectedIndex < phases.length) {
+        const next = phases[expectedIndex];
+        statusEl.textContent = "Great! Now find: " + next.label + ".";
+      } else {
+        statusEl.textContent = "You completed the full lunar cycle! 🌕🌙";
+      }
+    }
+
+    function clearCards() {
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+    }
+
+    function createCard(phase) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "hm-card aspect-[3/4]";
+      btn.dataset.phaseId = String(phase.id);
+
+      btn.innerHTML = `
+        <div class="hm-card__icon">${phase.icon}</div>
+        <div class="hm-card__label">${phase.label}</div>
+      `;
+
+      btn.addEventListener("click", () => handleCardClick(btn, phase));
+      return btn;
+    }
+
+    function handleCardClick(cardEl, phase) {
+      // If game already finished, ignore
+      if (expectedIndex >= phases.length) return;
+
+      const correctPhase = phases[expectedIndex];
+
+      if (phase.id === correctPhase.id) {
+        // Correct choice
+        cardEl.classList.remove("hm-card--wrong");
+        cardEl.classList.add("hm-card--correct", "hm-card--locked");
+        cardEl.disabled = true;
+        expectedIndex += 1;
+        updateStatus();
+      } else {
+        // Wrong choice → small shake / red state
+        cardEl.classList.add("hm-card--wrong");
+        setTimeout(() => {
+          cardEl.classList.remove("hm-card--wrong");
+        }, 250);
+        statusEl.textContent =
+          "Not quite — start from the darkest moon and go toward the brightest.";
+      }
+    }
+
+    function shufflePhases(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function initializeGame() {
+      expectedIndex = 0;
+      clearCards();
+      const shuffled = shufflePhases(phases);
+      shuffled.forEach((phase) => {
+        const card = createCard(phase);
+        container.appendChild(card);
+      });
+      updateStatus();
+    }
+
+    restartBtn.addEventListener("click", () => {
+      initializeGame();
+    });
+
+    // First load
+    initializeGame();
+  });
+</script>
+
+
+</head>
+
+<body class="min-h-screen bg-white">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo / Brand -->
+        <div class="flex-shrink-0 flex items-center space-x-2">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img
+              src="./images/logo.jpg"
+              alt="Ayse Sule Ekiz Logo"
+              class="h-10 w-10 rounded-full border-2 border-[#850F01]"
+            />
+            <span class="text-2xl font-extrabold text-[#850F01] tracking-tight hidden sm:inline">
+              Ayse Sule Ekiz
+            </span>
+          </a>
+        </div>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center space-x-2">
+          <a href="index.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
+            Home Page
+          </a>
+          <a href="graphicdesign.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
+            Graphic Design &amp; Digital Art
+          </a>
+          <a href="ceramics.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
+            Sculpting &amp; Ceramics
+          </a>
+          <a href="painting.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
+            Painting &amp; Charcoal
+          </a>
+          <a href="about.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
+            About / Contact
+          </a>
+
+          <!-- Theme toggle (desktop) -->
+          <button
+            data-theme-toggle
+            aria-label="Toggle color theme"
+            aria-pressed="false"
+            class="ml-2 inline-flex items-center px-3 py-2 rounded-lg focus:outline-none"
+          >
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg"
+          aria-label="Toggle navigation menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
+        Home Page
+      </a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
+        Graphic Design &amp; Digital Art
+      </a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
+        Sculpting &amp; Ceramics
+      </a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
+        Painting &amp; Charcoal
+      </a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">
+        About / Contact
+      </a>
+
+      <!-- Theme toggle (mobile) -->
+      <div class="px-4 py-3 border-t border-gray-100">
+        <button
+          data-theme-toggle
+          aria-label="Toggle color theme"
+          aria-pressed="false"
+          class="w-full inline-flex items-center justify-center px-3 py-2 rounded-lg"
+        >
+          <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5 mr-2"></i>
+          <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 mr-2 hidden"></i>
+          <span class="text-sm">Toggle theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
+    <section aria-labelledby="about-heading">
+      <!-- Card container -->
+      <div class="home-hero-card bg-[#FFF7F0] dark:bg-[#020617] p-6 md:p-10 rounded-2xl shadow-xl transition-colors duration-300">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <!-- LEFT: About text -->
+          <div class="lg:col-span-2 space-y-10">
+            <header>
+              <p class="text-[#FFA618] font-semibold text-sm uppercase tracking-wide mb-2">
+                About / Contact
+              </p>
+              <!-- Updated to match other main section titles (like Sculpting & Ceramics Art) -->
+              <h1
+                id="about-heading"
+                class="text-4xl font-bold text-gray-900 mb-8 border-b pb-3 transition-colors duration-300"
+              >
+                About Me
+              </h1>
+            </header>
+
+            <!-- Section 1: How I got introduced -->
+            <section>
+              <h2 class="text-2xl font-semibold text-[#850F01] mb-3">
+                How I got introduced to art &amp; design
+              </h2>
+              <p class="text-gray-600 leading-relaxed transition-colors duration-300">
+                My journey with fine arts began long before I studied computer science. Over the years,
+                I have explored drawing, painting, ceramics, and printmaking, allowing me to experiment
+                with different mediums and techniques. Art has always been a way for me to observe,
+                interpret, and reimagine the world around me.
+              </p>
+            </section>
+
+            <!-- Section 2: Professional Goals -->
+            <section>
+              <h2 class="text-2xl font-semibold text-[#850F01] mb-3">
+                Professional Goals
+              </h2>
+              <p class="text-gray-600 leading-relaxed transition-colors duration-300">
+                I am currently studying Computer Science while actively building my artistic portfolio.
+                My goal is to work in roles where art, technology, and design intersect—such as UI/UX,
+                creative technology, digital media, or visually rich software experiences. I am
+                continuously improving both my technical and creative skills to be able to contribute
+                meaningfully in interdisciplinary environments.
+              </p>
+            </section>
+
+            <!-- Section 3: Tools & mediums -->
+            <section>
+              <h2 class="text-2xl font-semibold text-[#850F01] mb-3">
+                Mediums, tools &amp; interests
+              </h2>
+              <p class="text-gray-600 leading-relaxed transition-colors duration-300 mb-4">
+                Some of the mediums and tools I enjoy working with:
+              </p>
+              <ul class="list-disc list-inside text-gray-600 space-y-1 transition-colors duration-300">
+                <li>Graphic design &amp; digital illustration tools</li>
+                <li>Clay, sculpting and ceramic glazes</li>
+                <li>Painting with acrylics, gouache, and charcoal</li>
+                <li>Experimental printmaking and mixed media</li>
+              </ul>
+            </section>
+
+            <!-- Favorite Game: Half Moon (Mini Game) -->
+            <section id="half-moon-game-section" class="mt-10">
+                <h2 class="text-2xl font-semibold text-[#850F01] mb-3">
+                    Favorite Game: Half Moon
+                </h2>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                    One of my favorite games is <span class="font-semibold">Half Moon</span>, a
+                    card game about the phases of the moon. Because my portfolio plays with
+                    light and dark themes, I created a small moon-phase game inspired by it.
+                    You can try it here or play the official Google version 
+                    <a href="https://share.google/P2RAPyQXvds8WtBno"
+                        target="_blank"
+                        class="text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                        here 🌙
+                    </a>.
+                </p>
+
+                <div class="bg-[#FFF7F0] rounded-2xl shadow-lg p-4 md:p-6 border border-[#F2D6A1] transition-colors duration-300">
+                    <p id="hm-status" class="text-sm font-medium text-gray-700 mb-3 transition-colors duration-300">
+                    Click the moon cards in order from <span class="font-semibold">New Moon</span> (dark)
+                    to <span class="font-semibold">Full Moon</span> (bright).
+                    </p>
+
+                    <div id="hm-cards" class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5">
+                    <!-- cards injected by JS -->
+                    </div>
+
+                    <button
+                    id="hm-restart"
+                    type="button"
+                    class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold
+                            text-white bg-[#850F01] hover:bg-[#B23600] shadow-md transition-colors duration-300"
+                    >
+                    Shuffle &amp; Play Again
+                    </button>
+                </div>
+            </section>
+
+          </div>
+            <!-- RIGHT: Contact card + portrait -->
+            <aside class="lg:col-span-1 w-full max-w-md lg:ml-auto mt-10 lg:mt-0">
+            <div
+                class="bg-[#FFF7F0] rounded-2xl shadow-lg p-6 sm:p-7 flex flex-col border border-[#F3C7A8] transition-colors duration-300"
+            >
+                <div>
+                <!-- Small pill label -->
+                <div
+                    class="inline-flex items-center px-3 py-1 mb-4 rounded-full text-[11px] font-semibold uppercase tracking-wide text-[#850F01]"
+                >
+                    <i data-lucide="sparkles" class="w-3 h-3 mr-1"></i>
+                    Let’s connect
+                </div>
+
+                <!-- Title -->
+                <h2
+                    class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 transition-colors duration-300"
+                >
+                    Contact Me
+                </h2>
+
+                <p
+                    class="text-gray-700 text-sm mb-5 leading-relaxed transition-colors duration-300"
+                >
+                    If you would like to collaborate, ask about my work, or discuss opportunities,
+                    feel free to send me a message using the form below.
+                </p>
+
+                <!-- FORM -->
+                <form action="success.html" method="GET" class="space-y-4">
+
+                    <!-- Name + Email -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                    <!-- NAME -->
+                    <div>
+                        <label
+                        for="name"
+                        class="block text-xs font-semibold tracking-wide text-gray-800 mb-1 uppercase"
+                        >
+                        Name
+                        </label>
+                        <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Your name"
+                        required
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm bg-white text-gray-900
+                                focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition"
+                        />
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div>
+                        <label
+                        for="email"
+                        class="block text-xs font-semibold tracking-wide text-gray-800 mb-1 uppercase"
+                        >
+                        Email
+                        </label>
+                        <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="your@email.com"
+                        required
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm bg-white text-gray-900
+                                focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition"
+                        />
+                    </div>
+
+                    </div>
+
+                    <!-- SUBJECT -->
+                    <div>
+                    <label
+                        for="subject"
+                        class="block text-xs font-semibold tracking-wide text-gray-800 mb-1 uppercase"
+                    >
+                        Subject
+                    </label>
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="What would you like to talk about?"
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm bg-white text-gray-900
+                            focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition"
+                    />
+                    </div>
+
+                    <!-- MESSAGE -->
+                    <div>
+                    <label
+                        for="message"
+                        class="block text-xs font-semibold tracking-wide text-gray-800 mb-1 uppercase"
+                    >
+                        Message
+                    </label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Write your message here..."
+                        rows="4"
+                        required
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm bg-white text-gray-900
+                            focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition resize-none"
+                    ></textarea>
+                    </div>
+
+                    <!-- SUBMIT -->
+                    <button
+                    type="submit"
+                    class="w-full inline-flex items-center justify-center px-4 py-2.5 mt-2 rounded-lg text-sm font-semibold
+                            text-white bg-[#850F01] hover:bg-[#B23600] shadow-md shadow-[#B23600]/30 transition"
+                    >
+                    Send Message
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+
+                </form>
+                </div>
+
+                <!-- Contact Email -->
+                <div
+                class="mt-6 pt-4 border-t border-gray-200 text-xs text-gray-600 flex items-center gap-2 transition"
+                >
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <span class="font-semibold">Email:</span>
+                <span>ase2327ekiz@gmail.com</span>
+                </div>
+            </div>
+            </aside>
+
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-gray-200 mt-12 relative overflow-hidden transition-colors duration-300">
+    <div class="logo-background-pattern"></div>
+
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="flex justify-center space-x-6 mb-4">
+        <a
+          href="https://www.instagram.com/aysule_2327/"
+          target="_blank"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
+          aria-label="Instagram"
+        >
+          <i data-lucide="instagram" class="w-6 h-6"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/"
+          target="_blank"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
+          aria-label="LinkedIn"
+        >
+          <i data-lucide="linkedin" class="w-6 h-6"></i>
+        </a>
+        <a
+          href="https://github.com/aysesule2405"
+          target="_blank"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
+          aria-label="GitHub"
+        >
+          <i data-lucide="github" class="w-6 h-6"></i>
+        </a>
+      </div>
+      <p class="text-sm text-gray-500 transition-colors duration-300">
+        &copy; 2025 Ayse Sule Ekiz. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Icons
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        try { lucide.createIcons(); } catch (err) { console.warn(err); }
+      }
+
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+

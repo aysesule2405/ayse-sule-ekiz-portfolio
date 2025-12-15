@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submission Successful | Ayse Sule Ekiz</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles/main.css">
+
+  <!-- Icons + scripts -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/load-fragments.js"></script>
+  <script src="js/theme-toggle.js"></script>
+  <script src="js/nav-enhancements.js"></script>
+</head>
+
+<body class="min-h-screen animated-bg">
+  <!-- HEADER (same as other pages) -->
+  <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex-shrink-0 flex items-center space-x-2">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img
+              src="./images/logo.jpg"
+              alt="Ayse Sule Ekiz Logo"
+              class="h-10 w-10 rounded-full border-2 border-[#850F01]"
+            />
+            <span class="text-2xl font-extrabold text-[#850F01] tracking-tight hidden sm:inline">
+              Ayse Sule Ekiz
+            </span>
+          </a>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-2">
+          <a href="index.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
+            Home Page
+          </a>
+          <a href="graphicdesign.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
+            Graphic Design &amp; Digital Art
+          </a>
+          <a href="ceramics.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
+            Sculpting &amp; Ceramics
+          </a>
+          <a href="painting.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
+            Painting &amp; Charcoal
+          </a>
+          <a href="about.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
+            About / Contact
+          </a>
+
+          <!-- Theme toggle (desktop) -->
+          <button
+            data-theme-toggle
+            aria-label="Toggle color theme"
+            aria-pressed="false"
+            class="ml-2 inline-flex items-center px-3 py-2 rounded-lg focus:outline-none"
+          >
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+        </nav>
+
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg"
+          aria-label="Toggle navigation menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
+        Home Page
+      </a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
+        Graphic Design &amp; Digital Art
+      </a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
+        Sculpting &amp; Ceramics
+      </a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
+        Painting &amp; Charcoal
+      </a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">
+        About / Contact
+      </a>
+
+      <div class="px-4 py-3 border-t border-gray-100">
+        <button
+          data-theme-toggle
+          aria-label="Toggle color theme"
+          aria-pressed="false"
+          class="w-full inline-flex items-center justify-center px-3 py-2 rounded-lg"
+        >
+          <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5 mr-2"></i>
+          <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 mr-2 hidden"></i>
+          <span class="text-sm">Toggle theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 page-content">
+    <section class="reveal-on-scroll">
+      <div class="home-hero-card bg-white p-8 md:p-10 rounded-2xl shadow-xl text-center transition-colors duration-300">
+        <div class="flex justify-center mb-4">
+          <div class="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center">
+            <i data-lucide="check-circle" class="w-9 h-9 text-green-600"></i>
+          </div>
+        </div>
+
+        <h1
+          class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 border-b pb-3 transition-colors duration-300 hover:text-[#850F01] hover:border-[#FFA618]"
+        >
+          Thank you for your message!
+        </h1>
+
+        <p class="text-gray-600 text-base mb-6 transition-colors duration-300">
+          Your submission was sent successfully. I appreciate you taking the time to reach out.
+          I’ll review your message and get back to you as soon as I can.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="index.html"
+            class="inline-flex items-center justify-center px-6 py-3 border border-transparent
+                   text-sm font-medium rounded-xl text-white bg-[#850F01] hover:bg-[#B23600]
+                   shadow-md transition-colors duration-300"
+          >
+            Back to Home
+          </a>
+
+          <a
+            href="about.html"
+            class="inline-flex items-center justify-center px-6 py-3 border border-[#850F01]
+                   text-sm font-medium rounded-xl text-[#850F01] bg-transparent hover:bg-[#FFF7F0]
+                   shadow-sm transition-colors duration-300"
+          >
+            Go to Contact Page
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-gray-200 mt-12 relative overflow-hidden transition-colors duration-300">
+    <div class="logo-background-pattern"></div>
+
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="flex justify-center space-x-6 mb-4">
+        <a
+          href="https://www.instagram.com/aysule_2327/"
+          target="_blank"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
+          aria-label="Instagram"
+        >
+          <i data-lucide="instagram" class="w-6 h-6"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/"
+          target="_blank"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
+          aria-label="LinkedIn"
+        >
+          <i data-lucide="linkedin" class="w-6 h-6"></i>
+        </a>
+        <a
+          href="https://github.com/aysesule2405"
+          target="_blank"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
+          aria-label="GitHub"
+        >
+          <i data-lucide="github" class="w-6 h-6"></i>
+        </a>
+      </div>
+      <p class="text-sm text-gray-500 transition-colors duration-300">
+        &copy; 2025 Ayse Sule Ekiz. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        try { lucide.createIcons(); } catch (err) { console.warn(err); }
+      }
+
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Scroll reveal
+      const revealEls = document.querySelectorAll('.reveal-on-scroll');
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('reveal-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      revealEls.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>

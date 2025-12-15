@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayse Sule Ekiz | Sculpting & Ceramics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/cards.css">
+    <style>
+        /* Define Navigation Link Styling */
+        .nav-link {
+            color: #4b5563; /* text-gray-600 */
+            transition: color 0.2s, background-color 0.2s;
+        }
+        .nav-link:hover {
+            background-color: #fce7f3; /* A soft background for hover */
+            color: #850F01;
+        }
+        .nav-link.active {
+            background-color: #FFA618; /* Accent color for active link */
+            color: #FFF; /* White text on accent background */
+        }
+
+        /* Custom CSS for the logo background pattern */
+        .logo-background-pattern {
+            background-image: url('./images/logo.jpg');
+            background-repeat: repeat;
+            background-blend-mode: multiply;
+            opacity: 0.1; /* Make it very subtle */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Push behind content */
+        }
+    </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/nav-enhancements.js"></script>
+
+</head>
+<body class="min-h-screen bg-white">
+
+  <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex-shrink-0 flex items-center space-x-2">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img src="./images/logo.jpg" alt="Ayse Sule Ekiz Logo" class="h-10 w-10 rounded-full border-2 border-[#850F01]">
+            <span class="text-2xl font-extrabold text-[#850F01] tracking-tight hidden sm:inline">Ayse Sule Ekiz</span>
+          </a>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-2">
+          <a href="index.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Home Page</a>
+          <a href="graphicdesign.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Graphic Design & Digital Art</a>
+          <a href="ceramics.html" class="nav-link active px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Sculpting & Ceramics</a>
+          <a href="painting.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Painting & Charcoal</a>
+          <a href="about.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">About / Contact</a>
+
+          <!-- Theme toggle (desktop) -->
+          <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                  class="ml-2 inline-flex items-center px-3 py-2 rounded-lg focus:outline-none">
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+        </nav>
+
+        <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home Page</a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design & Digital Art</a>
+      <a href="ceramics.html" class="nav-link active block px-4 py-3 text-sm font-medium border-b">Sculpting & Ceramics</a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting & Charcoal</a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">About / Contact</a>
+
+      <!-- Theme toggle (mobile) -->
+      <div class="px-4 py-3 border-t">
+        <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                class="w-full inline-flex items-center justify-center px-3 py-2 rounded-lg">
+          <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5 mr-2"></i>
+          <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 mr-2 hidden"></i>
+          <span class="text-sm">Toggle theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
+  <section id="sculpting-ceramics">
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 border-b pb-3">Sculpting & Ceramics Art</h2>
+
+    <!-- ========================================= -->
+    <!-- SCULPTURES -->
+    <!-- ========================================= -->
+    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
+      Sculptures
+    </h3>
+
+    <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 dark:border-[#FFA618]/30 transition-colors duration-300">
+      In my sculptural work, I am drawn to animal and human figures that feel alive and expressive.
+      Working mostly with brown and white clay, I explore gesture, posture, and surface texture—from
+      small studies to large, body-sized pieces. These sculptures became a way for me to observe how
+      form, weight, and emotion can all exist together in three dimensions.
+    </p>
+
+    <div class="masonry">
+
+      <!-- Art Work 1 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/Ceramics - Ayse Sule Ekiz.jpg" alt="Ceramics Sculptures">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Ceramics Sculptures</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A collection of animal and human figure sculptures created throughout my high school years.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This group of ceramic sculptures shows the range of figures I explored in the studio—from
+            small animal studies to larger human forms. Working mainly with brown clay, I experimented
+            with balance, proportion, and surface details, trying to capture personality and movement
+            rather than perfect realism. Together, these pieces trace my growth in understanding how
+            clay can be pushed, carved, and refined into expressive characters.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 2 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/fox_figure_0.jpg" alt="Fox Figure">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Fox Figure</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A standing fox sculpture in brown clay, focusing on character and posture.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This fox figure is around 25cm tall and was built as a solid form at first, then carefully
+            hollowed from the bottom to reduce weight and improve firing. I wanted the fox to feel alert
+            and curious, so I paid attention to the tilt of the head, the curve of the tail, and the
+            tension in the legs. The piece was a study in capturing gesture and personality without
+            relying on extreme detail.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 3 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/fox_figure_1.jpg" alt="Fox Figure 1">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Fox Figure – Side Study</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A side view of the fox sculpture, emphasizing silhouette and balance.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This angle of the fox figure highlights the silhouette and overall balance of the sculpture.
+            I focused on the line of the back and tail, making sure the form felt stable but still
+            light and ready to move. Seeing the piece from this view helped me evaluate proportions
+            and how the shapes flow together in space.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 4 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/fox_figure_2.jpg" alt="Fox Figure 2">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Fox Figure – Bisque Stage</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            The fox sculpture at the bisque-fired stage before glazing.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            At the bisque-fired stage, the fox figure reveals its structure without the distraction
+            of glaze. This in–between step let me check for cracks, refine small areas, and think
+            about what kind of surface and color would best support the character of the piece.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 5 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/fox_figure_3.jpg" alt="Fox Figure 3">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Fox Figure – Profile View</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A profile view of the bisque-fired fox, focusing on curves and volume.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This profile emphasizes the curves of the tail, back, and chest. I wanted the fox to feel
+            soft and rounded but still alert, so I carved and smoothed the surfaces to guide how light
+            would travel across the form once glazed.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 6 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/fox_figure_4.jpg" alt="Fox Figure 4">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Fox Figure – Glazed</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            The fully glazed fox figure, ready for display.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            After glazing and the final firing, the fox took on a more finished personality. The glaze
+            highlights small textures in the fur and softens some of the sharper transitions in the clay.
+            Seeing it as a completed piece helped me understand how much the glaze can transform the
+            mood of a sculpture.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 7 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/fox_figure_5.jpg" alt="Fox Figure 5">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Fox Figure – Exhibition View 1</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            The fox sculpture displayed in a school exhibition setting.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            In this exhibition view, the fox is shown in a more naturalistic setting, surrounded by
+            other works. Displaying the piece outside the studio changes how it is read—it becomes
+            part of a story and invites viewers to imagine the fox’s environment and personality.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 8 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/fox_figure_6.jpg" alt="Fox Figure 6">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Fox Figure – Exhibition View 2</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            Another exhibition angle of the finished fox sculpture.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This angle emphasizes how the fox interacts with the display surface and the space around it.
+            I enjoy documenting sculptures from multiple viewpoints because it shows how three-dimensional
+            work is never experienced from just one fixed perspective.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 9 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/animal_heads.jpg" alt="Ceramics Animal Heads">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Ceramic Animal Heads</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A series of animal head sculptures made from white clay.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            These animal heads were an exercise in studying facial structure, expression, and stylization.
+            Working in white clay allowed the forms and carved details to stand out clearly, without the
+            distraction of strong color. Each head represents a different animal and mood, letting me play
+            with exaggeration and subtlety in the features.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 10 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/animal_ocarinas.jpg" alt="Animal Ocarinas">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Animal Ocarinas</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            Functional ocarinas shaped like animals, combining sculpture and sound.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            These animal-shaped ocarinas are made from white clay and designed to be both playful objects
+            and working instruments. Each piece has carefully placed openings so it can create different
+            tones when played. I enjoyed the challenge of blending function with character, letting the
+            animals’ forms still read clearly while making sure the pieces remain playable.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 24 (Mini Ceramics) -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/mini_ceramics.jpg" alt="Mini Ceramics">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Mini Ceramics</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A collection of small ceramic experiments in form and texture.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            These mini ceramics are like a three-dimensional sketchbook. I used white clay to test ideas
+            quickly—trying out new shapes, textures, and proportions on a small scale before committing
+            to larger works. Many of these pieces helped me understand how small changes in thickness,
+            curve, or detail can completely change the personality of a form.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 11 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/giant_woman_figure_1.jpg" alt="Giant Woman Figure 1">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Giant Woman Figure – In Progress</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A large reclining woman figure in brown clay, captured mid-process.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This sculpture is about 50cm tall and was one of my first experiences working at a larger
+            scale in clay. The figure is shown reclining on her side, and at this stage I focused on
+            building up the main volumes and ensuring the structure could support itself during drying
+            and firing. It was a technical and creative challenge to keep the pose relaxed yet stable.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 12 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/giant_woman_figure_2.jpg" alt="Giant Woman Figure 2">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Giant Woman Figure – Glazed</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            The finished giant woman sculpture with ivy-inspired glazing.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            In the glazed version, the surface treatment was inspired by ivy climbing over the figure’s
+            body. The leaves metaphorically reference Eve and the idea of covering and revealing at the
+            same time. The glaze emphasizes the curves and folds of the form while weaving a narrative
+            about nature, vulnerability, and myth.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 13 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/giant_woman_figure_3.jpg" alt="Giant Woman Figure 3">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Giant Woman Figure – Detail View</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A closer look at the ivy-inspired glazing and surface details.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This angle shows how the ivy-inspired glaze wraps around the figure, connecting different
+            parts of the body visually. I wanted the leaves to feel like they were growing organically
+            rather than just being painted on top, so I used the glaze to guide the viewer’s eye across
+            the sculpture’s surface.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 14 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/giant_woman_figure_4.jpg" alt="Giant Woman Figure 4">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Giant Woman Figure – Exhibition View</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            The giant woman sculpture displayed in a gallery setting.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            Seeing the giant woman figure in an exhibition context changed how I viewed the piece.
+            It became less of a studio experiment and more of a finished work in conversation with
+            other sculptures. The scale, surface, and pose work together to invite the viewer to
+            walk around and experience the piece from multiple angles.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 15 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/woman_figure_1.jpg" alt="Flexing Woman Figure 1">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Flexing Woman Figure – Front View</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A brown clay sculpture of a woman flexing, celebrating strength and form.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This figure shows a woman in a flexing pose, focusing on muscle definition and body
+            confidence. I used the glaze to echo natural forms like ivy and leaves, wrapping the
+            surface in an organic pattern that contrasts with the solid, grounded pose of the figure.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 16 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/woman_figure_2.jpg" alt="Flexing Woman Figure 2">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Flexing Woman Figure – Scale Study</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            One of the largest clay sculptures I have worked on so far.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This sculpture pushed me to think about structure, drying time, and support in a new way.
+            Working at a larger scale meant I had to plan the build in stages and constantly check the
+            thickness of the clay. It made me excited to keep exploring even bigger, more ambitious
+            ceramic projects in the future.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- METAL GLAZE WORKS -->
+    <!-- ========================================= -->
+    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
+      Metal Glaze Works
+    </h3>
+
+    <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 dark:border-[#FFA618]/30 transition-colors duration-300">
+      In this series, I explored metallic and reflective glazes on sculptural forms like heads and goblets.
+      These surfaces react strongly to light, so I considered how each piece would look from different angles
+      and in different environments. The work sits somewhere between functional objects and small monuments.
+    </p>
+
+    <div class="masonry">
+
+      <!-- Art Work 17 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/head_figure_0.jpg" alt="Head Figure 0">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Head Figure – Front View</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A glaze-fired head sculpture exploring expression and surface reflection.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This head figure focuses on the planes of the face and how glaze catches and reflects light
+            across them. I aimed for a balance between realistic features and a stylized, almost mask-like
+            presence. The metallic quality of the glaze gives the piece a quiet but intense energy when
+            viewed up close.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 18 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/head_figure_1.jpg" alt="Head Figure 1">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Head Figure – Angle View</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            An angled view of the metallic-glazed head sculpture.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            From this angle, the highlights and shadows created by the glaze become more dramatic.
+            I enjoyed how the reflective surface transforms the expression slightly depending on
+            the lighting, making the piece feel more alive and changing throughout the day.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 19 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/goblet_1.jpg" alt="Goblet 1">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Goblet 1</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A metal-glazed goblet inspired by historical ceremonial vessels.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This goblet was an opportunity to study proportion—the relationship between the bowl,
+            stem, and base. The metallic glaze gives it a ceremonial feeling, almost like something
+            from a different time period. I wanted it to feel both functional and slightly otherworldly.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 20 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/goblet_2.jpg" alt="Goblet 2">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Goblet 2</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A companion goblet exploring slight variations in height and curve.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            Goblet 2 is part of a small series where I repeated the basic form but changed details
+            like the height of the stem and the curve of the cup. The metallic glaze ties the pieces
+            together, turning them into a family of related forms rather than identical copies.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 21 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/goblet_3.jpg" alt="Goblet 3">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Goblet 3</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A goblet emphasizing a more dramatic, elongated profile.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            For Goblet 3, I stretched the form slightly taller to see how far I could push the
+            proportions while keeping the piece balanced. The reflective glaze helps accentuate
+            its verticality, drawing the eye upward along the stem and cup.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 22 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/mini_goblet_1.jpg" alt="Mini Goblet 1">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Mini Goblet 1</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A small goblet study exploring metallic glaze on a compact form.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This mini goblet was a way to test how the metallic glaze behaves on smaller surfaces.
+            The reduced scale makes every curve and edge more noticeable, so I focused on keeping the
+            form clean and the transitions smooth.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 23 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/mini_goblet_2.jpg" alt="Mini Goblet 2">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Mini Goblet 2</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            Another mini goblet, pairing with the first as a small set.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            Mini Goblet 2 continues the exploration of small-scale functional forms. Together with
+            the first mini goblet, it forms a pair that feels collectible and intimate—like objects
+            meant to be held and examined closely rather than used every day.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- POTTERY -->
+    <!-- ========================================= -->
+    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
+      Pottery
+    </h3>
+
+    <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 dark:border-[#FFA618]/30 transition-colors duration-300">
+      My pottery work focuses on functional forms—cups, bowls, and small vessels that could live in
+      everyday spaces. Through these pieces, I experimented with repeated shapes, testing how slight
+      changes in height, rim thickness, and glaze application can create unique personalities within
+      a series of similar forms.
+    </p>
+
+    <div class="masonry">
+
+      <!-- Art Work 25 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_1.jpg" alt="Pottery 1">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Vessel 1</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A functional ceramic vessel created as part of a student pottery series.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This piece explores a simple, rounded form with a steady base and slightly flared rim.
+            It was one of my early attempts to balance functionality with an inviting, tactile shape
+            that feels good to hold in the hands.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 26 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_2.jpg" alt="Pottery 2">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Vessel 2</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A ceramic vessel with a more vertical profile and defined shoulder.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            In this vessel, I played with a taller profile and a clearer transition between the body
+            and the neck. The form feels slightly more formal, and the glaze helps emphasize that change
+            in structure by catching on the edges and soft curves.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 27 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_3.jpg" alt="Pottery 3">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Vessel 3</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A vessel with a softer, more rounded silhouette.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            Pottery 3 focuses on creating a comforting, rounded shape that feels approachable.
+            The gentle curve of the walls and the subtle lip make it feel like it belongs in a
+            home setting, ready to be used daily or displayed on a shelf.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 28 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_4.jpg" alt="Pottery 4">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Vessel 4</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A ceramic vessel experimenting with a wider opening and stable base.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This vessel features a broader opening, making it suitable for use as a bowl or small
+            serving piece. I wanted the base to feel grounded, so the proportions emphasize stability
+            without losing elegance in the upper curve.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 29 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_5.jpg" alt="Pottery 5">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Mini Vessel 1</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A miniature vessel exploring small-scale proportion and glaze.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This mini piece allowed me to think about how glaze and form behave at a smaller scale.
+            Tiny changes in the curve of the rim or thickness of the wall become very visible, so
+            it was a good way to refine my control and attention to detail.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 30 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_6.jpg" alt="Pottery 6">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Vessel 6</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A vessel focusing on a gentle inward curve towards the rim.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            Here I experimented with an inward curve near the rim, creating a subtle sense of
+            containment. It changes how the piece might be used and how the hand naturally grips it,
+            highlighting the relationship between form and function.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 31 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_7.jpg" alt="Pottery 7">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Vessel 7</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A compact vessel with a rounded body and small opening.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This piece has a more contained shape with a smaller opening, making it feel a bit more
+            secretive or personal—like a container for something special. I enjoyed how the glaze
+            pooled slightly near the lip, creating subtle variations in color.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 32 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_8.jpg" alt="Pottery 8">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Mini Vessel 2</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            Another mini vessel exploring subtle variations in shape.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This mini vessel pairs with other small pieces in the series, showing how repeating a
+            basic form with small differences can still feel fresh. I used the glaze to gently
+            emphasize the rim and the curve of the body.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 33 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_9.jpg" alt="Pottery 9">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Collection 1</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A small collection of vessels showing variety within a shared style.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This group of pieces highlights how a set of vessels can feel connected through color
+            and form, even when individual shapes differ. It reflects my interest in making objects
+            that work together as a family rather than as isolated pieces.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 34 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_10.jpg" alt="Pottery 10">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Collection 2</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            Another collection of mini ceramic forms emphasizing variation and rhythm.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            Here, the emphasis is on rhythm—how repeating similar heights and widths creates a visual
+            pattern. The individual vessels are simple, but together they form a composition of forms
+            and negative space between them.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 35 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_11.jpg" alt="Pottery 11">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Vessel 11</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A ceramic vessel emphasizing a classic cup-like shape.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            In this piece, I wanted a very familiar, approachable form—something that looked like it
+            could be used as a favorite cup. The proportions and glaze were chosen to feel warm and
+            comfortable rather than overly experimental.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 36 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_12.jpg" alt="Pottery 12">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Vessel 12</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A vessel with subtle shifts in wall thickness and glaze pooling.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This vessel explores how small changes in wall thickness affect the way glaze moves and
+            gathers. The resulting surface has gentle variations that reward close looking, turning a
+            simple shape into something more complex and rich.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 37 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_13.jpg" alt="Pottery 13">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Vessel 13</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A refined vessel with attention to rim detail and proportion.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            Pottery 13 was a later piece in the series, where I focused more on refinement and subtle
+            detail. The rim is slightly more defined, and the form feels more confident, reflecting
+            how my relationship with the wheel and clay improved over time.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 38 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/pottery_14.jpg" alt="Pottery 14">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pottery Vessel 14</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A vessel that completes the series, tying together previous experiments.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This final piece in the pottery series pulls together many of the ideas I tested earlier:
+            balance, surface variation, and a form that feels both functional and sculptural. It marks
+            a point where I started to see my pottery as part of a larger body of work rather than
+            isolated exercises.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- PIGMENT TILES -->
+    <!-- ========================================= -->
+    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
+      Pigment Tiles
+    </h3>
+
+    <p class="leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md bg-[#FFF7F0] border border-[#850F01]/20 dark:border-[#FFA618]/30 hover:shadow-2xl transition duration-300 dark:text-gray-200 text-gray-700">
+      My pigment tile experiments allowed me to focus mainly on surface: layering color, testing
+      underglazes, and carving or pressing patterns into the clay. These tiles became small laboratories
+      for exploring how line, texture, and pigment come together once fired.
+    </p>
+
+    <div class="masonry">
+
+      <!-- Art Work 39 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/tile_0.jpg" alt="Tile 0">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pigment Tile 0</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A ceramic tile exploring basic pigment application and pattern.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This tile was one of my first experiments with layering pigment on a flat surface. I focused
+            on simple shapes and lines to see how the colors would interact after firing and how much
+            detail the surface could hold without feeling crowded.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 40 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/tile_1.jpg" alt="Tile 1">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pigment Tile 1</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A tile focusing on layered color and overlapping shapes.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            In this tile, I tested what happens when shapes overlap and pigments are applied in more than
+            one layer. The goal was to create a sense of depth on a flat surface, playing with opacity,
+            transparency, and the edges where colors meet.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 41 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/tile_2.jpg" alt="Tile 2">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pigment Tile 2</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A tile exploring carved lines and filled pigment.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This piece combines carving into the clay with filling those lines using pigment. The contrast
+            between the raised and recessed areas adds a tactile quality to the design, turning the tile
+            into both a visual and physical pattern study.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 42 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/tile_3.jpg" alt="Tile 3">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pigment Tile 3</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A ceramic tile experimenting with repeated motifs and rhythm.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            Tile 3 plays with repetition—using similar shapes arranged in a structured way to create an
+            overall rhythm. The pigments help separate and connect these motifs, guiding the eye across
+            the surface in a deliberate pattern.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 43 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/tile_4.jpg" alt="Tile 4">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pigment Tile Collection</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A collection of tiles experimenting with different pigment combinations and textures.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This small collection shows how multiple tiles can work together as a larger composition.
+            Each tile tests a slightly different approach to pigment and texture, but they share a
+            common language of color and mark-making, making them feel like variations within the
+            same theme.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Art Work 44 -->
+      <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <figure>
+          <img src="images/ceramics/tile_5.jpg" alt="Tile 5">
+        </figure>
+        <div class="meta p-4">
+          <h3 class="text-xl font-bold text-gray-800">Pigment Tile 5</h3>
+          <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+            A final pigment tile bringing together pattern, carving, and layered color.
+          </p>
+          <p class="long-description text-gray-600 text-sm mb-3">
+            This tile combines many of the techniques I experimented with earlier—carved lines, repeated
+            shapes, and layered pigments. It represents a more confident use of the surface, treating the
+            tile as both a test piece and a finished artwork on its own.
+          </p>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+            <button aria-expanded="false"
+              class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View
+              Details</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="home-hero-card bg-white p-6 md:p-12 rounded-2xl shadow-xl transition-colors duration-300 mt-12">
+      <figure>
+        <img src="images/ceramics/me&giant_woman1.jpg" alt="Me & Giant Woman Sculpture">
+      </figure>
+    </div>
+
+  </section>
+</main>
+
+  <footer class="bg-white border-t border-gray-200 mt-12 relative overflow-hidden">
+      <div class="logo-background-pattern"></div>
+
+      <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div class="flex justify-center space-x-6 mb-4">
+              <a href="https://www.instagram.com/aysule_2327/" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="Instagram">
+                  <i data-lucide="instagram" class="w-6 h-6"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="LinkedIn">
+                  <i data-lucide="linkedin" class="w-6 h-6"></i>
+              </a>
+              <a href="https://github.com/aysesule2405" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="GitHub">
+                  <i data-lucide="github" class="w-6 h-6"></i>
+              </a>
+          </div>
+          <p class="text-sm text-gray-500">
+              &copy; 2025 Ayse Sule Ekiz. All rights reserved.
+          </p>
+      </div>
+  </footer>
+
+
+  <script>
+      // Initialize Lucide icons on page load
+      document.addEventListener('DOMContentLoaded', () => {
+          lucide.createIcons();
+
+          // Mobile menu toggle logic
+          document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+              document.getElementById('mobile-menu').classList.toggle('hidden');
+          });
+
+          // Details toggle logic for artwork cards
+          document.querySelectorAll('.view-details-btn').forEach(button => {
+              button.addEventListener('click', (event) => {
+                  const article = event.target.closest('.masonry-item');
+                  const isExpanded = event.target.getAttribute('aria-expanded') === 'true';
+
+                  // Toggle the 'show-details' class on the parent article (this is what the CSS watches)
+                  article.classList.toggle('show-details');
+                  
+                  // Update aria-expanded state and button text
+                  event.target.setAttribute('aria-expanded', !isExpanded);
+                  event.target.textContent = isExpanded ? 'View Details' : 'Hide Details';
+              });
+          });
+      });
+  </script>
+</body>
+</html>

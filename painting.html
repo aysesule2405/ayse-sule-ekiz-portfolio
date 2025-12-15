@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayse Sule Ekiz | Painting & Charcoal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/cards.css">
+
+    <style>
+        /* Define Navigation Link Styling */
+        .nav-link {
+            color: #4b5563; /* text-gray-600 */
+            transition: color 0.2s, background-color 0.2s;
+        }
+        .nav-link:hover {
+            background-color: #fce7f3; /* A soft background for hover */
+            color: #850F01;
+        }
+        .nav-link.active {
+            background-color: #FFA618; /* Accent color for active link */
+            color: #FFF; /* White text on accent background */
+        }
+
+        /* Custom CSS for the logo background pattern */
+        .logo-background-pattern {
+            /* Placeholder URL for a repeating, subtle logo pattern (use your actual logo as a tileable image) */
+            background-image: url('./images/logo.jpg');
+            background-repeat: repeat;
+            background-blend-mode: multiply; /* Optional: for a subtle effect */
+            opacity: 0.1; /* Make it very subtle */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Push behind content */
+        }
+    </style>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/nav-enhancements.js"></script>
+
+</head>
+<body class="min-h-screen bg-white">
+
+  <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex-shrink-0 flex items-center space-x-2">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img src="./images/logo.jpg" alt="Ayse Sule Ekiz Logo" class="h-10 w-10 rounded-full border-2 border-[#850F01]">
+            <span class="text-2xl font-extrabold text-[#850F01] tracking-tight hidden sm:inline">Ayse Sule Ekiz</span>
+          </a>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-2">
+          <a href="index.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Home Page</a>
+          <a href="graphicdesign.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Graphic Design & Digital Art</a>
+          <a href="ceramics.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Sculpting & Ceramics</a>
+          <a href="painting.html" class="nav-link active px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Painting & Charcoal</a>
+          <a href="about.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">About / Contact</a>
+
+          <!-- Theme toggle (desktop) -->
+          <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                  class="ml-2 inline-flex items-center px-3 py-2 rounded-lg focus:outline-none">
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+        </nav>
+
+        <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home Page</a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design & Digital Art</a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting & Ceramics</a>
+      <a href="painting.html" class="nav-link active block px-4 py-3 text-sm font-medium border-b">Painting & Charcoal</a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">About / Contact</a>
+
+      <!-- Theme toggle (mobile) -->
+      <div class="px-4 py-3 border-t">
+        <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                class="w-full inline-flex items-center justify-center px-3 py-2 rounded-lg">
+          <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5 mr-2"></i>
+          <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 mr-2 hidden"></i>
+          <span class="text-sm">Toggle theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
+    <section id="painting-charcoal">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 border-b pb-3">Painting & Charcoal Art</h2>
+        <!-- ========================================= -->
+        <!-- PAINTINGS -->
+        <!-- ========================================= -->
+        <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
+            Paintings
+        </h3>
+        <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 dark:border-[#FFA618]/30 transition-colors duration-300">
+            Painting has always been my way of blending memory, emotion, and atmosphere into a single frame. Whether using oil, gouache, or pastel, each piece becomes a quiet conversation between color and light—moments that feel familiar yet dreamlike. Many of these works were created during late nights, drawing inspiration from moonscapes, friendships, and places that shaped who I am.
+        </p>
+        <div class="masonry">
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/girl&moon.jpg" alt="girl & moon">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Girl & Moon</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Oil painting on canvas exploring cool lunar light against warm skin tones and soft gradients.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This piece was painted during a full moon night in 2023, after watching
+                        <i>The Tale of Princess Kaguya</i>. I imagined the girl and the moon as reflections of
+                        each other – one in the sky, one on earth – quietly mirroring the same lonely glow.
+                        The soft edges, pale blues, and warm highlights are meant to feel like a dream you
+                        just woke up from but still don’t want to let go of.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/angel&moon.jpg" alt="angel & moon">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Angel & Moon</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Pastel illustration on toned paper focusing on layered light, soft blending, and gentle highlights.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        I wanted this angel to feel like she can only rest when wrapped in moonlight – as if the sky
+                        keeps her secrets safe. The glowing halo around the moon and the soft folds of her wings
+                        aim to create a quiet, weightless moment, like time has slowed down just for her.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/friends.jpg" alt="Friends">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Friends</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Gouache painting based on a Bosphorus trip reference photo, studying backlighting and reflections.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This piece is a love letter to a simple moment with friends – the kind you only realize
+                        was important much later. The water, the boat, the city in the distance… all of it became
+                        a soft backdrop so their silhouettes and shared laughter could be the real focus.
+                        I wanted the scene to feel like a sun-faded memory you happily revisit again and again.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/pastel1.jpg" alt="Pastel 1">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Pastel / #1</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Soft pastel on blue watercolor paper, focusing on night lighting and layered color transitions.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        Using a blue base let the lights of the coastal town glow more intensely, almost like
+                        they’re floating on the water. This piece was inspired by Manarola at night – a place
+                        I’ve never visited in person, but often visit in my imagination. The stacked houses,
+                        tiny windows, and bright reflections become a quiet, dreamy maze of light and shadow.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/pastel2.jpg" alt="Pastel 2">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Pastel / #2</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Soft pastel on blue watercolor paper inspired by my hometown mountains and atmospheric depth.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        These mountains come from childhood memory more than reality – in my mind they were always
+                        as big and dramatic as Mt. Fuji. I wanted the sky to feel wide and the land to feel small,
+                        like the world is both familiar and a little overwhelming. It’s a quiet landscape, but for me,
+                        it holds the feeling of going home after a long time away.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- CHARCOAL SKETCHES -->
+        <!-- ========================================= -->
+        <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
+            Charcoal Sketches
+        </h3>
+        <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 dark:border-[#FFA618]/30 transition-colors duration-300">
+            Charcoal sketching allows me to strip everything down to the essentials—light, shadow, and form. With no color to rely on, every stroke becomes intentional, capturing emotion through contrast alone. These pieces were my first explorations into charcoal, where I learned how expressive simple values can be, turning quick studies into quiet, intimate portraits.
+        </p>
+
+
+        <div class="masonry">
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/charcoal.jpg" alt="Charcoal Drawing 3">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Charcoal Drawing</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Charcoal still life study of a bottle composition, focusing on value range, edges, and reflections.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This was my first charcoal drawing, and I loved how everything became about light and shadow.
+                        The bottles started to feel like quiet characters standing in the dark, holding their own
+                        little pockets of light. It taught me how dramatic a simple arrangement can become when the
+                        world around it fades into deep gray.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/TaeSketch.jpeg" alt="Sketch Tae">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Sketch / Taehyung</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Graphite and charcoal portrait study of Taehyung from BTS’s “Blood Sweat & Tears” era, with subtle wing detail.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        I wanted this sketch to feel like a moment between innocence and temptation, just like the
+                        “Blood Sweat & Tears” era. The faint suggestion of wings behind him is intentionally unclear:
+                        are they really there, or just something the viewer projects? That ambiguity between good and
+                        evil, purity and sin, is what makes this piece so fascinating to me.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/Screen Shot 2019-09-08 at 20.20.37.jpeg" alt="Sketch #1">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Sketch / #1</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Graphite and charcoal portrait sketch emphasizing facial structure, shading, and contrast.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This sketch was an experiment in letting strong shadows define the mood of the face.
+                        By deepening the darks and softening some edges, the figure starts to feel like someone
+                        you might recognize, but can’t quite place – a familiar stranger from a dream you almost remember.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/Screen Shot 2019-09-08 at 20.20.37 (1).jpeg" alt="Sketch #2">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Sketch / #2</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Graphite sketch with charcoal accents, focusing on hair texture and subtle expression.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        Here I focused on capturing that quiet, in-between expression – not fully smiling,
+                        not fully serious. The loose lines and soft smudges are meant to feel like thoughts
+                        that haven’t been spoken yet, hanging lightly in the air around the subject.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/Mika.jpeg" alt="Mika Sketch">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Sketch / Mika</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Anime-style graphite portrait of Mika from <i>Seraph of the End</i>, focusing on clean line work.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This was my first time fully committing to an anime-style sketch. Mika’s character carries
+                        so much tragedy and softness at the same time, and I wanted that mix to show in his eyes.
+                        The sharp lines around the hair and collar contrast with the softer shading of the face,
+                        echoing the tension between his gentle heart and the world he’s trapped in.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+</main>
+
+<footer class="bg-white border-t border-gray-200 mt-12 relative overflow-hidden">
+        <div class="logo-background-pattern"></div>
+
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.instagram.com/aysule_2327/" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="Instagram">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="https://github.com/aysesule2405" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="GitHub">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                </a>
+            </div>
+            <p class="text-sm text-gray-500">
+                &copy; 2025 Ayse Sule Ekiz. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Initialize Lucide icons on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            // Mobile menu toggle logic
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+
+            // Details toggle logic for artwork cards
+            document.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const article = event.target.closest('.masonry-item');
+                    const isExpanded = event.target.getAttribute('aria-expanded') === 'true';
+
+                    // Toggle the 'show-details' class on the parent article
+                    article.classList.toggle('show-details');
+                    
+                    // Update aria-expanded state and button text
+                    event.target.setAttribute('aria-expanded', !isExpanded);
+                    event.target.textContent = isExpanded ? 'View Details' : 'Hide Details';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
