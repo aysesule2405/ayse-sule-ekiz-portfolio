@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayse Sule Ekiz | Home</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom styles (includes dark mode + card styling) -->
+    <link rel="stylesheet" href="styles/main.css">
+        <style>
+        /* Define Navigation Link Styling */
+        .nav-link {
+            color: #4b5563; /* text-gray-600 */
+            transition: color 0.2s, background-color 0.2s;
+        }
+        .nav-link:hover {
+            background-color: #fce7f3; /* A soft background for hover */
+            color: #850F01;
+        }
+        .nav-link.active {
+            background-color: #FFA618; /* Accent color for active link */
+            color: #FFF; /* White text on accent background */
+        }
+
+        /* Custom CSS for the logo background pattern */
+        .logo-background-pattern {
+            background-image: url('./images/logo.jpg');
+            background-repeat: repeat;
+            background-blend-mode: multiply;
+            opacity: 0.1; /* Make it very subtle */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Push behind content */
+        }
+    </style>
+
+    <!-- Icons + fragments + theme/nav scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="js/load-fragments.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/nav-enhancements.js"></script>
+</head>
+
+<body class="min-h-screen bg-white">
+
+  <!-- Header and Navigation -->
+  <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo / Brand -->
+        <div class="flex-shrink-0 flex items-center space-x-2">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img src="./images/logo.jpg" alt="Ayse Sule Ekiz Logo" class="h-10 w-10 rounded-full border-2 border-[#850F01]">
+            <span class="text-2xl font-extrabold text-[#850F01] tracking-tight hidden sm:inline">
+              Ayse Sule Ekiz
+            </span>
+          </a>
+        </div>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center space-x-2">
+          <a href="index.html" class="nav-link active px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Home Page</a>
+          <a href="graphicdesign.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Graphic Design &amp; Digital Art</a>
+          <a href="ceramics.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Sculpting &amp; Ceramics</a>
+          <a href="painting.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Painting &amp; Charcoal</a>
+          <a href="about.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">About / Contact</a>
+
+          <!-- Theme toggle (desktop) -->
+          <button
+            data-theme-toggle
+            aria-label="Toggle color theme"
+            aria-pressed="false"
+            class="ml-2 inline-flex items-center px-3 py-2 rounded-lg focus:outline-none"
+          >
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg"
+          aria-label="Toggle navigation menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link active block px-4 py-3 text-sm font-medium border-b">Home Page</a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design &amp; Digital Art</a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting &amp; Ceramics</a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting &amp; Charcoal</a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">About / Contact</a>
+      
+      <!-- Theme toggle (mobile) -->
+      <div class="px-4 py-3 border-t">
+        <button
+          data-theme-toggle
+          aria-label="Toggle color theme"
+          aria-pressed="false"
+          class="w-full inline-flex items-center justify-center px-3 py-2 rounded-lg"
+        >
+          <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5 mr-2"></i>
+          <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 mr-2 hidden"></i>
+          <span class="text-sm">Toggle theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container (Home Page Section) -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
+    <section id="home">
+      <!-- HERO -->
+      <div class="home-hero-card bg-white p-6 md:p-12 rounded-2xl shadow-xl transition-colors duration-300">
+        <div class="flex flex-col md:flex-row gap-10 items-start">
+          <!-- Left Column: Introduction Text -->
+          <div class="md:w-1/2 space-y-6">
+            <p class="text-[#FFA618] font-semibold text-lg">Hi, this is Ayse Sule</p>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight transition-colors duration-300">
+              Get to know me through my <span class="text-[#850F01]">art.</span>
+            </h1>
+            <p class="text-gray-600 text-lg transition-colors duration-300">
+              I have always been passionate about art and crafting and I wanted to share this side of me, using my skills to showcase my art to the world. While my interest in art is diverse, this website will serve as a platform exclusively for sharing my visual artwork and acting as a portfolio of my creative journey.
+            </p>
+            <a
+              href="about.html"
+              class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-[#850F01] hover:bg-[#B23600] shadow-md transition-colors duration-300"
+            >
+              Explore My Journey <i data-lucide="arrow-right" class="ml-2 h-5 w-5"></i>
+            </a>
+          </div>
+
+          <!-- Right Column: Featured Image -->
+          <div class="md:w-1/2 w-full">
+            <div class="h-64 sm:h-80 md:h-96 w-full rounded-2xl bg-gray-200 overflow-hidden shadow-lg border-4 border-white transition-colors duration-300">
+              <img
+                src="images/ceramics/me&giant_woman2.jpg"
+                alt="Ayse Sule Ekiz Featured Art Piece"
+                class="w-full h-full object-cover"
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Interests Section -->
+        <div class="mt-16 pt-8 border-t border-gray-100 transition-colors duration-300">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8 transition-colors duration-300">My Interests</h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Interest Card 1: Graphic Design & Digital Art -->
+            <div class="interest-card p-6 bg-[#FFF7F0] transition duration-300">
+              <div class="interest-img mb-4 rounded-lg overflow-hidden">
+                <img
+                  src="images/dijital_art/Lilith - Symetrical Balance Poster.jpg"
+                  alt="Graphic Design & Digital Art"
+                  class="w-full h-40 object-cover"
+                >
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 transition-colors duration-300">
+                Graphic Design &amp; Digital Art
+              </h3>
+              <p class="text-gray-600 text-sm transition-colors duration-300">
+                Graphic design and digital art allow me to blend technology with creativity. I enjoy creating visually compelling compositions that communicate ideas effectively.
+              </p>
+              <a
+                href="graphicdesign.html"
+                class="text-[#850F01] text-sm font-medium mt-3 inline-block hover:underline transition-colors duration-300"
+              >
+                View Gallery →
+              </a>
+            </div>
+
+            <!-- Interest Card 2: Sculpting & Ceramics -->
+            <div class="interest-card p-6 bg-[#FFF7F0] transition duration-300">
+              <div class="interest-img mb-4 rounded-lg overflow-hidden">
+                <img
+                  src="images/ceramics/head_figure_0.jpg"
+                  alt="Sculpting & Ceramics"
+                  class="w-full h-40 object-cover"
+                >
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 transition-colors duration-300">
+                Sculpting &amp; Ceramics
+              </h3>
+              <p class="text-gray-600 text-sm transition-colors duration-300">
+                Sculpting and ceramics provide a tactile experience that connects me to the material. I love shaping forms and textures that evoke a sense of presence and physicality.
+              </p>
+              <a
+                href="ceramics.html"
+                class="text-[#850F01] text-sm font-medium mt-3 inline-block hover:underline transition-colors duration-300"
+              >
+                View Gallery →
+              </a>
+            </div>
+
+            <!-- Interest Card 3: Painting & Charcoal -->
+            <div class="interest-card p-6 bg-[#FFF7F0] transition duration-300">
+              <div class="interest-img mb-4 rounded-lg overflow-hidden">
+                <img
+                  src="images/paintings/girl&moon.jpg"
+                  alt="Painting & Charcoal"
+                  class="w-full h-40 object-cover"
+                >
+              </div>
+
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 transition-colors duration-300">
+                Painting &amp; Charcoal
+              </h3>
+              <p class="text-gray-600 text-sm transition-colors duration-300">
+                Painting is one of my favorite mediums to express emotions and ideas through colors and textures. Charcoal allows me to explore contrast and shading in a unique way.
+              </p>
+              <a
+                href="painting.html"
+                class="text-[#850F01] text-sm font-medium mt-3 inline-block hover:underline transition-colors duration-300"
+              >
+                View Gallery →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 mt-12 relative overflow-hidden transition-colors duration-300">
+    <div class="logo-background-pattern"></div>
+
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="flex justify-center space-x-6 mb-4">
+        <a
+          href="https://www.instagram.com/aysule_2327/"
+          target="_blank"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
+          aria-label="Instagram"
+        >
+          <i data-lucide="instagram" class="w-6 h-6"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/"
+          target="_blank"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
+          aria-label="LinkedIn"
+        >
+          <i data-lucide="linkedin" class="w-6 h-6"></i>
+        </a>
+        <a
+          href="https://github.com/aysesule2405"
+          target="_blank"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
+          aria-label="GitHub"
+        >
+          <i data-lucide="github" class="w-6 h-6"></i>
+        </a>
+      </div>
+      <p class="text-sm text-gray-500 transition-colors duration-300">
+        &copy; 2025 Ayse Sule Ekiz. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Icons
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        try { lucide.createIcons(); } catch (err) { console.warn(err); }
+      }
+
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // (Optional) Details toggle logic for artwork cards on other pages
+      document.querySelectorAll('.view-details-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+          const article = event.target.closest('.masonry-item');
+          const isExpanded = event.target.getAttribute('aria-expanded') === 'true';
+
+          article.classList.toggle('show-details');
+          event.target.setAttribute('aria-expanded', !isExpanded);
+          event.target.textContent = isExpanded ? 'View Details' : 'Hide Details';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

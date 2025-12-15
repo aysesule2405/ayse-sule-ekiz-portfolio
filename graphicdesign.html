@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayse Sule Ekiz | Graphic Design & Digital Art</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/cards.css">
+    <style>
+        /* Define Navigation Link Styling */
+        .nav-link {
+            color: #4b5563; /* text-gray-600 */
+            transition: color 0.2s, background-color 0.2s;
+        }
+        .nav-link:hover {
+            background-color: #fce7f3; /* A soft background for hover */
+            color: #850F01;
+        }
+        .nav-link.active {
+            background-color: #FFA618; /* Accent color for active link */
+            color: #FFF; /* White text on accent background */
+        }
+
+        /* Custom CSS for the logo background pattern */
+        .logo-background-pattern {
+            background-image: url('./images/logo.jpg');
+            background-repeat: repeat;
+            background-blend-mode: multiply;
+            opacity: 0.1; /* Make it very subtle */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Push behind content */
+        }
+    </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/nav-enhancements.js"></script>
+
+</head>
+<body class="min-h-screen bg-white">
+
+  <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex-shrink-0 flex items-center space-x-2">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img src="./images/logo.jpg" alt="Ayse Sule Ekiz Logo" class="h-10 w-10 rounded-full border-2 border-[#850F01]">
+            <span class="text-2xl font-extrabold text-[#850F01] tracking-tight hidden sm:inline">Ayse Sule Ekiz</span>
+          </a>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-2">
+          <a href="index.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Home Page</a>
+          <a href="graphicdesign.html" class="nav-link active px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Graphic Design & Digital Art</a>
+          <a href="ceramics.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Sculpting & Ceramics</a>
+          <a href="painting.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Painting & Charcoal</a>
+          <a href="about.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">About / Contact</a>
+
+          <!-- Theme toggle (desktop) -->
+          <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                  class="ml-2 inline-flex items-center px-3 py-2 rounded-lg focus:outline-none">
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+        </nav>
+
+        <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home Page</a>
+      <a href="graphicdesign.html" class="nav-link active block px-4 py-3 text-sm font-medium border-b">Graphic Design & Digital Art</a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting & Ceramics</a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting & Charcoal</a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">About / Contact</a>
+
+      <!-- Theme toggle (mobile) -->
+      <div class="px-4 py-3 border-t">
+        <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                class="w-full inline-flex items-center justify-center px-3 py-2 rounded-lg">
+          <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5 mr-2"></i>
+          <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 mr-2 hidden"></i>
+          <span class="text-sm">Toggle theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
+    <section id="graphic-design">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 border-b pb-3">Graphic Design & Digital Art</h2>
+
+        <!-- ========================================= -->
+        <!-- PRINT MAKING -->
+        <!-- ========================================= -->
+        <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
+            Print Making
+        </h3>
+
+        <!-- Intro text for Print Making -->
+        <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 dark:border-[#FFA618]/30 transition-colors duration-300">
+          Printmaking lets me combine careful planning with happy accidents. Through techniques like 
+          <span class="font-semibold">linocut, intaglio, and monotype</span>, I explored how carved lines, etched plates, and ink on glass plates 
+          can all create very different moods. Each print teaches me something new about texture, contrast, and repetition, 
+          and how a single image can change when it is printed again and again on different papers or with different inks.
+        </p>
+
+        <div class="masonry">
+            <!-- Linocut -->
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/linocut_print_draft.jpg" alt="linocut_print_draft">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Linocut Print Draft</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Draft linocut exploring light and shadow inspired by a haiku about a meteor shower.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                      This early linocut draft experiments with how light and shadow can tell a quiet story. 
+                      It is based on a haiku about a meteor shower, and I used carved lines and strong contrast 
+                      to translate the brief, gentle moment of the poem into a visual composition.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/linocut_print_1.jpg" alt="linocut_print_1">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Linocut Print #1</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Final linocut print using oil-based ink to create bold contrast and texture.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                      This linocut print is one of my final impressions from the carved block. 
+                      By using oil-based ink, I was able to achieve deep blacks and crisp edges that highlight the 
+                      carved shapes. The strong contrast emphasizes the rhythm of the design and brings the haiku’s 
+                      imagery to life in a more finished form.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/linocut_print_2.jpg" alt="linocut_print_2">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Linocut Print #2</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Alternate linocut print exploring variation in inking and pressure.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                      In this version of the linocut print, I experimented with different amounts of ink 
+                      and pressure in the press. Small changes in how the ink is rolled and how the paper is pressed 
+                      create subtle shifts in value and texture, showing how one carved block can lead to many unique prints.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/linocut_print.jpg" alt="linocut_print_working_space">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Linocut Print Working Space</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Haiku poem that inspired the linocut print series: “meteor shower...”
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                      The haiku that inspired this linocut series goes: <br>
+                      <em>meteor shower...<br>
+                      a gentle wave<br>
+                      wets our sandals.</em><br><br>
+                      Having the poem physically present in my workspace helped me stay connected to its quiet, 
+                      reflective mood while carving and printing, and guided the balance between empty space and detailed marks.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Intaglio -->
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/intaglio_print_1.jpg" alt="intaglio_print_1">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Intaglio Print #1</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Intaglio print of me in front of Gould Hall, combining tradition with modern design.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                      This intaglio print shows me standing in front of my high school’s main building, Gould Hall. 
+                      I used etched lines and careful shading to capture the architecture and my connection to the space. 
+                      The piece blends traditional intaglio techniques with a more graphic, contemporary approach to composition.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/intaglio_print_2.jpg" alt="intaglio_print_2">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Intaglio Print #2</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Intaglio print in blue ink capturing a quiet, introspective moment.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                      In this version, I printed the plate with blue oil-based ink to create a cooler, more introspective mood. 
+                      The color choice softens the scene and brings out different details in the etched lines, showing how ink color 
+                      can completely change the feeling of the same image.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/intaglio_print_3.jpg" alt="intaglio_print_3">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Intaglio Print #3</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Intaglio print in warm ink tones that resemble sepia photographs.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                      This print uses orange-brown ink to create a warm, almost sepia effect. 
+                      The softer value range gives the piece a nostalgic feeling, like an old photograph, 
+                      and emphasizes the emotional side of the scene rather than just the architectural details.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/intaglio_print_4.jpg" alt="intaglio_print_4">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Intaglio Prints</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Series of intaglio prints exploring edition-making and consistency.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                      This series of intaglio prints explores what it means to create an edition: repeating the same image 
+                      while trying to keep each print consistent in quality. I focused on inking, wiping, and press pressure 
+                      to maintain clarity in the lines, while still accepting the small variations that make each impression unique.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Monotype -->
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/freeform_monotype.jpg" alt="freeform_monotype">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Freeform Monotype</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Expressive monotype exploring color, gesture, and spontaneous marks.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This freeform monotype is an experiment in letting go of detailed planning. 
+                        Working with water-based inks on a smooth plate, I layered colors and loose brushstrokes, 
+                        then transferred the image in a single pull. The result captures the energy of the process and 
+                        the way chance can shape the final image.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/monotype_combo.jpg" alt="monotype_combo">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Monotype Combo</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Study of how different papers affect color, texture, and detail in monotype prints.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This set of monotypes compares the same plate printed on different types of paper. 
+                        Each surface absorbs ink in its own way—some soften the edges, while others keep the lines crisp. 
+                        By placing the prints together, I can clearly see how paper choice changes the mood and clarity of the image.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/monotype_prep.jpg" alt="monotype_prep">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Monotype Preparation</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Process view of inking a glass plate before printing a monotype.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This image shows the in-between stage of monotype printing: the inked glass plate before the paper is laid on top. 
+                        I arranged colors and shapes directly on the plate, knowing that some details would blur and merge during printing. 
+                        It captures the moment right before the image becomes permanent on paper.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/monotype_draft.jpg" alt="monotype_draft">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Monotype Print Draft</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Monotype test print on wet watercolor paper for softer, blended effects.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This draft was printed on wet watercolor paper, which allowed the inks to bleed and mix in unexpected ways. 
+                        The damp surface softened the edges of the shapes and created gentle color transitions, giving the print a more painterly feeling compared to dry paper tests.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/monotype_1.jpg" alt="monotype_print_1">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Monotype Print 1</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Monotype on wet watercolor paper with saturated color and soft edges.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        In this print, the wet watercolor paper absorbed nearly all of the ink from the plate, resulting in rich, saturated color. 
+                        The edges of the forms softened as the pigments spread into the fibers of the paper, creating a dreamy, atmospheric effect 
+                        that contrasts with sharper monotypes on dry paper.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/graphic_design/monotype_2.jpg" alt="monotype_print_2">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Monotype Print 2</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Second monotype on wet paper, using calm weather to support even color absorption.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This second monotype on wet watercolor paper was printed under calmer, more controlled conditions. 
+                        The even moisture in the paper helped the ink transfer smoothly, creating subtle gradients and a quieter, more balanced composition. 
+                        It shows how environment and timing can affect the final print just as much as the drawing itself.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- 2D ART PORTFOLIO -->
+        <!-- ========================================= -->
+        <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
+            2D Art Portfolio
+        </h3>
+
+        <!-- Intro text for 2D Art Portfolio -->
+        <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 dark:border-[#FFA618]/30 transition-colors duration-300">
+          My AP 2D Art Portfolio focuses on <span class="font-semibold">culture, community, and shared traditions</span>. 
+          I chose to tell the story of making <span class="font-semibold">yaprak sarması</span> (stuffed grape leaves), a dish that reminds me of family, 
+          home, and people working together. Through digital illustration, I followed the process step by step—from gathering the 
+          leaves to the final plate of food—while also weaving in visual references to Turkish textiles, village life, and everyday rituals.
+        </p>
+
+        <div class="masonry">
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/ap_art_portfolio_1.jpg" alt="ap_art_portfolio_1">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Imece</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Digital illustration about community work and preparing yaprak sarması together.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        In Turkish, <span class="font-semibold">imece</span> means community work—people coming together to help each other. 
+                        This piece shows a group gathered around a shared task: making yaprak sarması. 
+                        The arrangement of hands, bowls, and ingredients emphasizes cooperation and the warmth of working side by side, 
+                        turning cooking into a collective act of care and connection.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/ap_art_portfolio_2.jpg" alt="ap_art_portfolio_2">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Women with a Purpose</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Focused group of women working together with intention and care.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Women with a Purpose</span> highlights the strength and quiet determination of women working as a team. 
+                        Their body language, shared focus, and repeated gestures show how each person contributes to the whole. 
+                        The scene reflects both everyday labor and the deeper sense of purpose that comes from creating something meaningful together.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/ap_art_portfolio_3.jpg" alt="ap_art_portfolio_3">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Gathering the Leaves</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Collecting grape leaves as the first step in the cooking process.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Gathering the Leaves</span> focuses on the simple but important act of collecting grape leaves. 
+                        I wanted to show the connection between the land and the food we make, so I used gestures, color, and framing to highlight 
+                        the care taken in choosing each leaf. It reminds us that traditions often begin outside, in nature, before they reach the kitchen table.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/ap_art_portfolio_4.jpg" alt="ap_art_portfolio_4">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">The Finished Product</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Final plate of food as a symbol of shared effort and tradition.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">The Finished Product</span> shows the final dish after all the steps and shared labor are complete. 
+                        The presentation of the food, the arrangement of the plate, and the warm atmosphere around it all emphasize that the result 
+                        is more than just a meal—it is the outcome of community, time, and love invested into the process.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/ap_art_portfolio_5.jpg" alt="ap_art_portfolio_5">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Reaching to the Grapes</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      A moment of reward during the work: enjoying the grapes themselves.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Reaching to the Grapes</span> captures a small, joyful break in the process of preparing food. 
+                        While the main goal is collecting leaves for yaprak sarması, the figures pause to enjoy the grapes. 
+                        The bright colors and upward movement in the composition suggest growth, playfulness, and the idea that traditions can also be fun and rewarding in the moment.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/ap_art_portfolio_6.jpg" alt="ap_art_portfolio_6">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Carpet</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Digital exploration of modern Turkish carpet patterns and color.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Carpet</span> explores the repeating patterns, rich colors, and symbolic designs found in modern Turkish carpets. 
+                        I used digital tools to layer motifs and textures that echo traditional weaving, while still keeping a contemporary, graphic feel. 
+                        The piece connects the idea of home and culture to the surfaces we live with every day.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/ap_art_portfolio_7.jpg" alt="ap_art_portfolio_7">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">The Village Woman</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Portrait of a Turkish village woman weaving, honoring craft and patience.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">The Village Woman</span> portrays a Turkish village woman making a carpet by hand. 
+                        I wanted to honor the time, patience, and skill that go into traditional crafts. 
+                        The composition focuses on her posture, her hands, and the loom, highlighting how much of culture is carried by the everyday work of women like her.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- POSTER DESIGNS -->
+        <!-- ========================================= -->
+        <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
+            Poster Designs
+        </h3>
+
+        <!-- Intro text for Poster Designs -->
+        <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 dark:border-[#FFA618]/30 transition-colors duration-300">
+          This series of posters brings together <span class="font-semibold">design principles</span> and <span class="font-semibold">music</span>. 
+          Each piece is inspired by a specific song from my playlist and focuses on one core principle—such as movement, contrast, rhythm, or white space. 
+          I listened closely to the lyrics, mood, and instrumentation, then used color, typography, and composition to visually translate how the song feels.
+        </p>
+
+        <div class="masonry">
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/Chambers - Emphasis Poster.jpg" alt="Chambers - Emphasis Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Chambers - Tamino</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Poster emphasizing emotional weight through heart-shaped “chambers” and central focus.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Chambers</span> is a poster design for Tamino’s song of the same name. 
+                        I imagined the heart as both a physical space and an emotional chamber that traps memories and feelings. 
+                        By using strong central emphasis, layered shapes, and limited color, I tried to reflect the tension and vulnerability 
+                        present in the song.
+                        <a href="https://open.spotify.com/track/3jEQyVN86oRO1ML7krPmsR?si=24ad4a8861ad405d" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                        
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/Forgotten - Movement Poster.jpg" alt="Forgotten - Movement Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Forgotten - Aytekin Atas</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Movement-based poster with flowing forms that echo the song’s emotional motion.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Forgotten</span> by Aytekin Ataş inspired this poster focused on the principle of movement. 
+                        I used sweeping lines and layered shapes to show how memories drift, blur, and slip away. 
+                        The motion in the design mirrors the feeling of being carried forward while something important is left behind.
+                        <a href="https://open.spotify.com/track/5oAIheLXqmwiXtUiDlnelj?si=97a7fe53c9804f1f" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                            
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/Four Seasons - Contrast Poster.jpg" alt="Four Seasons - Contrast Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Four Seasons - Taeyeon</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Contrast-focused poster showing emotional and seasonal change across the year.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Four Seasons</span> explores the principle of contrast through both color and mood. 
+                        I divided the composition to represent different times of year, using shifting palettes and shapes to echo the song’s themes 
+                        of changing love and perspective. The visual contrast between sections reflects the emotional contrasts in the lyrics.
+                        <a href="https://open.spotify.com/track/4ytyLpIwUXbdFsNOvgNnmP?si=fa404cdb1c6e41a5" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                            
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/Juicy Skies - Repetition Poster.jpg" alt="Juicy Skies - Repetition Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Juicy Skies - LAZY GHOST</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Repetition-based poster with circular rhythms and a bright, dreamy palette.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Juicy Skies</span> inspired a poster centered on the principle of repetition. 
+                        I used circular forms and repeating visual motifs to mirror the looping, relaxed feeling of the song. 
+                        The vibrant colors and playful composition aim to capture a dreamy, surreal atmosphere that feels both light and slightly mysterious.
+                        <a href="https://open.spotify.com/track/2jQusXvLCzT5cFRnBNatab?si=9d8ae611e3884913" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                            
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/Lilith - Symetrical Balance Poster.jpg" alt="Lilith - Symmetrical Balance Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Lilith - Saint Avangeline</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Symmetrical stained-glass inspired poster exploring duality and divine femininity.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Lilith</span> is a poster for Saint Avangeline’s song, built around the principle of symmetrical balance. 
+                        I imagined Lilith as a central, iconic figure framed in stained-glass–like shapes, using mirrored forms and glowing color to express power, mystery, 
+                        and sacred femininity. The symmetry gives the piece a calm structure while the details remain intense and emotionally charged.
+                        <a href="https://open.spotify.com/track/4RF4iaYoM1XBbdvmC6zRtD?si=7429e26786324a95" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                            
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/The Willow Maid - Patern Poster.jpg" alt="The Willow Maid - Pattern Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">The Willow Maid - Erutan</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Pattern-driven poster using organic, flowing motifs inspired by willow branches.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">The Willow Maid</span> by Erutan guided this poster focused on pattern. 
+                        I combined organic, branching shapes and stained-glass textures to echo the natural setting and folk-like quality of the song. 
+                        The repeating forms suggest both tangled roots and protective branches, wrapping the central figure in a quiet, enchanted atmosphere.
+                        <a href="https://open.spotify.com/track/0dhSUYnVoqqEdgrvDjHjSS?si=d524eb4f73594c92" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                            
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/Monocro No Kiss - Hierarchy Poster.jpg" alt="Monocro No Kiss - Hierarchy Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Monocro No Kiss - SID</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Hierarchy-based poster using strong structure, typography, and focal points.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Monocro No Kiss</span> is a poster for SID’s song that focuses on visual hierarchy. 
+                        I used bold shapes, layered type, and strong directional lines to guide the viewer’s eye from the main focal point to supporting details. 
+                        The limited color palette and structured layout reflect the tension and drama in the music.
+                        <a href="https://open.spotify.com/track/09ChiDNRVMvXcNnToAHCxA?si=2af6a231557645fa" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                            
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/The Mystic's Dream - Proportion Poster.jpg" alt="The Mystic's Dream - Proportion Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">The Mystic's Dream - Loreena McKennitt</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Proportion-focused poster with an oversized figure in a desert landscape.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">The Mystic’s Dream</span> by Loreena McKennitt inspired this exploration of proportion. 
+                        I placed a giant female figure within a natural desert setting to create a sense of myth and spirituality. 
+                        The unusual scale relationship between her and the landscape suggests that she is part of something larger and timeless, 
+                        like a dream or a legend.
+                        <a href="https://open.spotify.com/track/4TxTJHRsqoNII6p5Jfav2e?si=3a289d156f8348c7" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                            
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/134340 - White Space Poster.jpg" alt="134340 - White Space Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">134340 - BTS</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      White-space driven poster reflecting themes of distance, loneliness, and identity.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">134340</span> is a poster for BTS’s song, focused on the use of white space. 
+                        I reduced the visual elements and allowed large empty areas to speak for the feelings of isolation and reclassification in the song, 
+                        where Pluto is renamed as asteroid 134340. The minimal layout suggests silence, distance, and a quiet search for place and meaning.
+                        <a href="https://open.spotify.com/track/1MX0g22bQkr9HDVe37fLnN?si=c171af38a7944815" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                            
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/Nantes - Rhythm Poster.jpg" alt="Nantes - Rhythm Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Nantes - Beirut</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Rhythm-focused poster echoing the song’s flowing instrumentation and mood.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Nantes</span> is a poster for Beirut’s song, built on the design principle of rhythm. 
+                        Repeating shapes, layered lines, and a warm color palette create a visual beat that moves the viewer’s eye around the composition. 
+                        The design reflects the song’s blend of melancholy and liveliness, as if the music is weaving through a city at dusk.
+                        <a href="https://open.spotify.com/track/1WBSFlSLyOZnSa8fj7a5yC?si=9185465490c74d69" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                            
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/The Truth Untold - Unity Poster.jpg" alt="The Truth Untold - Unity Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">The Truth Untold - BTS</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Unity-centered poster with softly blended shapes and interconnected forms.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">The Truth Untold</span> is a poster for BTS’s song exploring the principle of unity. 
+                        I used soft color transitions and overlapping shapes to show how separate pieces can come together to form a whole. 
+                        The gentle composition reflects the emotional honesty of the song and the idea of hidden feelings finally connecting.
+                        <a href="https://open.spotify.com/track/4eP8Syl3aBEQw3Jy5Bhq0D?si=4454931c9c6d4932" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                           
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/Wolven Storm -  Variety Poster.jpg" alt="Wolven Storm -  Variety Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">Wolven Storm - Marcin Przybyłowicz</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Variety-focused poster blending medieval-inspired imagery with modern layout.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        <span class="font-semibold">Wolven Storm</span> is a poster based on the design principle of variety. 
+                        I combined different visual elements—figures, symbols, and text blocks—while keeping them unified through strong alignment and framing. 
+                        The mixture of medieval-inspired imagery and contemporary graphic structure reflects the song’s storytelling roots and dramatic tone.
+                        <a href="https://open.spotify.com/track/0zCqrZ8SEdkzSmhFlRTHlQ?si=84c2f134bdf74342" target="_blank"
+                           class="inline-flex items-center text-[#850F01] font-semibold hover:underline transition-colors duration-300">
+                           Listen
+                           <i data-lucide="music" class="w-4 h-4 ml-1"></i>
+                        </a>                            
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/dijital_art/play_poster.jpg" alt="The Real Inspector Hound - Play Poster">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">The Real Inspector Hound - Tom Stoppard</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                      Play poster combining mystery, humor, and variety in visual elements.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This poster for <span class="font-semibold">The Real Inspector Hound</span> explores variety within a theatrical context. 
+                        I layered clues, characters, and graphic shapes to hint at the play’s mix of mystery and comedy. 
+                        Different visual elements interact across the layout, but consistent type and alignment keep the design readable and cohesive.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                          View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 mt-12 relative overflow-hidden">
+      <div class="logo-background-pattern"></div>
+
+      <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div class="flex justify-center space-x-6 mb-4">
+              <a href="https://www.instagram.com/aysule_2327/" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="Instagram">
+                  <i data-lucide="instagram" class="w-6 h-6"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="LinkedIn">
+                  <i data-lucide="linkedin" class="w-6 h-6"></i>
+              </a>
+              <a href="https://github.com/aysesule2405" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="GitHub">
+                  <i data-lucide="github" class="w-6 h-6"></i>
+              </a>
+          </div>
+          <p class="text-sm text-gray-500">
+              &copy; 2025 Ayse Sule Ekiz. All rights reserved.
+          </p>
+      </div>
+  </footer>
+
+
+  <script>
+      // Initialize Lucide icons on page load
+      document.addEventListener('DOMContentLoaded', () => {
+          if (window.lucide && typeof lucide.createIcons === 'function') {
+            lucide.createIcons();
+          }
+
+          // Mobile menu toggle logic
+          document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+              document.getElementById('mobile-menu').classList.toggle('hidden');
+          });
+
+          // Details toggle logic for artwork cards
+          document.querySelectorAll('.view-details-btn').forEach(button => {
+              button.addEventListener('click', (event) => {
+                  const article = event.target.closest('.masonry-item');
+                  const isExpanded = event.target.getAttribute('aria-expanded') === 'true';
+
+                  article.classList.toggle('show-details');
+                  event.target.setAttribute('aria-expanded', !isExpanded);
+                  event.target.textContent = isExpanded ? 'View Details' : 'Hide Details';
+              });
+          });
+      });
+  </script>
+</body>
+</html>

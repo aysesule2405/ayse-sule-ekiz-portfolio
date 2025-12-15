@@ -1,0 +1,353 @@
+/* Custom styles for the Inter font and a smooth transition effect */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* Base for BOTH themes */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Interest images — basic hover (already had) */
+.interest-img img {
+  transition: transform 0.4s ease-out, filter 0.4s ease-out;
+}
+
+div:hover .interest-img img {
+  transform: scale(1.03);
+  filter: contrast(1.03) saturate(1.05);
+}
+
+/* LIGHT MODE (default) */
+html[data-theme="light"],
+html:not([data-theme]) {
+  color: #111827;
+  background-color: #ffffff;
+}
+
+html[data-theme="light"] body {
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* Section spacing */
+section {
+  padding: 2rem 0;
+}
+
+/* Navigation link base */
+.nav-link {
+  color: #111827;
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+.nav-link:hover {
+  color: #b23600;
+}
+
+/* ===========================
+   DARK MODE OVERRIDES
+   =========================== */
+
+/* Base colors */
+html[data-theme="dark"] {
+  background-color: #020617; /* very dark blue/gray */
+  color: #e5e7eb;
+}
+
+html[data-theme="dark"] body {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+/* Header + footer backgrounds */
+html[data-theme="dark"] header,
+html[data-theme="dark"] footer {
+  background-color: #020617 !important;
+  border-color: #1f2937 !important;
+}
+
+/* Card / panel backgrounds that used to be white */
+html[data-theme="dark"] .bg-white {
+  background-color: #020617 !important;
+}
+
+/* Light cream card backgrounds: make them slightly darker but still warm */
+html[data-theme="dark"] .bg-\[\#FFF7F0\] {
+  background-color: #1f2937 !important;
+}
+
+/* Typography utilities */
+html[data-theme="dark"] .text-gray-900 {
+  color: #f9fafb !important;
+}
+html[data-theme="dark"] .text-gray-800 {
+  color: #f3f4f6 !important;
+}
+html[data-theme="dark"] .text-gray-700 {
+  color: #e5e7eb !important;
+}
+html[data-theme="dark"] .text-gray-600 {
+  color: #d1d5db !important;
+}
+html[data-theme="dark"] .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+/* Nav links in dark mode */
+html[data-theme="dark"] .nav-link {
+  color: #e5e7eb;
+}
+html[data-theme="dark"] .nav-link:hover {
+  background-color: #111827;
+  color: #f97316; /* accent on hover */
+}
+
+/* Active nav link keeps your orange accent but on dark bg */
+html[data-theme="dark"] .nav-link.active {
+  background-color: #ffa618;
+  color: #111827;
+}
+
+/* Logo text */
+html[data-theme="dark"] .text-\[\#850F01\] {
+  color: #f97316 !important;
+}
+
+/* Social icons color tweak in footer */
+html[data-theme="dark"] a.text-\[\#850F01\] {
+  color: #f97316 !important;
+}
+html[data-theme="dark"] a.text-\[\#850F01\]:hover {
+  color: #fbbf24 !important;
+}
+
+/* Border grays */
+html[data-theme="dark"] .border-gray-200,
+html[data-theme="dark"] .border-gray-100 {
+  border-color: #1f2937 !important;
+}
+
+/* Logo background pattern subtle in dark */
+html[data-theme="dark"] .logo-background-pattern {
+  opacity: 0.04; /* a bit less visible on dark */
+}
+
+/* ===========================
+   HERO CARD STYLING
+   =========================== */
+
+.home-hero-card {
+  position: relative;
+  overflow: hidden;
+  background-image: radial-gradient(circle at top left, #FFF7F0 0, #FFFFFF 55%);
+  background-color: #FFFFFF; /* fallback */
+}
+
+/* Top accent bar on hero */
+.home-hero-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #FFA618, #B23600);
+  opacity: 0.9;
+}
+
+/* Hero tweaks in dark mode */
+html[data-theme="dark"] .home-hero-card {
+  background-image: none;
+  background-color: #020617 !important;
+}
+
+/* ===========================
+   HOME — My Interests Cards
+   =========================== */
+
+#home .interest-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(133, 15, 1, 0.08);
+  box-shadow: 0 10px 26px rgba(133, 15, 1, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #FFF7F0 70%, #ffffff 100%);
+}
+
+/* Accent bar on each interest card */
+#home .interest-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #FFA618, #B23600);
+  opacity: 0.9;
+}
+
+/* Card hover lift */
+#home .interest-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(133, 15, 1, 0.22);
+}
+
+/* Image wrapper */
+#home .interest-card .interest-img {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* Images inside interest cards */
+#home .interest-card .interest-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-out, filter 0.4s ease-out;
+}
+
+/* Zoom on hover */
+#home .interest-card:hover .interest-img img {
+  transform: scale(1.03);
+  filter: contrast(1.05) saturate(1.1);
+}
+
+/* Title + paragraph tweaks */
+#home .interest-card h3 {
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.01em;
+}
+#home .interest-card p {
+  line-height: 1.5;
+}
+
+/* Dark mode for interest cards */
+html[data-theme="dark"] #home .interest-card {
+  background: #1f2937;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+/* Scroll reveal animation */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-on-scroll.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Half Moon game cards */
+/* Half Moon game cards — styled to match site palette */
+.hm-card {
+  border-radius: 1rem;
+  padding: 0.75rem 0.85rem;
+  background: var(--color-card-bg, #FFF9EC);
+  border: 1px solid var(--color-border-light, #F2D6A1);
+  box-shadow: 0 18px 45px rgba(133, 15, 1, 0.10); /* similar to your cards */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+  cursor: pointer;
+}
+
+.hm-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 55px rgba(133, 15, 1, 0.18);
+  border-color: #FFA618;
+  background: #FFF7F0;
+}
+
+.hm-card__icon {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.hm-card__label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6B7280; /* muted gray like other captions */
+}
+
+/* Correct / finished states */
+.hm-card--correct {
+  background: #E5F9ED;
+  border-color: #16A34A;
+  box-shadow: 0 20px 50px rgba(22, 163, 74, 0.22);
+}
+
+.hm-card--locked {
+  cursor: default;
+  opacity: 0.95;
+}
+
+/* Wrong click feedback */
+.hm-card--wrong {
+  animation: hm-shake 0.25s ease;
+  border-color: #DC2626;
+  background: #FEE2E2;
+}
+
+@keyframes hm-shake {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-3px); }
+  50%  { transform: translateX(3px); }
+  75%  { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] #half-moon-game-section .bg-\[\#FFF7F0\] {
+  background-color: #111827; /* dark card shell */
+  border-color: rgba(249, 250, 251, 0.08);
+}
+
+[data-theme="dark"] #half-moon-game-section #hm-status {
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] .hm-card {
+  background: #020617;
+  border-color: rgba(148, 163, 184, 0.4);
+  color: #F9FAFB;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
+}
+
+[data-theme="dark"] .hm-card:hover {
+  background: #020617;
+  border-color: #FFA618;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.9);
+}
+
+[data-theme="dark"] .hm-card__label {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .hm-card--correct {
+  background: #064E3B;
+  border-color: #22C55E;
+}
+
+[data-theme="dark"] .hm-card--wrong {
+  background: #3F1A1A;
+  border-color: #F97373;
+}

@@ -1,0 +1,369 @@
+/* page-specific painting & charcoal styles */
+/* Custom styles for the Inter font and a smooth transition effect */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Light mode background for gallery pages */
+html[data-theme="light"] body,
+html:not([data-theme]) body {
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+/* Base style for navigation links */
+.nav-link {
+    transition: all 0.2s ease-in-out;
+    /* Ensure default state matches un-active state in HTML */
+    color: #4b5563; /* text-gray-700 */
+    background-color: transparent;
+}
+
+/* Hover/Focus state for non-active links */
+.nav-link:hover {
+    color: #B23600; /* Darker Hover/Burnt Orange */
+    background-color: #FFF7F0; /* Subtle Light Cream */
+}
+
+/* Active link style - this needs to be applied in the HTML for the current page */
+.nav-link.active {
+    background-color: #850F01; /* Primary/Deep Red */
+    color: white;
+}
+.nav-link.active:hover {
+    color: white;
+    background-color: #B23600; /* Hover state for active link */
+}
+
+
+/* Style for the Contact Form button */
+.submit-btn {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+.submit-btn:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+/* --- MASONRY / CARD DETAILS TOGGLE STYLES (NEW/UPDATED) --- */
+
+/* 1. Masonry Grid Layout */
+.masonry {
+    /* Standard CSS multi-column layout for a true Masonry effect */
+    column-count: 3;
+    column-gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .masonry {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .masonry {
+        column-count: 1;
+    }
+}
+
+/* 2. Base container for all gallery items (for consistency) */
+.masonry-item {
+    break-inside: avoid; /* Essential for Masonry effect */
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: white; /* Ensure card background is white */
+    border-radius: 0.5rem; /* For the Tailwind 'rounded-lg' effect */
+    overflow: hidden; /* To keep the image contained within the rounded corners */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Default shadow */
+}
+
+.masonry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(133, 15, 1, 0.2), 0 4px 6px -2px rgba(133, 15, 1, 0.1);
+}
+
+/* 3. Details Toggle Logic */
+/* Hide card long description by default; reveal when .show-details is added */
+.masonry-item .meta .long-description {
+  /* Start hidden state */
+  opacity: 0;
+  max-height: 0; 
+  overflow: hidden;
+  /* Remove any top/bottom margin when hidden */
+  margin-top: 0; 
+  margin-bottom: 0; 
+  /* Smooth transition for height and opacity */
+  transition: opacity 0.4s ease-out, max-height 0.4s ease-out, margin-top 0.4s ease-out, margin-bottom 0.4s ease-out;
+}
+
+.masonry-item.show-details .meta .long-description {
+  /* End visible state */
+  opacity: 1;
+  max-height: 40rem; /* Large enough to show content */
+  /* Re-add the Tailwind mb-3 margin from the HTML to create space */
+  margin-bottom: 0.75rem; 
+  margin-top: 0.5rem; /* Add a little space above the description */
+}
+
+/* Small visual for the View Details button when active */
+.masonry-item .meta button[aria-expanded="true"] {
+  color: #850F01; /* Primary color */
+  text-decoration: underline;
+}
+
+/* Placeholder image styling */
+.masonry-item img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+/* Short description (visible small caption under the title) - ensure it is always visible */
+.masonry-item .meta .short-desc {
+    display: block;
+    /* This element is now `text-gray-700 text-base mt-1 mb-2` in HTML */
+}
+
+section figure {
+    margin-bottom: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: white; /* Ensure card background is white */
+    border-radius: 0.5rem; /* For the Tailwind 'rounded-lg' effect */
+    overflow: hidden; /* To keep the image contained within the rounded corners */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Default shadow */
+}
+/* End of Masonry styles */
+
+/* ========== DARK MODE FOR GALLERY PAGES ========== */
+
+html[data-theme="dark"] body {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+/* Masonry card background and shadows */
+html[data-theme="dark"] .masonry-item {
+  background-color: #020617;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
+}
+
+/* Card headings & text */
+html[data-theme="dark"] .masonry-item h3 {
+  color: #f9fafb;
+}
+html[data-theme="dark"] .masonry-item .short-desc,
+html[data-theme="dark"] .masonry-item .long-description {
+  color: #e5e7eb;
+}
+
+/* "View Details" separator border */
+html[data-theme="dark"] .masonry-item .border-gray-100 {
+  border-color: #1f2937 !important;
+}
+/* Extra breathing room on very small screens */
+@media (max-width: 480px) {
+  .page-content {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+h2 {
+    font-size: 1.75rem; /* ~ text-2xl/3xl equivalent */
+  }
+}
+/* ============================
+   Masonry Grid Layout
+   ============================ */
+
+.masonry {
+    column-count: 3;
+    column-gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+/* Medium screens */
+@media (max-width: 1024px) {
+    .masonry {
+        column-count: 2;
+    }
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+    .masonry {
+        column-count: 1;
+    }
+}
+
+
+/* ============================
+   Artwork Cards — Enhanced Look
+   ============================ */
+
+/* Card container */
+.masonry-item {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #fff7f0 60%, #ffffff 100%);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(133, 15, 1, 0.06);
+    padding: 0;
+    margin: 0 0 1.75rem;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Warm accent strip (top bar) */
+.masonry-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ffa618, #b23600);
+    opacity: 0.9;
+}
+
+/* Hover lift */
+.masonry-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(133, 15, 1, 0.25);
+}
+
+
+/* ============================
+   Image Styling
+   ============================ */
+
+.masonry-item figure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.masonry-item img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease-out, filter 0.4s ease-out;
+}
+
+/* Zoom on hover */
+.masonry-item:hover img {
+    transform: scale(1.03);
+    filter: contrast(1.03) saturate(1.05);
+}
+
+
+/* ============================
+   Text & Typography
+   ============================ */
+
+.masonry-item .meta {
+    padding: 1rem 1.1rem 1.3rem;
+}
+
+.masonry-item .meta h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.01em;
+}
+
+.masonry-item .meta .short-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #4b5563;
+}
+
+.masonry-item .meta .long-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 0.75rem;
+    color: #374151;
+}
+
+
+/* ============================
+   "View Details" Button
+   ============================ */
+
+.masonry-item .meta button {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0;
+    margin-top: 0.4rem;
+    color: #b23600;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Chevron indicator */
+.masonry-item .meta button::after {
+    content: "˅";
+    font-size: 0.8em;
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+}
+
+/* Hover */
+.masonry-item .meta button:hover {
+    color: #850f01;
+    transform: translateY(-1px);
+}
+
+/* When details are expanded */
+.masonry-item .meta button[aria-expanded="true"] {
+    color: #850f01;
+}
+
+.masonry-item .meta button[aria-expanded="true"]::after {
+    transform: rotate(180deg) translateY(1px);
+}
+
+
+/* ============================
+   Dark Mode Adjustments
+   ============================ */
+
+html[data-theme="dark"] .masonry-item {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f172a 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .masonry-item::before {
+    opacity: 0.75;
+}
+
+html[data-theme="dark"] .masonry-item .meta h3 {
+    color: #f9fafb;
+}
+
+html[data-theme="dark"] .masonry-item .meta .short-desc,
+html[data-theme="dark"] .masonry-item .meta .long-description {
+    color: #d1d5db;
+}
+
+html[data-theme="dark"] .masonry-item .meta button {
+    color: #fbbf24;
+}
+
+html[data-theme="dark"] .masonry-item .meta button:hover {
+    color: #facc15;
+}
