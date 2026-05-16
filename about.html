@@ -25,6 +25,13 @@
             color: #FFF; /* White text on accent background */
         }
 
+        /* Topic chip selected state */
+        .topic-chip input:checked + span {
+          background-color: #850F01;
+          border-color: #850F01;
+          color: #fff;
+        }
+
         /* Custom CSS for the logo background pattern */
         .logo-background-pattern {
             background-image: url('./images/logo.jpg');
@@ -41,119 +48,13 @@
     </style>
 
   <!-- Icons + scripts -->
+  <link rel="stylesheet" href="styles/nav-dropdown.css">
+  <link rel="stylesheet" href="styles/animations.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script src="js/load-fragments.js"></script>
   <script src="js/theme-toggle.js"></script>
   <script src="js/nav-enhancements.js"></script>
-  
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("hm-cards");
-    const statusEl = document.getElementById("hm-status");
-    const restartBtn = document.getElementById("hm-restart");
-
-    if (!container || !statusEl || !restartBtn) return;
-
-    // Ordered from darkest to brightest
-    const phases = [
-      { id: 0, label: "New Moon", icon: "🌑" },
-      { id: 1, label: "Waxing Crescent", icon: "🌒" },
-      { id: 2, label: "First Quarter", icon: "🌓" },
-      { id: 3, label: "Waxing Gibbous", icon: "🌔" },
-      { id: 4, label: "Full Moon", icon: "🌕" },
-      { id: 5, label: "Waning Gibbous", icon: "🌖" },
-      { id: 6, label: "Last Quarter", icon: "🌗" },
-      { id: 7, label: "Waning Crescent", icon: "🌘" }
-    ];
-
-    let expectedIndex = 0; // which phase we expect next (0 = New Moon)
-
-    function updateStatus() {
-      if (expectedIndex === 0) {
-        statusEl.textContent =
-          "Click the moon cards in order from New Moon (dark) to Full Moon (bright).";
-      } else if (expectedIndex < phases.length) {
-        const next = phases[expectedIndex];
-        statusEl.textContent = "Great! Now find: " + next.label + ".";
-      } else {
-        statusEl.textContent = "You completed the full lunar cycle! 🌕🌙";
-      }
-    }
-
-    function clearCards() {
-      while (container.firstChild) {
-        container.removeChild(container.firstChild);
-      }
-    }
-
-    function createCard(phase) {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "hm-card aspect-[3/4]";
-      btn.dataset.phaseId = String(phase.id);
-
-      btn.innerHTML = `
-        <div class="hm-card__icon">${phase.icon}</div>
-        <div class="hm-card__label">${phase.label}</div>
-      `;
-
-      btn.addEventListener("click", () => handleCardClick(btn, phase));
-      return btn;
-    }
-
-    function handleCardClick(cardEl, phase) {
-      // If game already finished, ignore
-      if (expectedIndex >= phases.length) return;
-
-      const correctPhase = phases[expectedIndex];
-
-      if (phase.id === correctPhase.id) {
-        // Correct choice
-        cardEl.classList.remove("hm-card--wrong");
-        cardEl.classList.add("hm-card--correct", "hm-card--locked");
-        cardEl.disabled = true;
-        expectedIndex += 1;
-        updateStatus();
-      } else {
-        // Wrong choice → small shake / red state
-        cardEl.classList.add("hm-card--wrong");
-        setTimeout(() => {
-          cardEl.classList.remove("hm-card--wrong");
-        }, 250);
-        statusEl.textContent =
-          "Not quite — start from the darkest moon and go toward the brightest.";
-      }
-    }
-
-    function shufflePhases(array) {
-      const arr = [...array];
-      for (let i = arr.length - 1; i > 0; i -= 1) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    function initializeGame() {
-      expectedIndex = 0;
-      clearCards();
-      const shuffled = shufflePhases(phases);
-      shuffled.forEach((phase) => {
-        const card = createCard(phase);
-        container.appendChild(card);
-      });
-      updateStatus();
-    }
-
-    restartBtn.addEventListener("click", () => {
-      initializeGame();
-    });
-
-    // First load
-    initializeGame();
-  });
-</script>
-
+  <script src="js/scroll-animations.js" defer></script>
+  <script src="js/half-moon-game.js" defer></script>
 
 </head>
 
@@ -168,7 +69,9 @@
         <div class="flex-shrink-0 flex items-center space-x-2">
           <a href="index.html" class="flex items-center space-x-2">
             <img
-              src="./images/logo.jpg"
+              src="images/logo-light.png"
+              data-logo-light="images/logo-light.png"
+              data-logo-dark="images/logo-dark.png"
               alt="Ayse Sule Ekiz Logo"
               class="h-10 w-10 rounded-full border-2 border-[#850F01]"
             />
@@ -179,22 +82,16 @@
         </div>
 
         <!-- Desktop Nav -->
-        <nav class="hidden md:flex items-center space-x-2">
-          <a href="index.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
-            Home Page
-          </a>
-          <a href="graphicdesign.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
-            Graphic Design &amp; Digital Art
-          </a>
-          <a href="ceramics.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
-            Sculpting &amp; Ceramics
-          </a>
-          <a href="painting.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
-            Painting &amp; Charcoal
-          </a>
-          <a href="about.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
-            About / Contact
-          </a>
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Home</a>
+          <a href="projects.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Projects</a>
+
+          <a href="graphicdesign.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Graphic Design</a>
+          <a href="ceramics.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Ceramics</a>
+          <a href="painting.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Painting</a>
+
+          <a href="resume.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Resume</a>
+          <a href="about.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">About</a>
 
           <!-- Theme toggle (desktop) -->
           <button
@@ -210,8 +107,8 @@
 
         <!-- Mobile menu button -->
         <button
-          id="mobile-menu-btn"
-          class="md:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg"
+          id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false"
+          class="lg:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg"
           aria-label="Toggle navigation menu"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,22 +124,14 @@
     </div>
 
     <!-- Mobile Nav -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 relative z-10">
-      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
-        Home Page
-      </a>
-      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
-        Graphic Design &amp; Digital Art
-      </a>
-      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
-        Sculpting &amp; Ceramics
-      </a>
-      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
-        Painting &amp; Charcoal
-      </a>
-      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">
-        About / Contact
-      </a>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home</a>
+      <a href="projects.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Projects</a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design &amp; Digital Art</a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting &amp; Ceramics</a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting &amp; Charcoal</a>
+      <a href="resume.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Resume</a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">About / Contact</a>
 
       <!-- Theme toggle (mobile) -->
       <div class="px-4 py-3 border-t border-gray-100">
@@ -262,242 +151,270 @@
 
   <!-- MAIN -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
+
+    <!-- PAGE HERO -->
+    <div class="reveal mb-8">
+      <div class="home-hero-card bg-[#FFF7F0] px-6 py-8 md:px-10 rounded-2xl shadow-xl">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+          <div>
+            <p class="text-[#FFA618] font-semibold text-xs uppercase tracking-widest mb-2">About / Contact</p>
+            <h1 id="about-heading" class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
+              Hi, I’m Ayse Sule.
+            </h1>
+            <p class="text-gray-500 mt-2 text-base whitespace-nowrap">
+              Art taught me to see. Computer science gave me new ways to make.
+            </p>
+          </div>
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <a href="https://github.com/aysesule2405" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+               class="social-icon-circle w-10 h-10 rounded-full bg-white shadow flex items-center justify-center text-[#850F01] hover:bg-[#850F01] hover:text-white transition">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56v-2.15c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18A11 11 0 0 1 12 6.08c.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.42-2.69 5.39-5.25 5.67.42.36.78 1.06.78 2.15v3.14c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+               class="social-icon-circle w-10 h-10 rounded-full bg-white shadow flex items-center justify-center text-[#850F01] hover:bg-[#850F01] hover:text-white transition">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.53V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/aysule_2327/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+               class="social-icon-circle w-10 h-10 rounded-full bg-white shadow flex items-center justify-center text-[#850F01] hover:bg-[#850F01] hover:text-white transition">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                <circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="https://devpost.com/ase2327ekiz" target="_blank" rel="noopener noreferrer" aria-label="Devpost"
+               class="social-icon-circle w-10 h-10 rounded-full bg-white shadow flex items-center justify-center text-[#850F01] hover:bg-[#850F01] hover:text-white transition">
+              <span class="font-extrabold text-sm leading-none">D</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <section aria-labelledby="about-heading">
-      <!-- Card container -->
-      <div class="home-hero-card bg-[#FFF7F0] dark:bg-[#020617] p-6 md:p-10 rounded-2xl shadow-xl transition-colors duration-300">
+      <div class="home-hero-card bg-[#FFF7F0] p-6 md:p-10 rounded-2xl shadow-xl transition-colors duration-300">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          <!-- LEFT: About text -->
+
+          <!-- LEFT: About content -->
           <div class="lg:col-span-2 space-y-10">
-            <header>
-              <p class="text-[#FFA618] font-semibold text-sm uppercase tracking-wide mb-2">
-                About / Contact
-              </p>
-              <!-- Updated to match other main section titles (like Sculpting & Ceramics Art) -->
-              <h1
-                id="about-heading"
-                class="text-4xl font-bold text-gray-900 mb-8 border-b pb-3 transition-colors duration-300"
-              >
-                About Me
-              </h1>
-            </header>
 
-            <!-- Section 1: How I got introduced -->
-            <section>
-              <h2 class="text-2xl font-semibold text-[#850F01] mb-3">
-                How I got introduced to art &amp; design
+            <!-- My Story -->
+            <section class="reveal">
+              <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
+                <i data-lucide="book-open" class="w-5 h-5"></i> My Story
               </h2>
-              <p class="text-gray-600 leading-relaxed transition-colors duration-300">
-                My journey with fine arts began long before I studied computer science. Over the years,
-                I have explored drawing, painting, ceramics, and printmaking, allowing me to experiment
-                with different mediums and techniques. Art has always been a way for me to observe,
-                interpret, and reimagine the world around me.
+              <p class="text-gray-600 leading-relaxed mb-3">
+                Before I ever wrote a line of code, I was already making things. Sketching portraits in
+                the margins of notebooks, pressing clay into shapes that surprised me, painting mountain
+                light on cheap canvas. Art was never just a hobby; it was how I learned to pay attention.
+              </p>
+              <p class="text-gray-600 leading-relaxed mb-3">
+                When I found computer science, something clicked. Not because the two worlds were the same,
+                but because they asked the same first question: what are you trying to say, and what is the
+                most honest way to say it? I brought the same care I gave a brushstroke to every function
+                I wrote.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                I study Computer Science at NAU, where I have shipped production
+                software, competed in datathons, and led student organizations, all while keeping paint on
+                my hands and clay under my fingernails. What I want to build next is work that earns a
+                second look: software that feels as deliberate as a good composition, experiences that
+                carry the same weight as a well-chosen color.
               </p>
             </section>
 
-            <!-- Section 2: Professional Goals -->
-            <section>
-              <h2 class="text-2xl font-semibold text-[#850F01] mb-3">
-                Professional Goals
+            <!-- What I Create -->
+            <section class="reveal">
+              <h2 class="text-2xl font-semibold text-[#850F01] mb-4 flex items-center gap-2">
+                <i data-lucide="layers" class="w-5 h-5"></i> What I Create
               </h2>
-              <p class="text-gray-600 leading-relaxed transition-colors duration-300">
-                I am currently studying Computer Science while actively building my artistic portfolio.
-                My goal is to work in roles where art, technology, and design intersect—such as UI/UX,
-                creative technology, digital media, or visually rich software experiences. I am
-                continuously improving both my technical and creative skills to be able to contribute
-                meaningfully in interdisciplinary environments.
-              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <a href="painting.html"
+                   class="what-i-create-card group bg-white rounded-xl p-5 border border-[#F3C7A8] hover:border-[#850F01] hover:shadow-md transition text-center">
+                  <div class="w-10 h-10 rounded-full bg-[#FFA618]/15 flex items-center justify-center mx-auto mb-3 group-hover:bg-[#FFA618]/30 transition">
+                    <i data-lucide="palette" class="w-5 h-5 text-[#FFA618]"></i>
+                  </div>
+                  <h3 class="font-semibold text-gray-800 text-sm mb-1">Art &amp; Expression</h3>
+                  <p class="text-xs text-gray-500">Paintings, ceramics, charcoal, printmaking</p>
+                </a>
+                <a href="projects.html"
+                   class="what-i-create-card group bg-white rounded-xl p-5 border border-[#F3C7A8] hover:border-[#850F01] hover:shadow-md transition text-center">
+                  <div class="w-10 h-10 rounded-full bg-[#850F01]/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-[#850F01]/20 transition">
+                    <i data-lucide="code-2" class="w-5 h-5 text-[#850F01]"></i>
+                  </div>
+                  <h3 class="font-semibold text-gray-800 text-sm mb-1">Code &amp; Technology</h3>
+                  <p class="text-xs text-gray-500">Full-stack apps, ML models, data tools</p>
+                </a>
+                <a href="graphicdesign.html"
+                   class="what-i-create-card group bg-white rounded-xl p-5 border border-[#F3C7A8] hover:border-[#850F01] hover:shadow-md transition text-center">
+                  <div class="w-10 h-10 rounded-full bg-[#B23600]/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-[#B23600]/20 transition">
+                    <i data-lucide="pen-tool" class="w-5 h-5 text-[#B23600]"></i>
+                  </div>
+                  <h3 class="font-semibold text-gray-800 text-sm mb-1">Design &amp; Digital Art</h3>
+                  <p class="text-xs text-gray-500">Graphic design, Figma, digital illustration</p>
+                </a>
+              </div>
             </section>
 
-            <!-- Section 3: Tools & mediums -->
-            <section>
-              <h2 class="text-2xl font-semibold text-[#850F01] mb-3">
-                Mediums, tools &amp; interests
+            <!-- Tools & Mediums as chips -->
+            <section class="reveal">
+              <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
+                <i data-lucide="wrench" class="w-5 h-5"></i> Tools &amp; Mediums
               </h2>
-              <p class="text-gray-600 leading-relaxed transition-colors duration-300 mb-4">
-                Some of the mediums and tools I enjoy working with:
-              </p>
-              <ul class="list-disc list-inside text-gray-600 space-y-1 transition-colors duration-300">
-                <li>Graphic design &amp; digital illustration tools, Clip Studio Paint, Adobe Photoshop, Adobe Illustrator, Canva, Figma, Fusion, Blender</li>
-                <li>Clay, sculpting and ceramic glazes, pottery wheels, kiln Firing, glaze making</li>
-                <li>Painting with acrylics, gouache, oil-paint, pastel, watercolor, and charcoal</li>
-                <li>Experimental printmaking and mixed media</li>
-              </ul>
+              <p class="text-gray-500 text-sm mb-4">The idea comes first. Then I figure out what it needs.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#FFA618]/15 text-[#8B5A00]">Acrylic &amp; Oil Paint</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#FFA618]/15 text-[#8B5A00]">Gouache &amp; Watercolor</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#FFA618]/15 text-[#8B5A00]">Charcoal &amp; Pastel</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#FFA618]/15 text-[#8B5A00]">Clay &amp; Ceramics</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#FFA618]/15 text-[#8B5A00]">Printmaking</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Figma</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Adobe Illustrator</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Adobe Photoshop</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Clip Studio Paint</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Blender</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Canva</span>
+              </div>
             </section>
 
-            <!-- Favorite Game: Half Moon (Mini Game) -->
-            <section id="half-moon-game-section" class="mt-10">
-                <h2 class="text-2xl font-semibold text-[#850F01] mb-3">
-                    Favorite Game: Half Moon
-                </h2>
-                <p class="text-gray-600 leading-relaxed mb-4">
-                    One of my favorite games is <span class="font-semibold">Half Moon</span>, a
-                    card game about the phases of the moon. Because my portfolio plays with
-                    light and dark themes, I created a small moon-phase game inspired by it.
-                    You can try it here or play the official Google version 
-                    <a href="https://share.google/P2RAPyQXvds8WtBno"
-                        target="_blank"
-                        class="text-[#850F01] font-semibold hover:underline transition-colors duration-300">
-                        here 🌙
-                    </a>.
+            <!-- Half Moon Game -->
+            <section id="half-moon-game-section" class="reveal">
+              <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
+                <i data-lucide="moon" class="w-5 h-5"></i> A Game I Love: Half Moon
+              </h2>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                <span class="font-semibold">Half Moon</span> is a card game about the quiet drama of
+                moonlight shifting across the sky, phase by phase. It fits perfectly with a portfolio
+                that lives between light and dark modes. I built a small version here so you can feel
+                the rhythm of it, or try the original Google version
+                <a href="https://share.google/P2RAPyQXvds8WtBno" target="_blank" rel="noopener noreferrer"
+                  class="text-[#850F01] font-semibold hover:underline">here 🌙</a>.
+              </p>
+              <div class="bg-white rounded-2xl shadow p-4 md:p-6 border border-[#F2D6A1]">
+                <p id="hm-status" class="text-sm font-medium text-gray-700 mb-3">
+                  Click the moon cards in order from <span class="font-semibold">New Moon</span> to <span class="font-semibold">Full Moon</span>, darkest to brightest.
                 </p>
-
-                <div class="bg-[#FFF7F0] rounded-2xl shadow-lg p-4 md:p-6 border border-[#F2D6A1] transition-colors duration-300">
-                    <p id="hm-status" class="text-sm font-medium text-gray-700 mb-3 transition-colors duration-300">
-                    Click the moon cards in order from <span class="font-semibold">New Moon</span> (dark)
-                    to <span class="font-semibold">Full Moon</span> (bright).
-                    </p>
-
-                    <div id="hm-cards" class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5">
-                    <!-- cards injected by JS -->
-                    </div>
-
-                    <button
-                    id="hm-restart"
-                    type="button"
-                    class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold
-                            text-white bg-[#850F01] hover:bg-[#B23600] shadow-md transition-colors duration-300"
-                    >
-                    Shuffle &amp; Play Again
-                    </button>
-                </div>
+                <div id="hm-cards" class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5"></div>
+                <button id="hm-restart" type="button"
+                  class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold
+                         text-white bg-[#850F01] hover:bg-[#B23600] shadow-md transition">
+                  Shuffle &amp; Play Again
+                </button>
+              </div>
             </section>
 
           </div>
-            <!-- RIGHT: Contact card + portrait -->
-            <aside class="lg:col-span-1 w-full max-w-md lg:ml-auto mt-10 lg:mt-0">
-            <div
-                class="bg-[#FFF7F0] rounded-2xl shadow-lg p-6 sm:p-7 flex flex-col border border-[#F3C7A8] transition-colors duration-300"
-            >
-                <div>
-                <!-- Small pill label -->
-                <div
-                    class="inline-flex items-center px-3 py-1 mb-4 rounded-full text-[11px] font-semibold uppercase tracking-wide text-[#850F01]"
-                >
-                    <i data-lucide="sparkles" class="w-3 h-3 mr-1"></i>
-                    Let’s connect
+
+          <!-- RIGHT: Contact card -->
+          <aside class="lg:col-span-1 w-full max-w-md lg:ml-auto mt-4 lg:mt-0">
+            <div class="contact-card bg-white rounded-2xl shadow-lg border border-[#F3C7A8] overflow-hidden lg:sticky lg:top-20">
+
+              <!-- Accent bar -->
+              <div class="h-1.5 w-full bg-gradient-to-r from-[#850F01] via-[#B23600] to-[#FFA618]"></div>
+
+              <div class="p-6 sm:p-7">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 mb-4 rounded-full text-[11px] font-semibold uppercase tracking-wide text-[#850F01] bg-[#FFF0E8]">
+                  <i data-lucide="sparkles" class="w-3 h-3"></i>
+                  Let’s connect
                 </div>
-
-                <!-- Title -->
-                <h2
-                    class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 transition-colors duration-300"
-                >
-                    Contact Me
-                </h2>
-
-                <p
-                    class="text-gray-700 text-sm mb-5 leading-relaxed transition-colors duration-300"
-                >
-                    If you would like to collaborate, ask about my work, or discuss opportunities,
-                    feel free to send me a message using the form below.
+                <h2 class="text-2xl font-bold text-gray-900 mb-1">Get in Touch</h2>
+                <p class="text-gray-500 text-sm mb-5 leading-relaxed">
+                  A question, a collaboration, an idea still half-formed? Send it my way.
+                  Good conversations start somewhere.
                 </p>
 
                 <!-- FORM -->
-                <form class="space-y-4">
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                  <input type="hidden" name="access_key" value="7b268203-c0a5-47d9-acbe-7eb03d4af6a6">
+                  <input type="hidden" name="subject" value="New message from your portfolio website">
+                  <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                  <!-- Spam honeypot -->
+                  <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
 
-                    <!-- Name + Email -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-                    <!-- NAME -->
-                    <div>
-                        <label
-                        for="name"
-                        class="block text-xs font-semibold tracking-wide text-gray-800 mb-1 uppercase"
-                        >
-                        Name
-                        </label>
-                        <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Your name"
-                        required
-                        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm bg-white text-gray-900
-                                focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition"
-                        />
+                  <!-- Topic chips -->
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-wide text-gray-700 mb-2">I’m reaching out about…</p>
+                    <div class="flex flex-wrap gap-2">
+                      <label class="topic-chip cursor-pointer">
+                        <input type="radio" name="topic" value="Collaboration" class="sr-only" required>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium border border-gray-300 text-gray-600 hover:border-[#850F01] hover:text-[#850F01] transition select-none">🤝 Collaboration</span>
+                      </label>
+                      <label class="topic-chip cursor-pointer">
+                        <input type="radio" name="topic" value="Job / Internship" class="sr-only">
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium border border-gray-300 text-gray-600 hover:border-[#850F01] hover:text-[#850F01] transition select-none">💼 Job / Internship</span>
+                      </label>
+                      <label class="topic-chip cursor-pointer">
+                        <input type="radio" name="topic" value="Feedback" class="sr-only">
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium border border-gray-300 text-gray-600 hover:border-[#850F01] hover:text-[#850F01] transition select-none">💬 Feedback</span>
+                      </label>
+                      <label class="topic-chip cursor-pointer">
+                        <input type="radio" name="topic" value="Just saying hi" class="sr-only">
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium border border-gray-300 text-gray-600 hover:border-[#850F01] hover:text-[#850F01] transition select-none">👋 Just saying hi</span>
+                      </label>
                     </div>
+                  </div>
 
-                    <!-- EMAIL -->
+                  <!-- Name + Email -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label
-                        for="email"
-                        class="block text-xs font-semibold tracking-wide text-gray-800 mb-1 uppercase"
-                        >
-                        Email
-                        </label>
-                        <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="your@email.com"
-                        required
-                        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm bg-white text-gray-900
-                                focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition"
-                        />
+                      <label for="name" class="block text-xs font-semibold tracking-wide text-gray-700 mb-1 uppercase">Name</label>
+                      <div class="relative">
+                        <i data-lucide="user" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                        <input type="text" id="name" name="name" placeholder="Your name" required
+                          class="w-full rounded-lg border border-gray-300 pl-9 pr-3 py-2.5 text-sm bg-white text-gray-900
+                                 focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition">
+                      </div>
                     </div>
-
-                    </div>
-
-                    <!-- SUBJECT -->
                     <div>
-                    <label
-                        for="subject"
-                        class="block text-xs font-semibold tracking-wide text-gray-800 mb-1 uppercase"
-                    >
-                        Subject
-                    </label>
-                    <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        placeholder="What would you like to talk about?"
-                        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm bg-white text-gray-900
-                            focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition"
-                    />
+                      <label for="email" class="block text-xs font-semibold tracking-wide text-gray-700 mb-1 uppercase">Email</label>
+                      <div class="relative">
+                        <i data-lucide="at-sign" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required
+                          class="w-full rounded-lg border border-gray-300 pl-9 pr-3 py-2.5 text-sm bg-white text-gray-900
+                                 focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition">
+                      </div>
                     </div>
+                  </div>
 
-                    <!-- MESSAGE -->
-                    <div>
-                    <label
-                        for="message"
-                        class="block text-xs font-semibold tracking-wide text-gray-800 mb-1 uppercase"
-                    >
-                        Message
-                    </label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        placeholder="Write your message here..."
-                        rows="4"
-                        required
-                        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm bg-white text-gray-900
-                            focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition resize-none"
+                  <!-- Message -->
+                  <div>
+                    <div class="flex items-center justify-between mb-1">
+                      <label for="message" class="block text-xs font-semibold tracking-wide text-gray-700 uppercase">Message</label>
+                      <span id="char-count" class="text-[11px] text-gray-400">0 / 500</span>
+                    </div>
+                    <textarea id="message" name="message" placeholder="What’s on your mind?" rows="5"
+                      required maxlength="500"
+                      class="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm bg-white text-gray-900
+                             focus:outline-none focus:ring-2 focus:ring-[#850F01] focus:border-[#850F01] transition resize-none"
                     ></textarea>
-                    </div>
+                  </div>
 
-                    <!-- SUBMIT -->
-                    <button
-                    type="submit"
-                    class="w-full inline-flex items-center justify-center px-4 py-2.5 mt-2 rounded-lg text-sm font-semibold
-                            text-white bg-[#850F01] hover:bg-[#B23600] shadow-md shadow-[#B23600]/30 transition"
-                    >
-                    Send Message
-                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
-                    </button>
-
+                  <!-- Submit -->
+                  <button id="submit-btn" type="submit"
+                    class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold
+                           text-white bg-[#850F01] hover:bg-[#B23600] shadow-md transition disabled:opacity-60 disabled:cursor-not-allowed">
+                    <span id="btn-label">Send Message</span>
+                    <i id="btn-icon-send" data-lucide="send" class="w-4 h-4"></i>
+                    <svg id="btn-spinner" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                    </svg>
+                  </button>
                 </form>
-                </div>
 
-                <!-- Contact Email -->
-                <div
-                class="mt-6 pt-4 border-t border-gray-200 text-xs text-gray-600 flex items-center gap-2 transition"
-                >
-                <i data-lucide="mail" class="w-4 h-4"></i>
-                <span class="font-semibold">Email:</span>
-                <span>ase2327ekiz@gmail.com</span>
+                <!-- Direct email -->
+                <div class="mt-5 pt-4 border-t border-gray-100 flex items-center justify-center gap-2 text-xs text-gray-500">
+                  <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                  Or email directly:
+                  <a href="mailto:ase2327ekiz@gmail.com" class="text-[#850F01] font-semibold hover:underline">ase2327ekiz@gmail.com</a>
                 </div>
+              </div>
             </div>
-            </aside>
-
+          </aside>
 
         </div>
       </div>
@@ -512,87 +429,107 @@
       <div class="flex justify-center space-x-6 mb-4">
         <a
           href="https://www.instagram.com/aysule_2327/"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
           aria-label="Instagram"
         >
-          <i data-lucide="instagram" class="w-6 h-6"></i>
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/>
+          </svg>
         </a>
         <a
           href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
           aria-label="LinkedIn"
         >
-          <i data-lucide="linkedin" class="w-6 h-6"></i>
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.53V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/>
+          </svg>
         </a>
         <a
           href="https://github.com/aysesule2405"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
           aria-label="GitHub"
         >
-          <i data-lucide="github" class="w-6 h-6"></i>
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56v-2.15c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18A11 11 0 0 1 12 6.08c.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.42-2.69 5.39-5.25 5.67.42.36.78 1.06.78 2.15v3.14c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+          </svg>
+        </a>
+        <a
+          href="https://devpost.com/ase2327ekiz"
+          target="_blank" rel="noopener noreferrer"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150 inline-flex items-center justify-center"
+          aria-label="Devpost"
+        >
+          <span class="font-extrabold text-lg leading-none">D</span>
         </a>
       </div>
       <p class="text-sm text-gray-500 transition-colors duration-300">
-        &copy; 2025 Ayse Sule Ekiz. All rights reserved.
+        &copy; 2026 Ayse Sule Ekiz. All rights reserved.
       </p>
     </div>
   </footer>
 
 <script>
   const form = document.getElementById("contactForm");
+  const submitBtn = document.getElementById("submit-btn");
+  const btnLabel = document.getElementById("btn-label");
+  const btnIconSend = document.getElementById("btn-icon-send");
+  const btnSpinner = document.getElementById("btn-spinner");
+  const messageArea = document.getElementById("message");
+  const charCount = document.getElementById("char-count");
+
+  // Character counter
+  if (messageArea && charCount) {
+    messageArea.addEventListener("input", () => {
+      const len = messageArea.value.length;
+      charCount.textContent = len + " / 500";
+      charCount.classList.toggle("text-[#850F01]", len > 450);
+    });
+  }
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const formData = new FormData(form);
+    submitBtn.disabled = true;
+    btnLabel.textContent = "Sending…";
+    btnIconSend.classList.add("hidden");
+    btnSpinner.classList.remove("hidden");
 
-    const name = encodeURIComponent(formData.get("name"));
-    const email = encodeURIComponent(formData.get("email"));
-    const subject = encodeURIComponent(formData.get("subject") || "");
-    const message = encodeURIComponent(formData.get("message"));
+    const formData = new FormData(form);
 
     try {
       const response = await fetch(form.action, {
         method: "POST",
         body: formData,
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
       });
 
-      if (response.ok) {
-        window.location.href =
-          `success.html?name=${name}&email=${email}&subject=${subject}&message=${message}`;
+      const data = await response.json();
+
+      if (data.success) {
+        window.location.href = "success.html";
       } else {
-        alert("Something went wrong. Please try again.");
+        resetBtn();
+        alert(data.message || "Something went wrong. Please try again.");
       }
     } catch (error) {
-      alert("Error submitting the form.");
+      resetBtn();
+      alert("Could not send the message. Please check your connection and try again.");
     }
   });
+
+  function resetBtn() {
+    submitBtn.disabled = false;
+    btnLabel.textContent = "Send Message";
+    btnIconSend.classList.remove("hidden");
+    btnSpinner.classList.add("hidden");
+  }
 </script>
 
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Icons
-      if (window.lucide && typeof lucide.createIcons === 'function') {
-        try { lucide.createIcons(); } catch (err) { console.warn(err); }
-      }
-
-      // Mobile menu toggle
-      const mobileBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (mobileBtn && mobileMenu) {
-        mobileBtn.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-        });
-      }
-    });
-  </script>
 </body>
 </html>
-

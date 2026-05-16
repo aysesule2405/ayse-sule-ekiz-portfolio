@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayse Sule Ekiz | Resume</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/nav-dropdown.css">
+  <link rel="stylesheet" href="styles/animations.css">
+
+  <style>
+    .nav-link {
+      color: #4b5563;
+      transition: color 0.2s, background-color 0.2s;
+    }
+    .nav-link:hover { background-color: #fce7f3; color: #850F01; }
+    .nav-link.active { background-color: #FFA618; color: #FFF; }
+    .logo-background-pattern {
+      background-image: url('./images/logo.jpg');
+      background-repeat: repeat;
+      background-blend-mode: multiply;
+      opacity: 0.1;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+
+    /* ── Resume layout ────────────────────── */
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .resume-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 640px) {
+      .resume-header-card { padding: 1.25rem 1.25rem; }
+    }
+
+    /* ── Download button ──────────────────── */
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      background: #850F01;
+      color: white;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 14px rgba(133,15,1,0.25);
+    }
+    .download-btn:hover {
+      background: #B23600;
+      box-shadow: 0 6px 20px rgba(133,15,1,0.35);
+    }
+    .download-btn svg { width: 18px; height: 18px; }
+
+    /* ── Resume header card ───────────────── */
+    .resume-header-card {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #FFF7F0 0%, #ffffff 60%);
+      border-radius: 1rem;
+      border: 1px solid rgba(133,15,1,0.08);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 30px rgba(133,15,1,0.08);
+    }
+    .resume-header-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 5px;
+      background: linear-gradient(90deg, #FFA618, #850F01);
+    }
+
+    /* ── Section headings ─────────────────── */
+    .resume-section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #850F01;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid rgba(133,15,1,0.15);
+      margin-bottom: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .resume-section-title:first-child { margin-top: 0; }
+
+    /* ── Timeline ─────────────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 1.75rem;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0.4rem;
+      top: 0.4rem;
+      bottom: 0.4rem;
+      width: 2px;
+      background: linear-gradient(180deg, #FFA618 0%, #850F01 100%);
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.55rem;
+      top: 0.35rem;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 50%;
+      background: #FFA618;
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px #FFA618;
+    }
+    .timeline-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #850F01;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.1rem;
+    }
+    .timeline-role {
+      font-size: 0.875rem;
+      font-style: italic;
+      color: #6B7280;
+      margin-bottom: 0.6rem;
+    }
+    .timeline-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .timeline-bullets li {
+      position: relative;
+      padding-left: 1rem;
+      font-size: 0.85rem;
+      color: #4B5563;
+      line-height: 1.55;
+      margin-bottom: 0.35rem;
+    }
+    .timeline-bullets li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #FFA618;
+      font-weight: 700;
+    }
+
+    /* ── Skills ───────────────────────────── */
+    .skill-group { margin-bottom: 1.4rem; }
+    .skill-group-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #850F01;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-tag {
+      display: inline-block;
+      padding: 0.2rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      background: #FFF7F0;
+      color: #374151;
+      border: 1px solid rgba(133,15,1,0.12);
+    }
+
+    /* ── Leadership card ──────────────────── */
+    .leadership-card {
+      position: relative;
+      background: linear-gradient(135deg, #ffffff 0%, #FFF7F0 100%);
+      border-radius: 0.75rem;
+      border: 1px solid rgba(133,15,1,0.08);
+      padding: 1.1rem 1.25rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 16px rgba(133,15,1,0.07);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .leadership-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, #FFA618, #850F01);
+      border-radius: 4px 0 0 4px;
+    }
+    .leadership-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(133,15,1,0.15);
+    }
+    .leadership-card:last-child { margin-bottom: 0; }
+
+    /* ── Dark mode ────────────────────────── */
+    html[data-theme="dark"] .resume-header-card {
+      background: var(--color-surface);
+      border-color: var(--color-border);
+    }
+    html[data-theme="dark"] .timeline-title { color: var(--color-text); }
+    html[data-theme="dark"] .timeline-role  { color: var(--color-text-muted); }
+    html[data-theme="dark"] .timeline-bullets li { color: var(--color-text-soft); }
+    html[data-theme="dark"] .skill-tag {
+      background: var(--color-surface-muted);
+      color: var(--color-text-soft);
+      border-color: var(--color-border);
+    }
+    html[data-theme="dark"] .leadership-card {
+      background: linear-gradient(135deg, var(--color-surface), var(--color-surface-raised));
+      border-color: var(--color-border);
+    }
+    html[data-theme="dark"] .leadership-card .text-gray-800 { color: var(--color-text) !important; }
+    html[data-theme="dark"] .leadership-card .text-gray-600 { color: var(--color-text-soft) !important; }
+    html[data-theme="dark"] .timeline-item::before {
+      border-color: var(--color-bg);
+    }
+  </style>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/theme-toggle.js"></script>
+  <script src="js/nav-enhancements.js"></script>
+  <script src="js/scroll-animations.js" defer></script>
+</head>
+
+<body class="min-h-screen bg-white">
+
+  <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-between items-center h-20">
+
+        <div class="flex-shrink-0 flex items-center space-x-2">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img src="images/logo-light.png" data-logo-light="images/logo-light.png" data-logo-dark="images/logo-dark.png" alt="Ayse Sule Ekiz Logo" class="h-10 w-10 rounded-full border-2 border-[#850F01]">
+            <span class="text-2xl font-extrabold text-[#850F01] tracking-tight hidden sm:inline">Ayse Sule Ekiz</span>
+          </a>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Home</a>
+          <a href="projects.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Projects</a>
+
+          <a href="graphicdesign.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Graphic Design</a>
+          <a href="ceramics.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Ceramics</a>
+          <a href="painting.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Painting</a>
+
+          <a href="resume.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Resume</a>
+          <a href="about.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">About</a>
+
+          <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                  class="ml-2 inline-flex items-center px-3 py-2 rounded-lg focus:outline-none">
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+        </nav>
+
+        <button id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false" class="lg:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg" aria-label="Toggle navigation menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home</a>
+      <a href="projects.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Projects</a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design &amp; Digital Art</a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting &amp; Ceramics</a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting &amp; Charcoal</a>
+      <a href="resume.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Resume</a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">About / Contact</a>
+      <div class="px-4 py-3 border-t">
+        <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                class="w-full inline-flex items-center justify-center px-3 py-2 rounded-lg">
+          <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5 mr-2"></i>
+          <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 mr-2 hidden"></i>
+          <span class="text-sm">Toggle theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
+    <section id="resume">
+
+      <!-- ── Header card ── -->
+      <div class="resume-header-card flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-1 transition-colors duration-300">Ayse Sule Ekiz</h1>
+          <p class="text-[#850F01] font-semibold text-base mb-2">B.S. Computer Science · Software Engineer · Designer</p>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500">
+            <span class="flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-4 h-4"></i> Houston, TX
+            </span>
+            <a href="mailto:ase2327ekiz@gmail.com" class="flex items-center gap-1 hover:text-[#850F01] transition-colors">
+              <i data-lucide="mail" class="w-4 h-4"></i> ase2327ekiz@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 hover:text-[#850F01] transition-colors">
+              <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+            </a>
+            <a href="https://github.com/aysesule2405" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 hover:text-[#850F01] transition-colors">
+              <i data-lucide="github" class="w-4 h-4"></i> GitHub
+            </a>
+          </div>
+        </div>
+        <a href="Ayse_Sule_Ekiz_Resume.pdf" download class="download-btn flex-shrink-0">
+          <i data-lucide="download" class="w-4 h-4"></i> Download PDF
+        </a>
+      </div>
+
+      <!-- ── Two-column body ── -->
+      <div class="resume-grid">
+
+        <!-- LEFT: Experience + Education -->
+        <div>
+
+          <!-- Experience -->
+          <h2 class="resume-section-title">Experience</h2>
+          <div class="timeline">
+
+            <div class="timeline-item reveal">
+              <p class="timeline-date">Feb 2025 – Jul 2025</p>
+              <p class="timeline-title">ForgeMind</p>
+              <p class="timeline-role">Software Engineering Intern</p>
+              <ul class="timeline-bullets">
+                <li>Built Python ETL pipelines to ingest and clean real-world user analytics data across large, noisy datasets.</li>
+                <li>Wrote complex SQL (joins, window functions, cohort analysis) to surface feature adoption trends feeding product prioritization.</li>
+                <li>Profiled and optimized slow queries, measurably reducing dashboard load times relied on in weekly executive reviews.</li>
+                <li>Translated ambiguous product questions into data models and KPI dashboards, owning the full stakeholder-to-presentation cycle.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item reveal">
+              <p class="timeline-date">Sep 2024 – Present</p>
+              <p class="timeline-title">North American University</p>
+              <p class="timeline-role">IT &amp; Design Associate</p>
+              <ul class="timeline-bullets">
+                <li>Drove product development for the NAU Athletics website and student portal — user research, journey mapping, UI delivery, and developer handoff.</li>
+                <li>Built a Figma design system with reusable components adopted across campus platforms, standardizing accessibility.</li>
+                <li>Conduct ongoing usability testing and track ad-conversion performance, translating findings into product requirements.</li>
+                <li>Automated reporting workflows in Python, cutting 60% of manual data processing.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item reveal">
+              <p class="timeline-date">Jun 2022 – May 2023</p>
+              <p class="timeline-title">Koç University</p>
+              <p class="timeline-role">AI Research Intern</p>
+              <ul class="timeline-bullets">
+                <li>Built end-to-end Python pipelines for a 2D-to-3D AI system — data preprocessing, labeling, model evaluation, and iteration.</li>
+                <li>Designed and built interactive JavaScript visualizations making complex ML spatial transformations legible for non-technical audiences.</li>
+              </ul>
+            </div>
+
+          </div><!-- /timeline experience -->
+
+          <!-- Education -->
+          <h2 class="resume-section-title">Education</h2>
+          <div class="timeline">
+
+            <div class="timeline-item reveal">
+              <p class="timeline-date">Aug 2024 – May 2027</p>
+              <p class="timeline-title">North American University</p>
+              <p class="timeline-role">B.S. Computer Science · GPA 3.95</p>
+              <ul class="timeline-bullets">
+                <li>Coursework: Human-Centered Design, Software Engineering, Data Structures &amp; Algorithms, Databases, UI Systems, Statistics</li>
+                <li>President's Honor Roll · President, ACM-Women · GDSC Lead · President, Design Club · VP, Art Club</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item reveal">
+              <p class="timeline-date">Aug 2018 – May 2023</p>
+              <p class="timeline-title">Robert College</p>
+              <p class="timeline-role">GPA 3.85 · Turkey's Premier American High School (est. 1863)</p>
+            </div>
+
+          </div><!-- /timeline education -->
+
+          <!-- Projects link -->
+          <h2 class="resume-section-title">Projects</h2>
+          <p class="text-sm text-gray-600 mb-2 transition-colors duration-300">
+            Selected work including hackathon award winners and live production platforms.
+          </p>
+          <a href="projects.html" class="inline-flex items-center gap-2 text-[#850F01] font-semibold text-sm hover:text-[#B23600] transition-colors">
+            <i data-lucide="arrow-right" class="w-4 h-4"></i> View all projects
+          </a>
+
+        </div><!-- /left col -->
+
+        <!-- RIGHT: Skills + Leadership -->
+        <div>
+
+          <!-- Technical Skills -->
+          <h2 class="resume-section-title">Technical Skills</h2>
+
+          <div class="skill-group reveal">
+            <p class="skill-group-label">Languages</p>
+            <div class="tag-cloud">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">JavaScript (ES6+)</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <p class="skill-group-label">Frontend</p>
+            <div class="tag-cloud">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Electron</span>
+              <span class="skill-tag">Vite</span>
+              <span class="skill-tag">Responsive Design</span>
+              <span class="skill-tag">WCAG Accessibility</span>
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Design Systems</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <p class="skill-group-label">Backend &amp; Data</p>
+            <div class="tag-cloud">
+              <span class="skill-tag">Flask</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">ETL Pipelines</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">MongoDB Atlas</span>
+              <span class="skill-tag">pandas</span>
+              <span class="skill-tag">NumPy</span>
+              <span class="skill-tag">Jupyter</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <p class="skill-group-label">ML &amp; AI</p>
+            <div class="tag-cloud">
+              <span class="skill-tag">scikit-learn</span>
+              <span class="skill-tag">Logistic Regression</span>
+              <span class="skill-tag">SVM</span>
+              <span class="skill-tag">TF-IDF</span>
+              <span class="skill-tag">RAG Pipelines</span>
+              <span class="skill-tag">LLM Integration (Gemma)</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <p class="skill-group-label">Tools</p>
+            <div class="tag-cloud">
+              <span class="skill-tag">Git / GitHub</span>
+              <span class="skill-tag">Agile / Scrum</span>
+              <span class="skill-tag">Usability Testing</span>
+              <span class="skill-tag">Adobe Creative Suite</span>
+            </div>
+          </div>
+
+          <!-- Leadership -->
+          <h2 class="resume-section-title">Leadership</h2>
+
+          <div class="leadership-card reveal">
+            <div class="flex justify-between items-start mb-1 pl-3">
+              <p class="font-bold text-gray-800 text-sm">President, ACM-Women</p>
+              <span class="text-xs text-[#850F01] font-semibold whitespace-nowrap ml-2">2025 – Present</span>
+            </div>
+            <p class="text-xs text-gray-500 italic pl-3 mb-1">North American University</p>
+            <p class="text-xs text-gray-600 pl-3">Ran technical workshops on data science, applied AI, and CS fundamentals; mentored 50+ students; organized hackathon participation and outreach events.</p>
+          </div>
+
+          <div class="leadership-card reveal">
+            <div class="flex justify-between items-start mb-1 pl-3">
+              <p class="font-bold text-gray-800 text-sm">Leader, Google Developer Student Club</p>
+              <span class="text-xs text-[#850F01] font-semibold whitespace-nowrap ml-2">2024 – Present</span>
+            </div>
+            <p class="text-xs text-gray-500 italic pl-3 mb-1">North American University</p>
+            <p class="text-xs text-gray-600 pl-3">Launched the GDSC chapter at NAU; organized virtual workshops and events on emerging technologies and developer tools.</p>
+          </div>
+
+          <div class="leadership-card reveal">
+            <div class="flex justify-between items-start mb-1 pl-3">
+              <p class="font-bold text-gray-800 text-sm">Student Ambassador</p>
+              <span class="text-xs text-[#850F01] font-semibold whitespace-nowrap ml-2">2025 – Present</span>
+            </div>
+            <p class="text-xs text-gray-500 italic pl-3 mb-1">World U (world.org) — Sam Altman co-founded</p>
+            <p class="text-xs text-gray-600 pl-3">Competitively selected as a paid ambassador. Plans and executes campus events on proof-of-personhood technology in the age of AI.</p>
+          </div>
+
+        </div><!-- /right col -->
+
+      </div><!-- /resume-grid -->
+    </section>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 mt-12 relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="flex justify-center space-x-6 mb-4">
+        <a href="https://www.instagram.com/aysule_2327/" target="_blank" rel="noopener noreferrer" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="Instagram">
+          <i data-lucide="instagram" class="w-6 h-6"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" rel="noopener noreferrer" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="LinkedIn">
+          <i data-lucide="linkedin" class="w-6 h-6"></i>
+        </a>
+        <a href="https://github.com/aysesule2405" target="_blank" rel="noopener noreferrer" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="GitHub">
+          <i data-lucide="github" class="w-6 h-6"></i>
+        </a>
+      </div>
+      <p class="text-sm text-gray-500">&copy; 2026 Ayse Sule Ekiz. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

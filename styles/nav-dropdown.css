@@ -1,0 +1,184 @@
+/* ============================================================
+   nav-dropdown.css — desktop hover dropdown + mobile accordion
+   ============================================================ */
+
+/* ============================
+   DESKTOP — dropdown group
+   ============================ */
+.nav-dropdown-group {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+/* Chevron rotates on open */
+.nav-dropdown-toggle .dropdown-chevron {
+  transition: transform 0.2s ease;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.nav-dropdown-group:hover .dropdown-chevron,
+.nav-dropdown-group:focus-within .dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown panel */
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 230px;
+  background: var(--color-surface, #ffffff);
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border, rgba(133, 15, 1, 0.08));
+  box-shadow: var(--shadow-soft, 0 14px 40px rgba(133, 15, 1, 0.14));
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 200;
+  overflow: hidden;
+}
+
+.nav-dropdown-group:hover .nav-dropdown-menu,
+.nav-dropdown-group:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Dropdown link items */
+.nav-dropdown-item {
+  display: block;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-soft, #4b5563);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  border-bottom: 1px solid var(--color-border, rgba(133, 15, 1, 0.05));
+}
+
+.nav-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.nav-dropdown-item:hover {
+  background-color: var(--color-accent-soft, #FFF7F0);
+  color: var(--color-accent, #850F01);
+}
+
+.nav-dropdown-item.active {
+  color: var(--color-accent, #850F01);
+  background-color: var(--color-accent-soft, #FFF7F0);
+  font-weight: 600;
+}
+
+/* ============================
+   MOBILE — accordion submenu
+   ============================ */
+.mobile-dropdown-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mobile-dropdown-toggle .dropdown-chevron {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.mobile-dropdown-submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.mobile-dropdown-submenu.open {
+  max-height: 180px;
+}
+
+.mobile-dropdown-item {
+  display: block;
+  padding: 0.6rem 1rem 0.6rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-soft, #4b5563);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border, rgba(133, 15, 1, 0.05));
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.mobile-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.mobile-dropdown-item:hover {
+  background-color: var(--color-accent-soft, #FFF7F0);
+  color: var(--color-accent, #850F01);
+}
+
+.mobile-dropdown-item.active {
+  color: var(--color-accent, #850F01);
+  font-weight: 600;
+}
+
+/* ============================
+   DARK MODE
+   ============================ */
+html[data-theme="dark"] .nav-dropdown-menu {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-soft);
+}
+
+html[data-theme="dark"] .nav-dropdown-item {
+  color: var(--color-text-soft);
+  border-bottom-color: var(--color-border);
+}
+
+html[data-theme="dark"] .nav-dropdown-item:hover {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-hover);
+}
+
+html[data-theme="dark"] .nav-dropdown-item.active {
+  color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+}
+
+html[data-theme="dark"] .mobile-dropdown-item {
+  color: var(--color-text-soft);
+  border-bottom-color: var(--color-border);
+}
+
+html[data-theme="dark"] .mobile-dropdown-item:hover {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-hover);
+}
+
+html[data-theme="dark"] .mobile-dropdown-item.active {
+  color: var(--color-accent);
+}
+
+html[data-theme="dark"] .mobile-dropdown-submenu {
+  background-color: var(--color-surface);
+}

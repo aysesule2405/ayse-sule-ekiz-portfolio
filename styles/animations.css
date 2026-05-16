@@ -1,0 +1,160 @@
+/* ============================================================
+   animations.css — Phase 1 motion layer
+   Scroll reveal · progress bar · hero entrance · card polish
+   ============================================================ */
+
+/* ============================
+   PAGE ENTRANCE
+   ============================ */
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+body {
+  animation: page-fade-in 0.35s ease-out both;
+}
+
+/* ============================
+   SCROLL PROGRESS BAR
+   ============================ */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-accent-warm, #FFA618), var(--color-accent, #850F01));
+  z-index: 99999;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.08s linear;
+}
+
+/* ============================
+   SCROLL REVEAL BASE
+   ============================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+
+.reveal.from-left  { transform: translateX(-36px); }
+.reveal.from-right { transform: translateX(36px); }
+
+.reveal.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Stagger delays — assigned via data-delay attribute in JS */
+.reveal[data-delay="1"] { transition-delay: 0.06s; }
+.reveal[data-delay="2"] { transition-delay: 0.14s; }
+.reveal[data-delay="3"] { transition-delay: 0.22s; }
+.reveal[data-delay="4"] { transition-delay: 0.30s; }
+.reveal[data-delay="5"] { transition-delay: 0.38s; }
+.reveal[data-delay="6"] { transition-delay: 0.46s; }
+
+/* ============================
+   HERO TEXT STAGGER
+   ============================ */
+@keyframes hero-line-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-line {
+  opacity: 0;
+  animation: hero-line-in 0.6s ease-out forwards;
+}
+
+.hero-text > .hero-line:nth-child(1) { animation-delay: 0.10s; }
+.hero-text > .hero-line:nth-child(2) { animation-delay: 0.26s; }
+.hero-text > .hero-line:nth-child(3) { animation-delay: 0.44s; }
+.hero-text > .hero-line:nth-child(4) { animation-delay: 0.60s; }
+
+/* ============================
+   HERO IMAGE FLOAT
+   ============================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+.hero-float {
+  animation: float 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ============================
+   CTA BUTTON PULSE GLOW
+   ============================ */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 4px 14px color-mix(in srgb, var(--color-accent, #850F01) 30%, transparent); }
+  50%       { box-shadow: 0 6px 32px color-mix(in srgb, var(--color-accent, #850F01) 52%, transparent); }
+}
+
+.cta-pulse {
+  animation: pulse-glow 2.8s ease-in-out infinite;
+}
+
+/* ============================
+   ENHANCED CARD HOVER OVERLAY
+   ============================ */
+
+/* Warm gradient veil that lifts in on hover */
+.masonry-item figure {
+  position: relative;
+}
+
+.masonry-item figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, color-mix(in srgb, var(--color-accent, #850F01) 13%, transparent) 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.masonry-item:hover figure::after {
+  opacity: 1;
+}
+
+/* Stronger lift override */
+.masonry-item:hover {
+  transform: translateY(-9px);
+  box-shadow: 0 26px 52px color-mix(in srgb, var(--color-accent, #850F01) 24%, transparent);
+}
+
+/* ============================
+   DARK MODE ADJUSTMENTS
+   ============================ */
+html[data-theme="dark"] .masonry-item figure::after {
+  background: linear-gradient(180deg, transparent 50%, color-mix(in srgb, var(--color-accent, #f0a83a) 16%, transparent) 100%);
+}
+
+/* ============================
+   ACCESSIBILITY — REDUCED MOTION
+   ============================ */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .hero-line,
+  .cta-pulse,
+  body {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-float {
+    animation: none !important;
+  }
+
+  #scroll-progress {
+    transition: none !important;
+  }
+}

@@ -1,13 +1,30 @@
 // js/theme-toggle.js
 (function () {
   const STORAGE_KEY = 'portfolio-theme';
+  const root = document.documentElement;
+
+  function getSavedTheme() {
+    try {
+      return localStorage.getItem(STORAGE_KEY);
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function saveTheme(theme) {
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch (err) {
+      // The theme still applies for this page view when storage is unavailable.
+    }
+  }
 
   // Decide initial theme (saved value > OS preference > light)
   const prefersDark =
     window.matchMedia &&
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  const saved = localStorage.getItem(STORAGE_KEY);
+  const saved = getSavedTheme();
   let currentTheme =
     saved === 'dark' || saved === 'light'
       ? saved
@@ -16,13 +33,21 @@
       : 'light';
 
   function applyTheme(theme) {
-    const root = document.documentElement;
     root.setAttribute('data-theme', theme);
+    root.style.colorScheme = theme;
+    const isDark = theme === 'dark';
+
+    document.querySelectorAll('[data-logo-light][data-logo-dark]').forEach((logo) => {
+      const nextSrc = isDark ? logo.dataset.logoDark : logo.dataset.logoLight;
+      if (nextSrc && logo.getAttribute('src') !== nextSrc) {
+        logo.setAttribute('src', nextSrc);
+      }
+    });
 
     // Update all toggle buttons + icons
     document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
-      const isDark = theme === 'dark';
       btn.setAttribute('aria-pressed', String(isDark));
+      btn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
 
       const sunIcon = btn.querySelector('[data-theme-icon="sun"]');
       const moonIcon = btn.querySelector('[data-theme-icon="moon"]');
@@ -41,12 +66,15 @@
 
   function toggleTheme() {
     currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem(STORAGE_KEY, currentTheme);
+    saveTheme(currentTheme);
     applyTheme(currentTheme);
   }
 
+  // Apply before DOMContentLoaded so pages do not flash the wrong palette.
+  applyTheme(currentTheme);
+
   document.addEventListener('DOMContentLoaded', () => {
-    // Apply initial theme
+    // Sync controls that were not present during the early apply.
     applyTheme(currentTheme);
 
     // Wire all toggle buttons
@@ -66,4 +94,19 @@
       toggleTheme();
     }
   });
+
+  if (window.matchMedia) {
+    const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleSystemThemeChange = (event) => {
+      if (getSavedTheme()) return;
+      currentTheme = event.matches ? 'dark' : 'light';
+      applyTheme(currentTheme);
+    };
+
+    if (typeof colorSchemeQuery.addEventListener === 'function') {
+      colorSchemeQuery.addEventListener('change', handleSystemThemeChange);
+    } else if (typeof colorSchemeQuery.addListener === 'function') {
+      colorSchemeQuery.addListener(handleSystemThemeChange);
+    }
+  }
 })();

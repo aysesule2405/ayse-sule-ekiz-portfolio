@@ -39,9 +39,12 @@
         }
     </style>
 
+    <link rel="stylesheet" href="styles/nav-dropdown.css">
+    <link rel="stylesheet" href="styles/animations.css">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script src="js/theme-toggle.js"></script>
     <script src="js/nav-enhancements.js"></script>
+    <script src="js/scroll-animations.js" defer></script>
 
 </head>
 <body class="min-h-screen bg-white">
@@ -52,17 +55,21 @@
       <div class="flex justify-between items-center h-20">
         <div class="flex-shrink-0 flex items-center space-x-2">
           <a href="index.html" class="flex items-center space-x-2">
-            <img src="./images/logo.jpg" alt="Ayse Sule Ekiz Logo" class="h-10 w-10 rounded-full border-2 border-[#850F01]">
+            <img src="images/logo-light.png" data-logo-light="images/logo-light.png" data-logo-dark="images/logo-dark.png" alt="Ayse Sule Ekiz Logo" class="h-10 w-10 rounded-full border-2 border-[#850F01]">
             <span class="text-2xl font-extrabold text-[#850F01] tracking-tight hidden sm:inline">Ayse Sule Ekiz</span>
           </a>
         </div>
 
-        <nav class="hidden md:flex items-center space-x-2">
-          <a href="index.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Home Page</a>
-          <a href="graphicdesign.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Graphic Design & Digital Art</a>
-          <a href="ceramics.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Sculpting & Ceramics</a>
-          <a href="painting.html" class="nav-link active px-3 py-2 rounded-lg font-medium text-sm lg:text-base">Painting & Charcoal</a>
-          <a href="about.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">About / Contact</a>
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Home</a>
+          <a href="projects.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Projects</a>
+
+          <a href="graphicdesign.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Graphic Design</a>
+          <a href="ceramics.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Ceramics</a>
+          <a href="painting.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Painting</a>
+
+          <a href="resume.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Resume</a>
+          <a href="about.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">About</a>
 
           <!-- Theme toggle (desktop) -->
           <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
@@ -72,17 +79,19 @@
           </button>
         </nav>
 
-        <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg">
+        <button id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false" class="lg:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg" aria-label="Toggle navigation menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
         </button>
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 relative z-10">
-      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home Page</a>
-      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design & Digital Art</a>
-      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting & Ceramics</a>
-      <a href="painting.html" class="nav-link active block px-4 py-3 text-sm font-medium border-b">Painting & Charcoal</a>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home</a>
+      <a href="projects.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Projects</a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design &amp; Digital Art</a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting &amp; Ceramics</a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting &amp; Charcoal</a>
+      <a href="resume.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Resume</a>
       <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">About / Contact</a>
 
       <!-- Theme toggle (mobile) -->
@@ -106,7 +115,7 @@
         <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
             Paintings
         </h3>
-        <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 dark:border-[#FFA618]/30 transition-colors duration-300">
+        <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 transition-colors duration-300">
             Painting has always been my way of blending memory, emotion, and atmosphere into a single frame. Whether using oil, gouache, or pastel, each piece becomes a quiet conversation between color and light—moments that feel familiar yet dreamlike. Many of these works were created during late nights, drawing inspiration from moonscapes, friendships, and places that shaped who I am.
         </p>
         <div class="masonry">
@@ -226,6 +235,32 @@
                     </div>
                 </div>
             </article>
+
+            <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+                <figure>
+                    <img src="images/paintings/the hike.JPG" alt="The Hike">
+                </figure>
+                <div class="meta p-4">
+                    <h3 class="text-xl font-bold text-gray-800">The Hike</h3>
+                    <p class="short-desc text-gray-700 text-base mt-1 mb-2">
+                        Acrylic landscape on canvas capturing a glacial lake framed by ancient trees and snow-dusted peaks.
+                    </p>
+                    <p class="long-description text-gray-600 text-sm mb-3">
+                        This piece came from a longing for places that feel untouched — where the path winds down
+                        toward water so still and turquoise it almost doesn’t look real. The two trees on either
+                        side act as a natural frame, drawing the eye inward toward the mountain and the glowing
+                        lake below. Pink wildflowers dot the foreground like small sparks of joy, and the whole
+                        scene carries the feeling of a hike that earned its view — lungs burning, legs heavy,
+                        but the moment you break through the treeline and see the water stretching out before you,
+                        everything goes quiet. I wanted to hold that moment in paint.
+                    </p>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                        <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </article>
         </div>
 
         <!-- ========================================= -->
@@ -234,7 +269,7 @@
         <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">
             Charcoal Sketches
         </h3>
-        <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 dark:border-[#FFA618]/30 transition-colors duration-300">
+        <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20 transition-colors duration-300">
             Charcoal sketching allows me to strip everything down to the essentials—light, shadow, and form. With no color to rely on, every stroke becomes intentional, capturing emotion through contrast alone. These pieces were my first explorations into charcoal, where I learned how expressive simple values can be, turning quick studies into quiet, intimate portraits.
         </p>
 
@@ -363,48 +398,21 @@
 
         <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="flex justify-center space-x-6 mb-4">
-                <a href="https://www.instagram.com/aysule_2327/" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="Instagram">
+                <a href="https://www.instagram.com/aysule_2327/" target="_blank" rel="noopener noreferrer" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="Instagram">
                     <i data-lucide="instagram" class="w-6 h-6"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" rel="noopener noreferrer" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="LinkedIn">
                     <i data-lucide="linkedin" class="w-6 h-6"></i>
                 </a>
-                <a href="https://github.com/aysesule2405" target="_blank" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="GitHub">
+                <a href="https://github.com/aysesule2405" target="_blank" rel="noopener noreferrer" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="GitHub">
                     <i data-lucide="github" class="w-6 h-6"></i>
                 </a>
             </div>
             <p class="text-sm text-gray-500">
-                &copy; 2025 Ayse Sule Ekiz. All rights reserved.
+                &copy; 2026 Ayse Sule Ekiz. All rights reserved.
             </p>
         </div>
     </footer>
 
-
-    <script>
-        // Initialize Lucide icons on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-
-            // Mobile menu toggle logic
-            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-                document.getElementById('mobile-menu').classList.toggle('hidden');
-            });
-
-            // Details toggle logic for artwork cards
-            document.querySelectorAll('.view-details-btn').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const article = event.target.closest('.masonry-item');
-                    const isExpanded = event.target.getAttribute('aria-expanded') === 'true';
-
-                    // Toggle the 'show-details' class on the parent article
-                    article.classList.toggle('show-details');
-                    
-                    // Update aria-expanded state and button text
-                    event.target.setAttribute('aria-expanded', !isExpanded);
-                    event.target.textContent = isExpanded ? 'View Details' : 'Hide Details';
-                });
-            });
-        });
-    </script>
 </body>
 </html>

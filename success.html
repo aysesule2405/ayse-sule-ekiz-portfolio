@@ -13,7 +13,6 @@
 
   <!-- Icons + scripts -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script src="js/load-fragments.js"></script>
   <script src="js/theme-toggle.js"></script>
   <script src="js/nav-enhancements.js"></script>
 </head>
@@ -28,7 +27,9 @@
         <div class="flex-shrink-0 flex items-center space-x-2">
           <a href="index.html" class="flex items-center space-x-2">
             <img
-              src="./images/logo.jpg"
+              src="images/logo-light.png"
+              data-logo-light="images/logo-light.png"
+              data-logo-dark="images/logo-dark.png"
               alt="Ayse Sule Ekiz Logo"
               class="h-10 w-10 rounded-full border-2 border-[#850F01]"
             />
@@ -38,22 +39,14 @@
           </a>
         </div>
 
-        <nav class="hidden md:flex items-center space-x-2">
-          <a href="index.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
-            Home Page
-          </a>
-          <a href="graphicdesign.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
-            Graphic Design &amp; Digital Art
-          </a>
-          <a href="ceramics.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
-            Sculpting &amp; Ceramics
-          </a>
-          <a href="painting.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
-            Painting &amp; Charcoal
-          </a>
-          <a href="about.html" class="nav-link px-3 py-2 rounded-lg font-medium text-sm lg:text-base">
-            About / Contact
-          </a>
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Home</a>
+          <a href="projects.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Projects</a>
+          <a href="graphicdesign.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Graphic Design</a>
+          <a href="ceramics.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Ceramics</a>
+          <a href="painting.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Painting</a>
+          <a href="resume.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Resume</a>
+          <a href="about.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">About</a>
 
           <!-- Theme toggle (desktop) -->
           <button
@@ -68,8 +61,8 @@
         </nav>
 
         <button
-          id="mobile-menu-btn"
-          class="md:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg"
+          id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false"
+          class="lg:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg"
           aria-label="Toggle navigation menu"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,22 +74,14 @@
     </div>
 
     <!-- Mobile nav -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 relative z-10">
-      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
-        Home Page
-      </a>
-      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
-        Graphic Design &amp; Digital Art
-      </a>
-      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
-        Sculpting &amp; Ceramics
-      </a>
-      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">
-        Painting &amp; Charcoal
-      </a>
-      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">
-        About / Contact
-      </a>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home</a>
+      <a href="projects.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Projects</a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design &amp; Digital Art</a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting &amp; Ceramics</a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting &amp; Charcoal</a>
+      <a href="resume.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Resume</a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">About / Contact</a>
 
       <div class="px-4 py-3 border-t border-gray-100">
         <button
@@ -165,7 +150,7 @@
       <div class="flex justify-center space-x-6 mb-4">
         <a
           href="https://www.instagram.com/aysule_2327/"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
           aria-label="Instagram"
         >
@@ -173,7 +158,7 @@
         </a>
         <a
           href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
           aria-label="LinkedIn"
         >
@@ -181,7 +166,7 @@
         </a>
         <a
           href="https://github.com/aysesule2405"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="text-[#850F01] hover:text-[#FFA618] transition duration-150"
           aria-label="GitHub"
         >
@@ -189,25 +174,13 @@
         </a>
       </div>
       <p class="text-sm text-gray-500 transition-colors duration-300">
-        &copy; 2025 Ayse Sule Ekiz. All rights reserved.
+        &copy; 2026 Ayse Sule Ekiz. All rights reserved.
       </p>
     </div>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      if (window.lucide && typeof lucide.createIcons === 'function') {
-        try { lucide.createIcons(); } catch (err) { console.warn(err); }
-      }
-
-      const mobileBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (mobileBtn && mobileMenu) {
-        mobileBtn.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-        });
-      }
-
       // Scroll reveal
       const revealEls = document.querySelectorAll('.reveal-on-scroll');
       const observer = new IntersectionObserver(

@@ -7,14 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Ordered from darkest to brightest
   const phases = [
-    { id: 0, label: "New Moon", icon: "🌑" },
-    { id: 1, label: "Waxing Crescent", icon: "🌒" },
-    { id: 2, label: "First Quarter", icon: "🌓" },
-    { id: 3, label: "Waxing Gibbous", icon: "🌔" },
-    { id: 4, label: "Full Moon", icon: "🌕" },
-    { id: 5, label: "Waning Gibbous", icon: "🌖" },
-    { id: 6, label: "Last Quarter", icon: "🌗" },
-    { id: 7, label: "Waning Crescent", icon: "🌘" }
+    { id: 0, label: "New Moon", img: "moon_phases/moon_01_new copy.png" },
+    { id: 1, label: "Waxing Crescent", img: "moon_phases/moon_02_waxing_crescent copy.png" },
+    { id: 2, label: "First Quarter", img: "moon_phases/moon_03_first_quarter copy.png" },
+    { id: 3, label: "Waxing Gibbous", img: "moon_phases/moon_04_waxing_gibbous copy.png" },
+    { id: 4, label: "Full Moon", img: "moon_phases/moon_05_full copy.png" },
+    { id: 5, label: "Waning Gibbous", img: "moon_phases/moon_06_waning_gibbous copy.png" },
+    { id: 6, label: "Third Quarter", img: "moon_phases/moon_07_third_quarter copy.png" },
+    { id: 7, label: "Waning Crescent", img: "moon_phases/moon_08_waning_crescent copy.png" }
   ];
 
   let expectedIndex = 0; // which phase we expect next (0 = New Moon)
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.dataset.phaseId = String(phase.id);
 
     btn.innerHTML = `
-      <div class="hm-card__icon">${phase.icon}</div>
+      <img src="${phase.img}" alt="${phase.label}" class="hm-card__img">
       <div class="hm-card__label">${phase.label}</div>
     `;
 
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         cardEl.classList.remove("hm-card--wrong");
       }, 250);
-      statusEl.textContent = "Not quite — start from the darkest moon and go toward the brightest.";
+      statusEl.textContent = "Not quite. Start from the darkest moon and work toward the brightest.";
     }
   }
 
