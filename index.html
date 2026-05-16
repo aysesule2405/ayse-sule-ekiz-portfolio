@@ -137,25 +137,28 @@
         .hero-side-cta-art {
             left: 24%;
             transform: translateX(-50%);
-            border: 2px solid rgba(255,255,255,0.46);
-            color: white;
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(6px);
+            border: 2px solid rgba(255,166,24,0.55);
+            color: #FFA618;
+            background: rgba(255,166,24,0.08);
+            backdrop-filter: blur(8px);
         }
         .hero-side-cta-art:hover {
             transform: translateX(-50%) translateY(-2px);
-            background: rgba(255,255,255,0.14);
+            background: rgba(255,166,24,0.18);
+            border-color: #FFA618;
         }
         .hero-side-cta-projects {
             right: 24%;
             transform: translateX(50%);
-            background: var(--color-accent);
-            color: var(--color-accent-foreground);
-            box-shadow: 0 4px 22px rgba(0,0,0,0.35);
+            border: 2px solid rgba(255,166,24,0.55);
+            color: #FFA618;
+            background: rgba(255,166,24,0.08);
+            backdrop-filter: blur(8px);
         }
         .hero-side-cta-projects:hover {
             transform: translateX(50%) translateY(-2px);
-            background: var(--color-accent-hover);
+            background: rgba(255,166,24,0.18);
+            border-color: #FFA618;
         }
 
         @media (max-width: 767px) {
@@ -186,6 +189,7 @@
             }
             .hero-side-cta-art:hover {
                 transform: translateY(-2px);
+                background: rgba(255,166,24,0.18);
             }
             .hero-side-cta-projects {
                 right: 1rem;
@@ -193,6 +197,7 @@
             }
             .hero-side-cta-projects:hover {
                 transform: translateY(-2px);
+                background: rgba(255,166,24,0.18);
             }
         }
 
@@ -302,61 +307,200 @@
             .projects-teaser-grid { grid-template-columns: 1fr !important; }
         }
 
-        /* ── Editorial art tiles ────────────────────── */
-        .editorial-tile {
+        /* ── Art interests cards (editorial magazine style) ── */
+        .art-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .art-section-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #850F01;
+            margin-bottom: 0.6rem;
+        }
+        .art-section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: #1f1713;
+        }
+        .art-section-title em {
+            font-style: italic;
+            font-weight: 700;
+            color: #850F01;
+        }
+        .art-section-note {
+            max-width: 230px;
+            text-align: right;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 0.975rem;
+            color: #6b7280;
+            line-height: 1.75;
+            border-top: 1px solid rgba(133,15,1,0.14);
+            padding-top: 0.75rem;
+        }
+        .art-interests-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .art-interest-img-wrap {
+            display: block;
             position: relative;
             overflow: hidden;
-            border-radius: 0.875rem;
-            height: 320px;
-            display: block;
+            border-radius: 0.625rem;
+            aspect-ratio: 4 / 5;
             text-decoration: none;
+            background: #1a1008;
         }
-        .editorial-tile img {
-            position: absolute;
-            inset: 0;
+        .art-interest-img-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
             transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
         }
-        .editorial-tile:hover img {
-            transform: scale(1.07);
-        }
-        .editorial-tile-overlay {
+        .art-interest-img-wrap:hover img { transform: scale(1.06); }
+        .art-interest-num {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(to top,
-                rgba(0,0,0,0.88) 0%,
-                rgba(0,0,0,0.38) 45%,
-                rgba(0,0,0,0.08) 80%);
-        }
-        .editorial-tile-content {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 1.75rem 1.5rem;
-        }
-        .editorial-tile-link {
-            display: inline-block;
-            margin-top: 0.65rem;
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: #FFA618;
+            top: 0.8rem;
+            left: 0.8rem;
+            background: #850F01;
+            color: white;
+            font-size: 0.68rem;
+            font-weight: 800;
             letter-spacing: 0.04em;
+            padding: 0.3rem 0.55rem;
+            border-radius: 0.25rem;
+            line-height: 1;
+            z-index: 2;
+        }
+        .art-interest-cat {
+            position: absolute;
+            bottom: 0.875rem;
+            right: 0.875rem;
+            background: rgba(255,255,255,0.92);
+            color: #1f2937;
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.8rem;
+            border-radius: 9999px;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+        .art-interest-body { margin-top: 1.25rem; }
+        .art-interest-title-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+        .art-interest-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1f1713;
+            line-height: 1.25;
+        }
+        .art-interest-link {
+            font-size: 0.63rem;
+            font-weight: 800;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: #850F01;
+            text-decoration: none;
+            white-space: nowrap;
+            padding-top: 0.35rem;
+            flex-shrink: 0;
             transition: color 0.2s, letter-spacing 0.2s;
         }
-        .editorial-tile:hover .editorial-tile-link {
-            color: white;
-            letter-spacing: 0.08em;
+        .art-interest-link:hover { color: #B23600; letter-spacing: 0.19em; }
+        .art-interest-desc {
+            font-size: 0.875rem;
+            color: #6b7280;
+            line-height: 1.65;
+        }
+        /* dark mode */
+        html[data-theme="dark"] .art-section-tag  { color: var(--color-accent); }
+        html[data-theme="dark"] .art-section-title { color: var(--color-text); }
+        html[data-theme="dark"] .art-section-title em { color: var(--color-accent); }
+        html[data-theme="dark"] .art-section-note  { color: var(--color-text-soft); border-color: var(--color-border); }
+        html[data-theme="dark"] .art-interest-title { color: var(--color-text); }
+        html[data-theme="dark"] .art-interest-desc  { color: var(--color-text-soft); }
+        html[data-theme="dark"] .art-interest-num  { background: var(--color-accent); color: var(--color-accent-foreground); }
+        html[data-theme="dark"] .art-interest-link { color: var(--color-accent); }
+        html[data-theme="dark"] .art-interest-link:hover { color: var(--color-accent-hover); }
+        @media (max-width: 900px) {
+            .art-interests-grid { grid-template-columns: repeat(2, 1fr); }
+            .art-section-note { display: none; }
+        }
+        @media (max-width: 560px) {
+            .art-interests-grid { grid-template-columns: 1fr; }
         }
 
-        @media (max-width: 1024px) {
-            .editorial-tiles-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        /* ── Intro diagonal split ──────────────────── */
+        .intro-split {
+            position: relative;
+            overflow: hidden;
+            min-height: 540px;
+            background: var(--color-surface);
         }
-        @media (max-width: 640px) {
-            .editorial-tiles-grid { grid-template-columns: 1fr !important; }
-            .editorial-tile { height: 280px; }
+        .intro-split-text {
+            position: relative;
+            z-index: 1;
+            width: 60%;
+            min-height: 540px;
+            background: var(--color-surface);
+            clip-path: polygon(0 0, 100% 0, calc(100% - 110px) 100%, 0 100%);
+            padding: 5.5rem 5rem 5.5rem max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
+        .intro-split-image {
+            position: absolute;
+            top: 0; right: 0;
+            width: 52%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .intro-split-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .intro-split { display: flex; flex-direction: column-reverse; }
+            .intro-split-text {
+                width: 100%;
+                min-height: auto;
+                clip-path: none;
+                padding: 3rem 1.5rem 3.5rem;
+            }
+            .intro-split-image {
+                position: relative;
+                width: 100%;
+                height: 300px;
+            }
+        }
+        html[data-theme="dark"] .intro-split,
+        html[data-theme="dark"] .intro-split-text { background: var(--color-surface); }
+        html[data-theme="dark"] .intro-split-text p { color: var(--color-text-soft) !important; }
 
         /* ── Section heading / divider ──────────────── */
         .section-heading { font-size: 1.875rem; font-weight: 700; color: #111827; }
@@ -437,7 +581,7 @@
         </div>
 
         <nav class="hidden lg:flex items-center space-x-1">
-          <a href="index.html"        class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Home</a>
+          <a href="index.html"        class="nav-link active px-2.5 py-2 rounded-lg font-medium text-sm">Home</a>
           <a href="projects.html"     class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Projects</a>
           <a href="graphicdesign.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Graphic Design</a>
           <a href="ceramics.html"     class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Ceramics</a>
@@ -461,7 +605,7 @@
     </div>
 
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 relative z-10">
-      <a href="index.html"         class="nav-link block px-4 py-3 text-sm font-medium border-b">Home</a>
+      <a href="index.html"         class="nav-link active block px-4 py-3 text-sm font-medium border-b">Home</a>
       <a href="projects.html"      class="nav-link block px-4 py-3 text-sm font-medium border-b">Projects</a>
       <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design &amp; Digital Art</a>
       <a href="ceramics.html"      class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting &amp; Ceramics</a>
@@ -488,23 +632,23 @@
       <!-- Darker center for text, lighter sides for the image details -->
       <div class="hero-overlay"></div>
 
-      <div class="hero-skill hero-skill-left">Visual Art</div>
-      <div class="hero-skill hero-skill-right">Software Engineering</div>
+      <div class="hero-skill hero-skill-left">———————Visual Art———————</div>
+      <div class="hero-skill hero-skill-right">——Software Engineering——</div>
       <a href="#interests" class="hero-side-cta hero-side-cta-art">Explore Art</a>
       <a href="projects.html" class="hero-side-cta hero-side-cta-projects">View Projects</a>
 
       <!-- Centered headline -->
       <div style="position:absolute;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;pointer-events:none;">
-        <p style="color:#FFA618;font-size:0.78rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:1.25rem;">Ayse Sule Ekiz</p>
+        <p style="color:#FFA618;font-size:0.78rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:1.25rem;">— Ayse Sule Ekiz —</p>
         <h1 style="font-family:'Playfair Display',Georgia,serif;
                    font-size:clamp(2rem,5.5vw,4.25rem);
                    font-weight:900;color:white;line-height:1.2;
                    margin-bottom:1.5rem;
                    text-shadow:0 2px 28px rgba(0,0,0,0.65);">
-          I build with code.<br>I think with art.
+          I build with <em style="color:#FFA618;">code</em>.<br>I think with <em style="color:#FFA618;">art</em>.
         </h1>
-        <p style="color:rgba(255,255,255,0.7);font-size:1rem;max-width:460px;line-height:1.72;margin-bottom:2.5rem;">
-          Computer science student and visual artist. I design systems that hold up and make things that stay with you.
+        <p style="color:rgba(255,255,255,0.82);font-size:1rem;max-width:460px;line-height:1.72;margin-bottom:2.5rem;">
+          I build things that last and create things that linger.
         </p>
       </div>
 
@@ -518,51 +662,44 @@
     </section>
 
     <!-- ── INTRO ─────────────────────────────────── -->
-    <section id="home-intro" class="home-section-white" style="padding:4rem 0;">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div style="display:flex;flex-direction:row;gap:3rem;align-items:center;flex-wrap:wrap;">
+    <section id="home-intro" class="intro-split">
 
-          <!-- Text -->
-          <div style="flex:1;min-width:280px;">
-            <p style="color:#FFA618;font-weight:700;font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:0.75rem;">Hi, this is Ayse Sule</p>
-            <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;line-height:1.25;margin-bottom:1.25rem;">
-              Get to know me through my <span style="color:var(--color-accent);">art.</span>
-            </h2>
-            <p class="intro-body" style="font-size:1rem;line-height:1.75;margin-bottom:1.75rem;max-width:520px;">
-              I have always been passionate about art and crafting and I wanted to share this side of me, using my skills to showcase my art to the world. While my interest in art is diverse, this website will serve as a platform exclusively for sharing my visual artwork and acting as a portfolio of my creative journey.
-            </p>
-            <a href="about.html"
-               style="display:inline-flex;align-items:center;gap:0.4rem;
-                      padding:0.65rem 1.5rem;background:var(--color-accent);color:var(--color-accent-foreground);
-                      border-radius:0.75rem;font-size:0.875rem;font-weight:700;
-                      text-decoration:none;transition:background 0.2s;
-                      box-shadow:0 4px 16px rgba(0,0,0,0.25);">
-              Explore My Journey <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
-            </a>
-          </div>
-
-          <!-- Ceramic photo -->
-          <div style="flex:0 0 auto;width:clamp(300px,42%,500px);">
-            <div class="photo-frame" style="border-radius:1rem;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.14);border:4px solid white;">
-              <img src="images/ceramics/me&giant_woman2.jpg"
-                   alt="Ayse Sule Ekiz with her ceramic sculpture"
-                   style="width:100%;height:auto;display:block;object-fit:cover;">
-            </div>
-          </div>
-
-        </div>
+      <!-- Image: right side, fills behind diagonal -->
+      <div class="intro-split-image">
+        <img src="images/ceramics/me&giant_woman2.jpg" alt="Ayse Sule Ekiz working on a ceramic sculpture">
       </div>
+
+      <!-- Text: left side with diagonal clip -->
+      <div class="intro-split-text">
+        <p class="art-section-tag">&sect; 00 &middot; Me</p>
+        <h2 class="art-section-title" style="margin-bottom:1.25rem;">
+          Get to know me<br>through my <em>art.</em>
+        </h2>
+        <p style="font-size:1rem;line-height:1.78;margin-bottom:1.75rem;max-width:460px;color:#4b5563;">
+          I have always been passionate about art and visual making, and I wanted to share this side of me with the world. While my interest in art spans many forms, this site serves as a creative portfolio alongside my technical work, a place where both sides of what I make can live together.
+        </p>
+        <a href="about.html"
+           style="display:inline-flex;align-items:center;gap:0.4rem;
+                  padding:0.65rem 1.5rem;background:var(--color-accent);color:var(--color-accent-foreground);
+                  border-radius:0.75rem;font-size:0.875rem;font-weight:700;
+                  text-decoration:none;transition:background 0.2s;
+                  box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+          Explore My Journey <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+        </a>
+      </div>
+
     </section>
 
     <!-- ── FEATURED PROJECTS ──────────────────────── -->
     <section class="home-section-white" style="padding:4.5rem 0;">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div style="display:flex;align-items:baseline;justify-content:space-between;
-                    margin-bottom:2rem;padding-bottom:0.875rem;"
-             class="section-divider">
-          <h2 class="section-heading">Featured Projects</h2>
-          <a href="projects.html" style="font-size:0.82rem;font-weight:600;color:var(--color-accent);text-decoration:none;white-space:nowrap;">View all →</a>
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <p class="art-section-tag">&sect; 01 &middot; Work</p>
+            <h2 class="art-section-title">My <em>Projects</em></h2>
+          </div>
+          <a href="projects.html" style="font-size:0.63rem;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:var(--color-accent);text-decoration:none;white-space:nowrap;padding-bottom:0.35rem;transition:letter-spacing 0.2s;" onmouseover="this.style.letterSpacing='0.19em'" onmouseout="this.style.letterSpacing='0.13em'">View All &rarr;</a>
         </div>
 
         <div class="projects-teaser-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;">
@@ -648,50 +785,69 @@
       </div>
     </section>
 
-    <!-- ── ART & DESIGN EDITORIAL TILES ──────────── -->
-    <section class="home-section-cream" id="interests" style="padding:4.5rem 0;">
+    <!-- ── ART & DESIGN EDITORIAL CARDS ──────────── -->
+    <section class="home-section-cream" id="interests" style="padding:5rem 0;">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div style="margin-bottom:2rem;padding-bottom:0.875rem;
-                    border-bottom:1px solid rgba(133,15,1,0.14);"
-             class="section-divider-cream">
-          <h2 class="section-heading">Art &amp; Design</h2>
+        <!-- Section header -->
+        <div class="art-section-header">
+          <div>
+            <p class="art-section-tag">&sect; 02 &middot; Practice</p>
+            <h2 class="art-section-title">My <em>Interests</em></h2>
+          </div>
+          <p class="art-section-note">Three threads of the same practice.<br>Each medium teaches the others something new.</p>
         </div>
 
-        <div class="editorial-tiles-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+        <!-- 3-column grid -->
+        <div class="art-interests-grid">
 
-          <!-- Graphic Design & Digital Art -->
-          <a href="graphicdesign.html" class="editorial-tile">
-            <img src="images/dijital_art/Lilith - Symetrical Balance Poster.jpg" alt="Graphic Design & Digital Art">
-            <div class="editorial-tile-overlay"></div>
-            <div class="editorial-tile-content">
-              <p style="color:#FFA618;font-size:0.66rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.4rem;">Posters · Printmaking · Digital</p>
-              <h3 style="font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;font-weight:700;color:white;line-height:1.3;">Graphic Design &amp; Digital Art</h3>
-              <span class="editorial-tile-link">View Gallery →</span>
+          <!-- 01 Graphic Design -->
+          <div class="reveal">
+            <a href="graphicdesign.html" class="art-interest-img-wrap">
+              <img src="images/dijital_art/Lilith - Symetrical Balance Poster.jpg" alt="Graphic Design &amp; Digital Art" style="object-position:center top;">
+              <span class="art-interest-num">01</span>
+              <span class="art-interest-cat">Digital</span>
+            </a>
+            <div class="art-interest-body">
+              <div class="art-interest-title-row">
+                <h3 class="art-interest-title">Graphic Design &amp;<br>Digital Art</h3>
+                <a href="graphicdesign.html" class="art-interest-link">View Gallery &rarr;</a>
+              </div>
+              <p class="art-interest-desc">Blending technology with visual storytelling. Compositions that communicate ideas with clarity and intent.</p>
             </div>
-          </a>
+          </div>
 
-          <!-- Sculpting & Ceramics -->
-          <a href="ceramics.html" class="editorial-tile">
-            <img src="images/ceramics/giant_woman_figure_1.jpg" alt="Sculpting & Ceramics">
-            <div class="editorial-tile-overlay"></div>
-            <div class="editorial-tile-content">
-              <p style="color:#FFA618;font-size:0.66rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.4rem;">Clay · Sculpture · Pottery</p>
-              <h3 style="font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;font-weight:700;color:white;line-height:1.3;">Sculpting &amp; Ceramics</h3>
-              <span class="editorial-tile-link">View Gallery →</span>
+          <!-- 02 Ceramics -->
+          <div class="reveal">
+            <a href="ceramics.html" class="art-interest-img-wrap">
+              <img src="images/ceramics/head_figure_0.jpg" alt="Sculpting &amp; Ceramics" style="object-position:center 40%;">
+              <span class="art-interest-num">02</span>
+              <span class="art-interest-cat">Tactile</span>
+            </a>
+            <div class="art-interest-body">
+              <div class="art-interest-title-row">
+                <h3 class="art-interest-title">Sculpting &amp;<br>Ceramics</h3>
+                <a href="ceramics.html" class="art-interest-link">View Gallery &rarr;</a>
+              </div>
+              <p class="art-interest-desc">A tactile conversation with material. Shaping forms and textures that hold presence, weight, and quiet stillness.</p>
             </div>
-          </a>
+          </div>
 
-          <!-- Painting & Charcoal -->
-          <a href="painting.html" class="editorial-tile">
-            <img src="images/paintings/girl&moon.jpg" alt="Painting & Charcoal">
-            <div class="editorial-tile-overlay"></div>
-            <div class="editorial-tile-content">
-              <p style="color:#FFA618;font-size:0.66rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.4rem;">Oil · Acrylic · Charcoal</p>
-              <h3 style="font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;font-weight:700;color:white;line-height:1.3;">Painting &amp; Charcoal</h3>
-              <span class="editorial-tile-link">View Gallery →</span>
+          <!-- 03 Painting -->
+          <div class="reveal">
+            <a href="painting.html" class="art-interest-img-wrap">
+              <img src="images/paintings/girl&moon.jpg" alt="Painting &amp; Charcoal" style="object-position:center center;">
+              <span class="art-interest-num">03</span>
+              <span class="art-interest-cat">Studies</span>
+            </a>
+            <div class="art-interest-body">
+              <div class="art-interest-title-row">
+                <h3 class="art-interest-title">Painting &amp;<br>Charcoal</h3>
+                <a href="painting.html" class="art-interest-link">View Gallery &rarr;</a>
+              </div>
+              <p class="art-interest-desc">Colour as feeling, charcoal as contrast. Studies in light, shadow, and the soft edges between them.</p>
             </div>
-          </a>
+          </div>
 
         </div>
       </div>
