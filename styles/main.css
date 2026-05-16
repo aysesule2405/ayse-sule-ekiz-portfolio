@@ -1,5 +1,5 @@
 /* Playfair Display (headings) + Inter (body) */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100..900&display=swap');
 
 /* Base for BOTH themes */
 :root {
@@ -121,10 +121,10 @@ header img[alt="Ayse Sule Ekiz Logo"] {
 }
 
 header img[alt="Ayse Sule Ekiz Logo"] + span {
-  font-family: var(--font-display);
-  font-weight: 400 !important;
+  font-family: var(--font-body);
+  font-weight: 700 !important;
   color: var(--color-accent) !important;
-  letter-spacing: -0.02em !important;
+  letter-spacing: -0.03em !important;
 }
 
 html[data-theme="dark"] header img[alt="Ayse Sule Ekiz Logo"] + span {
