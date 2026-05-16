@@ -150,9 +150,109 @@
     html[data-theme="dark"] .project-btn-github:hover {
       background: #374151;
     }
+
+    /* ══════════════════════════════════════════════
+       PER-PROJECT COLOR PALETTES
+    ══════════════════════════════════════════════ */
+
+    /* Whisperwind Grove — sage · brown · dusty rose · cream */
+    .card-whisperwind { background: linear-gradient(135deg, #f5f0e5 0%, #eaf2e2 100%) !important; border-color: rgba(138,170,114,0.28) !important; }
+    .card-whisperwind::before { background: linear-gradient(90deg, #8aaa72, #c47a7a) !important; opacity: 1 !important; }
+    .card-whisperwind:hover { box-shadow: 0 18px 40px rgba(138,170,114,0.32) !important; }
+    .card-whisperwind .meta h3 { color: #3d5c2e !important; }
+    .card-whisperwind .text-\[\#850F01\] { color: #7a5040 !important; }
+    .card-whisperwind .project-btn-github { background: #e4f0da !important; color: #3d5c2e !important; }
+    .card-whisperwind .project-btn-github:hover { background: #cce4be !important; }
+
+    /* Obi — amber · honey gold · deep navy */
+    .card-obi { background: linear-gradient(135deg, #fffaf0 0%, #fff5dc 100%) !important; border-color: rgba(240,160,48,0.22) !important; }
+    .card-obi::before { background: linear-gradient(90deg, #e8952a, #ffd080) !important; opacity: 1 !important; }
+    .card-obi:hover { box-shadow: 0 18px 40px rgba(232,149,42,0.3) !important; }
+    .card-obi .meta h3 { color: #1a2440 !important; }
+    .card-obi .text-\[\#850F01\] { color: #b07020 !important; }
+    .card-obi .project-btn-github { background: #fff0d0 !important; color: #8a5010 !important; }
+    .card-obi .project-btn-github:hover { background: #ffe4b0 !important; }
+    .card-obi .project-btn-live { background: #e8952a !important; color: white !important; }
+    .card-obi .project-btn-live:hover { background: #d08020 !important; }
+
+    /* Reverie — deep cobalt · periwinkle · lavender */
+    .card-reverie { background: linear-gradient(135deg, #f0f2ff 0%, #e6e9ff 100%) !important; border-color: rgba(32,36,160,0.2) !important; }
+    .card-reverie::before { background: linear-gradient(90deg, #2024a0, #9aa8d8) !important; opacity: 1 !important; }
+    .card-reverie:hover { box-shadow: 0 18px 40px rgba(32,36,160,0.22) !important; }
+    .card-reverie .meta h3 { color: #1a1f9c !important; }
+    .card-reverie .text-\[\#850F01\] { color: #4050b8 !important; }
+    .card-reverie .project-btn-github { background: #e0e4ff !important; color: #2024a0 !important; }
+    .card-reverie .project-btn-github:hover { background: #c8d0ff !important; }
+
+    /* OpenStaxAlign — deep purple · forest green · terracotta · golden */
+    .card-openstax { background: linear-gradient(135deg, #f4f0ff 0%, #eef5e8 100%) !important; border-color: rgba(58,32,128,0.2) !important; }
+    .card-openstax::before { background: linear-gradient(90deg, #3a2080, #4a8c3c) !important; opacity: 1 !important; }
+    .card-openstax:hover { box-shadow: 0 18px 40px rgba(58,32,128,0.22) !important; }
+    .card-openstax .meta h3 { color: #2e1a6e !important; }
+    .card-openstax .text-\[\#850F01\] { color: #c85a30 !important; }
+    .card-openstax .project-btn-github { background: #ece8ff !important; color: #2e1a6e !important; }
+    .card-openstax .project-btn-github:hover { background: #d8d0ff !important; }
+    .card-openstax .project-btn-live { background: #3a2080 !important; color: #f0c060 !important; }
+    .card-openstax .project-btn-live:hover { background: #4a30a0 !important; }
+
+    /* NAU Stallions — royal blue · deep navy · silver */
+    .card-nau { background: linear-gradient(135deg, #f0f2ff 0%, #e4e8ff 100%) !important; border-color: rgba(42,58,176,0.22) !important; }
+    .card-nau::before { background: linear-gradient(90deg, #1a2080, #9098b0) !important; opacity: 1 !important; }
+    .card-nau:hover { box-shadow: 0 18px 40px rgba(42,58,176,0.25) !important; }
+    .card-nau .meta h3 { color: #1a2080 !important; }
+    .card-nau .text-\[\#850F01\] { color: #2a3ab0 !important; }
+    .card-nau .project-btn-live { background: #2a3ab0 !important; color: white !important; }
+    .card-nau .project-btn-live:hover { background: #1a2898 !important; }
+
+    /* ── Dark mode: semi-transparent tints + full text/button theming ── */
+
+    /* Whisperwind Grove dark */
+    html[data-theme="dark"] .card-whisperwind { background: linear-gradient(135deg, rgba(138,170,114,0.14) 0%, rgba(196,122,122,0.07) 100%) !important; border-color: rgba(138,170,114,0.22) !important; }
+    html[data-theme="dark"] .card-whisperwind:hover { box-shadow: 0 18px 40px rgba(138,170,114,0.2) !important; }
+    html[data-theme="dark"] .card-whisperwind .meta h3 { color: #b8d4a0 !important; }
+    html[data-theme="dark"] .card-whisperwind .text-\[\#850F01\] { color: #c8a090 !important; }
+    html[data-theme="dark"] .card-whisperwind .project-btn-github { background: rgba(138,170,114,0.2) !important; color: #b8d4a0 !important; }
+    html[data-theme="dark"] .card-whisperwind .project-btn-github:hover { background: rgba(138,170,114,0.32) !important; }
+
+    /* Obi dark */
+    html[data-theme="dark"] .card-obi { background: linear-gradient(135deg, rgba(240,160,48,0.14) 0%, rgba(255,208,128,0.06) 100%) !important; border-color: rgba(240,160,48,0.22) !important; }
+    html[data-theme="dark"] .card-obi:hover { box-shadow: 0 18px 40px rgba(232,149,42,0.2) !important; }
+    html[data-theme="dark"] .card-obi .meta h3 { color: #ffd080 !important; }
+    html[data-theme="dark"] .card-obi .text-\[\#850F01\] { color: #ffa040 !important; }
+    html[data-theme="dark"] .card-obi .project-btn-github { background: rgba(240,160,48,0.2) !important; color: #ffd080 !important; }
+    html[data-theme="dark"] .card-obi .project-btn-github:hover { background: rgba(240,160,48,0.32) !important; }
+    html[data-theme="dark"] .card-obi .project-btn-live { background: #d08020 !important; color: white !important; }
+    html[data-theme="dark"] .card-obi .project-btn-live:hover { background: #b87010 !important; }
+
+    /* Reverie dark */
+    html[data-theme="dark"] .card-reverie { background: linear-gradient(135deg, rgba(32,36,160,0.18) 0%, rgba(154,168,216,0.08) 100%) !important; border-color: rgba(100,120,220,0.22) !important; }
+    html[data-theme="dark"] .card-reverie:hover { box-shadow: 0 18px 40px rgba(32,36,160,0.22) !important; }
+    html[data-theme="dark"] .card-reverie .meta h3 { color: #9aa8e8 !important; }
+    html[data-theme="dark"] .card-reverie .text-\[\#850F01\] { color: #b0bcf8 !important; }
+    html[data-theme="dark"] .card-reverie .project-btn-github { background: rgba(32,36,160,0.25) !important; color: #9aa8e8 !important; }
+    html[data-theme="dark"] .card-reverie .project-btn-github:hover { background: rgba(32,36,160,0.4) !important; }
+
+    /* OpenStaxAlign dark */
+    html[data-theme="dark"] .card-openstax { background: linear-gradient(135deg, rgba(58,32,128,0.18) 0%, rgba(74,140,60,0.09) 100%) !important; border-color: rgba(100,80,200,0.22) !important; }
+    html[data-theme="dark"] .card-openstax:hover { box-shadow: 0 18px 40px rgba(58,32,128,0.25) !important; }
+    html[data-theme="dark"] .card-openstax .meta h3 { color: #c0a8ff !important; }
+    html[data-theme="dark"] .card-openstax .text-\[\#850F01\] { color: #f0a880 !important; }
+    html[data-theme="dark"] .card-openstax .project-btn-github { background: rgba(58,32,128,0.25) !important; color: #c0a8ff !important; }
+    html[data-theme="dark"] .card-openstax .project-btn-github:hover { background: rgba(58,32,128,0.4) !important; }
+    html[data-theme="dark"] .card-openstax .project-btn-live { background: #5a3ca0 !important; color: #f0c060 !important; }
+    html[data-theme="dark"] .card-openstax .project-btn-live:hover { background: #6a4cb8 !important; }
+
+    /* NAU Stallions dark */
+    html[data-theme="dark"] .card-nau { background: linear-gradient(135deg, rgba(42,58,176,0.18) 0%, rgba(144,152,176,0.08) 100%) !important; border-color: rgba(100,120,220,0.22) !important; }
+    html[data-theme="dark"] .card-nau:hover { box-shadow: 0 18px 40px rgba(42,58,176,0.25) !important; }
+    html[data-theme="dark"] .card-nau .meta h3 { color: #90a8e0 !important; }
+    html[data-theme="dark"] .card-nau .text-\[\#850F01\] { color: #a0b4d8 !important; }
+    html[data-theme="dark"] .card-nau .project-btn-live { background: #3c54c8 !important; color: white !important; }
+    html[data-theme="dark"] .card-nau .project-btn-live:hover { background: #4a64d8 !important; }
   </style>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
   <script src="js/theme-toggle.js"></script>
   <script src="js/nav-enhancements.js"></script>
   <script src="js/scroll-animations.js" defer></script>
@@ -230,7 +330,7 @@
       <div class="projects-grid">
 
         <!-- Whisperwind Grove -->
-        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <article class="masonry-item card-whisperwind hover:shadow-2xl transition duration-300 rounded-lg overflow-hidden">
           <div class="project-visual" data-bg-images='["projects/Whisperwind Grove/whisperwind-grove.copy.jpg","projects/Whisperwind Grove/spirit-drift copy.png","projects/Whisperwind Grove/rise-of-the-half-moon copy.png","projects/Whisperwind Grove/delivery-on-the-wind copy.png","projects/Whisperwind Grove/spirit-sapling copy.png"]'>
             <img src="projects/Whisperwind%20Grove/whisperwind-grove.copy.jpg" alt="Whisperwind Grove background" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(5,20,15,0.45);"></div>
@@ -262,10 +362,10 @@
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
                 <a href="https://github.com/aysesule2405/WW" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
-                  <i data-lucide="github" style="width:14px;height:14px;"></i> GitHub
+                  <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
                 </a>
                 <a href="https://fiesta-busy-93311900.figma.site" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
-                  <i data-lucide="layout" style="width:14px;height:14px;"></i> Figma Presentation
+                  <iconify-icon icon="simple-icons:figma" width="14" height="14"></iconify-icon> Figma Presentation
                 </a>
               </div>
               <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
@@ -274,7 +374,7 @@
         </article>
 
         <!-- Obi -->
-        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <article class="masonry-item card-obi hover:shadow-2xl transition duration-300 rounded-lg overflow-hidden">
           <div class="project-visual" data-bg-images='["projects/Obi/homepage.png","projects/Obi/chat_search.png"]'>
             <img src="projects/Obi/homepage.png" alt="Obi background" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(15,12,40,0.45);"></div>
@@ -304,13 +404,13 @@
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
                 <a href="https://github.com/LAHacks2026/Obi_Laptop" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
-                  <i data-lucide="github" style="width:14px;height:14px;"></i> GitHub
+                  <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
                 </a>
                 <a href="https://devpost.com/software/obi-mise-en-place-for-your-data" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-live">
-                  <i data-lucide="award" style="width:14px;height:14px;"></i> Devpost
+                  <iconify-icon icon="simple-icons:devpost" width="14" height="14"></iconify-icon> Devpost
                 </a>
                 <a href="https://sadly-camp-78163766.figma.site" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
-                  <i data-lucide="layout" style="width:14px;height:14px;"></i> Figma Presentation
+                  <iconify-icon icon="simple-icons:figma" width="14" height="14"></iconify-icon> Figma Presentation
                 </a>
               </div>
               <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
@@ -325,7 +425,7 @@
       <div class="projects-grid">
 
         <!-- Reverie -->
-        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <article class="masonry-item card-reverie hover:shadow-2xl transition duration-300 rounded-lg overflow-hidden">
           <div class="project-visual" data-bg-images='["projects/Reverie/Screenshot 1 - Home Screen 1 copy.png","projects/Reverie/Screenshot 2 - Home Screen 2 copy.png","projects/Reverie/Screenshot 5 - My Spaces copy.png","projects/Reverie/Screenshot 6 - Community copy.png","projects/Reverie/Screenshot 8 - Timeline copy.png"]'>
             <img src="projects/Reverie/Screenshot%201%20-%20Home%20Screen%201%20copy.png" alt="Reverie background" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(91,33,182,0.25);"></div>
@@ -354,10 +454,10 @@
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
                 <a href="https://github.com/aysesule2405/reverie" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
-                  <i data-lucide="github" style="width:14px;height:14px;"></i> GitHub
+                  <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
                 </a>
                 <a href="https://record-poppy-86285822.figma.site" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
-                  <i data-lucide="layout" style="width:14px;height:14px;"></i> Figma Presentation
+                  <iconify-icon icon="simple-icons:figma" width="14" height="14"></iconify-icon> Figma Presentation
                 </a>
               </div>
               <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
@@ -366,7 +466,7 @@
         </article>
 
         <!-- OpenStaxAlign -->
-        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <article class="masonry-item card-openstax hover:shadow-2xl transition duration-300 rounded-lg overflow-hidden">
           <div class="project-visual">
             <img src="projects/OpenStaxAlign/bg.png" alt="OpenStaxAlign background" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(8,70,90,0.35);"></div>
@@ -396,10 +496,10 @@
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
                 <a href="https://github.com/iremdmrc/datathon-openstax" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
-                  <i data-lucide="github" style="width:14px;height:14px;"></i> GitHub
+                  <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
                 </a>
                 <a href="https://devpost.com/software/openstaxalign" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-live">
-                  <i data-lucide="award" style="width:14px;height:14px;"></i> Devpost
+                  <iconify-icon icon="simple-icons:devpost" width="14" height="14"></iconify-icon> Devpost
                 </a>
               </div>
               <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
@@ -408,7 +508,7 @@
         </article>
 
         <!-- NAU Portal -->
-        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+        <article class="masonry-item card-nau hover:shadow-2xl transition duration-300 rounded-lg overflow-hidden">
           <div class="project-visual" data-bg-images='["projects/NAU Portal/Dashboard.png","projects/NAU Portal/Statistics.png"]'>
             <img src="projects/NAU%20Portal/Dashboard.png" alt="NAU Portal background" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(20,40,100,0.4);"></div>
@@ -438,7 +538,7 @@
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
                 <a href="https://stallions.na.edu/" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-live">
-                  <i data-lucide="external-link" style="width:14px;height:14px;"></i> Visit Site
+                  <iconify-icon icon="lucide:external-link" width="14" height="14"></iconify-icon> Visit Site
                 </a>
               </div>
               <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>

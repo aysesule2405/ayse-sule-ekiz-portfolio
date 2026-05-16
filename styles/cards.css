@@ -350,7 +350,8 @@ html[data-theme="dark"] .masonry-item {
 }
 
 html[data-theme="dark"] .masonry-item::before {
-    opacity: 0.75;
+    background: linear-gradient(90deg, #FFA618 0%, #f3eadb 100%);
+    opacity: 1;
 }
 
 html[data-theme="dark"] .masonry-item .meta h3 {

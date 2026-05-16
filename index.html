@@ -149,13 +149,13 @@
         .hero-side-cta-projects {
             right: 24%;
             transform: translateX(50%);
-            background: #850f01;
-            color: white;
-            box-shadow: 0 4px 22px rgba(133,15,1,0.55);
+            background: var(--color-accent);
+            color: var(--color-accent-foreground);
+            box-shadow: 0 4px 22px rgba(0,0,0,0.35);
         }
         .hero-side-cta-projects:hover {
             transform: translateX(50%) translateY(-2px);
-            background: #b23600;
+            background: var(--color-accent-hover);
         }
 
         @media (max-width: 767px) {
@@ -291,11 +291,11 @@
             color: #111827;
         }
         .project-btn-live {
-            background: #850F01;
-            color: #fff;
+            background: var(--color-accent);
+            color: var(--color-accent-foreground);
         }
         .project-btn-live:hover {
-            background: #B23600;
+            background: var(--color-accent-hover);
         }
 
         @media (max-width: 640px) {
@@ -371,11 +371,51 @@
         html[data-theme="dark"] .section-heading     { color: var(--color-text); }
         html[data-theme="dark"] .section-divider     { border-color: var(--color-border); }
         html[data-theme="dark"] .section-divider-cream { border-color: var(--color-border); }
+
+        /* ── Per-project palettes (home featured cards) ── */
+        .card-openstax { background: linear-gradient(135deg, #f4f0ff 0%, #eef5e8 100%) !important; border-color: rgba(58,32,128,0.2) !important; }
+        .card-openstax::before { background: linear-gradient(90deg, #3a2080, #4a8c3c) !important; }
+        .card-openstax:hover { box-shadow: 0 10px 15px -3px rgba(58,32,128,0.22), 0 4px 6px -2px rgba(58,32,128,0.12) !important; }
+        .card-openstax .text-\[\#850F01\] { color: #c85a30 !important; }
+        .card-openstax .project-btn-github { background: #ece8ff !important; color: #2e1a6e !important; }
+        .card-openstax .project-btn-github:hover { background: #d8d0ff !important; }
+        .card-openstax .project-btn-live { background: #3a2080 !important; color: #f0c060 !important; }
+        .card-openstax .project-btn-live:hover { background: #4a30a0 !important; }
+
+        .card-obi { background: linear-gradient(135deg, #fffaf0 0%, #fff5dc 100%) !important; border-color: rgba(240,160,48,0.22) !important; }
+        .card-obi::before { background: linear-gradient(90deg, #e8952a, #ffd080) !important; }
+        .card-obi:hover { box-shadow: 0 10px 15px -3px rgba(232,149,42,0.28), 0 4px 6px -2px rgba(232,149,42,0.14) !important; }
+        .card-obi .text-\[\#850F01\] { color: #b07020 !important; }
+        .card-obi .project-btn-github { background: #fff0d0 !important; color: #8a5010 !important; }
+        .card-obi .project-btn-github:hover { background: #ffe4b0 !important; }
+        .card-obi .project-btn-live { background: #e8952a !important; color: white !important; }
+        .card-obi .project-btn-live:hover { background: #d08020 !important; }
+
+        /* OpenStaxAlign dark */
+        html[data-theme="dark"] .card-openstax { background: linear-gradient(135deg, rgba(58,32,128,0.18) 0%, rgba(74,140,60,0.09) 100%) !important; border-color: rgba(100,80,200,0.22) !important; }
+        html[data-theme="dark"] .card-openstax:hover { box-shadow: 0 18px 40px rgba(58,32,128,0.25) !important; }
+        html[data-theme="dark"] .card-openstax h3 { color: #c0a8ff !important; }
+        html[data-theme="dark"] .card-openstax .text-\[\#850F01\] { color: #f0a880 !important; }
+        html[data-theme="dark"] .card-openstax .project-btn-github { background: rgba(58,32,128,0.25) !important; color: #c0a8ff !important; }
+        html[data-theme="dark"] .card-openstax .project-btn-github:hover { background: rgba(58,32,128,0.4) !important; }
+        html[data-theme="dark"] .card-openstax .project-btn-live { background: #5a3ca0 !important; color: #f0c060 !important; }
+        html[data-theme="dark"] .card-openstax .project-btn-live:hover { background: #6a4cb8 !important; }
+
+        /* Obi dark */
+        html[data-theme="dark"] .card-obi { background: linear-gradient(135deg, rgba(240,160,48,0.14) 0%, rgba(255,208,128,0.06) 100%) !important; border-color: rgba(240,160,48,0.22) !important; }
+        html[data-theme="dark"] .card-obi:hover { box-shadow: 0 18px 40px rgba(232,149,42,0.2) !important; }
+        html[data-theme="dark"] .card-obi h3 { color: #ffd080 !important; }
+        html[data-theme="dark"] .card-obi .text-\[\#850F01\] { color: #ffa040 !important; }
+        html[data-theme="dark"] .card-obi .project-btn-github { background: rgba(240,160,48,0.2) !important; color: #ffd080 !important; }
+        html[data-theme="dark"] .card-obi .project-btn-github:hover { background: rgba(240,160,48,0.32) !important; }
+        html[data-theme="dark"] .card-obi .project-btn-live { background: #d08020 !important; color: white !important; }
+        html[data-theme="dark"] .card-obi .project-btn-live:hover { background: #b87010 !important; }
     </style>
 
     <link rel="stylesheet" href="styles/nav-dropdown.css">
     <link rel="stylesheet" href="styles/animations.css">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
     <script src="js/theme-toggle.js"></script>
     <script src="js/nav-enhancements.js"></script>
     <script src="js/scroll-animations.js" defer></script>
@@ -486,17 +526,17 @@
           <div style="flex:1;min-width:280px;">
             <p style="color:#FFA618;font-weight:700;font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:0.75rem;">Hi, this is Ayse Sule</p>
             <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;line-height:1.25;margin-bottom:1.25rem;">
-              Get to know me through my <span style="color:#850f01;">art.</span>
+              Get to know me through my <span style="color:var(--color-accent);">art.</span>
             </h2>
             <p class="intro-body" style="font-size:1rem;line-height:1.75;margin-bottom:1.75rem;max-width:520px;">
               I have always been passionate about art and crafting and I wanted to share this side of me, using my skills to showcase my art to the world. While my interest in art is diverse, this website will serve as a platform exclusively for sharing my visual artwork and acting as a portfolio of my creative journey.
             </p>
             <a href="about.html"
                style="display:inline-flex;align-items:center;gap:0.4rem;
-                      padding:0.65rem 1.5rem;background:#850f01;color:white;
+                      padding:0.65rem 1.5rem;background:var(--color-accent);color:var(--color-accent-foreground);
                       border-radius:0.75rem;font-size:0.875rem;font-weight:700;
                       text-decoration:none;transition:background 0.2s;
-                      box-shadow:0 4px 16px rgba(133,15,1,0.35);">
+                      box-shadow:0 4px 16px rgba(0,0,0,0.25);">
               Explore My Journey <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
             </a>
           </div>
@@ -522,13 +562,13 @@
                     margin-bottom:2rem;padding-bottom:0.875rem;"
              class="section-divider">
           <h2 class="section-heading">Featured Projects</h2>
-          <a href="projects.html" style="font-size:0.82rem;font-weight:600;color:#850f01;text-decoration:none;white-space:nowrap;">View all →</a>
+          <a href="projects.html" style="font-size:0.82rem;font-weight:600;color:var(--color-accent);text-decoration:none;white-space:nowrap;">View all →</a>
         </div>
 
         <div class="projects-teaser-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;">
 
           <!-- OpenStaxAlign -->
-          <article class="home-project-card">
+          <article class="home-project-card card-openstax">
             <div class="project-visual">
               <img src="projects/OpenStaxAlign/bg.png" alt="OpenStaxAlign background" class="project-visual-img">
               <div class="project-visual-overlay" style="background:rgba(8,70,90,0.45);"></div>
@@ -554,10 +594,10 @@
               <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
                 <div class="flex gap-2">
                   <a href="https://github.com/iremdmrc/datathon-openstax" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
-                    <i data-lucide="github" style="width:14px;height:14px;"></i> GitHub
+                    <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
                   </a>
                   <a href="https://devpost.com/software/openstaxalign" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-live">
-                    <i data-lucide="award" style="width:14px;height:14px;"></i> Devpost
+                    <iconify-icon icon="simple-icons:devpost" width="14" height="14"></iconify-icon> Devpost
                   </a>
                 </div>
                 <a href="projects.html" class="text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">Details</a>
@@ -566,7 +606,7 @@
           </article>
 
           <!-- Obi -->
-          <article class="home-project-card">
+          <article class="home-project-card card-obi">
             <div class="project-visual">
               <img src="projects/Obi/homepage.png" alt="Obi background" class="project-visual-img">
               <div class="project-visual-overlay" style="background:rgba(15,12,40,0.45);"></div>
@@ -593,10 +633,10 @@
               <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
                 <div class="flex gap-2">
                   <a href="https://github.com/LAHacks2026/Obi_Laptop" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
-                    <i data-lucide="github" style="width:14px;height:14px;"></i> GitHub
+                    <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
                   </a>
                   <a href="https://devpost.com/software/obi-mise-en-place-for-your-data" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-live">
-                    <i data-lucide="award" style="width:14px;height:14px;"></i> Devpost
+                    <iconify-icon icon="simple-icons:devpost" width="14" height="14"></iconify-icon> Devpost
                   </a>
                 </div>
                 <a href="projects.html" class="text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">Details</a>

@@ -35,12 +35,14 @@ html[data-theme="dark"] {
   --color-text-soft: #e2e8f0;
   --color-text-muted: #94a3b8;
   --color-border: rgba(255, 255, 255, 0.10);
-  --color-border-strong: rgba(243, 234, 219, 0.32);
-  --color-accent: #f3eadb;
-  --color-accent-hover: #ffffff;
-  --color-accent-warm: #ffad1f;
-  --color-accent-soft: rgba(243, 234, 219, 0.14);
-  --color-accent-foreground: #0b1322;
+  --color-border-strong: rgba(255, 166, 24, 0.32);
+  --color-accent: #FFA618;
+  --color-accent-hover: #ffc84d;
+  --color-accent-warm: #FFA618;
+  --color-accent-soft: rgba(255, 166, 24, 0.14);
+  --color-accent-foreground: #1f1300;
+  --gradient-accent: linear-gradient(135deg, #FFA618 0%, #f3eadb 100%);
+  --gradient-accent-hover: linear-gradient(135deg, #ffc84d 0%, #ffffff 100%);
   --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.42);
   --shadow-card: 0 1px 0 rgba(255,255,255,.04) inset,
                  0 22px 60px -22px rgba(0, 0, 0, 0.6);
@@ -698,12 +700,12 @@ html[data-theme="dark"] .contact-card .topic-chip input:checked + span {
 }
 
 html[data-theme="dark"] .contact-card #submit-btn {
-  background-color: var(--color-accent-warm) !important;
-  color: #1f1300 !important;
+  background-color: var(--color-accent) !important;
+  color: var(--color-accent-foreground) !important;
 }
 
 html[data-theme="dark"] .contact-card #submit-btn:hover {
-  background-color: #ffd37a !important;
+  background-color: var(--color-accent-hover) !important;
 }
 
 /* ===========================
@@ -913,12 +915,12 @@ html[data-theme="dark"] .skill-group-label {
 }
 
 html[data-theme="dark"] .download-btn {
-  background: var(--color-accent-warm) !important;
-  color: #1f1300 !important;
+  background: var(--color-accent) !important;
+  color: var(--color-accent-foreground) !important;
 }
 
 html[data-theme="dark"] .download-btn:hover {
-  background: #ffd37a !important;
+  background: var(--color-accent-hover) !important;
 }
 
 .site-footer {
@@ -940,4 +942,20 @@ html[data-theme="dark"] .site-footer-link {
 
 html[data-theme="dark"] .site-footer-link:hover {
   color: var(--color-accent-warm) !important;
+}
+
+/* ===========================
+   DARK MODE — AMBER + PEARL OMBRÉ ON CARDS
+   =========================== */
+
+/* Top accent strips (horizontal) */
+html[data-theme="dark"] .home-project-card::before,
+html[data-theme="dark"] .resume-header-card::before {
+  background: var(--gradient-accent) !important;
+}
+
+/* Vertical accent strips & lines */
+html[data-theme="dark"] .timeline::before,
+html[data-theme="dark"] .leadership-card::before {
+  background: linear-gradient(180deg, #FFA618 0%, #f3eadb 100%) !important;
 }
