@@ -41,6 +41,34 @@
             overflow: hidden;
             background: #120f0d;
         }
+        .hero-split::before,
+        .hero-split::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            z-index: 8;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .hero-split::before {
+            left: 0;
+            background: radial-gradient(ellipse at 28% 52%, rgba(255,166,24,0.18), transparent 58%);
+        }
+        .hero-split::after {
+            right: 0;
+            background: radial-gradient(ellipse at 72% 52%, rgba(6,182,212,0.16), transparent 58%);
+        }
+        .hero-split:has(.hero-side-cta-art:hover)::before,
+        .hero-split:has(.hero-hover-left:hover)::before {
+            opacity: 1;
+        }
+        .hero-split:has(.hero-side-cta-projects:hover)::after,
+        .hero-split:has(.hero-hover-right:hover)::after {
+            opacity: 1;
+        }
         .hero-background {
             position: absolute;
             inset: 0;
@@ -49,6 +77,23 @@
             object-fit: contain;
             object-position: center center;
             transform: scaleX(1.03) scaleY(1.09);
+            transition: transform 0.6s ease, filter 0.6s ease;
+        }
+        .hero-split:hover .hero-background {
+            filter: saturate(1.06) contrast(1.04);
+        }
+        .hero-hover-field {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: 8;
+            width: 50%;
+        }
+        .hero-hover-left {
+            left: 0;
+        }
+        .hero-hover-right {
+            right: 0;
         }
         .hero-panel {
             display: none;
@@ -67,8 +112,8 @@
 
         @media (max-width: 767px) {
             .hero-split {
-                min-height: 620px;
-                height: 88vh;
+                min-height: 580px;
+                height: 82svh;
             }
         }
 
@@ -120,6 +165,7 @@
             bottom: clamp(5.75rem, 12vh, 8rem);
             z-index: 12;
             display: inline-flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 0.4rem;
@@ -130,6 +176,22 @@
             font-weight: 800;
             text-decoration: none;
             transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .hero-side-cta span {
+            display: block;
+            font-size: 0.58rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            line-height: 1;
+            margin-bottom: 0.28rem;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.74);
+        }
+        .hero-side-cta strong {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            line-height: 1;
         }
         .hero-side-cta:hover {
             transform: translateY(-2px);
@@ -162,9 +224,32 @@
         }
 
         @media (max-width: 767px) {
+            .scroll-indicator {
+                display: none;
+            }
+            .hero-center-content {
+                justify-content: center !important;
+                padding: 1.25rem 1rem 6rem !important;
+            }
+            .hero-kicker {
+                font-size: 0.62rem !important;
+                letter-spacing: 0.16em !important;
+                margin-bottom: 0.85rem !important;
+            }
+            .hero-heading {
+                font-size: clamp(2rem, 12vw, 3.15rem) !important;
+                line-height: 1.08 !important;
+                margin-bottom: 0.95rem !important;
+            }
+            .hero-subtitle {
+                font-size: 0.88rem !important;
+                line-height: 1.55 !important;
+                max-width: 18rem !important;
+                margin-bottom: 0 !important;
+            }
             .hero-skill {
                 top: auto;
-                bottom: 7.5rem;
+                bottom: 6.75rem;
                 writing-mode: horizontal-tb;
                 transform: none;
                 font-size: 0.68rem;
@@ -178,10 +263,19 @@
                 text-align: right;
             }
             .hero-side-cta {
-                bottom: 4.25rem;
-                min-width: 132px;
-                padding: 0.65rem 0.9rem;
+                bottom: 1.35rem;
+                min-width: 0;
+                width: calc(50% - 1.35rem);
+                padding: 0.6rem 0.65rem;
                 font-size: 0.76rem;
+            }
+            .hero-side-cta span {
+                font-size: 0.5rem;
+                letter-spacing: 0.1em;
+            }
+            .hero-side-cta strong {
+                font-size: 0.72rem;
+                gap: 0.25rem;
             }
             .hero-side-cta-art {
                 left: 1rem;
@@ -201,9 +295,64 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .hero-split {
+                min-height: 540px;
+                height: 80svh;
+            }
+            .hero-center-content {
+                padding-bottom: 5.5rem !important;
+            }
+            .hero-heading {
+                font-size: clamp(1.85rem, 11vw, 2.65rem) !important;
+            }
+            .hero-skill {
+                display: none;
+            }
+            .hero-side-cta {
+                bottom: 1rem;
+                width: calc(50% - 1rem);
+            }
+        }
+
         /* ── Section backgrounds ────────────────────── */
         .home-section-white { background: var(--color-surface); }
         .home-section-cream { background: var(--color-bg); }
+
+        /* ── Current focus strip ───────────────────── */
+        .currently-strip {
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1.1rem 0;
+        }
+        .currently-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            border-radius: 0.75rem;
+            background: var(--color-border);
+            box-shadow: var(--shadow-soft);
+        }
+        .currently-item {
+            background: var(--color-surface);
+            padding: 1.2rem 1.4rem;
+        }
+        .currently-kicker {
+            display: block;
+            color: var(--color-accent);
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            margin-bottom: 0.38rem;
+            text-transform: uppercase;
+        }
+        .currently-item p {
+            color: var(--color-text-soft);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
 
         /* ── Featured project cards ─────────────────── */
         .home-project-card {
@@ -225,6 +374,15 @@
         .home-project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(133,15,1,0.2), 0 4px 6px -2px rgba(133,15,1,0.1);
+        }
+        .project-outcome {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--color-accent);
+            font-size: 0.78rem;
+            font-weight: 800;
+            margin-top: 0.7rem;
         }
         .project-visual {
             height: 240px;
@@ -305,6 +463,12 @@
 
         @media (max-width: 640px) {
             .projects-teaser-grid { grid-template-columns: 1fr !important; }
+            .currently-grid { grid-template-columns: 1fr; }
+            .project-visual { height: 200px; }
+        }
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .projects-teaser-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            .currently-grid { grid-template-columns: 1fr; }
         }
 
         /* ── Art interests cards (editorial magazine style) ── */
@@ -506,6 +670,56 @@
         .section-heading { font-size: 1.875rem; font-weight: 700; color: #111827; }
         .section-divider { border-bottom: 1px solid #e5e7eb; }
 
+        /* ── Final home CTA ───────────────────────── */
+        .home-final-cta {
+            background:
+                radial-gradient(circle at 18% 22%, rgba(255,173,31,0.18), transparent 32%),
+                radial-gradient(circle at 82% 20%, rgba(148,27,12,0.14), transparent 34%),
+                var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: 4.5rem 0;
+            text-align: center;
+        }
+        .home-final-cta p {
+            color: var(--color-text-soft);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 1rem auto 0;
+            max-width: 560px;
+        }
+        .home-final-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+        .home-final-btn {
+            align-items: center;
+            border-radius: 0.75rem;
+            display: inline-flex;
+            font-size: 0.875rem;
+            font-weight: 800;
+            gap: 0.45rem;
+            justify-content: center;
+            min-width: 150px;
+            padding: 0.8rem 1.35rem;
+            text-decoration: none;
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .home-final-btn:hover {
+            transform: translateY(-2px);
+        }
+        .home-final-btn-primary {
+            background: var(--color-accent);
+            color: var(--color-accent-foreground);
+        }
+        .home-final-btn-secondary {
+            background: transparent;
+            border: 1px solid var(--color-border-strong);
+            color: var(--color-text);
+        }
+
         /* ── Dark mode ──────────────────────────────── */
         html[data-theme="dark"] .home-section-white,
         html[data-theme="dark"] .home-section-cream  { background: var(--color-bg); }
@@ -535,6 +749,13 @@
         .card-obi .project-btn-live { background: #e8952a !important; color: white !important; }
         .card-obi .project-btn-live:hover { background: #d08020 !important; }
 
+        .card-whisperwind { background: linear-gradient(135deg, #f5f0e5 0%, #eaf2e2 100%) !important; border-color: rgba(138,170,114,0.28) !important; }
+        .card-whisperwind::before { background: linear-gradient(90deg, #8aaa72, #c47a7a) !important; }
+        .card-whisperwind:hover { box-shadow: 0 10px 15px -3px rgba(138,170,114,0.28), 0 4px 6px -2px rgba(138,170,114,0.14) !important; }
+        .card-whisperwind .text-\[\#850F01\] { color: #7a5040 !important; }
+        .card-whisperwind .project-btn-github { background: #e4f0da !important; color: #3d5c2e !important; }
+        .card-whisperwind .project-btn-github:hover { background: #cce4be !important; }
+
         /* OpenStaxAlign dark */
         html[data-theme="dark"] .card-openstax { background: linear-gradient(135deg, rgba(58,32,128,0.18) 0%, rgba(74,140,60,0.09) 100%) !important; border-color: rgba(100,80,200,0.22) !important; }
         html[data-theme="dark"] .card-openstax:hover { box-shadow: 0 18px 40px rgba(58,32,128,0.25) !important; }
@@ -554,6 +775,14 @@
         html[data-theme="dark"] .card-obi .project-btn-github:hover { background: rgba(240,160,48,0.32) !important; }
         html[data-theme="dark"] .card-obi .project-btn-live { background: #d08020 !important; color: white !important; }
         html[data-theme="dark"] .card-obi .project-btn-live:hover { background: #b87010 !important; }
+
+        /* Whisperwind Grove dark */
+        html[data-theme="dark"] .card-whisperwind { background: linear-gradient(135deg, rgba(138,170,114,0.14) 0%, rgba(196,122,122,0.07) 100%) !important; border-color: rgba(138,170,114,0.22) !important; }
+        html[data-theme="dark"] .card-whisperwind:hover { box-shadow: 0 18px 40px rgba(138,170,114,0.2) !important; }
+        html[data-theme="dark"] .card-whisperwind h3 { color: #b8d4a0 !important; }
+        html[data-theme="dark"] .card-whisperwind .text-\[\#850F01\] { color: #c8a090 !important; }
+        html[data-theme="dark"] .card-whisperwind .project-btn-github { background: rgba(138,170,114,0.2) !important; color: #b8d4a0 !important; }
+        html[data-theme="dark"] .card-whisperwind .project-btn-github:hover { background: rgba(138,170,114,0.32) !important; }
     </style>
 
     <link rel="stylesheet" href="styles/nav-dropdown.css">
@@ -628,26 +857,34 @@
     <!-- ── HERO ───────────────────────────────────── -->
     <section class="hero-split">
       <img src="images/home-background.jpg" alt="Ayse Sule Ekiz portfolio background" class="hero-background">
+      <div class="hero-hover-field hero-hover-left" aria-hidden="true"></div>
+      <div class="hero-hover-field hero-hover-right" aria-hidden="true"></div>
 
       <!-- Darker center for text, lighter sides for the image details -->
       <div class="hero-overlay"></div>
 
-      <div class="hero-skill hero-skill-left">———————Visual Art———————</div>
-      <div class="hero-skill hero-skill-right">——Software Engineering——</div>
-      <a href="#interests" class="hero-side-cta hero-side-cta-art">Explore Art</a>
-      <a href="projects.html" class="hero-side-cta hero-side-cta-projects">View Projects</a>
+      <div class="hero-skill hero-skill-left">———      Visual Art      ———</div>
+      <div class="hero-skill hero-skill-right">———      Software Engineering      ———</div>
+      <a href="#interests" class="hero-side-cta hero-side-cta-art">
+        <span>Visual Work</span>
+        <strong>Explore Art <i data-lucide="arrow-left" style="width:15px;height:15px;"></i></strong>
+      </a>
+      <a href="projects.html" class="hero-side-cta hero-side-cta-projects">
+        <span>Software Work</span>
+        <strong>View Projects <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></strong>
+      </a>
 
       <!-- Centered headline -->
-      <div style="position:absolute;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;pointer-events:none;">
-        <p style="color:#FFA618;font-size:0.78rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:1.25rem;">— Ayse Sule Ekiz —</p>
-        <h1 style="font-family:'Playfair Display',Georgia,serif;
+      <div class="hero-center-content" style="position:absolute;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;pointer-events:none;">
+        <p class="hero-kicker" style="color:#FFA618;font-size:0.78rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:1.25rem;">— Ayse Sule Ekiz —</p>
+        <h1 class="hero-heading" style="font-family:'Playfair Display',Georgia,serif;
                    font-size:clamp(2rem,5.5vw,4.25rem);
                    font-weight:900;color:white;line-height:1.2;
                    margin-bottom:1.5rem;
                    text-shadow:0 2px 28px rgba(0,0,0,0.65);">
           I build with <em style="color:#FFA618;">code</em>.<br>I think with <em style="color:#FFA618;">art</em>.
         </h1>
-        <p style="color:rgba(255,255,255,0.82);font-size:1rem;max-width:460px;line-height:1.72;margin-bottom:2.5rem;">
+        <p class="hero-subtitle" style="color:rgba(255,255,255,0.82);font-size:1rem;max-width:460px;line-height:1.72;margin-bottom:2.5rem;">
           I build things that last and create things that linger.
         </p>
       </div>
@@ -658,6 +895,26 @@
           <line x1="11" y1="3" x2="11" y2="22" stroke="rgba(255,255,255,0.42)" stroke-width="2" stroke-linecap="round"/>
           <polyline points="4,16 11,23 18,16" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
+      </div>
+    </section>
+
+    <!-- ── CURRENTLY ─────────────────────────────── -->
+    <section class="currently-strip" aria-label="Current focus">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="currently-grid">
+          <div class="currently-item">
+            <span class="currently-kicker">Studying</span>
+            <p>Computer Science at NAU, with a focus on full-stack systems, data, and usable interfaces.</p>
+          </div>
+          <div class="currently-item">
+            <span class="currently-kicker">Building</span>
+            <p>Project work that turns messy information into tools people can understand and actually use.</p>
+          </div>
+          <div class="currently-item">
+            <span class="currently-kicker">Making</span>
+            <p>Paintings, ceramics, and visual studies that keep my technical work grounded in composition.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -676,7 +933,7 @@
           Get to know me<br>through my <em>art.</em>
         </h2>
         <p style="font-size:1rem;line-height:1.78;margin-bottom:1.75rem;max-width:460px;color:#4b5563;">
-          I have always been passionate about art and visual making, and I wanted to share this side of me with the world. While my interest in art spans many forms, this site serves as a creative portfolio alongside my technical work, a place where both sides of what I make can live together.
+          I move between software and visual work because both ask for structure, attention, and feeling. This site is where those two practices meet: full-stack projects shaped by design thinking, and artwork shaped by the same patience I bring to code.
         </p>
         <a href="about.html"
            style="display:inline-flex;align-items:center;gap:0.4rem;
@@ -698,11 +955,53 @@
           <div>
             <p class="art-section-tag">&sect; 01 &middot; Work</p>
             <h2 class="art-section-title">My <em>Projects</em></h2>
+            <p style="margin-top:0.85rem;max-width:560px;color:var(--color-text-soft);line-height:1.7;">
+              A mix of full-stack tools, data projects, AI prototypes, and design systems shaped by visual thinking.
+            </p>
           </div>
           <a href="projects.html" style="font-size:0.63rem;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:var(--color-accent);text-decoration:none;white-space:nowrap;padding-bottom:0.35rem;transition:letter-spacing 0.2s;" onmouseover="this.style.letterSpacing='0.19em'" onmouseout="this.style.letterSpacing='0.13em'">View All &rarr;</a>
         </div>
 
-        <div class="projects-teaser-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;">
+        <div class="projects-teaser-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;">
+
+          <!-- Whisperwind Grove -->
+          <article class="home-project-card card-whisperwind">
+            <div class="project-visual">
+              <img src="projects/Whisperwind%20Grove/whisperwind-grove.copy.jpg" alt="Whisperwind Grove background" class="project-visual-img">
+              <div class="project-visual-overlay" style="background:rgba(5,20,15,0.45);"></div>
+              <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.35);">
+                <img src="projects/Whisperwind%20Grove/logo.png" alt="Whisperwind Grove" style="height:56px;width:auto;object-fit:contain;display:block;">
+              </div>
+              <span class="project-award">CS Senior Capstone</span>
+            </div>
+            <div class="meta p-5">
+              <div class="mb-1">
+                <h3 class="text-xl font-bold text-gray-800">Whisperwind Grove</h3>
+                <p class="text-sm text-[#850F01] font-semibold mt-0.5">React + Phaser game platform</p>
+              </div>
+              <div class="flex flex-wrap gap-1.5 my-3">
+                <span class="tag tag-js">React</span>
+                <span class="tag tag-js">TypeScript</span>
+                <span class="tag tag-sys">Phaser</span>
+                <span class="tag tag-ai">Gemini AI</span>
+              </div>
+              <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
+                A full-stack capstone platform with four playable worlds, achievements, leaderboards, and AI-assisted interactions.
+              </p>
+              <div class="project-outcome">
+                <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+                Full marks for systems integration
+              </div>
+              <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-3">
+                <div class="flex gap-2">
+                  <a href="https://github.com/aysesule2405/WW" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                    <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
+                  </a>
+                </div>
+                <a href="projects.html" class="text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">Details</a>
+              </div>
+            </div>
+          </article>
 
           <!-- OpenStaxAlign -->
           <article class="home-project-card card-openstax">
@@ -728,7 +1027,11 @@
               <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
                 ML pipeline mapping educational content to OpenStax curriculum standards with 75% accuracy, earning 2nd place overall.
               </p>
-              <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
+              <div class="project-outcome">
+                <i data-lucide="trophy" style="width:14px;height:14px;"></i>
+                2nd place overall
+              </div>
+              <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-3">
                 <div class="flex gap-2">
                   <a href="https://github.com/iremdmrc/datathon-openstax" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
                     <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
@@ -767,7 +1070,11 @@
               <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
                 Cross-platform AI desktop assistant with a locally-hosted Gemma LLM, sub-second contextual responses, and zero cloud dependency.
               </p>
-              <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
+              <div class="project-outcome">
+                <i data-lucide="award" style="width:14px;height:14px;"></i>
+                Figma UI Challenge winner
+              </div>
+              <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-3">
                 <div class="flex gap-2">
                   <a href="https://github.com/LAHacks2026/Obi_Laptop" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
                     <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
@@ -849,6 +1156,26 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FINAL CTA ─────────────────────────────── -->
+    <section class="home-final-cta">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="art-section-tag" style="margin-bottom:0.75rem;">&sect; 03 &middot; Next</p>
+        <h2 class="art-section-title">Want the <em>full picture?</em></h2>
+        <p>
+          My work makes the most sense when you see the technical projects and the visual practice together.
+          Here is the longer story, plus the resume version when you need the quick read.
+        </p>
+        <div class="home-final-actions">
+          <a href="about.html" class="home-final-btn home-final-btn-primary">
+            Read About Me <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+          </a>
+          <a href="resume.html" class="home-final-btn home-final-btn-secondary">
+            View Resume <i data-lucide="file-text" style="width:16px;height:16px;"></i>
+          </a>
         </div>
       </div>
     </section>

@@ -43,6 +43,16 @@
     @media (max-width: 768px) {
       .projects-grid { grid-template-columns: 1fr; }
     }
+    @media (max-width: 640px) {
+      .project-visual { height: 200px; }
+      .project-award {
+        font-size: 0.62rem;
+        max-width: calc(100% - 1.5rem);
+        right: 0.5rem;
+        top: 0.5rem;
+        white-space: normal;
+      }
+    }
 
     /* ── Project visual (screenshot header) ── */
     .project-visual {
@@ -132,6 +142,19 @@
     .project-btn-live:hover {
       background: #B23600;
     }
+    @media (max-width: 640px) {
+      .project-btn {
+        flex: 1 1 auto;
+        justify-content: center;
+        min-height: 2.2rem;
+      }
+
+      .masonry-item .meta .border-t > .flex {
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        width: 100%;
+      }
+    }
 
     /* ── Dark mode overrides ──────────────── */
     html[data-theme="dark"] .project-award {
@@ -204,6 +227,17 @@
     .card-nau .project-btn-live { background: #2a3ab0 !important; color: white !important; }
     .card-nau .project-btn-live:hover { background: #1a2898 !important; }
 
+    /* Ghibli Guardians — moss · sky · warm cream */
+    .card-ghibli { background: linear-gradient(135deg, #fff8e7 0%, #e8f4dc 52%, #e0f2f7 100%) !important; border-color: rgba(89,130,73,0.24) !important; }
+    .card-ghibli::before { background: linear-gradient(90deg, #6f9a54, #f2a65a, #6fb5c7) !important; opacity: 1 !important; }
+    .card-ghibli:hover { box-shadow: 0 18px 40px rgba(89,130,73,0.26) !important; }
+    .card-ghibli .meta h3 { color: #35572b !important; }
+    .card-ghibli .text-\[\#850F01\] { color: #8b5a2b !important; }
+    .card-ghibli .project-btn-github { background: #e3efd7 !important; color: #35572b !important; }
+    .card-ghibli .project-btn-github:hover { background: #cfe3bd !important; }
+    .card-ghibli .project-btn-live { background: #6f9a54 !important; color: white !important; }
+    .card-ghibli .project-btn-live:hover { background: #557d3e !important; }
+
     /* ── Dark mode: semi-transparent tints + full text/button theming ── */
 
     /* Whisperwind Grove dark */
@@ -249,6 +283,16 @@
     html[data-theme="dark"] .card-nau .text-\[\#850F01\] { color: #a0b4d8 !important; }
     html[data-theme="dark"] .card-nau .project-btn-live { background: #3c54c8 !important; color: white !important; }
     html[data-theme="dark"] .card-nau .project-btn-live:hover { background: #4a64d8 !important; }
+
+    /* Ghibli Guardians dark */
+    html[data-theme="dark"] .card-ghibli { background: linear-gradient(135deg, rgba(111,154,84,0.16) 0%, rgba(111,181,199,0.08) 100%) !important; border-color: rgba(111,181,199,0.22) !important; }
+    html[data-theme="dark"] .card-ghibli:hover { box-shadow: 0 18px 40px rgba(111,154,84,0.2) !important; }
+    html[data-theme="dark"] .card-ghibli .meta h3 { color: #b8dca0 !important; }
+    html[data-theme="dark"] .card-ghibli .text-\[\#850F01\] { color: #f2c18f !important; }
+    html[data-theme="dark"] .card-ghibli .project-btn-github { background: rgba(111,154,84,0.2) !important; color: #b8dca0 !important; }
+    html[data-theme="dark"] .card-ghibli .project-btn-github:hover { background: rgba(111,154,84,0.32) !important; }
+    html[data-theme="dark"] .card-ghibli .project-btn-live { background: #6f9a54 !important; color: white !important; }
+    html[data-theme="dark"] .card-ghibli .project-btn-live:hover { background: #7fad62 !important; }
   </style>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -320,7 +364,7 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
     <section id="projects">
 
-      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 border-b pb-3">Projects &amp; Technical Work</h2>
+      <h2 class="page-title">Projects &amp; <em>Technical Work</em></h2>
       <p class="leading-relaxed mb-6 font-serif tracking-wide italic text-gray-600 text-base">
         From hackathon floors to senior capstones, these projects sit at the intersection of software engineering, data, and design. Each one started as a problem worth solving and ended with something I would be proud to hand off to a real user.
       </p>
@@ -458,6 +502,49 @@
                 </a>
                 <a href="https://record-poppy-86285822.figma.site" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
                   <iconify-icon icon="simple-icons:figma" width="14" height="14"></iconify-icon> Figma Presentation
+                </a>
+              </div>
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ghibli Guardians -->
+        <article class="masonry-item card-ghibli hover:shadow-2xl transition duration-300 rounded-lg overflow-hidden">
+          <div class="project-visual" data-bg-images='["projects/Ghibli Guardians/dashboard.png","projects/Ghibli Guardians/mobile.png","projects/Ghibli Guardians/backend.png"]'>
+            <img src="projects/Ghibli%20Guardians/dashboard.png" alt="Ghibli Guardians dashboard" class="project-visual-img">
+            <div class="project-visual-overlay" style="background:rgba(35,70,45,0.38);"></div>
+            <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.25);">
+              <img src="projects/Ghibli%20Guardians/logo.png" alt="Ghibli Guardians" style="height:56px;width:auto;object-fit:contain;display:block;">
+            </div>
+            <span class="project-award" style="z-index:3;">Rutgers HackHERS</span>
+          </div>
+          <div class="meta p-5">
+            <div class="mb-1">
+              <h3 class="text-xl font-bold text-gray-800">Ghibli Guardians</h3>
+              <p class="text-sm text-[#850F01] font-semibold mt-0.5">Rutgers University HackHERS Hackathon · Safety Companion</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 my-3">
+              <span class="tag tag-react">React</span>
+              <span class="tag tag-js">Vite</span>
+              <span class="tag tag-sys">Node.js / Express</span>
+              <span class="tag tag-ai">ElevenLabs</span>
+              <span class="tag tag-data">REST API</span>
+              <span class="tag tag-design">Emotional UX</span>
+            </div>
+            <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
+              A warm safety companion that helps users assess risky situations, generate emergency messages, and get calming guardian-style guidance when they feel alone or unsure.
+            </p>
+            <p class="long-description text-gray-600 text-sm mb-3">
+              Built during Rutgers University's HackHERS Hackathon, Ghibli Guardians combines practical safety flows with a softer character-based interface. The backend uses Node.js and Express to evaluate risk from context like time of day, lighting, environment type, and whether the user is alone. Users can add trusted guardians, store their latest coordinates, and generate personalized emergency messages with Google Maps links. The frontend connects those flows to an interactive React experience with chatbot-style guidance, copy/share actions, music, and ElevenLabs voice playback so the product feels supportive instead of alarming.
+            </p>
+            <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
+              <div class="flex gap-2">
+                <a href="https://github.com/aysesule2405/G-Guardians" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                  <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
+                </a>
+                <a href="https://devpost.com/software/ghibli-guardians" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-live">
+                  <iconify-icon icon="simple-icons:devpost" width="14" height="14"></iconify-icon> Devpost
                 </a>
               </div>
               <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>

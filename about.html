@@ -55,6 +55,7 @@
   <script src="js/nav-enhancements.js"></script>
   <script src="js/scroll-animations.js" defer></script>
   <script src="js/half-moon-game.js" defer></script>
+  <script src="js/portfolio-mini-games.js" defer></script>
 
 </head>
 
@@ -266,18 +267,23 @@
                 <i data-lucide="wrench" class="w-5 h-5"></i> Tools &amp; Mediums
               </h2>
               <p class="text-gray-500 text-sm mb-4">The idea comes first. Then I figure out what it needs.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#FFA618]/15 text-[#8B5A00]">Acrylic &amp; Oil Paint</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#FFA618]/15 text-[#8B5A00]">Gouache &amp; Watercolor</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#FFA618]/15 text-[#8B5A00]">Charcoal &amp; Pastel</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#FFA618]/15 text-[#8B5A00]">Clay &amp; Ceramics</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#FFA618]/15 text-[#8B5A00]">Printmaking</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Figma</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Adobe Illustrator</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Adobe Photoshop</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Clip Studio Paint</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Blender</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#850F01]/10 text-[#850F01]">Canva</span>
+              <div class="flex flex-wrap gap-2" aria-label="Tools and creative mediums">
+                <span class="medium-chip medium-chip-art">Acrylic &amp; Oil Paint</span>
+                <span class="medium-chip medium-chip-art">Gouache &amp; Watercolor</span>
+                <span class="medium-chip medium-chip-art">Charcoal &amp; Pastel</span>
+                <span class="medium-chip medium-chip-art">Clay &amp; Ceramics</span>
+                <span class="medium-chip medium-chip-art">Printmaking</span>
+                <span class="medium-chip medium-chip-design">Figma</span>
+                <span class="medium-chip medium-chip-design">Adobe Illustrator</span>
+                <span class="medium-chip medium-chip-design">Adobe Photoshop</span>
+                <span class="medium-chip medium-chip-design">Clip Studio Paint</span>
+                <span class="medium-chip medium-chip-design">Blender</span>
+                <span class="medium-chip medium-chip-design">Canva</span>
+                <span class="medium-chip medium-chip-code">HTML &amp; CSS</span>
+                <span class="medium-chip medium-chip-code">JavaScript</span>
+                <span class="medium-chip medium-chip-code">React</span>
+                <span class="medium-chip medium-chip-code">Python</span>
+                <span class="medium-chip medium-chip-code">Node.js</span>
               </div>
             </section>
 
@@ -304,6 +310,92 @@
                          text-white bg-[#850F01] hover:bg-[#B23600] shadow-md transition">
                   Shuffle &amp; Play Again
                 </button>
+              </div>
+            </section>
+
+            <!-- Palette Oracle Game -->
+            <section id="palette-oracle-section" class="reveal mini-game-section">
+              <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
+                <i data-lucide="palette" class="w-5 h-5"></i> Palette Oracle
+              </h2>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Draw a small palette inspired by my portfolio, then drag the missing swatch into the color wheel.
+                It is part color intuition, part design system check.
+              </p>
+              <div class="mini-game-card palette-oracle-card">
+                <div class="mini-game-topline">
+                  <div>
+                    <p class="mini-game-kicker">Current Mood</p>
+                    <h3 id="po-title" class="mini-game-title">Studio Light</h3>
+                  </div>
+                  <div class="palette-game-actions">
+                    <span id="po-progress" class="palette-round-pill">1 / 10</span>
+                    <button id="po-new-round" type="button" class="mini-game-ghost-btn">
+                      Restart
+                    </button>
+                  </div>
+                </div>
+
+                <p id="po-story" class="mini-game-copy">
+                  Tap or drag the swatch that completes this palette.
+                </p>
+
+                <div id="po-dots" class="palette-progress-dots" aria-hidden="true"></div>
+
+                <div class="palette-artboard">
+                  <div class="palette-artboard-glow"></div>
+                  <div id="po-palette" class="palette-strip" aria-label="Palette with one missing swatch"></div>
+                  <div id="po-result" class="palette-result-pop" aria-live="polite" hidden></div>
+                </div>
+
+                <div id="po-options" class="palette-options" aria-label="Palette answer choices"></div>
+
+                <div class="mini-game-footer">
+                  <p id="po-status" class="mini-game-status" aria-live="polite">Pick the missing swatch.</p>
+                  <p id="po-score" class="mini-game-score">0 / 0</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Palette Studio Tool -->
+            <section id="palette-studio-section" class="reveal mini-game-section">
+              <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
+                <i data-lucide="paintbrush" class="w-5 h-5"></i> Palette Studio
+              </h2>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Build your own five-color palette, shuffle through mood presets, and copy the final hex set.
+                It is a tiny design tool for the color language behind this portfolio.
+              </p>
+              <div class="mini-game-card palette-studio-card">
+                <div class="mini-game-topline">
+                  <div>
+                    <p class="mini-game-kicker">Color Lab</p>
+                    <h3 class="mini-game-title">Create your own palette</h3>
+                  </div>
+                  <button id="ps-randomize" type="button" class="mini-game-ghost-btn">
+                    Surprise Me
+                  </button>
+                </div>
+
+                <div class="palette-studio-preview" aria-label="Generated palette preview">
+                  <div id="ps-preview" class="palette-studio-strip"></div>
+                  <div class="palette-studio-aura"></div>
+                </div>
+
+                <div id="ps-controls" class="palette-studio-controls" aria-label="Palette color controls"></div>
+
+                <div class="palette-studio-actions">
+                  <div id="ps-mood" class="palette-studio-mood">Sunset system</div>
+                  <div class="flex gap-2 flex-wrap">
+                    <button id="ps-copy" type="button" class="mini-game-ghost-btn">Copy Hexes</button>
+                    <button id="ps-css" type="button" class="mini-game-ghost-btn">Copy CSS</button>
+                  </div>
+                </div>
+
+                <div class="mini-game-footer">
+                  <p id="ps-status" class="mini-game-status" aria-live="polite">Adjust a color or generate a new palette.</p>
+                  <p id="ps-score" class="mini-game-score">5 colors</p>
+                </div>
               </div>
             </section>
 

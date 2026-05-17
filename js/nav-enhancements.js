@@ -144,4 +144,28 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
   }
+
+  // 7) BACK TO TOP BUTTON
+  const backToTop = document.createElement('button');
+  backToTop.type = 'button';
+  backToTop.className = 'back-to-top-btn';
+  backToTop.setAttribute('aria-label', 'Back to top');
+  backToTop.innerHTML = `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 19V5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M6.5 10.5 12 5l5.5 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  `;
+  document.body.appendChild(backToTop);
+
+  const updateBackToTop = () => {
+    backToTop.classList.toggle('is-visible', window.scrollY > 360);
+  };
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  updateBackToTop();
+  window.addEventListener('scroll', updateBackToTop, { passive: true });
 });

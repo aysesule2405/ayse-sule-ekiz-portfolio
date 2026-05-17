@@ -39,6 +39,8 @@
     }
     @media (max-width: 640px) {
       .resume-header-card { padding: 1.25rem 1.25rem; }
+      .coursework-grid { grid-template-columns: 1fr; }
+      .resume-pdf-note { text-align: left; max-width: none; }
     }
 
     /* ── Download button ──────────────────── */
@@ -141,10 +143,26 @@
       color: #111827;
       margin-bottom: 0.1rem;
     }
+    .timeline-title-link {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .timeline-title-link:hover {
+      color: #850F01;
+    }
+    .timeline-title-desc {
+      font-weight: 400;
+    }
     .timeline-role {
+      display: inline-block;
       font-size: 0.875rem;
       font-style: italic;
-      color: #6B7280;
+      color: #8b1f0f;
+      background: linear-gradient(90deg, rgba(255,166,24,0.18), rgba(148,27,12,0.08));
+      border: 1px solid rgba(148,27,12,0.14);
+      border-radius: 9999px;
+      padding: 0.18rem 0.65rem;
       margin-bottom: 0.6rem;
     }
     .timeline-bullets {
@@ -166,6 +184,53 @@
       left: 0;
       color: #FFA618;
       font-weight: 700;
+    }
+
+    .resume-summary {
+      color: #5d3124;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      max-width: 46rem;
+      margin: 0.8rem 0 1rem;
+    }
+
+    .resume-pdf-note {
+      color: #8b5a45;
+      font-size: 0.72rem;
+      line-height: 1.35;
+      margin-top: 0.55rem;
+      max-width: 12rem;
+      text-align: right;
+    }
+
+    .coursework-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+
+    .coursework-card {
+      background: rgba(255, 166, 24, 0.08);
+      border: 1px solid rgba(133, 15, 1, 0.12);
+      border-radius: 0.65rem;
+      padding: 0.65rem 0.75rem;
+    }
+
+    .coursework-card strong {
+      color: #850F01;
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.28rem;
+      text-transform: uppercase;
+    }
+
+    .coursework-card span {
+      color: #4B5563;
+      display: block;
+      font-size: 0.78rem;
+      line-height: 1.45;
     }
 
     /* ── Skills ───────────────────────────── */
@@ -215,14 +280,58 @@
     }
     .leadership-card:last-child { margin-bottom: 0; }
 
+    .award-card {
+      background: linear-gradient(135deg, #ffffff 0%, #FFF7F0 100%);
+      border: 1px solid rgba(133,15,1,0.08);
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 16px rgba(133,15,1,0.07);
+      margin-bottom: 0.75rem;
+      padding: 0.85rem 1rem;
+    }
+
+    .award-card p:first-child {
+      color: #850F01;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.18rem;
+      text-transform: uppercase;
+    }
+
+    .award-card p:last-child {
+      color: #4B5563;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
     /* ── Dark mode ────────────────────────── */
     html[data-theme="dark"] .resume-header-card {
       background: var(--color-surface);
       border-color: var(--color-border);
     }
     html[data-theme="dark"] .timeline-title { color: var(--color-text); }
-    html[data-theme="dark"] .timeline-role  { color: var(--color-text-muted); }
+    html[data-theme="dark"] .timeline-title-link:hover { color: var(--color-accent-warm); }
+    html[data-theme="dark"] .timeline-role  {
+      color: var(--color-accent-warm);
+      background: linear-gradient(90deg, rgba(255,173,31,0.14), rgba(6,182,212,0.1));
+      border-color: var(--color-border-strong);
+    }
     html[data-theme="dark"] .timeline-bullets li { color: var(--color-text-soft); }
+    html[data-theme="dark"] .resume-summary,
+    html[data-theme="dark"] .resume-pdf-note,
+    html[data-theme="dark"] .coursework-card span,
+    html[data-theme="dark"] .award-card p:last-child {
+      color: var(--color-text-soft);
+    }
+    html[data-theme="dark"] .coursework-card,
+    html[data-theme="dark"] .award-card {
+      background: var(--color-surface-raised);
+      border-color: var(--color-border);
+    }
+    html[data-theme="dark"] .coursework-card strong,
+    html[data-theme="dark"] .award-card p:first-child {
+      color: var(--color-accent-warm);
+    }
     html[data-theme="dark"] .skill-tag {
       background: var(--color-surface-muted);
       color: var(--color-text-soft);
@@ -312,6 +421,9 @@
         <div>
           <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-1 transition-colors duration-300">Ayse Sule Ekiz</h1>
           <p class="text-[#850F01] font-semibold text-base mb-2">B.S. Computer Science · Software Engineer · Designer</p>
+          <p class="resume-summary">
+            Full-stack developer and designer who builds things that are both functional and beautiful. Comfortable across the entire product surface: data pipelines, backend systems, production UIs, and user research. Proven in competitive settings: hackathon winner, datathon finalist, and shipping real products used daily on campus.
+          </p>
           <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500">
             <span class="flex items-center gap-1">
               <i data-lucide="map-pin" class="w-4 h-4"></i> Houston, TX
@@ -320,16 +432,28 @@
               <i data-lucide="mail" class="w-4 h-4"></i> ase2327ekiz@gmail.com
             </a>
             <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 hover:text-[#850F01] transition-colors">
-              <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.53V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/>
+              </svg> LinkedIn
             </a>
             <a href="https://github.com/aysesule2405" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 hover:text-[#850F01] transition-colors">
-              <i data-lucide="github" class="w-4 h-4"></i> GitHub
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56v-2.15c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18A11 11 0 0 1 12 6.08c.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.42-2.69 5.39-5.25 5.67.42.36.78 1.06.78 2.15v3.14c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+              </svg> GitHub
+            </a>
+            <a href="https://devpost.com/ase2327ekiz" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 hover:text-[#850F01] transition-colors">
+              <span class="inline-flex items-center justify-center w-4 h-4 text-xs font-extrabold leading-none">D</span> Devpost
+            </a>
+            <a href="index.html" class="flex items-center gap-1 hover:text-[#850F01] transition-colors">
+              <i data-lucide="globe" class="w-4 h-4"></i> Portfolio
             </a>
           </div>
         </div>
-        <a href="Ayse_Sule_Ekiz_Resume.pdf" download class="download-btn flex-shrink-0">
-          <i data-lucide="download" class="w-4 h-4"></i> Download PDF
-        </a>
+        <div class="flex-shrink-0">
+          <a href="Ayse_Sule_Ekiz_Resume.pdf" download class="download-btn">
+            <i data-lucide="download" class="w-4 h-4"></i> Download PDF
+          </a>
+        </div>
       </div>
 
       <!-- ── Two-column body ── -->
@@ -387,9 +511,26 @@
               <p class="timeline-title">North American University</p>
               <p class="timeline-role">B.S. Computer Science · GPA 3.95</p>
               <ul class="timeline-bullets">
-                <li>Coursework: Data Structures &amp; Algorithms, Full-Stack Application Development, Database Systems, Big Data Analytics, Data Mining, Data Visualization, ML &amp; Big Data, Operating Systems, Software Engineering, Statistics, Systems Programming, Computer Networks</li>
                 <li>Leadership &amp; Honors: President's Honor Roll · President, ACM-Women · GDSC Lead · President, Design Club · VP, Art Club</li>
               </ul>
+              <div class="coursework-grid">
+                <div class="coursework-card">
+                  <strong>Core CS</strong>
+                  <span>Data Structures &amp; Algorithms, Software Engineering, Statistics</span>
+                </div>
+                <div class="coursework-card">
+                  <strong>Data &amp; AI</strong>
+                  <span>Big Data Analytics, Data Mining, Data Visualization, ML &amp; Big Data</span>
+                </div>
+                <div class="coursework-card">
+                  <strong>Systems</strong>
+                  <span>Operating Systems, Systems Programming, Computer Networks</span>
+                </div>
+                <div class="coursework-card">
+                  <strong>Product</strong>
+                  <span>Full-Stack Application Development, Database Systems</span>
+                </div>
+              </div>
             </div>
 
             <div class="timeline-item reveal">
@@ -405,8 +546,22 @@
           <div class="timeline">
 
             <div class="timeline-item reveal">
+              <p class="timeline-date">Spring 2026</p>
+              <p class="timeline-title">
+                <a href="https://github.com/aysesule2405/WW" target="_blank" rel="noopener noreferrer" class="timeline-title-link">Whisperwind Grove</a>: <span class="timeline-title-desc">Full-stack browser game platform</span>
+              </p>
+              <p class="timeline-role">CS Senior Capstone · Full-stack game platform</p>
+              <ul class="timeline-bullets">
+                <li>Built a TypeScript monorepo with React 19, Vite 7, Node.js, Express, Phaser 3, MongoDB, and Mongoose, hosting four playable browser games with shared player identity, achievements, and leaderboards.</li>
+                <li>Integrated Gemini AI for gameplay evaluation and AI-assisted move selection, plus ElevenLabs-generated guardian voice clips; earned full marks for systems integration, AI implementation, and production-quality architecture.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item reveal">
               <p class="timeline-date">Apr 2026</p>
-              <p class="timeline-title">Obi: AI Desktop Assistant</p>
+              <p class="timeline-title">
+                <a href="https://devpost.com/software/obi-mise-en-place-for-your-data" target="_blank" rel="noopener noreferrer" class="timeline-title-link">Obi</a>: <span class="timeline-title-desc">Local AI desktop assistant</span>
+              </p>
               <p class="timeline-role">LA Hacks 2026 · Figma UI Challenge Winner</p>
               <ul class="timeline-bullets">
                 <li>Engineered a cross-platform assistant in 36 hours: Electron + Vite shell, locally-run Gemma LLM, and a custom RAG pipeline, sub-second contextual responses with no cloud dependency, fully local search agent, desktop assistant.</li>
@@ -415,8 +570,22 @@
             </div>
 
             <div class="timeline-item reveal">
+              <p class="timeline-date">Feb 2026</p>
+              <p class="timeline-title">
+                <a href="https://devpost.com/software/ghibli-guardians" target="_blank" rel="noopener noreferrer" class="timeline-title-link">Ghibli Guardians</a>: <span class="timeline-title-desc">AI-assisted personal safety companion</span>
+              </p>
+              <p class="timeline-role">Rutgers University HackHERS Hackathon · Safety companion</p>
+              <ul class="timeline-bullets">
+                <li>Built a React and Vite safety companion with Node.js and Express APIs for contextual risk assessment, trusted guardian contacts, location updates, and dynamically generated emergency messages with Google Maps links.</li>
+                <li>Designed a calming character-based UX with chatbot-style safety guidance, copy/share actions, music, and ElevenLabs voice playback to make emergency preparation feel supportive rather than alarming.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item reveal">
               <p class="timeline-date">Jan 2026</p>
-              <p class="timeline-title">OpenStaxAlign: Curriculum Mapping Tool</p>
+              <p class="timeline-title">
+                <a href="https://devpost.com/software/openstaxalign" target="_blank" rel="noopener noreferrer" class="timeline-title-link">OpenStaxAlign</a>: <span class="timeline-title-desc">ML curriculum mapping tool</span>
+              </p>
               <p class="timeline-role">Rice Datathon 2026 · 2nd Place</p>
               <ul class="timeline-bullets">
                 <li>Built the full ML pipeline, JSON ingestion, TF-IDF vectorization, Logistic Regression baseline, Linear SVM, reaching 75% accuracy on multi-class educational standard prediction.</li>
@@ -425,8 +594,22 @@
             </div>
 
             <div class="timeline-item reveal">
+              <p class="timeline-date">2025</p>
+              <p class="timeline-title">
+                <a href="https://github.com/aysesule2405/reverie" target="_blank" rel="noopener noreferrer" class="timeline-title-link">Reverie</a>: <span class="timeline-title-desc">Mood-based creative spaces app</span>
+              </p>
+              <p class="timeline-role">Full-stack web app · Personal project</p>
+              <ul class="timeline-bullets">
+                <li>Created a React, Node.js, Express, and MongoDB application for mood-based creative spaces, supporting authentication, space CRUD, community discovery, saved collections, and timeline views.</li>
+                <li>Designed the product in Figma first, then translated the visual system into a responsive interface for collecting reflections, images, color palettes, and emotional tags.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item reveal">
               <p class="timeline-date">Sep 2024</p>
-              <p class="timeline-title">NAU Athletics &amp; Student Portal</p>
+              <p class="timeline-title">
+                <a href="https://stallions.na.edu/" target="_blank" rel="noopener noreferrer" class="timeline-title-link">NAU Athletics &amp; Student Portal</a>: <span class="timeline-title-desc">Live campus platform</span>
+              </p>
               <p class="timeline-role">Full-stack platform · live in production</p>
               <ul class="timeline-bullets">
                 <li>Designed and shipped the NAU Athletics site and student portal serving the entire campus, UX research, design system, accessibility audit, and ongoing usability and A/B testing.</li>
@@ -442,6 +625,34 @@
 
         <!-- RIGHT: Skills + Leadership -->
         <div>
+
+          <!-- Awards -->
+          <h2 class="resume-section-title">Awards &amp; Leadership</h2>
+
+          <div class="award-card reveal">
+            <p>LA Hacks 2026</p>
+            <p>Figma UI Challenge Winner for Obi, a local AI desktop assistant judged production-ready.</p>
+          </div>
+
+          <div class="award-card reveal">
+            <p>Rice Datathon 2026</p>
+            <p>2nd Place Overall for OpenStaxAlign, an ML curriculum-mapping pipeline with 75% multi-class accuracy.</p>
+          </div>
+
+          <div class="award-card reveal">
+            <p>CS Senior Capstone</p>
+            <p>Full marks for Whisperwind Grove systems integration, AI implementation, and production-quality architecture.</p>
+          </div>
+
+          <div class="award-card reveal">
+            <p>President's Honor Roll</p>
+            <p>Recognized for high academic performance while maintaining a 3.95 GPA in Computer Science.</p>
+          </div>
+
+          <div class="award-card reveal">
+            <p>Extracurricular Leadership</p>
+            <p>Led ACM-Women, Google Developer Student Club, Design Club, and Art Club initiatives across technical, creative, and mentorship programs.</p>
+          </div>
 
           <!-- Technical Skills -->
           <h2 class="resume-section-title">Technical Skills</h2>
@@ -464,9 +675,11 @@
             <p class="skill-group-label">Frontend</p>
             <div class="tag-cloud">
               <span class="skill-tag">React</span>
+              <span class="skill-tag">React 19</span>
               <span class="skill-tag">Node.js</span>
               <span class="skill-tag">Electron</span>
               <span class="skill-tag">Vite</span>
+              <span class="skill-tag">Phaser 3</span>
               <span class="skill-tag">Responsive Design</span>
               <span class="skill-tag">WCAG Accessibility</span>
               <span class="skill-tag">Figma</span>
@@ -478,6 +691,7 @@
             <p class="skill-group-label">Backend &amp; Data</p>
             <div class="tag-cloud">
               <span class="skill-tag">Flask</span>
+              <span class="skill-tag">Node.js / Express</span>
               <span class="skill-tag">REST APIs</span>
               <span class="skill-tag">ETL Pipelines</span>
               <span class="skill-tag">MySQL</span>
@@ -498,6 +712,8 @@
               <span class="skill-tag">TF-IDF</span>
               <span class="skill-tag">RAG Pipelines</span>
               <span class="skill-tag">LLM Integration (Gemma)</span>
+              <span class="skill-tag">Gemini AI</span>
+              <span class="skill-tag">ElevenLabs</span>
             </div>
           </div>
 
@@ -505,11 +721,26 @@
             <p class="skill-group-label">Tools</p>
             <div class="tag-cloud">
               <span class="skill-tag">Git / GitHub</span>
+              <span class="skill-tag">Postman</span>
+              <span class="skill-tag">Render</span>
               <span class="skill-tag">Agile / Scrum</span>
               <span class="skill-tag">Adobe Creative Suite</span>
               <span class="skill-tag">Canva</span>
               <span class="skill-tag">Microsoft 365</span>
               <span class="skill-tag">Slack</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <p class="skill-group-label">Design &amp; Product</p>
+            <div class="tag-cloud">
+              <span class="skill-tag">UX Research</span>
+              <span class="skill-tag">Design Systems</span>
+              <span class="skill-tag">Wireframing</span>
+              <span class="skill-tag">Prototyping</span>
+              <span class="skill-tag">Accessibility</span>
+              <span class="skill-tag">Visual Communication</span>
+              <span class="skill-tag">Developer Handoff</span>
             </div>
           </div>
 

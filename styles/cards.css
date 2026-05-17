@@ -370,3 +370,43 @@ html[data-theme="dark"] .masonry-item .meta button {
 html[data-theme="dark"] .masonry-item .meta button:hover {
     color: var(--color-accent-hover);
 }
+
+/* ============================
+   Mobile polish
+   ============================ */
+
+@media (max-width: 640px) {
+    .masonry {
+        column-gap: 0;
+    }
+
+    .masonry-item {
+        margin-bottom: 1.1rem;
+        border-radius: 0.75rem;
+    }
+
+    .masonry-item:hover {
+        transform: none;
+    }
+
+    .masonry-item .meta {
+        padding: 0.9rem 0.95rem 1.05rem;
+    }
+
+    .masonry-item .meta h3 {
+        font-size: 1rem;
+        line-height: 1.25;
+    }
+
+    .masonry-item .meta .short-desc,
+    .masonry-item .meta .long-description {
+        font-size: 0.88rem;
+        line-height: 1.55;
+    }
+
+    .masonry-item .meta .border-t {
+        align-items: flex-start !important;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
