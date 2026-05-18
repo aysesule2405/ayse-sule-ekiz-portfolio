@@ -10,42 +10,101 @@
 
   <!-- Shared styles (dark mode, nav, cards, etc.) -->
   <link rel="stylesheet" href="styles/main.css" />
-      <style>
-        /* Define Navigation Link Styling */
-        .nav-link {
-            color: #4b5563; /* text-gray-600 */
-            transition: color 0.2s, background-color 0.2s;
-        }
-        .nav-link:hover {
-            background-color: #fce7f3; /* A soft background for hover */
-            color: #850F01;
-        }
-        .nav-link.active {
-            background-color: #FFA618; /* Accent color for active link */
-            color: #FFF; /* White text on accent background */
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* Topic chip selected state */
+    .topic-chip input:checked + span {
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-accent-foreground);
+    }
 
-        /* Topic chip selected state */
-        .topic-chip input:checked + span {
-          background-color: #850F01;
-          border-color: #850F01;
-          color: #fff;
-        }
+    /* Logo background pattern */
+    .logo-background-pattern {
+      background-image: url('./images/logo.jpg');
+      background-repeat: repeat;
+      background-blend-mode: multiply;
+      opacity: 0.1;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
 
-        /* Custom CSS for the logo background pattern */
-        .logo-background-pattern {
-            background-image: url('./images/logo.jpg');
-            background-repeat: repeat;
-            background-blend-mode: multiply;
-            opacity: 0.1; /* Make it very subtle */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Push behind content */
-        }
-    </style>
+    /* Poem teaser link */
+    .about-poem-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1.25rem;
+      color: var(--color-accent);
+      font-size: 0.83rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: gap 0.18s ease, color 0.18s ease;
+    }
+    .about-poem-link:hover { gap: 0.72rem; color: var(--color-accent-hover); }
+    .about-poem-link svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* Portfolio closing card */
+    .about-closing-card {
+      background:
+        radial-gradient(circle at top center, color-mix(in srgb, var(--color-accent-warm) 22%, transparent), transparent 58%),
+        var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      box-shadow: var(--shadow-card);
+      padding: 2rem 1.75rem 1.75rem;
+      text-align: center;
+    }
+    .about-closing-card h2 {
+      font-family: "Old Standard TT", var(--font-serif);
+      font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+      font-style: italic;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.2;
+      margin-bottom: 0.65rem;
+    }
+    .about-closing-card > p:not(.about-snapshot-kicker):not(.about-closing-note) {
+      font-size: 0.91rem;
+      color: var(--color-text-soft);
+      line-height: 1.72;
+      max-width: 38ch;
+      margin: 0 auto 1.5rem;
+    }
+
+    .about-closing-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .about-closing-links a {
+      padding: 0.42rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1.5px solid var(--color-border);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .about-closing-links a:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    }
+
+    .about-closing-note {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+      margin: 0;
+    }
+  </style>
 
   <!-- Icons + scripts -->
   <link rel="stylesheet" href="styles/nav-dropdown.css">
@@ -54,8 +113,6 @@
   <script src="js/theme-toggle.js"></script>
   <script src="js/nav-enhancements.js"></script>
   <script src="js/scroll-animations.js" defer></script>
-  <script src="js/half-moon-game.js" defer></script>
-  <script src="js/portfolio-mini-games.js" defer></script>
 
 </head>
 
@@ -63,6 +120,7 @@
   <!-- HEADER -->
   <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
     <div class="logo-background-pattern"></div>
+    <div class="page-bg-image page-bg-orange"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="flex justify-between items-center h-20">
@@ -86,6 +144,7 @@
         <nav class="hidden lg:flex items-center space-x-1">
           <a href="index.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Home</a>
           <a href="projects.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Projects</a>
+          <a href="playground.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Playground</a>
 
           <a href="graphicdesign.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Graphic Design</a>
           <a href="ceramics.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Ceramics</a>
@@ -128,6 +187,7 @@
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 relative z-10">
       <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home</a>
       <a href="projects.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Projects</a>
+      <a href="playground.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Playground</a>
       <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design &amp; Digital Art</a>
       <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting &amp; Ceramics</a>
       <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting &amp; Charcoal</a>
@@ -160,11 +220,24 @@
           <div>
             <p class="text-[#FFA618] font-semibold text-xs uppercase tracking-widest mb-2">About / Contact</p>
             <h1 id="about-heading" class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
-              Hi, I’m Ayse Sule.
+              Ayse Sule Ekiz
             </h1>
-            <p class="text-gray-500 mt-2 text-base whitespace-nowrap">
+            <p class="about-tagline mt-2 text-lg sm:text-xl font-semibold max-w-2xl">
+              I build with code. I think with art.
+            </p>
+            <p class="text-gray-500 mt-2 text-base max-w-2xl">
               Art taught me to see. Computer science gave me new ways to make.
             </p>
+            <div class="flex flex-wrap gap-3 mt-5">
+              <a href="projects.html" class="about-hero-btn about-hero-btn-primary">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                Portfolio
+              </a>
+              <a href="resume.html" class="about-hero-btn">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                Resume
+              </a>
+            </div>
           </div>
           <div class="flex items-center gap-3 flex-shrink-0">
             <a href="https://github.com/aysesule2405" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
@@ -196,6 +269,24 @@
       </div>
     </div>
 
+    <section class="about-snapshot-grid reveal mb-8" aria-label="Personal profile snapshot">
+      <article class="about-snapshot-card">
+        <p class="about-snapshot-kicker">Where I Start</p>
+        <h2>With story</h2>
+        <p>Animation, fiction, and visual worlds taught me to look for meaning beneath the surface.</p>
+      </article>
+      <article class="about-snapshot-card">
+        <p class="about-snapshot-kicker">How I Think</p>
+        <h2>In systems and images</h2>
+        <p>Some problems arrive as diagrams. Some arrive as colors. I like translating between both.</p>
+      </article>
+      <article class="about-snapshot-card">
+        <p class="about-snapshot-kicker">What Stays</p>
+        <h2>A wish to widen the room</h2>
+        <p>I want my work to make space for curiosity, difference, and people who were told to stay practical.</p>
+      </article>
+    </section>
+
     <section aria-labelledby="about-heading">
       <div class="home-hero-card bg-[#FFF7F0] p-6 md:p-10 rounded-2xl shadow-xl transition-colors duration-300">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -209,193 +300,57 @@
                 <i data-lucide="book-open" class="w-5 h-5"></i> My Story
               </h2>
               <p class="text-gray-600 leading-relaxed mb-3">
-                Before I ever wrote a line of code, I was already making things. Sketching portraits in
-                the margins of notebooks, pressing clay into shapes that surprised me, painting mountain
-                light on cheap canvas. Art was never just a hobby; it was how I learned to pay attention.
+                My interest in animation and fiction started when I was six, and it never really left.
+                I grew up inside animated films, cartoons, anime, manga, webcomics, short films, and
+                illustrated stories from different cultures, languages, art styles, and emotional worlds.
+                I was drawn to the way visual stories could carry history, philosophy, humor, grief, and
+                tenderness all at once.
+              </p>
+              <p class="text-gray-600 leading-relaxed mb-3">
+                Before I ever wrote a line of code, I was already making things. Sketching portraits in the
+                margins of notebooks, pressing clay into shapes that surprised me, painting mountain light
+                on cheap canvas. Art was never just a hobby; it was how I learned to pay attention.
+              </p>
+              <p class="text-gray-600 leading-relaxed mb-3">
+                That passion was not always treated as something serious where I grew up. Fiction was often
+                dismissed as childish, art as impractical, and success as something measured mostly through
+                grades and approved career paths. In high school, ceramics and graphic novels helped me find
+                that part of myself again. They reminded me that creativity was not a distraction from
+                becoming capable. It was the thing that made me feel fully awake.
               </p>
               <p class="text-gray-600 leading-relaxed mb-3">
                 When I found computer science, something clicked. Not because the two worlds were the same,
-                but because they asked the same first question: what are you trying to say, and what is the
-                most honest way to say it? I brought the same care I gave a brushstroke to every function
-                I wrote.
+                but because both demanded the same discipline: be specific about what you mean, and honest
+                about what you don't yet know. I brought the same patience I gave a brushstroke to every
+                function I wrote.
               </p>
               <p class="text-gray-600 leading-relaxed">
-                I study Computer Science at NAU, where I have shipped production
-                software, competed in datathons, and led student organizations, all while keeping paint on
-                my hands and clay under my fingernails. What I want to build next is work that earns a
-                second look: software that feels as deliberate as a good composition, experiences that
-                carry the same weight as a well-chosen color.
+                I study Computer Science at NAU, where I have shipped production software, competed in
+                datathons, and led student organizations, all while keeping paint on my hands and clay under
+                my fingernails. What I want to build next is work that stays with people: software that
+                feels as deliberate as a good composition, experiences that carry the same weight as a
+                well-chosen color.
               </p>
             </section>
 
-            <!-- What I Create -->
-            <section class="reveal">
-              <h2 class="text-2xl font-semibold text-[#850F01] mb-4 flex items-center gap-2">
-                <i data-lucide="layers" class="w-5 h-5"></i> What I Create
-              </h2>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <a href="painting.html"
-                   class="what-i-create-card group bg-white rounded-xl p-5 border border-[#F3C7A8] hover:border-[#850F01] hover:shadow-md transition text-center">
-                  <div class="w-10 h-10 rounded-full bg-[#FFA618]/15 flex items-center justify-center mx-auto mb-3 group-hover:bg-[#FFA618]/30 transition">
-                    <i data-lucide="palette" class="w-5 h-5 text-[#FFA618]"></i>
-                  </div>
-                  <h3 class="font-semibold text-gray-800 text-sm mb-1">Art &amp; Expression</h3>
-                  <p class="text-xs text-gray-500">Paintings, ceramics, charcoal, printmaking</p>
-                </a>
-                <a href="projects.html"
-                   class="what-i-create-card group bg-white rounded-xl p-5 border border-[#F3C7A8] hover:border-[#850F01] hover:shadow-md transition text-center">
-                  <div class="w-10 h-10 rounded-full bg-[#850F01]/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-[#850F01]/20 transition">
-                    <i data-lucide="code-2" class="w-5 h-5 text-[#850F01]"></i>
-                  </div>
-                  <h3 class="font-semibold text-gray-800 text-sm mb-1">Code &amp; Technology</h3>
-                  <p class="text-xs text-gray-500">Full-stack apps, ML models, data tools</p>
-                </a>
-                <a href="graphicdesign.html"
-                   class="what-i-create-card group bg-white rounded-xl p-5 border border-[#F3C7A8] hover:border-[#850F01] hover:shadow-md transition text-center">
-                  <div class="w-10 h-10 rounded-full bg-[#B23600]/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-[#B23600]/20 transition">
-                    <i data-lucide="pen-tool" class="w-5 h-5 text-[#B23600]"></i>
-                  </div>
-                  <h3 class="font-semibold text-gray-800 text-sm mb-1">Design &amp; Digital Art</h3>
-                  <p class="text-xs text-gray-500">Graphic design, Figma, digital illustration</p>
-                </a>
-              </div>
-            </section>
-
-            <!-- Tools & Mediums as chips -->
+            <!-- Roots & Lens -->
             <section class="reveal">
               <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
-                <i data-lucide="wrench" class="w-5 h-5"></i> Tools &amp; Mediums
+                <i data-lucide="compass" class="w-5 h-5"></i> Roots &amp; Lens
               </h2>
-              <p class="text-gray-500 text-sm mb-4">The idea comes first. Then I figure out what it needs.</p>
-              <div class="flex flex-wrap gap-2" aria-label="Tools and creative mediums">
-                <span class="medium-chip medium-chip-art">Acrylic &amp; Oil Paint</span>
-                <span class="medium-chip medium-chip-art">Gouache &amp; Watercolor</span>
-                <span class="medium-chip medium-chip-art">Charcoal &amp; Pastel</span>
-                <span class="medium-chip medium-chip-art">Clay &amp; Ceramics</span>
-                <span class="medium-chip medium-chip-art">Printmaking</span>
-                <span class="medium-chip medium-chip-design">Figma</span>
-                <span class="medium-chip medium-chip-design">Adobe Illustrator</span>
-                <span class="medium-chip medium-chip-design">Adobe Photoshop</span>
-                <span class="medium-chip medium-chip-design">Clip Studio Paint</span>
-                <span class="medium-chip medium-chip-design">Blender</span>
-                <span class="medium-chip medium-chip-design">Canva</span>
-                <span class="medium-chip medium-chip-code">HTML &amp; CSS</span>
-                <span class="medium-chip medium-chip-code">JavaScript</span>
-                <span class="medium-chip medium-chip-code">React</span>
-                <span class="medium-chip medium-chip-code">Python</span>
-                <span class="medium-chip medium-chip-code">Node.js</span>
-              </div>
-            </section>
-
-            <!-- Half Moon Game -->
-            <section id="half-moon-game-section" class="reveal">
-              <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
-                <i data-lucide="moon" class="w-5 h-5"></i> A Game I Love: Half Moon
-              </h2>
-              <p class="text-gray-600 leading-relaxed mb-4">
-                <span class="font-semibold">Half Moon</span> is a card game about the quiet drama of
-                moonlight shifting across the sky, phase by phase. It fits perfectly with a portfolio
-                that lives between light and dark modes. I built a small version here so you can feel
-                the rhythm of it, or try the original Google version
-                <a href="https://share.google/P2RAPyQXvds8WtBno" target="_blank" rel="noopener noreferrer"
-                  class="text-[#850F01] font-semibold hover:underline">here 🌙</a>.
-              </p>
-              <div class="bg-white rounded-2xl shadow p-4 md:p-6 border border-[#F2D6A1]">
-                <p id="hm-status" class="text-sm font-medium text-gray-700 mb-3">
-                  Click the moon cards in order from <span class="font-semibold">New Moon</span> to <span class="font-semibold">Full Moon</span>, darkest to brightest.
-                </p>
-                <div id="hm-cards" class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5"></div>
-                <button id="hm-restart" type="button"
-                  class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold
-                         text-white bg-[#850F01] hover:bg-[#B23600] shadow-md transition">
-                  Shuffle &amp; Play Again
-                </button>
-              </div>
-            </section>
-
-            <!-- Palette Oracle Game -->
-            <section id="palette-oracle-section" class="reveal mini-game-section">
-              <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
-                <i data-lucide="palette" class="w-5 h-5"></i> Palette Oracle
-              </h2>
-              <p class="text-gray-600 leading-relaxed mb-4">
-                Draw a small palette inspired by my portfolio, then drag the missing swatch into the color wheel.
-                It is part color intuition, part design system check.
-              </p>
-              <div class="mini-game-card palette-oracle-card">
-                <div class="mini-game-topline">
-                  <div>
-                    <p class="mini-game-kicker">Current Mood</p>
-                    <h3 id="po-title" class="mini-game-title">Studio Light</h3>
-                  </div>
-                  <div class="palette-game-actions">
-                    <span id="po-progress" class="palette-round-pill">1 / 10</span>
-                    <button id="po-new-round" type="button" class="mini-game-ghost-btn">
-                      Restart
-                    </button>
-                  </div>
-                </div>
-
-                <p id="po-story" class="mini-game-copy">
-                  Tap or drag the swatch that completes this palette.
-                </p>
-
-                <div id="po-dots" class="palette-progress-dots" aria-hidden="true"></div>
-
-                <div class="palette-artboard">
-                  <div class="palette-artboard-glow"></div>
-                  <div id="po-palette" class="palette-strip" aria-label="Palette with one missing swatch"></div>
-                  <div id="po-result" class="palette-result-pop" aria-live="polite" hidden></div>
-                </div>
-
-                <div id="po-options" class="palette-options" aria-label="Palette answer choices"></div>
-
-                <div class="mini-game-footer">
-                  <p id="po-status" class="mini-game-status" aria-live="polite">Pick the missing swatch.</p>
-                  <p id="po-score" class="mini-game-score">0 / 0</p>
-                </div>
-              </div>
-            </section>
-
-            <!-- Palette Studio Tool -->
-            <section id="palette-studio-section" class="reveal mini-game-section">
-              <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
-                <i data-lucide="paintbrush" class="w-5 h-5"></i> Palette Studio
-              </h2>
-              <p class="text-gray-600 leading-relaxed mb-4">
-                Build your own five-color palette, shuffle through mood presets, and copy the final hex set.
-                It is a tiny design tool for the color language behind this portfolio.
-              </p>
-              <div class="mini-game-card palette-studio-card">
-                <div class="mini-game-topline">
-                  <div>
-                    <p class="mini-game-kicker">Color Lab</p>
-                    <h3 class="mini-game-title">Create your own palette</h3>
-                  </div>
-                  <button id="ps-randomize" type="button" class="mini-game-ghost-btn">
-                    Surprise Me
-                  </button>
-                </div>
-
-                <div class="palette-studio-preview" aria-label="Generated palette preview">
-                  <div id="ps-preview" class="palette-studio-strip"></div>
-                  <div class="palette-studio-aura"></div>
-                </div>
-
-                <div id="ps-controls" class="palette-studio-controls" aria-label="Palette color controls"></div>
-
-                <div class="palette-studio-actions">
-                  <div id="ps-mood" class="palette-studio-mood">Sunset system</div>
-                  <div class="flex gap-2 flex-wrap">
-                    <button id="ps-copy" type="button" class="mini-game-ghost-btn">Copy Hexes</button>
-                    <button id="ps-css" type="button" class="mini-game-ghost-btn">Copy CSS</button>
-                  </div>
-                </div>
-
-                <div class="mini-game-footer">
-                  <p id="ps-status" class="mini-game-status" aria-live="polite">Adjust a color or generate a new palette.</p>
-                  <p id="ps-score" class="mini-game-score">5 colors</p>
-                </div>
+              <div class="about-story-grid">
+                <article>
+                  <h3>Animation as a first language</h3>
+                  <p>Disney, Pixar, DreamWorks, Turkish cartoons, Studio Ghibli, Fortiche, and web artists from many countries shaped how I understand worldbuilding and emotional detail.</p>
+                </article>
+                <article>
+                  <h3>Finding people through art</h3>
+                  <p>When my surroundings felt closed to difference, online art communities helped me meet people who were curious, imaginative, and serious about visual storytelling.</p>
+                </article>
+                <article>
+                  <h3>Building with empathy</h3>
+                  <p>As the daughter of two educators, and through teaching younger students in volunteer work, I learned how much patience, clarity, and encouragement can change a person’s horizon.</p>
+                </article>
               </div>
             </section>
 
@@ -418,6 +373,12 @@
                   A question, a collaboration, an idea still half-formed? Send it my way.
                   Good conversations start somewhere.
                 </p>
+                <div class="about-open-to mb-5" aria-label="Open to opportunities">
+                  <span>Internships</span>
+                  <span>Product teams</span>
+                  <span>Creative tech</span>
+                  <span>Design collaborations</span>
+                </div>
 
                 <!-- FORM -->
                 <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
@@ -508,6 +469,83 @@
             </div>
           </aside>
 
+          <!-- Artist Statement — full grid width -->
+          <section class="lg:col-span-3 about-quote-card reveal">
+            <p class="about-snapshot-kicker">Artist statement</p>
+            <h2>I make things that ask to be seen.</h2>
+            <p class="poem-reflection">
+              Some rooms only permit one voice. I grew up in that kind of quiet — where certain thoughts
+              learned to vanish before they could become words, and where the safest currency was
+              conformity. What I carried out of those years wasn't bitterness. It was a very precise
+              need: to find spaces where difference is invited in rather than managed out, and to make
+              things that do the same.
+            </p>
+            <p class="poem-reflection">
+              Art came first. Ceramics, paint, charcoal — working with my hands was how I practiced
+              having a perspective before I had the confidence to defend it. It taught me patience and a
+              deep suspicion of shortcuts: that honest work doesn't rush to resolve its tensions, and
+              that the most important choices happen quietly, before any audience arrives.
+            </p>
+            <p class="poem-reflection">
+              Computer science asked the same question from a different angle: what are you trying to
+              say, and what is the most precise shape for it? I found I could bring everything from a
+              studio — the same care for structure, the same stubbornness about craft — to every
+              function I wrote. Code and clay turned out to be different dialects of the same language.
+            </p>
+            <p class="poem-reflection">
+              Everything in this portfolio is that conversation made visible. The ceramics and the
+              software, the data visualizations and the paintings — each one is an attempt at work that
+              earns a second look. Work that opens the room, for anyone who was ever told their way of
+              seeing was too much, or not the right kind of enough.
+            </p>
+            <a href="poem.html" class="about-poem-link">
+              Read the poem that started this
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3l5 5-5 5"/>
+              </svg>
+            </a>
+          </section>
+
+          <!-- Making Philosophy — full grid width -->
+          <section class="lg:col-span-3 about-focus-card reveal">
+            <div>
+              <p class="about-snapshot-kicker">How I Make</p>
+              <h2>I start before the screen.</h2>
+              <p>
+                My best decisions happen before anything is built — in the sketchbook, in the space
+                between a problem and a first response, in the moment a shape or a color makes something
+                suddenly legible. I move between intuitive and structural thinking as two halves of the
+                same process. The art teaches me where to look. The engineering teaches me how to make
+                it hold.
+              </p>
+            </div>
+            <div class="about-focus-list" aria-label="Current focus areas">
+              <span>Story</span>
+              <span>Identity</span>
+              <span>Memory</span>
+              <span>Craft</span>
+              <span>Systems</span>
+              <span>Empathy</span>
+              <span>Color</span>
+            </div>
+          </section>
+
+          <!-- Portfolio end — full grid width -->
+          <section class="lg:col-span-3 about-closing-card reveal">
+            <p class="about-snapshot-kicker">You've reached the end</p>
+            <h2>Thank you for being here.</h2>
+            <p>This is where code meets clay — where functions are drafted with the same care as a brushstroke, and every page carries something real. I hope something here stayed with you.</p>
+            <div class="about-closing-links">
+              <a href="projects.html">Projects</a>
+              <a href="playground.html">Playground</a>
+              <a href="graphicdesign.html">Design</a>
+              <a href="ceramics.html">Ceramics</a>
+              <a href="painting.html">Painting</a>
+              <a href="resume.html">Resume</a>
+            </div>
+            <p class="about-closing-note">Let&rsquo;s make something worth seeing.</p>
+          </section>
+
         </div>
       </div>
     </section>
@@ -516,6 +554,7 @@
   <!-- FOOTER -->
   <footer class="bg-white border-t border-gray-200 mt-12 relative overflow-hidden transition-colors duration-300">
     <div class="logo-background-pattern"></div>
+    <div class="page-bg-image page-bg-orange"></div>
 
     <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
       <div class="flex justify-center space-x-6 mb-4">

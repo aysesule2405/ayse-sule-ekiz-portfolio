@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seeds — A Poem | Ayse Sule Ekiz</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    .poem-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--color-accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-bottom: 2.75rem;
+      transition: gap 0.18s ease, color 0.18s ease;
+    }
+    .poem-back:hover { gap: 0.7rem; color: var(--color-accent-hover); }
+    .poem-back svg { width: 14px; height: 14px; }
+
+    .poem-eyebrow {
+      color: var(--color-accent-warm);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .poem-title {
+      font-family: "Old Standard TT", "Playfair Display", Georgia, serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-style: italic;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.08;
+      margin-bottom: 0.35rem;
+    }
+
+    .poem-meta {
+      color: var(--color-text-muted);
+      font-family: "Old Standard TT", Georgia, serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      margin-bottom: 2.25rem;
+    }
+
+    .poem-rule {
+      width: 3.5rem;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-accent-warm), var(--color-accent));
+      border-radius: 2px;
+      margin-bottom: 2.25rem;
+    }
+
+    .poem-parchment {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 100%),
+        color-mix(in srgb, var(--color-bg) 62%, var(--color-surface));
+      border: 1px solid var(--color-border);
+      border-radius: 0.5rem;
+      padding: clamp(1.6rem, 5vw, 3rem) clamp(1.4rem, 4vw, 2.75rem);
+      position: relative;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.3) inset,
+        0 22px 44px -32px rgba(42,18,12,0.3);
+      margin-bottom: 2rem;
+    }
+    html[data-theme="dark"] .poem-parchment {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%),
+        var(--color-surface-raised);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.05) inset,
+        0 24px 50px -30px rgba(0,0,0,0.55);
+    }
+
+    .poem-parchment::before {
+      content: "";
+      position: absolute;
+      top: 0.9rem; left: 1.5rem; right: 1.5rem;
+      height: 1px;
+      background: color-mix(in srgb, var(--color-accent-warm) 40%, transparent);
+    }
+
+    .poem-verse {
+      font-family: "Old Standard TT", Georgia, serif;
+      font-size: clamp(0.92rem, 1.35vw, 1.06rem);
+      font-weight: 400;
+      line-height: 1.58;
+      color: var(--color-text);
+    }
+    .poem-verse p { margin: 0; }
+    .poem-verse .stanza { margin-top: 1.5rem; }
+    .poem-verse .ind-1 { padding-left: 2.25rem; }
+    .poem-verse .ind-2 { padding-left: 4.5rem; }
+
+    .poem-reflection {
+      border-top: 1px solid var(--color-border);
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+    }
+    .poem-reflection p {
+      font-family: "Old Standard TT", Georgia, serif;
+      font-size: 0.96rem;
+      font-style: italic;
+      line-height: 1.82;
+      color: var(--color-text-soft);
+    }
+
+    .poem-sig {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.25rem 0;
+    }
+    .poem-sig-rule { flex: 1; height: 1px; background: var(--color-border); }
+    .poem-sig-name {
+      color: var(--color-text-muted);
+      font-family: "Old Standard TT", Georgia, serif;
+      font-size: 0.82rem;
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .poem-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid var(--color-border);
+      padding-top: 1.5rem;
+    }
+    .poem-footer a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--color-text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .poem-footer a:hover { color: var(--color-accent); }
+    .poem-footer a svg { width: 14px; height: 14px; }
+  </style>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/theme-toggle.js"></script>
+</head>
+
+<body class="min-h-screen">
+
+  <!-- Minimal header -->
+  <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
+    <div class="page-bg-image page-bg-orange"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center space-x-2">
+          <img src="images/logo-light.png" data-logo-light="images/logo-light.png" data-logo-dark="images/logo-dark.png"
+            alt="Ayse Sule Ekiz Logo" class="h-8 w-8 rounded-full border-2 border-[#850F01]">
+          <span class="text-base font-bold text-[#850F01] hidden sm:inline tracking-tight">Ayse Sule Ekiz</span>
+        </a>
+        <div class="flex items-center gap-3">
+          <a href="about.html" class="text-sm font-semibold text-[#850F01] hover:text-[#B23600] transition hidden sm:inline">← About</a>
+          <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+            class="inline-flex items-center px-3 py-2 rounded-lg focus:outline-none">
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- POEM -->
+  <main class="max-w-2xl mx-auto px-5 sm:px-8 py-14 page-content">
+
+    <a href="about.html" class="poem-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 3L5 8l5 5"/>
+      </svg>
+      Back to About
+    </a>
+
+    <p class="poem-eyebrow">Written at Robert College</p>
+    <h1 class="poem-title">Seeds</h1>
+    <p class="poem-meta">by Ayse Sule Ekiz &mdash; high school, 2019&ndash;2021</p>
+
+    <div class="poem-rule"></div>
+
+    <div class="poem-parchment">
+      <div class="poem-verse">
+        <p>Seeds are growing from the back of my lungs to my mouth.</p>
+        <p>To the curves of my brain, then the top of my head,</p>
+        <p class="ind-1">pulling out the roots of my hair with each new sprout.</p>
+        <p class="ind-1">Every new budding thought costs a strand of hair,</p>
+        <p class="ind-2">a strand of my pride.</p>
+        <p class="ind-2">I know hair can always grow back from the root,</p>
+        <p class="ind-2">as long as they surround me.</p>
+
+        <p class="stanza">The ones with healthy, shiny hair.</p>
+        <p>The sprouts shy away in their presence,</p>
+        <p class="ind-1">look for spaces to hide</p>
+        <p class="ind-1">someplace under my skull,</p>
+        <p class="ind-2">crawling to the depths of my brain,</p>
+        <p class="ind-2">lying dead under the blanket of my unconscious.</p>
+
+        <p class="stanza">So I let them be.</p>
+        <p>What scares them isn&rsquo;t just any other horror story &mdash; it&rsquo;s real,</p>
+        <p class="ind-1">It&rsquo;s less scary to live with a head full of hair</p>
+        <p class="ind-1">and have a zipper for a mouth</p>
+        <p class="ind-2">than bald spots shining under the sun.</p>
+        <p class="ind-2">Seeds always reaching for the water.</p>
+        <p class="ind-2">Always growing.</p>
+
+        <p class="stanza">But, that&rsquo;s the thing with sprouts. They cry,</p>
+        <p>and scream, and start ripping my skin if they don&rsquo;t get their way.</p>
+        <p class="ind-1">They yearn for a way out of my head,</p>
+        <p class="ind-1">they have hands that elongate and reach and hold onto my hair</p>
+        <p class="ind-2">for one final pull &mdash; hands that have the power</p>
+        <p class="ind-2">to mold my head into a bare, greasy scalp.</p>
+
+        <p class="stanza">A scalp that shines so bright</p>
+        <p>that it bothers the people around. People who stare</p>
+        <p class="ind-1">with a displeased, disapproving look &mdash;</p>
+        <p class="ind-1">people who put on their sunglasses</p>
+        <p class="ind-2">and look the other way.</p>
+        <p class="ind-2">I guess I must let my hair grow back, mustn&rsquo;t I?</p>
+      </div>
+
+    </div>
+
+    <div class="poem-sig">
+      <div class="poem-sig-rule"></div>
+      <span class="poem-sig-name">Ayse Sule Ekiz</span>
+      <div class="poem-sig-rule"></div>
+    </div>
+
+    <div class="poem-footer">
+      <a href="about.html">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 3L5 8l5 5"/>
+        </svg>
+        Back to About
+      </a>
+      <a href="index.html">
+        Portfolio
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 3l5 5-5 5"/>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>

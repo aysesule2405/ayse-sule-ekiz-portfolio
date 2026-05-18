@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playground | Ayse Sule Ekiz</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/main.css">
+
+  <style>
+    .logo-background-pattern {
+      background-image: url('./images/logo.jpg');
+      background-repeat: repeat;
+      background-blend-mode: multiply;
+      opacity: 0.1;
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; z-index: -1;
+    }
+
+    /* ── Pixel art Palette Studio ──────────────────────── */
+    .palette-studio-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+    .palette-studio-card::before { display: none; }
+    /* top bar inside the card */
+    .palette-studio-card .mini-game-topline {
+      padding: 1rem 1.2rem 0.85rem;
+    }
+
+    /* Colour strip — full-width tall Coolors-style panels */
+    .palette-studio-preview { position: relative; }
+    .palette-studio-strip {
+      display: flex;
+      width: 100%;
+      height: 220px;
+      gap: 0;
+      padding: 0;
+      background: none;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: hidden;
+    }
+    .palette-studio-strip::before { display: none; }
+
+    .palette-studio-swatch {
+      flex: 1;
+      height: 100%;
+      min-width: 0;
+      background-color: var(--swatch-color);
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      position: relative;
+      cursor: pointer;
+      margin-top: 0;
+      padding: 0 0.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.3rem;
+      transition: flex 0.25s ease;
+    }
+    .palette-studio-swatch:nth-child(1) { border-radius: 0; transform: none; }
+    .palette-studio-swatch:nth-child(2) { border-radius: 0; transform: none; }
+    .palette-studio-swatch:nth-child(3) { border-radius: 0; transform: none; }
+    .palette-studio-swatch:nth-child(4) { border-radius: 0; transform: none; }
+    .palette-studio-swatch:nth-child(5) { border-radius: 0; transform: none; }
+    .palette-studio-swatch:hover {
+      flex: 1.28 !important;
+      transform: none !important;
+      box-shadow: none;
+    }
+    .palette-studio-swatch.is-locked {
+      box-shadow: none;
+      outline: 3px solid rgba(255,255,255,0.55);
+      outline-offset: -3px;
+    }
+
+    /* No paint tube pseudo-elements */
+    .palette-studio-swatch::before,
+    .palette-studio-swatch::after { display: none; }
+
+    /* Hex label — centered at the bottom, clear white text */
+    .swatch-hex-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 1px 5px rgba(0,0,0,0.45);
+      background: none;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    /* Lock button — minimal circle top-right */
+    .ps-lock-btn {
+      position: absolute;
+      top: 0.65rem; right: 0.65rem;
+      width: 26px; height: 26px;
+      background: rgba(0,0,0,0.22);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.88);
+      padding: 4px;
+      transition: background 0.15s;
+      backdrop-filter: blur(4px);
+    }
+    .ps-lock-btn:hover { background: rgba(0,0,0,0.45); }
+
+    /* Aura hidden */
+    .palette-studio-aura { display: none; }
+
+    /* Controls row */
+    .palette-studio-controls {
+      padding: 0.65rem 1.2rem;
+      background: none;
+      border: none;
+      border-top: 1px solid var(--color-border);
+      border-radius: 0;
+      box-shadow: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .palette-studio-control {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+    }
+    .palette-studio-control span { display: none; }
+    .palette-studio-control input[type="color"] {
+      width: 30px; height: 30px;
+      padding: 2px;
+      border: 1.5px solid var(--color-border);
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: none;
+    }
+    .palette-studio-control code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.68rem;
+      background: var(--color-surface);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+      letter-spacing: 0.04em;
+    }
+
+    /* Actions row */
+    .palette-studio-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.65rem 1.2rem 0.85rem;
+    }
+    .palette-studio-mood {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      background: none;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      font-style: italic;
+    }
+
+    /* Coolors-style shuffle button */
+    #ps-randomize {
+      background: var(--color-accent) !important;
+      color: var(--color-accent-foreground) !important;
+      border: none;
+      padding: 8px 18px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      box-shadow: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    #ps-randomize:hover { background: var(--color-accent-hover) !important; transform: none; box-shadow: none; }
+    #ps-randomize:active { transform: scale(0.97); }
+
+    /* ── Sand Canvas ───────────────────────────────────── */
+    .ss-card {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .ss-panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .ss-mode-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: var(--color-surface-raised);
+      flex-shrink: 0;
+    }
+    .ss-mode-btn {
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      padding: 0.48rem 0.78rem;
+      transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+    .ss-mode-btn:hover {
+      color: var(--color-accent);
+    }
+    .ss-mode-btn.is-active {
+      background: var(--color-accent);
+      color: var(--color-accent-foreground);
+      box-shadow: 0 6px 18px color-mix(in srgb, var(--color-accent) 24%, transparent);
+    }
+    .ss-mode-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+    }
+    .ss-canvas-wrap {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff7e0;
+      cursor: crosshair;
+      user-select: none;
+      touch-action: none;
+      line-height: 0;
+    }
+    #ss-canvas { display: block; width: 100%; height: auto; border-radius: 14px; }
+    .ss-hint {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.55rem;
+      color: rgba(42,18,12,0.42);
+      font-size: 0.82rem; font-style: italic; letter-spacing: 0.02em;
+      pointer-events: none;
+      transition: opacity 0.7s ease;
+    }
+    .ss-hint.gone { opacity: 0; }
+    .ss-picker-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: stretch;
+      gap: 0.9rem;
+    }
+    .ss-strip-wrap {
+      flex: 1; position: relative;
+      cursor: crosshair; touch-action: none;
+      height: 168px; border-radius: 14px;
+      overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+    }
+    #ss-strip { display: block; width: 100%; height: 168px; border-radius: 14px; }
+    .ss-strip-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent calc(100% - 42px), rgba(255,255,255,0.13) calc(100% - 42px), transparent calc(100% - 40px)),
+        radial-gradient(circle at 16% 18%, rgba(255,255,255,0.18), transparent 24%);
+      mix-blend-mode: screen;
+    }
+    .ss-strip-thumb {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 24px; height: 24px; border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.95);
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.45), 0 6px 16px rgba(0,0,0,0.42);
+      pointer-events: none;
+      transition: left 0.04s, top 0.04s;
+      z-index: 2;
+    }
+    .ss-swatch-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      flex-shrink: 0;
+      min-width: 5.9rem;
+      padding: 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      background: var(--color-surface-raised);
+    }
+    .ss-swatch {
+      width: 58px; height: 58px; border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.85);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.22);
+      cursor: grab;
+      transition: background 0.1s, transform 0.15s, opacity 0.15s;
+    }
+    .ss-swatch:hover { transform: scale(1.07); }
+    .ss-swatch:active { cursor: grabbing; }
+    .ss-swatch.ss-dragging { opacity: 0.4; transform: scale(0.86); }
+    .ss-add-btn {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: transparent;
+      border: 2px solid rgba(128,128,128,0.35);
+      color: var(--color-text-muted);
+      font-size: 15px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s, color 0.15s;
+      padding: 0;
+    }
+    .ss-add-btn:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); transform: scale(1.2); }
+    .ss-current-label {
+      color: var(--color-text-soft);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      max-width: 5.25rem;
+      overflow: hidden;
+      text-align: center;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .ss-presets {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      padding: 0.8rem;
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      background: color-mix(in srgb, var(--color-surface-raised) 82%, transparent);
+    }
+    .ss-preset-dot {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 2.5px solid color-mix(in srgb, var(--color-surface) 72%, transparent); cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+    }
+    .ss-preset-dot:hover { transform: scale(1.18); }
+    .ss-preset-dot.active {
+      border-color: var(--color-accent-warm);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 14%, transparent), 0 6px 14px rgba(0,0,0,0.18);
+      transform: scale(1.14);
+    }
+    .ss-palette-header { display: flex; align-items: baseline; justify-content: space-between; gap: 0.55rem; margin-bottom: 0.4rem; }
+    .ss-palette-sub { font-size: 0.66rem; color: var(--color-text-muted); opacity: 0.65; font-style: italic; text-transform: none; letter-spacing: 0; font-weight: 400; }
+    .ss-custom-palette {
+      min-height: 64px; padding: 0.75rem;
+      border: 2px dashed rgba(128,128,128,0.22); border-radius: 1rem;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .ss-custom-palette.drag-over { border-color: var(--color-accent); background: rgba(133,15,1,0.07); }
+    .ss-pal-hint { font-size: 0.72rem; color: rgba(128,128,128,0.42); font-style: italic; pointer-events: none; user-select: none; }
+    .ss-pal-slot {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2.5px solid transparent; cursor: pointer;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.22);
+      position: relative; flex-shrink: 0; padding: 0;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .ss-pal-slot:hover { transform: scale(1.22); }
+    .ss-pal-slot.active { border-color: rgba(255,255,255,0.88); }
+    .ss-pal-remove {
+      position: absolute; top: -5px; right: -5px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: #374151; color: #f9fafb;
+      font-size: 9px; font-weight: 700;
+      border: none; cursor: pointer;
+      display: none; align-items: center; justify-content: center;
+      line-height: 1; padding: 0; z-index: 2;
+    }
+    .ss-pal-slot:hover .ss-pal-remove { display: flex; }
+    .ss-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      padding-top: 0.15rem;
+    }
+    .ss-flow-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: min(100%, 16rem);
+    }
+    .ss-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); white-space: nowrap; }
+    .ss-flow-value {
+      color: var(--color-accent);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 900;
+      min-width: 1.8rem;
+      text-align: right;
+    }
+    .ss-range { flex: 1; min-width: 8rem; accent-color: var(--color-accent); cursor: pointer; }
+    .ss-actions { display: flex; gap: 0.45rem; }
+
+    /* ── Mobile breakpoints ────────────────────────────────────── */
+    @media (max-width: 640px) {
+      /* Reduce Coolors-style palette strip height on mobile */
+      .palette-studio-strip { height: 150px; }
+    }
+    @media (max-width: 480px) {
+      /* Reduce 2D colour picker height on very small screens */
+      .ss-strip-wrap { height: 130px; }
+      #ss-strip { height: 130px; }
+      /* Stack Sand Canvas toolbar buttons */
+      .ss-actions { flex-wrap: wrap; }
+    }
+
+    /* ── Playground page unification ───────────────────────────── */
+    .playground-page {
+      background: var(--color-bg);
+      color: var(--color-text);
+    }
+
+    .playground-page .page-content {
+      width: min(100%, 88rem);
+    }
+
+    .playground-page h2 {
+      color: var(--color-text) !important;
+    }
+
+    .playground-page section > p {
+      color: var(--color-text-soft) !important;
+    }
+
+    .playground-page .playground-intro {
+      color: var(--color-text-soft) !important;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 1.5rem;
+    }
+
+    .playground-page .playground-game-index {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: -0.2rem 0 2.75rem;
+    }
+
+    .playground-page .playground-game-index a {
+      align-items: center;
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--color-accent-soft) 64%, transparent), transparent),
+        var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 0.9rem;
+      box-shadow: var(--shadow-soft);
+      color: var(--color-text-soft);
+      display: flex;
+      font-size: 0.9rem;
+      font-weight: 700;
+      gap: 0.55rem;
+      justify-content: center;
+      min-height: 3.25rem;
+      padding: 0.75rem 0.8rem;
+      text-align: center;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .playground-page .playground-game-index a:hover {
+      background: var(--color-accent-soft);
+      border-color: var(--color-border-strong);
+      color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .playground-page .playground-game-index i {
+      color: var(--color-accent);
+      flex: 0 0 auto;
+    }
+
+    .playground-page .mini-game-section,
+    .playground-page #half-moon-game-section {
+      scroll-margin-top: 7rem;
+    }
+
+    .playground-page section > h2 {
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 0.65rem;
+    }
+
+    .playground-page section > h2 i {
+      color: var(--color-accent);
+    }
+
+    .playground-page #half-moon-game-section > div {
+      background: var(--color-surface) !important;
+      border-color: var(--color-border) !important;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .playground-page #half-moon-game-section > div::before {
+      background:
+        radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--color-accent-warm) 18%, transparent), transparent 34%),
+        radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--color-accent) 11%, transparent), transparent 30%);
+      content: "";
+      inset: 0;
+      opacity: 0.9;
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .playground-page #half-moon-game-section > div > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .playground-page #hm-status {
+      background: var(--color-surface-raised);
+      border: 1px solid var(--color-border);
+      border-radius: 0.85rem;
+      color: var(--color-text-soft) !important;
+      padding: 0.8rem 0.9rem;
+    }
+
+    .playground-page #hm-restart {
+      background: var(--color-accent) !important;
+      color: var(--color-accent-foreground) !important;
+      border-radius: 9999px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .playground-page #hm-restart:hover {
+      background: var(--color-accent-hover) !important;
+    }
+
+    .playground-page .mini-game-card {
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--color-accent-warm) 13%, transparent), transparent 36%),
+        var(--color-surface) !important;
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .playground-page .palette-studio-card {
+      overflow: hidden;
+      padding: 1.1rem;
+    }
+
+    .playground-page .palette-studio-card::before {
+      display: block;
+    }
+
+    .playground-page .palette-studio-card .mini-game-topline,
+    .playground-page .palette-studio-controls,
+    .playground-page .palette-studio-actions {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .playground-page .palette-studio-card .mini-game-topline {
+      padding-top: 0;
+    }
+
+    .playground-page .palette-studio-preview {
+      background: var(--color-surface-raised);
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+      overflow: hidden;
+    }
+
+    .playground-page .palette-progress-dots {
+      background: color-mix(in srgb, var(--color-surface-raised) 82%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: 9999px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0.45rem 0.65rem;
+      width: fit-content;
+    }
+
+    .playground-page .palette-artboard {
+      border-color: var(--color-border-strong);
+    }
+
+    .playground-page .palette-studio-strip {
+      border-radius: 1rem;
+      height: clamp(11rem, 27vw, 15rem);
+    }
+
+    .playground-page .palette-studio-swatch:first-child {
+      border-radius: 1rem 0 0 1rem;
+    }
+
+    .playground-page .palette-studio-swatch:last-child {
+      border-radius: 0 1rem 1rem 0;
+    }
+
+    .playground-page .swatch-hex-label,
+    .playground-page .palette-studio-control code {
+      font-family: var(--font-mono);
+    }
+
+    .playground-page .palette-studio-controls {
+      background: var(--color-surface-raised);
+      border: 1px solid var(--color-border);
+      border-radius: 0.85rem;
+      margin-top: 0.8rem;
+    }
+
+    .playground-page .palette-studio-control {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 0.7rem;
+      color: var(--color-text-soft);
+      padding: 0.45rem 0.55rem;
+    }
+
+    .playground-page .palette-studio-control code {
+      background: transparent;
+      border: 0;
+      color: var(--color-text-soft);
+      padding: 0;
+    }
+
+    .playground-page .palette-studio-mood {
+      background: var(--color-accent-soft);
+      border: 1px solid var(--color-border);
+      border-radius: 9999px;
+      color: var(--color-accent);
+      font-style: normal;
+      padding: 0.45rem 0.75rem;
+    }
+
+    .playground-page #ps-randomize,
+    .playground-page .mini-game-ghost-btn {
+      background: var(--color-surface-raised) !important;
+      border: 1px solid var(--color-border) !important;
+      border-radius: 9999px;
+      color: var(--color-text-soft) !important;
+      box-shadow: none;
+    }
+
+    .playground-page #ps-randomize:hover,
+    .playground-page .mini-game-ghost-btn:hover {
+      background: var(--color-accent-soft) !important;
+      border-color: var(--color-accent-warm) !important;
+      color: var(--color-accent) !important;
+      transform: translateY(-1px);
+    }
+
+    .playground-page .ss-card {
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--color-accent-warm) 12%, transparent), transparent 34%),
+        var(--color-surface) !important;
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      box-shadow: var(--shadow-card);
+      padding: clamp(1rem, 2.5vw, 1.45rem);
+    }
+
+    .playground-page .ss-canvas-wrap,
+    .playground-page .ss-strip-wrap {
+      border: 1px solid var(--color-border);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), var(--shadow-soft);
+    }
+
+    .playground-page .ss-canvas-wrap {
+      background: #fff7e0;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.55),
+        inset 0 -40px 70px rgba(149,35,20,0.05),
+        var(--shadow-soft);
+    }
+
+    .playground-page .ss-strip-wrap {
+      background: var(--color-surface-raised);
+    }
+
+    .playground-page .ss-custom-palette {
+      background: var(--color-surface-raised);
+      border-color: var(--color-border-strong);
+    }
+
+    .playground-page .ss-custom-palette.drag-over {
+      background: var(--color-accent-soft);
+      border-color: var(--color-accent);
+    }
+
+    .playground-page .ss-custom-palette.has-gradient {
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--color-accent-soft) 78%, transparent), transparent),
+        var(--color-surface-raised);
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 10%, transparent);
+    }
+
+    .playground-page .ss-swatch.ss-swatch-gradient {
+      border-color: color-mix(in srgb, var(--color-accent-warm) 72%, white);
+      box-shadow:
+        0 0 0 4px color-mix(in srgb, var(--color-accent-soft) 80%, transparent),
+        0 8px 22px rgba(0,0,0,0.24);
+    }
+
+    .playground-page .ss-mode-hint {
+      color: var(--color-text-muted);
+      font-size: 0.76rem;
+      line-height: 1.55;
+      margin-top: -0.25rem;
+    }
+
+    .playground-page .ss-mode-hint strong {
+      color: var(--color-accent);
+      font-weight: 900;
+    }
+
+    .playground-page .ss-label,
+    .playground-page .ss-palette-sub,
+    .playground-page .ss-pal-hint {
+      color: var(--color-text-muted);
+    }
+
+    .playground-page footer {
+      background: var(--color-surface) !important;
+      border-top-color: var(--color-border) !important;
+    }
+
+    .playground-page footer a {
+      color: var(--color-accent) !important;
+    }
+
+    .playground-page footer a:hover {
+      color: var(--color-accent-hover) !important;
+    }
+
+    .playground-page footer p {
+      color: var(--color-text-muted) !important;
+    }
+
+    html[data-theme="dark"] .playground-page .palette-studio-swatch.is-locked {
+      outline-color: rgba(255, 166, 24, 0.62);
+    }
+
+    html[data-theme="dark"] .playground-page .ss-hint {
+      color: rgba(42, 18, 12, 0.46);
+    }
+
+    @media (max-width: 768px) {
+      .playground-page .page-content {
+        padding-top: 2rem;
+      }
+
+      .playground-page .max-w-3xl {
+        max-width: 100%;
+      }
+
+      .playground-page .playground-game-index {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .playground-page .palette-studio-strip {
+        height: 11rem;
+      }
+
+      .playground-page .palette-studio-controls {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .playground-page .palette-studio-control {
+        justify-content: space-between;
+      }
+
+      .playground-page .ss-picker-row {
+        align-items: stretch;
+        grid-template-columns: 1fr;
+      }
+
+      .playground-page .ss-panel-head {
+        flex-direction: column;
+      }
+
+      .playground-page .ss-mode-toggle {
+        align-self: stretch;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .playground-page .ss-mode-btn {
+        justify-content: center;
+      }
+
+      .playground-page .ss-swatch-wrap {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .playground-page .ss-toolbar,
+      .playground-page .ss-actions {
+        align-items: stretch;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .playground-page .ss-actions .mini-game-ghost-btn {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .playground-page .mini-game-card,
+      .playground-page #half-moon-game-section > div {
+        border-radius: 0.85rem;
+      }
+
+      .playground-page .playground-game-index {
+        grid-template-columns: 1fr;
+      }
+
+      .playground-page .palette-studio-strip {
+        height: 9.5rem;
+      }
+
+      .playground-page .swatch-hex-label {
+        font-size: 0.56rem;
+      }
+    }
+
+    /* ── Game completion modal ─────────────────────────────────── */
+    .game-complete-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.52);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+    .game-complete-overlay.is-visible {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+    }
+    .game-complete-card {
+      background: radial-gradient(circle at top center, color-mix(in srgb, var(--color-accent) 12%, var(--color-surface)), var(--color-surface));
+      border: 1.5px solid color-mix(in srgb, var(--color-accent) 22%, var(--color-border));
+      box-shadow: var(--shadow-card);
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem 2rem;
+      max-width: 26rem;
+      width: 100%;
+      position: relative;
+      transform: scale(0.92) translateY(16px);
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+      text-align: center;
+    }
+    .game-complete-overlay.is-visible .game-complete-card {
+      transform: scale(1) translateY(0);
+    }
+    .game-complete-kicker {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 0.6rem;
+    }
+    .game-complete-icon {
+      font-size: 2.6rem;
+      margin-bottom: 0.6rem;
+      line-height: 1;
+    }
+    .game-complete-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 0.7rem;
+      line-height: 1.25;
+    }
+    .game-complete-body {
+      font-size: 0.88rem;
+      color: var(--color-text-soft);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+    .game-complete-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .game-complete-btn {
+      background: var(--color-accent);
+      color: var(--color-accent-foreground);
+      border: none;
+      border-radius: 9999px;
+      padding: 0.6rem 1.6rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.12s ease;
+    }
+    .game-complete-btn:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-1px);
+    }
+    .game-complete-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.9rem;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.3rem 0.45rem;
+      border-radius: 50%;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .game-complete-close:hover {
+      color: var(--color-text);
+      background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    }
+  </style>
+
+  <link rel="stylesheet" href="styles/nav-dropdown.css">
+  <link rel="stylesheet" href="styles/animations.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/theme-toggle.js"></script>
+  <script src="js/nav-enhancements.js"></script>
+  <script src="js/scroll-animations.js" defer></script>
+  <script src="js/half-moon-game.js" defer></script>
+  <script src="js/portfolio-mini-games.js" defer></script>
+</head>
+
+<body class="min-h-screen playground-page">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+    <div class="page-bg-image page-bg-orange"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex-shrink-0 flex items-center space-x-2">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img src="images/logo-light.png" data-logo-light="images/logo-light.png" data-logo-dark="images/logo-dark.png"
+              alt="Ayse Sule Ekiz Logo" class="h-10 w-10 rounded-full border-2 border-[#850F01]"/>
+            <span class="text-2xl font-extrabold text-[#850F01] tracking-tight hidden sm:inline">Ayse Sule Ekiz</span>
+          </a>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Home</a>
+          <a href="projects.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Projects</a>
+          <a href="playground.html" class="nav-link active px-2.5 py-2 rounded-lg font-medium text-sm">Playground</a>
+          <a href="graphicdesign.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Graphic Design</a>
+          <a href="ceramics.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Ceramics</a>
+          <a href="painting.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Painting</a>
+          <a href="resume.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Resume</a>
+          <a href="about.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">About</a>
+          <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+            class="ml-2 inline-flex items-center px-3 py-2 rounded-lg focus:outline-none">
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+        </nav>
+
+        <button id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false"
+          class="lg:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg" aria-label="Toggle navigation menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home</a>
+      <a href="projects.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Projects</a>
+      <a href="playground.html" class="nav-link active block px-4 py-3 text-sm font-medium border-b">Playground</a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design &amp; Digital Art</a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting &amp; Ceramics</a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting &amp; Charcoal</a>
+      <a href="resume.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Resume</a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">About / Contact</a>
+      <div class="px-4 py-3 border-t border-gray-100">
+        <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+          class="w-full inline-flex items-center justify-center px-3 py-2 rounded-lg">
+          <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5 mr-2"></i>
+          <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 mr-2 hidden"></i>
+          <span class="text-sm">Toggle theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
+
+    <section id="playground">
+      <h2 class="page-title">The <em>Playground</em></h2>
+      <p class="playground-intro leading-relaxed mb-8 font-serif tracking-wide italic text-gray-600 text-base">
+        Colour theory games, a sand-physics canvas, and a card game built with the same care as the rest of the portfolio. This page is a small studio for interaction, mood, and playful systems.
+      </p>
+      <nav class="playground-game-index" aria-label="Playground games">
+        <a href="#half-moon-game-section">
+          <i data-lucide="moon" class="w-4 h-4"></i>
+          <span>Half Moon</span>
+        </a>
+        <a href="#palette-oracle-section">
+          <i data-lucide="palette" class="w-4 h-4"></i>
+          <span>Palette Oracle</span>
+        </a>
+        <a href="#palette-studio-section">
+          <i data-lucide="paintbrush" class="w-4 h-4"></i>
+          <span>Palette Studio</span>
+        </a>
+        <a href="#sand-canvas-section">
+          <i data-lucide="layers" class="w-4 h-4"></i>
+          <span>Sand Canvas</span>
+        </a>
+      </nav>
+    </section>
+
+    <div class="max-w-3xl mx-auto space-y-14">
+
+      <!-- ── Half Moon ──────────────────────────────── -->
+      <section id="half-moon-game-section" class="reveal">
+        <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
+          <i data-lucide="moon" class="w-5 h-5"></i> Half Moon
+        </h2>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          A card game about the quiet drama of moonlight shifting phase by phase. Click the moon cards in order, darkest to brightest.
+          Try the original Google version <a href="https://share.google/P2RAPyQXvds8WtBno" target="_blank" rel="noopener noreferrer" class="text-[#850F01] font-semibold hover:underline">here 🌙</a>.
+        </p>
+        <div class="bg-white rounded-2xl shadow p-4 md:p-6 border border-[#F2D6A1]">
+          <p id="hm-status" class="text-sm font-medium text-gray-700 mb-3">
+            Click the moon cards in order from <span class="font-semibold">New Moon</span> to <span class="font-semibold">Full Moon</span>, darkest to brightest.
+          </p>
+          <div id="hm-cards" class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5"></div>
+          <button id="hm-restart" type="button"
+            class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold
+                   text-white bg-[#850F01] hover:bg-[#B23600] shadow-md transition">
+            Shuffle &amp; Play Again
+          </button>
+        </div>
+      </section>
+
+      <!-- ── Palette Oracle ─────────────────────────── -->
+      <section id="palette-oracle-section" class="reveal mini-game-section">
+        <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
+          <i data-lucide="palette" class="w-5 h-5"></i> Palette Oracle
+        </h2>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          Draw a natural mood palette inspired by the portfolio, then drag the distinct missing swatch onto the painter's palette.
+        </p>
+        <div class="mini-game-card palette-oracle-card">
+          <div class="mini-game-topline">
+            <div>
+              <p class="mini-game-kicker">Current Mood</p>
+              <h3 id="po-title" class="mini-game-title">Studio Light</h3>
+            </div>
+            <div class="palette-game-actions">
+              <span id="po-progress" class="palette-round-pill">1 / 10</span>
+              <button id="po-new-round" type="button" class="mini-game-ghost-btn">Restart</button>
+            </div>
+          </div>
+          <p id="po-story" class="mini-game-copy">Tap or drag the distinct swatch that completes this natural mood palette.</p>
+          <div id="po-dots" class="palette-progress-dots" aria-hidden="true"></div>
+          <div class="palette-artboard">
+            <div class="palette-artboard-glow"></div>
+            <div id="po-palette" class="palette-strip" aria-label="Palette with one missing swatch"></div>
+            <div id="po-result" class="palette-result-pop" aria-live="polite" hidden></div>
+          </div>
+          <div id="po-options" class="palette-options" aria-label="Palette answer choices"></div>
+          <div class="mini-game-footer">
+            <p id="po-status" class="mini-game-status" aria-live="polite">Pick the missing swatch.</p>
+            <p id="po-score" class="mini-game-score">0 / 0</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Palette Studio (pixel art) ────────────── -->
+      <section id="palette-studio-section" class="reveal mini-game-section">
+        <h2 class="text-2xl font-semibold text-[#850F01] mb-1 flex items-center gap-2">
+          <i data-lucide="paintbrush" class="w-5 h-5"></i> Palette Studio
+        </h2>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          Squeeze out five paint colours on your palette, lock your favourites, then shuffle the rest. Copy the final hex set for your next project.
+        </p>
+        <div class="mini-game-card palette-studio-card">
+          <div class="mini-game-topline">
+            <div>
+              <p class="mini-game-kicker">Color Lab</p>
+              <h3 class="mini-game-title">Generate &amp; remix palettes</h3>
+            </div>
+            <button id="ps-randomize" type="button">Shuffle</button>
+          </div>
+
+          <div class="palette-studio-preview" aria-label="Generated palette preview">
+            <div id="ps-preview" class="palette-studio-strip"></div>
+            <div class="palette-studio-aura"></div>
+          </div>
+
+          <div id="ps-controls" class="palette-studio-controls" aria-label="Palette colour controls"></div>
+
+          <div class="palette-studio-actions">
+            <div id="ps-mood" class="palette-studio-mood">Sunset system</div>
+            <div class="flex gap-2 flex-wrap">
+              <button id="ps-copy" type="button" class="mini-game-ghost-btn">Copy Hexes</button>
+              <button id="ps-css" type="button" class="mini-game-ghost-btn">Copy CSS</button>
+            </div>
+          </div>
+
+          <div class="mini-game-footer">
+            <p id="ps-status" class="mini-game-status" aria-live="polite">Adjust a colour or generate a new palette.</p>
+            <p id="ps-score" class="mini-game-score">5 colours</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Sand Canvas ────────────────────────────── -->
+      <section id="sand-canvas-section" class="reveal mini-game-section">
+        <h2 class="text-2xl font-semibold text-[#850F01] mb-3 flex items-center gap-2">
+          <i data-lucide="layers" class="w-5 h-5"></i> Sand Canvas
+        </h2>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          Pour coloured sand and let physics do the painting. Save multiple colours to My Palette, then click and drag to pour a blended gradient stream.
+        </p>
+        <div class="mini-game-card ss-card">
+          <div class="ss-panel-head">
+            <div>
+              <p class="mini-game-kicker">Sand Studio</p>
+              <h3 class="mini-game-title">Layer falling pigments</h3>
+            </div>
+            <div class="ss-mode-toggle" role="group" aria-label="Sand pour mode">
+              <button id="ss-mode-single" type="button" class="ss-mode-btn is-active" aria-pressed="true">Single</button>
+              <button id="ss-mode-gradient" type="button" class="ss-mode-btn" aria-pressed="false" disabled>Gradient</button>
+            </div>
+          </div>
+          <p id="ss-mode-hint" class="ss-mode-hint">Pick a colour, then pour. Save two or more colours to unlock gradient mode.</p>
+
+          <div class="ss-canvas-wrap" id="ss-wrap">
+            <canvas id="ss-canvas"></canvas>
+            <div class="ss-hint" id="ss-hint">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" style="opacity:.45">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+              <span>Click or drag to pour sand</span>
+            </div>
+          </div>
+
+          <div class="ss-picker-row">
+            <div class="ss-strip-wrap" id="ss-strip-wrap">
+              <canvas id="ss-strip" height="200"></canvas>
+              <div class="ss-strip-thumb" id="ss-thumb"></div>
+            </div>
+            <div class="ss-swatch-wrap">
+              <div class="ss-swatch" id="ss-swatch" draggable="true" title="Drag to My Palette · or click + below"></div>
+              <span id="ss-current-label" class="ss-current-label">Terracotta</span>
+              <button class="ss-add-btn" id="ss-add" title="Save colour to My Palette" aria-label="Add colour to palette">+</button>
+            </div>
+          </div>
+
+          <div class="ss-presets" id="ss-presets">
+            <span class="ss-label" style="margin-right:.25rem;">Presets</span>
+          </div>
+
+          <div>
+            <div class="ss-palette-header">
+              <span class="ss-label">My Palette</span>
+              <span class="ss-palette-sub">save 2+ colours for gradient sand &middot; hover to remove</span>
+            </div>
+            <div class="ss-custom-palette" id="ss-custom-palette">
+              <span class="ss-pal-hint" id="ss-pal-hint">your saved colours will appear here</span>
+            </div>
+          </div>
+
+          <div class="ss-toolbar">
+            <div class="ss-flow-ctrl">
+              <span class="ss-label">Flow</span>
+              <input type="range" id="ss-flow" min="1" max="9" value="4" class="ss-range">
+              <span id="ss-flow-value" class="ss-flow-value">4</span>
+            </div>
+            <div class="ss-actions">
+              <button id="ss-shake" type="button" class="mini-game-ghost-btn">
+                <i data-lucide="zap" class="w-4 h-4 inline-block" style="vertical-align:-3px;margin-right:3px;"></i>Shake
+              </button>
+              <button id="ss-clear" type="button" class="mini-game-ghost-btn">Clear</button>
+              <button id="ss-download" type="button" class="mini-game-ghost-btn">
+                <i data-lucide="download" class="w-4 h-4 inline-block" style="vertical-align:-3px;margin-right:3px;"></i>Save PNG
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-gray-200 mt-12 relative overflow-hidden transition-colors duration-300">
+    <div class="logo-background-pattern"></div>
+    <div class="page-bg-image page-bg-orange"></div>
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="flex justify-center space-x-6 mb-4">
+        <a href="https://www.instagram.com/aysule_2327/" target="_blank" rel="noopener noreferrer"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="Instagram">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" rel="noopener noreferrer"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="LinkedIn">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.53V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/aysesule2405" target="_blank" rel="noopener noreferrer"
+          class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="GitHub">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56v-2.15c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18A11 11 0 0 1 12 6.08c.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.42-2.69 5.39-5.25 5.67.42.36.78 1.06.78 2.15v3.14c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="text-sm text-gray-500">&copy; 2025 Ayse Sule Ekiz. Built with care.</p>
+    </div>
+  </footer>
+
+  <!-- Game completion modal -->
+  <div id="game-complete-overlay" class="game-complete-overlay" role="dialog" aria-modal="true" aria-labelledby="game-complete-title">
+    <div class="game-complete-card">
+      <button class="game-complete-close" id="game-complete-close" aria-label="Close">&times;</button>
+      <div class="game-complete-kicker" id="game-complete-kicker"></div>
+      <div class="game-complete-icon" id="game-complete-icon"></div>
+      <h2 class="game-complete-title" id="game-complete-title"></h2>
+      <p class="game-complete-body" id="game-complete-body"></p>
+      <div class="game-complete-actions" id="game-complete-actions"></div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var GAME_DATA = {
+      halfmoon: {
+        kicker: 'Half Moon',
+        icon: '🌕',
+        title: 'Lunar cycle complete.',
+        body: 'All eight phases in order — from the darkest new moon to the last waning crescent. The sky would agree.',
+        actions: [{ label: 'Play again', targetId: 'hm-restart' }]
+      },
+      oracle: {
+        kicker: 'Palette Oracle',
+        icon: '🎨',
+        getTitle: function (score) {
+          return score >= 8 ? 'Excellent eye.' : score >= 5 ? 'Good run.' : 'Keep training.';
+        },
+        getBody: function (score) {
+          return score >= 8
+            ? score + ' of 10 palettes matched. You read the mood fast — the colors didn\'t fool you.'
+            : score >= 5
+            ? score + ' of 10 palettes matched. A few more rounds will sharpen the eye.'
+            : score + ' of 10 palettes matched. Color intuition takes practice — restart to sharpen it.';
+        },
+        actions: [{ label: 'Play again', targetId: 'po-new-round' }]
+      },
+      sand: {
+        kicker: 'Sand Canvas',
+        icon: '🏖️',
+        title: 'Canvas saved.',
+        body: 'A physical impression made from light and physics. Every grain placed by hand — nothing algorithmic about the shape you made.',
+        actions: [{ label: 'Keep going', close: true }]
+      }
+    };
+
+    function showGameComplete(game, opts) {
+      var overlay = document.getElementById('game-complete-overlay');
+      if (!overlay) return;
+      var data = GAME_DATA[game];
+      if (!data) return;
+
+      var score = (opts && opts.score != null) ? opts.score : 0;
+      document.getElementById('game-complete-kicker').textContent = data.kicker;
+      document.getElementById('game-complete-icon').textContent = data.icon;
+      document.getElementById('game-complete-title').textContent = data.getTitle ? data.getTitle(score) : data.title;
+      document.getElementById('game-complete-body').textContent = data.getBody ? data.getBody(score) : data.body;
+
+      var actionsEl = document.getElementById('game-complete-actions');
+      actionsEl.innerHTML = '';
+      (data.actions || []).forEach(function (action) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'game-complete-btn';
+        btn.textContent = action.label;
+        btn.addEventListener('click', function () {
+          closeModal();
+          if (action.targetId) {
+            var target = document.getElementById(action.targetId);
+            if (target) target.click();
+          }
+        });
+        actionsEl.appendChild(btn);
+      });
+
+      requestAnimationFrame(function () { overlay.classList.add('is-visible'); });
+    }
+
+    function closeModal() {
+      var overlay = document.getElementById('game-complete-overlay');
+      if (overlay) overlay.classList.remove('is-visible');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var closeBtn = document.getElementById('game-complete-close');
+      var overlay = document.getElementById('game-complete-overlay');
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (overlay) {
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay) closeModal();
+        });
+      }
+    });
+
+    window.showGameComplete = showGameComplete;
+  })();
+  </script>
+</body>
+</html>

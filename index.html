@@ -673,12 +673,29 @@
         /* ── Final home CTA ───────────────────────── */
         .home-final-cta {
             background:
-                radial-gradient(circle at 18% 22%, rgba(255,173,31,0.18), transparent 32%),
-                radial-gradient(circle at 82% 20%, rgba(148,27,12,0.14), transparent 34%),
-                var(--color-surface);
+                radial-gradient(circle at 18% 22%, rgba(255,173,31,0.22), transparent 32%),
+                radial-gradient(circle at 82% 20%, rgba(148,27,12,0.18), transparent 34%),
+                linear-gradient(rgba(255,250,244,0.80), rgba(255,250,244,0.80)),
+                url('./images/orange-horizontal.svg') center / cover no-repeat;
             border-top: 1px solid var(--color-border);
             padding: 4.5rem 0;
             text-align: center;
+        }
+        html[data-theme="dark"] .home-final-cta {
+            background:
+                radial-gradient(circle at 18% 22%, rgba(255,173,31,0.22), transparent 32%),
+                radial-gradient(circle at 82% 20%, rgba(148,27,12,0.18), transparent 34%),
+                linear-gradient(rgba(15,23,42,0.82), rgba(15,23,42,0.82)),
+                url('./images/orange-horizontal.svg') center / cover no-repeat;
+        }
+        @media (max-width: 768px) {
+            .home-final-cta {
+                background:
+                    radial-gradient(circle at 18% 22%, rgba(255,173,31,0.22), transparent 32%),
+                    radial-gradient(circle at 82% 20%, rgba(148,27,12,0.18), transparent 34%),
+                    linear-gradient(rgba(255,250,244,0.80), rgba(255,250,244,0.80)),
+                    url('./images/orange-vertical.svg') center / cover no-repeat;
+            }
         }
         .home-final-cta p {
             color: var(--color-text-soft);
@@ -799,6 +816,7 @@
   <!-- ── Header ────────────────────────────────────── -->
   <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
     <div class="logo-background-pattern"></div>
+    <div class="page-bg-image page-bg-orange"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="flex justify-between items-center h-20">
 
@@ -812,6 +830,7 @@
         <nav class="hidden lg:flex items-center space-x-1">
           <a href="index.html"        class="nav-link active px-2.5 py-2 rounded-lg font-medium text-sm">Home</a>
           <a href="projects.html"     class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Projects</a>
+          <a href="playground.html"  class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Playground</a>
           <a href="graphicdesign.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Graphic Design</a>
           <a href="ceramics.html"     class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Ceramics</a>
           <a href="painting.html"     class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Painting</a>
@@ -836,6 +855,7 @@
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 relative z-10">
       <a href="index.html"         class="nav-link active block px-4 py-3 text-sm font-medium border-b">Home</a>
       <a href="projects.html"      class="nav-link block px-4 py-3 text-sm font-medium border-b">Projects</a>
+      <a href="playground.html"   class="nav-link block px-4 py-3 text-sm font-medium border-b">Playground</a>
       <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design &amp; Digital Art</a>
       <a href="ceramics.html"      class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting &amp; Ceramics</a>
       <a href="painting.html"      class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting &amp; Charcoal</a>
@@ -885,7 +905,7 @@
           I build with <em style="color:#FFA618;">code</em>.<br>I think with <em style="color:#FFA618;">art</em>.
         </h1>
         <p class="hero-subtitle" style="color:rgba(255,255,255,0.82);font-size:1rem;max-width:460px;line-height:1.72;margin-bottom:2.5rem;">
-          I build things that last and create things that linger.
+          Art taught me to see. Computer science gave me new ways to make.
         </p>
       </div>
 
@@ -930,7 +950,7 @@
       <div class="intro-split-text">
         <p class="art-section-tag">&sect; 00 &middot; Me</p>
         <h2 class="art-section-title" style="margin-bottom:1.25rem;">
-          Get to know me<br>through my <em>art.</em>
+          Get to know me<br>through my <em>work.</em>
         </h2>
         <p style="font-size:1rem;line-height:1.78;margin-bottom:1.75rem;max-width:460px;color:#4b5563;">
           I move between software and visual work because both ask for structure, attention, and feeling. This site is where those two practices meet: full-stack projects shaped by design thinking, and artwork shaped by the same patience I bring to code.
@@ -1185,6 +1205,7 @@
   <!-- ── Footer ────────────────────────────────────── -->
   <footer class="bg-white border-t border-gray-200 relative overflow-hidden transition-colors duration-300">
     <div class="logo-background-pattern"></div>
+    <div class="page-bg-image page-bg-orange"></div>
     <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
       <div class="flex justify-center space-x-6 mb-4">
         <a href="https://www.instagram.com/aysule_2327/" target="_blank" rel="noopener noreferrer"

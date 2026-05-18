@@ -1,13 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
   initializePaletteOracle();
   initializePaletteStudio();
+  initializeSandCanvas();
 });
 
 const EXTRA_PALETTES = [
+  { title: "Moss Archive", story: "Cream paper, mineral blues, softened teal, and a deep forest frame.", colors: ["#F7F1D5", "#88AFAE", "#67AEDF", "#3F5F8E", "#15283E"] },
+  { title: "Lichen Study", story: "Aged paper, airy cyan, lichen yellow-green, and muted field notes.", colors: ["#F8F3DD", "#B9DDE5", "#C7C58A", "#A2A866", "#5C919B"] },
+  { title: "Kiln Garden", story: "Cream slip, moss glaze, fired rust, and dark botanical edges.", colors: ["#F6EFD4", "#A9B76F", "#7F8C45", "#BE644C", "#6E281B"] },
+  { title: "Olive Nocturne", story: "Moonlit cream, antique olive, dark leaves, and walnut shadow.", colors: ["#F4EDCF", "#B9C995", "#849B59", "#546538", "#20170B"] },
+  { title: "Moonlit Conservatory", story: "Pale parchment, aqua glass, dusty rose, and violet night plants.", colors: ["#FBF6DE", "#7ED6D3", "#59A9A4", "#E9A7AF", "#171126"] },
+  { title: "Pressed Petals", story: "Cream herbarium paper, teal stems, pressed pink, and rose shadow.", colors: ["#FAF4DA", "#7DD7D2", "#5BAAA5", "#E9A7AF", "#AC5F6B"] },
+  { title: "Fern & Ink", story: "Graphite green, pistachio light, ink-dark fern, and old notebook cream.", colors: ["#F5EED1", "#BBCB92", "#82985A", "#596B3D", "#08090B"] },
+  { title: "Cold Lake Field Notes", story: "Lake blues, fogged paper, and quiet natural-history neutrals.", colors: ["#F8F2D7", "#B6D9D5", "#84AEAA", "#67AEDF", "#3F5F8E"] },
+  { title: "Rust Botany", story: "Botanical greens warmed by rust pins, clay notes, and cream margins.", colors: ["#F6F0D7", "#C3C784", "#9FA75F", "#C4664C", "#762C1E"] },
+  { title: "Twilight Herbarium", story: "Aqua glass, pressed rose, violet ink, and a near-black evening base.", colors: ["#FFF9E1", "#7ED3D1", "#E7A4B1", "#453C72", "#100B1F"] },
   { title: "Amber Atlas", story: "Map-paper neutrals, old ink, amber roads, and deep ocean pins.", colors: ["#2f1b12", "#7c3f1d", "#d99a3d", "#f5e6c8", "#0f4c5c"] },
   { title: "Blue Hour Letter", story: "Soft evening paper, fountain pen blue, and the last warm window light.", colors: ["#0f172a", "#1d4ed8", "#93c5fd", "#f8fafc", "#f59e0b"] },
   { title: "Apricot Circuit", story: "Warm product light wrapped around crisp code and quiet hardware gray.", colors: ["#1f2937", "#475569", "#ffb703", "#fb8500", "#fff7ed"] },
-  { title: "Moss Archive", story: "A library corner of moss greens, aged paper, and polished wood.", colors: ["#1b4332", "#40916c", "#95d5b2", "#f1faee", "#7f4f24"] },
+  { title: "Forest Archive", story: "A library corner of moss greens, aged paper, and polished wood.", colors: ["#1b4332", "#40916c", "#95d5b2", "#f1faee", "#7f4f24"] },
   { title: "Velvet Debug", story: "Dark editor velvet, electric traces, and a small violet highlight.", colors: ["#09090b", "#18181b", "#22d3ee", "#a78bfa", "#f4f4f5"] },
   { title: "Peach Kiln", story: "Peach clay, soft ash, terracotta edges, and sage glaze.", colors: ["#5c2e1f", "#c56a43", "#ffcab0", "#f8ead8", "#7a8f63"] },
   { title: "Rainy Terminal", story: "Terminal greens through rainy glass and midnight blue reflections.", colors: ["#020617", "#064e3b", "#10b981", "#a7f3d0", "#38bdf8"] },
@@ -141,85 +152,121 @@ function pickBestAnswerIndex(colors, fallbackOffset) {
 }
 
 function createOraclePalettes(basePalettes) {
-  const extra = EXTRA_PALETTES.map((palette, index) => {
+  const allPalettes = [...basePalettes, ...EXTRA_PALETTES].map((palette, index) => {
     const answerIdx = pickBestAnswerIndex(palette.colors, index);
-    const answer = palette.colors[answerIdx];
+    const answer = palette.answer || palette.colors[answerIdx];
     return {
       title: palette.title,
       story: palette.story,
       colors: palette.colors,
       answer,
-      decoys: getDecoyColors(answer, index)
+      decoys: getDecoyColors(answer, index, palette.colors)
     };
   });
 
-  return [...basePalettes, ...extra].slice(0, 100);
+  return allPalettes.slice(0, 100);
 }
 
 function createStudioPresets(basePresets) {
+  const inspirationPresets = [
+    {
+      mood: "Moss Archive",
+      colors: ["#F7F1D5", "#D8D2AA", "#AFA77C", "#88AFAE", "#5F8D88", "#486F76", "#2B4B63", "#15283E"]
+    },
+    {
+      mood: "Lichen Study",
+      colors: ["#F8F3DD", "#DED7B7", "#C7C58A", "#A2A866", "#7A8440", "#B9DDE5", "#7FB5BF", "#5C919B"]
+    },
+    {
+      mood: "Kiln Garden",
+      colors: ["#F6EFD4", "#D7CDA8", "#B8AA78", "#A9B76F", "#7F8C45", "#BE644C", "#963F2D", "#6E281B"]
+    },
+    {
+      mood: "Olive Nocturne",
+      colors: ["#F4EDCF", "#D4CBA4", "#AFA67C", "#B9C995", "#849B59", "#546538", "#263317", "#20170B"]
+    },
+    {
+      mood: "Moonlit Conservatory",
+      colors: ["#FBF6DE", "#DDD8B8", "#BDB98B", "#7ED6D3", "#59A9A4", "#448C88", "#463D72", "#171126"]
+    },
+    {
+      mood: "Pressed Petals",
+      colors: ["#FAF4DA", "#DED8B7", "#BDB98A", "#7DD7D2", "#5BAAA5", "#E9A7AF", "#CA7D89", "#AC5F6B"]
+    },
+    {
+      mood: "Fern & Ink",
+      colors: ["#F5EED1", "#D3CAA2", "#B1A77B", "#BBCB92", "#82985A", "#596B3D", "#253315", "#08090B"]
+    },
+    {
+      mood: "Cold Lake Field Notes",
+      colors: ["#F8F2D7", "#DCD6B5", "#BDB687", "#B6D9D5", "#84AEAA", "#6A918C", "#67AEDF", "#3F5F8E"]
+    },
+    {
+      mood: "Rust Botany",
+      colors: ["#F6F0D7", "#DCD4AF", "#C3C784", "#9FA75F", "#777F3F", "#C4664C", "#96422F", "#762C1E"]
+    },
+    {
+      mood: "Twilight Herbarium",
+      colors: ["#FFF9E1", "#E2DDBB", "#C4BD8E", "#7ED3D1", "#58AAA7", "#E7A4B1", "#453C72", "#100B1F"]
+    }
+  ];
   const extra = EXTRA_PALETTES.map((palette) => ({
     mood: palette.title,
     colors: palette.colors
   }));
 
-  return [...basePresets, ...extra].slice(0, 100);
+  return [...basePresets, ...inspirationPresets, ...extra].slice(0, 100);
 }
 
-function getDecoyColors(answer, offset) {
-  const r = parseInt(answer.slice(1, 3), 16);
-  const g = parseInt(answer.slice(3, 5), 16);
-  const b = parseInt(answer.slice(5, 7), 16);
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  const luma   = (r * 299 + g * 587 + b * 114) / 1000;
-  const chroma = max - min;
-
-  let hue = 0;
-  if (chroma > 0) {
-    if (max === r) hue = ((g - b) / chroma + (g < b ? 6 : 0)) * 60;
-    else if (max === g) hue = ((b - r) / chroma + 2) * 60;
-    else hue = ((r - g) / chroma + 4) * 60;
+function getDecoyColors(answer, offset, paletteColors = []) {
+  function rgbDist(a, b) {
+    const ra = parseInt(a.slice(1, 3), 16), ga = parseInt(a.slice(3, 5), 16), ba = parseInt(a.slice(5, 7), 16);
+    const rb = parseInt(b.slice(1, 3), 16), gb = parseInt(b.slice(3, 5), 16), bb = parseInt(b.slice(5, 7), 16);
+    return Math.sqrt((ra - rb) ** 2 + (ga - gb) ** 2 + (ba - bb) ** 2);
   }
 
-  // Vivid, clearly distinct pools for each hue family
-  const families = {
-    red:    ["#dc2626", "#b91c1c", "#ef4444", "#e11d48", "#be123c", "#f43f5e"],
-    yellow: ["#f59e0b", "#d97706", "#eab308", "#facc15", "#ca8a04", "#fb923c"],
-    green:  ["#16a34a", "#15803d", "#22c55e", "#4d7c0f", "#84cc16", "#059669"],
-    teal:   ["#0f766e", "#0d9488", "#14b8a6", "#0891b2", "#06b6d4", "#0e7490"],
-    blue:   ["#2563eb", "#1d4ed8", "#3b82f6", "#1e40af", "#0284c7", "#60a5fa"],
-    purple: ["#7c3aed", "#6d28d9", "#8b5cf6", "#a855f7", "#9333ea", "#c084fc"],
-  };
+  const naturalDecoys = [
+    "#3f2a1d", "#7c4a2d", "#c56a43", "#e8b86d", "#f6dfb8",
+    "#2f3e2f", "#5f7f52", "#9caf88", "#d8d2a6", "#f4ead5",
+    "#12372a", "#2f6f5e", "#7fb7a3", "#cfe8d8", "#f8f0dc",
+    "#1d3557", "#457b9d", "#a8dadc", "#e8eef2", "#f2d7c4",
+    "#35243a", "#6d4c73", "#b58bbd", "#ead7e9", "#f7efe5",
+    "#5a1f1f", "#9b3d2e", "#d9825b", "#f1c8a8", "#fff3df",
+    "#2b2b2b", "#6b625a", "#a99a88", "#ded2bf", "#f7f1e6",
+    "#254441", "#5b8c7a", "#b7b095", "#e6d5a8", "#fff8dc"
+  ];
 
-  // Route the answer to its hue family; muted/dark/light fall back by offset
-  function getAnswerFamily() {
-    if (luma < 50 || luma > 210 || chroma < 28) {
-      const vivid = ["red", "teal", "purple", "green", "blue", "yellow"];
-      return vivid[offset % vivid.length];
-    }
-    if (hue < 30 || hue >= 330) return "red";
-    if (hue < 75)  return "yellow";
-    if (hue < 165) return "green";
-    if (hue < 210) return "teal";
-    if (hue < 270) return "blue";
-    return "purple";
-  }
-
-  // Each answer family gets 3 decoy families from the opposite side of the color wheel
-  const contrastMap = {
-    red:    ["teal",   "blue",   "green"],
-    yellow: ["blue",   "purple", "teal"],
-    green:  ["purple", "red",    "blue"],
-    teal:   ["red",    "purple", "yellow"],
-    blue:   ["yellow", "red",    "green"],
-    purple: ["yellow", "green",  "teal"],
-  };
-
-  const af = getAnswerFamily();
-  return contrastMap[af].map((family, i) => {
-    const pool = families[family];
-    return pool[(offset + i * 2 + 1) % pool.length];
+  const disallowed = new Set(paletteColors.map((color) => color.toLowerCase()));
+  const candidates = naturalDecoys.filter((color) => {
+    const lower = color.toLowerCase();
+    if (lower === answer.toLowerCase() || disallowed.has(lower)) return false;
+    if (rgbDist(color, answer) < 105) return false;
+    return paletteColors.every((paletteColor) => rgbDist(color, paletteColor) > 46);
   });
+
+  const rotated = [
+    ...candidates.slice(offset % Math.max(1, candidates.length)),
+    ...candidates.slice(0, offset % Math.max(1, candidates.length))
+  ];
+
+  const picked = [];
+  for (const color of rotated) {
+    if (picked.length >= 3) break;
+    if (picked.every((selected) => rgbDist(color, selected) > 82)) {
+      picked.push(color);
+    }
+  }
+
+  if (picked.length < 3) {
+    for (const color of naturalDecoys) {
+      if (picked.length >= 3) break;
+      if (color.toLowerCase() !== answer.toLowerCase() && picked.every((selected) => rgbDist(color, selected) > 70)) {
+        picked.push(color);
+      }
+    }
+  }
+
+  return picked.slice(0, 3);
 }
 
 function initializePaletteOracle() {
@@ -242,91 +289,91 @@ function initializePaletteOracle() {
       story: "A cool study in moonlight, shadow, and graphite-soft contrast.",
       colors: ["#0f172a", "#1e293b", "#f8fafc", "#a7c7e7", "#f6c453"],
       answer: "#a7c7e7",
-      decoys: ["#ef4444", "#22c55e", "#fb7185"]
+      decoys: ["#bfdbfe", "#93c5fd", "#94a3b8"]
     },
     {
       title: "Ceramic Earth",
       story: "Warm clay, fired edges, and a studio table covered in dust and sunlight.",
       colors: ["#3b2417", "#8a4f2a", "#d7a36a", "#f4e0bd", "#6f7d4f"],
       answer: "#d7a36a",
-      decoys: ["#2dd4bf", "#7c3aed", "#e11d48"]
+      decoys: ["#e2a97e", "#c49450", "#b87355"]
     },
     {
       title: "Sunset Logo",
       story: "The portfolio mark translated into flame, ember, red, and soft cream.",
       colors: ["#941b0c", "#c24118", "#ffad1f", "#fff7ed", "#4a1309"],
       answer: "#ffad1f",
-      decoys: ["#38bdf8", "#a78bfa", "#22c55e"]
+      decoys: ["#fbbf24", "#fb923c", "#f59e0b"]
     },
     {
       title: "Digital Garden",
       story: "Interface blues and leafy greens for systems that feel alive.",
       colors: ["#052e2f", "#0e7490", "#84cc16", "#e6f4d7", "#f59e0b"],
       answer: "#84cc16",
-      decoys: ["#dc2626", "#64748b", "#f9a8d4"]
+      decoys: ["#a3e635", "#65a30d", "#4ade80"]
     },
     {
       title: "Reverie Room",
       story: "A soft interior palette for memory, mood boards, and quiet reflection.",
       colors: ["#312e81", "#818cf8", "#f0abfc", "#f8fafc", "#f59e0b"],
       answer: "#f0abfc",
-      decoys: ["#14532d", "#7f1d1d", "#0891b2"]
+      decoys: ["#e879f9", "#d8b4fe", "#f9a8d4"]
     },
     {
       title: "Hackathon Night",
       story: "Deep focus blues, terminal glow, and one warm spark for late-build energy.",
       colors: ["#020617", "#0b1322", "#06b6d4", "#dbeafe", "#ffad1f"],
       answer: "#06b6d4",
-      decoys: ["#fb7185", "#84cc16", "#f97316"]
+      decoys: ["#22d3ee", "#0891b2", "#38bdf8"]
     },
     {
       title: "Clay Kiln",
       story: "A fired ceramic palette with oxides, ash, and a soft glaze highlight.",
       colors: ["#2f1b12", "#7f341b", "#b85c38", "#ead2b1", "#2f3e46"],
       answer: "#b85c38",
-      decoys: ["#06b6d4", "#a78bfa", "#22c55e"]
+      decoys: ["#c2410c", "#92400e", "#d97706"]
     },
     {
       title: "Gallery Wall",
       story: "Clean wall space, dark frames, warm track lights, and a quiet accent.",
       colors: ["#fffaf4", "#eadfce", "#2a120c", "#b23600", "#7c8a5d"],
       answer: "#eadfce",
-      decoys: ["#0ea5e9", "#c084fc", "#16a34a"]
+      decoys: ["#fef3c7", "#f5e6c8", "#e7d5be"]
     },
     {
       title: "Code Bloom",
       story: "A product palette where system blues meet botanical growth and sunlight.",
       colors: ["#0f172a", "#0e7490", "#2dd4bf", "#d9f99d", "#fbbf24"],
       answer: "#2dd4bf",
-      decoys: ["#dc2626", "#8b5cf6", "#f472b6"]
+      decoys: ["#34d399", "#22d3ee", "#5eead4"]
     },
     {
       title: "Paint Water",
       story: "Cloudy rinse water, pigment blooms, paper cream, and one decisive red.",
       colors: ["#172554", "#64748b", "#cbd5e1", "#fff7ed", "#941b0c"],
       answer: "#64748b",
-      decoys: ["#65a30d", "#f59e0b", "#7c3aed"]
+      decoys: ["#94a3b8", "#475569", "#6b7280"]
     },
     {
       title: "Resume Ink",
       story: "Professional, readable, and a little warm around the edges.",
       colors: ["#111827", "#374151", "#f8fafc", "#f2d6a1", "#850f01"],
       answer: "#374151",
-      decoys: ["#22c55e", "#fb7185", "#06b6d4"]
+      decoys: ["#1f2937", "#4b5563", "#334155"]
     },
     {
       title: "Ghibli Guard",
       story: "Soft greens, storybook sky, warm lantern light, and protective shadow.",
       colors: ["#12372a", "#436850", "#adbc9f", "#fbfada", "#f59e0b"],
       answer: "#adbc9f",
-      decoys: ["#ef4444", "#0ea5e9", "#a855f7"]
+      decoys: ["#c4d4ae", "#91a882", "#b5c9a0"]
     },
     {
       title: "Print Studio",
       story: "Ink, paper grain, registration marks, and a punchy poster accent.",
       colors: ["#111111", "#f5f1e8", "#d6c6a8", "#e11d48", "#2563eb"],
       answer: "#e11d48",
-      decoys: ["#84cc16", "#f97316", "#06b6d4"]
+      decoys: ["#be123c", "#f43f5e", "#dc2626"]
     }
   ]);
 
@@ -387,7 +434,7 @@ function initializePaletteOracle() {
 
     titleEl.textContent    = current.title;
     storyEl.textContent    = current.story;
-    statusEl.textContent   = "Tap or drag the swatch that completes this palette.";
+    statusEl.textContent   = "Tap or drag the distinct swatch that completes this natural mood palette.";
     scoreEl.textContent    = `Score ${correct} / ${totalRounds}`;
     progressEl.textContent = `${roundIndex + 1} / ${totalRounds}`;
     optionsEl.dataset.locked = "false";
@@ -631,6 +678,9 @@ function initializePaletteOracle() {
     finalWheel.className = "palette-final-wheel";
     finalWheel.innerHTML = `<span>${correct}</span><small>/ ${totalRounds}</small>`;
     paletteEl.appendChild(finalWheel);
+    if (typeof window.showGameComplete === 'function') {
+      window.setTimeout(() => window.showGameComplete('oracle', { score: correct }), 700);
+    }
   }
 
   newRoundBtn.addEventListener("click", startSession);
@@ -869,4 +919,525 @@ function initializePaletteStudio() {
   copyBtn.addEventListener("click", copyPalette);
   if (cssBtn) cssBtn.addEventListener("click", copyCSSVariables);
   renderStudio();
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  SAND CANVAS  —  cellular-automata sand physics + 3D grain shading
+// ═══════════════════════════════════════════════════════════════
+function initializeSandCanvas() {
+  const canvas    = document.getElementById('ss-canvas');
+  const stripEl   = document.getElementById('ss-strip');
+  const stripWrap = document.getElementById('ss-strip-wrap');
+  const thumbEl   = document.getElementById('ss-thumb');
+  const swatchEl  = document.getElementById('ss-swatch');
+  const hintEl    = document.getElementById('ss-hint');
+  const presetsEl = document.getElementById('ss-presets');
+  const clearBtn    = document.getElementById('ss-clear');
+  const shakeBtn    = document.getElementById('ss-shake');
+  const flowRange   = document.getElementById('ss-flow');
+  const addBtn      = document.getElementById('ss-add');
+  const downloadBtn = document.getElementById('ss-download');
+  const palEl       = document.getElementById('ss-custom-palette');
+  const singleModeBtn   = document.getElementById('ss-mode-single');
+  const gradientModeBtn = document.getElementById('ss-mode-gradient');
+  const modeHintEl      = document.getElementById('ss-mode-hint');
+  const currentLabelEl  = document.getElementById('ss-current-label');
+  const flowValueEl     = document.getElementById('ss-flow-value');
+  if (!canvas || !stripEl) return;
+
+  // ── Grid constants ───────────────────────────────────────────
+  const CELL = 2;           // pixels per grid cell
+  const CW = 560, CH = 500; // canvas pixel dimensions
+  canvas.width = CW; canvas.height = CH;
+  const GW = CW / CELL;     // 280 grid columns
+  const GH = CH / CELL;     // 250 grid rows
+
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+
+  // grid stores packed ABGR (0 = empty). One Uint32 per cell.
+  const grid = new Uint32Array(GW * GH);
+  const imgData = ctx.createImageData(CW, CH);
+  const pixBuf  = new Uint32Array(imgData.data.buffer);
+  const BG      = 0xFFE0F7FF; // #fff7e0, packed ABGR
+
+  // ── State ────────────────────────────────────────────────────
+  let isPouring = false;
+  let lastGX = -1, lastGY = -1;
+  let brushSize = 4;
+  let frame = 0;
+  let hasSand = false;
+  let shakeFrames = 0;
+  let grainCursor = 0;
+  let cr = 194, cg = 74, cb = 55; // current RGB (default: terracotta)
+  let pourMode = 'single';
+
+  // ── Colour helpers ───────────────────────────────────────────
+  function clamp(v)       { return v < 0 ? 0 : v > 255 ? 255 : v; }
+  function pack(r, g, b)  { return (0xFF << 24) | (b << 16) | (g << 8) | r; }
+  function shade(c, f) {   // brighten/darken a packed ABGR pixel
+    return pack(
+      clamp(Math.round((c & 0xFF) * f)),
+      clamp(Math.round(((c >> 8)  & 0xFF) * f)),
+      clamp(Math.round(((c >> 16) & 0xFF) * f))
+    );
+  }
+  function rgbToHex(r, g, b) {
+    return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
+  }
+  function hexToRgb(hex) {
+    return [
+      parseInt(hex.slice(1, 3), 16),
+      parseInt(hex.slice(3, 5), 16),
+      parseInt(hex.slice(5, 7), 16)
+    ];
+  }
+  function mixColor(a, b, t) {
+    return [
+      Math.round(a[0] + (b[0] - a[0]) * t),
+      Math.round(a[1] + (b[1] - a[1]) * t),
+      Math.round(a[2] + (b[2] - a[2]) * t)
+    ];
+  }
+
+  // ── 2D colour map ────────────────────────────────────────────
+  // X axis: full hue spectrum (0–360°)
+  // Y axis: white (top) → vivid (middle) → black (bottom)
+  // Right 40px column: white → grey → black (neutral tones)
+  const STRIP_W = 800;
+  const STRIP_H = 200;
+  stripEl.width  = STRIP_W;
+  stripEl.height = STRIP_H;
+
+  (function buildStrip() {
+    const sc   = stripEl.getContext('2d', { willReadFrequently: true });
+    const GS_W = 40; // grayscale column width
+    const SP_W = STRIP_W - GS_W;
+
+    // Base: full vivid hue spectrum across the whole area
+    const hueGrad = sc.createLinearGradient(0, 0, SP_W, 0);
+    for (let h = 0; h <= 360; h += 4) {
+      hueGrad.addColorStop(h / 360, `hsl(${h},100%,50%)`);
+    }
+    sc.fillStyle = hueGrad;
+    sc.fillRect(0, 0, SP_W, STRIP_H);
+
+    // White veil: opaque at top → transparent at midpoint
+    const whiteGrad = sc.createLinearGradient(0, 0, 0, STRIP_H);
+    whiteGrad.addColorStop(0,    'rgba(255,255,255,1)');
+    whiteGrad.addColorStop(0.48, 'rgba(255,255,255,0)');
+    sc.fillStyle = whiteGrad;
+    sc.fillRect(0, 0, SP_W, STRIP_H);
+
+    // Black veil: transparent at midpoint → opaque at bottom
+    const blackGrad = sc.createLinearGradient(0, 0, 0, STRIP_H);
+    blackGrad.addColorStop(0.52, 'rgba(0,0,0,0)');
+    blackGrad.addColorStop(1,    'rgba(0,0,0,1)');
+    sc.fillStyle = blackGrad;
+    sc.fillRect(0, 0, SP_W, STRIP_H);
+
+    // Grayscale column (right): white → mid-grey → black
+    const gsGrad = sc.createLinearGradient(0, 0, 0, STRIP_H);
+    gsGrad.addColorStop(0,    '#ffffff');
+    gsGrad.addColorStop(0.5,  '#808080');
+    gsGrad.addColorStop(1,    '#000000');
+    sc.fillStyle = gsGrad;
+    sc.fillRect(SP_W, 0, GS_W, STRIP_H);
+
+    // Subtle divider
+    sc.fillStyle = 'rgba(255,255,255,0.15)';
+    sc.fillRect(SP_W, 0, 1, STRIP_H);
+  })();
+
+  function sampleStrip(ex, ey) {
+    // ex/ey are CSS pixel offsets from the top-left corner of stripWrap
+    const sw = stripWrap.clientWidth;
+    const sh = stripWrap.clientHeight;
+    const px = Math.round(Math.max(0, Math.min(STRIP_W - 1, ex * (STRIP_W / sw))));
+    const py = Math.round(Math.max(0, Math.min(STRIP_H - 1, ey * (STRIP_H / sh))));
+    const d  = stripEl.getContext('2d').getImageData(px, py, 1, 1).data;
+    pourMode = 'single';
+    setColor(d[0], d[1], d[2]);
+    thumbEl.style.left = Math.max(0, Math.min(100, (ex / sw) * 100)) + '%';
+    thumbEl.style.top  = Math.max(0, Math.min(100, (ey / sh) * 100)) + '%';
+  }
+
+  function setColor(r, g, b) {
+    cr = r; cg = g; cb = b;
+    const rgb = `rgb(${r},${g},${b})`;
+    updatePourPreview();
+    updatePourControls();
+    thumbEl.style.background  = rgb;
+    if (currentLabelEl) currentLabelEl.textContent = getNearestColorName(r, g, b);
+    if (presetsEl) presetsEl.querySelectorAll('.ss-preset-dot').forEach(d => d.classList.remove('active'));
+    if (palEl)     palEl.querySelectorAll('.ss-pal-slot').forEach(s => s.classList.remove('active'));
+  }
+
+  // ── Preset palette dots ──────────────────────────────────────
+  const PRESETS = [
+    { name: 'Terracotta', r: 194, g: 74,  b: 55  },
+    { name: 'Parchment',  r: 247, g: 241, b: 213 },
+    { name: 'Lake Blue',  r: 103, g: 174, b: 223 },
+    { name: 'Moss',       r: 127, g: 140, b: 69  },
+    { name: 'Lichen',     r: 185, g: 201, b: 149 },
+    { name: 'Sea Glass',  r: 126, g: 211, b: 209 },
+    { name: 'Dusty Rose', r: 233, g: 167, b: 177 },
+    { name: 'Rust Clay',  r: 196, g: 102, b: 76  },
+    { name: 'Olive Ink',  r: 38,  g: 51,  b: 23  },
+    { name: 'Violet Dusk', r: 69, g: 60,  b: 114 },
+    { name: 'Night Plum', r: 16,  g: 11,  b: 31  },
+    { name: 'Cobalt',     r: 37,  g: 99,  b: 235 },
+    { name: 'Amber',      r: 245, g: 158, b: 11  },
+  ];
+
+  function getNearestColorName(r, g, b) {
+    let best = PRESETS[0];
+    let bestDist = Infinity;
+    PRESETS.forEach((preset) => {
+      const dist = (preset.r - r) ** 2 + (preset.g - g) ** 2 + (preset.b - b) ** 2;
+      if (dist < bestDist) {
+        best = preset;
+        bestDist = dist;
+      }
+    });
+    return best ? best.name : 'Custom';
+  }
+
+  if (presetsEl) {
+    PRESETS.forEach((p) => {
+      const dot = document.createElement('button');
+      dot.className = 'ss-preset-dot';
+      dot.title = p.name;
+      dot.setAttribute('aria-label', p.name);
+      dot.style.background = `rgb(${p.r},${p.g},${p.b})`;
+      dot.addEventListener('click', () => {
+        pourMode = 'single';
+        setColor(p.r, p.g, p.b);
+        dot.classList.add('active');
+        thumbEl.style.background = swatchEl.style.background;
+      });
+      presetsEl.appendChild(dot);
+    });
+  }
+
+  // ── Custom palette ───────────────────────────────────────────
+  const customColors = [];
+  const MAX_PAL = 16;
+
+  function getActivePourColors() {
+    return pourMode === 'gradient' && customColors.length > 1 ? customColors : [rgbToHex(cr, cg, cb)];
+  }
+
+  function updatePourControls() {
+    const canGradient = customColors.length > 1;
+    if (!canGradient && pourMode === 'gradient') pourMode = 'single';
+
+    singleModeBtn?.classList.toggle('is-active', pourMode === 'single');
+    gradientModeBtn?.classList.toggle('is-active', pourMode === 'gradient');
+    singleModeBtn?.setAttribute('aria-pressed', String(pourMode === 'single'));
+    gradientModeBtn?.setAttribute('aria-pressed', String(pourMode === 'gradient'));
+    if (gradientModeBtn) gradientModeBtn.disabled = !canGradient;
+
+    if (modeHintEl) {
+      if (pourMode === 'gradient') {
+        modeHintEl.innerHTML = `<strong>Gradient mode:</strong> pouring from ${customColors.length} saved colours with soft natural variation.`;
+      } else if (canGradient) {
+        modeHintEl.innerHTML = `<strong>Single mode:</strong> pouring the selected colour. Switch to Gradient to blend My Palette.`;
+      } else {
+        modeHintEl.textContent = 'Pick a colour, then pour. Save two or more colours to unlock gradient mode.';
+      }
+    }
+  }
+
+  function updatePourPreview() {
+    if (!swatchEl) return;
+    const colors = getActivePourColors();
+    swatchEl.classList.toggle('ss-swatch-gradient', colors.length > 1);
+    if (colors.length > 1) {
+      swatchEl.style.background = `linear-gradient(135deg, ${colors.join(', ')})`;
+      swatchEl.title = 'Gradient pour from My Palette';
+      if (currentLabelEl) currentLabelEl.textContent = 'Gradient';
+    } else {
+      swatchEl.style.background = colors[0];
+      swatchEl.title = 'Drag to My Palette · or click + below';
+    }
+  }
+
+  function samplePourColor(x, y) {
+    const colors = getActivePourColors();
+    if (colors.length === 1) return hexToRgb(colors[0]);
+
+    grainCursor += 0.17;
+    const wave = (Math.sin((x * 0.09) + (y * 0.05) + grainCursor) + 1) / 2;
+    const jitter = Math.random() * 0.18;
+    const t = (wave * 0.82 + jitter) % 1;
+    const scaled = t * colors.length;
+    const i = Math.floor(scaled) % colors.length;
+    const next = (i + 1) % colors.length;
+    return mixColor(hexToRgb(colors[i]), hexToRgb(colors[next]), scaled - Math.floor(scaled));
+  }
+
+  function renderPalette() {
+    if (!palEl) return;
+    palEl.innerHTML = '';
+    palEl.classList.toggle('has-gradient', customColors.length > 1);
+    updatePourControls();
+    if (customColors.length === 0) {
+      const hint = document.createElement('span');
+      hint.className = 'ss-pal-hint';
+      hint.textContent = 'your saved colours will appear here';
+      palEl.appendChild(hint);
+      updatePourPreview();
+      return;
+    }
+    customColors.forEach((hex, i) => {
+      const slot = document.createElement('button');
+      slot.className = 'ss-pal-slot';
+      slot.style.background = hex;
+      slot.title = hex;
+      const rm = document.createElement('button');
+      rm.className = 'ss-pal-remove';
+      rm.innerHTML = '&times;';
+      rm.setAttribute('aria-label', 'Remove');
+      rm.addEventListener('click', e => {
+        e.stopPropagation();
+        customColors.splice(i, 1);
+        renderPalette();
+      });
+      slot.appendChild(rm);
+      slot.addEventListener('click', () => {
+        pourMode = 'single';
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        setColor(r, g, b);
+        palEl.querySelectorAll('.ss-pal-slot').forEach(s => s.classList.remove('active'));
+        slot.classList.add('active');
+      });
+      palEl.appendChild(slot);
+    });
+    updatePourPreview();
+  }
+
+  function addCurrentToPalette() {
+    const hex = rgbToHex(cr, cg, cb);
+    if (customColors.includes(hex) || customColors.length >= MAX_PAL) return;
+    customColors.push(hex);
+    if (customColors.length > 1) pourMode = 'gradient';
+    renderPalette();
+  }
+
+  // Drag from swatch → drop onto palette
+  if (swatchEl) {
+    swatchEl.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text/plain', rgbToHex(cr, cg, cb));
+      e.dataTransfer.effectAllowed = 'copy';
+      swatchEl.classList.add('ss-dragging');
+    });
+    swatchEl.addEventListener('dragend', () => swatchEl.classList.remove('ss-dragging'));
+  }
+
+  if (palEl) {
+    palEl.addEventListener('dragover',  e => { e.preventDefault(); palEl.classList.add('drag-over'); });
+    palEl.addEventListener('dragleave', ()  => palEl.classList.remove('drag-over'));
+    palEl.addEventListener('drop', e => {
+      e.preventDefault();
+      palEl.classList.remove('drag-over');
+      const hex = e.dataTransfer.getData('text/plain');
+      if (/^#[0-9a-f]{6}$/i.test(hex) && !customColors.includes(hex) && customColors.length < MAX_PAL) {
+        customColors.push(hex);
+        if (customColors.length > 1) pourMode = 'gradient';
+        renderPalette();
+      }
+    });
+  }
+
+  singleModeBtn?.addEventListener('click', () => {
+    pourMode = 'single';
+    updatePourPreview();
+    updatePourControls();
+  });
+
+  gradientModeBtn?.addEventListener('click', () => {
+    if (customColors.length < 2) return;
+    pourMode = 'gradient';
+    updatePourPreview();
+    updatePourControls();
+  });
+
+  addBtn && addBtn.addEventListener('click', addCurrentToPalette);
+  renderPalette();
+
+  // ── Pouring ──────────────────────────────────────────────────
+  function toGrid(clientX, clientY) {
+    const r = canvas.getBoundingClientRect();
+    return [
+      Math.floor(((clientX - r.left)  / r.width)  * GW),
+      Math.floor(((clientY - r.top)   / r.height) * GH)
+    ];
+  }
+
+  function pourAt(gx, gy) {
+    const r = brushSize;
+    for (let dy = -r; dy <= r; dy++) {
+      for (let dx = -r; dx <= r; dx++) {
+        const dist = dx*dx + dy*dy;
+        if (dist > r*r + 0.5) continue;
+        const falloff = 1 - Math.sqrt(dist) / (r + 0.6);
+        if (Math.random() > 0.68 + falloff * 0.22) continue;
+        const nx = gx + dx, ny = gy + dy;
+        if (nx < 0 || nx >= GW || ny < 0 || ny >= GH || grid[ny*GW+nx]) continue;
+        const [sr, sg, sb] = samplePourColor(nx, ny);
+        const v = Math.round((Math.random() - 0.5) * 18);
+        grid[ny*GW+nx] = pack(clamp(sr+v), clamp(sg+v), clamp(sb+v));
+      }
+    }
+    if (!hasSand) { hasSand = true; hintEl && hintEl.classList.add('gone'); }
+  }
+
+  function pourLine(x0, y0, x1, y1) {
+    const dx = x1-x0, dy = y1-y0;
+    const steps = Math.max(Math.abs(dx), Math.abs(dy)) * 1.65;
+    if (!steps) { pourAt(x0, y0); return; }
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      pourAt(Math.round(x0 + dx*t), Math.round(y0 + dy*t));
+    }
+  }
+
+  // ── Physics update ───────────────────────────────────────────
+  // Classic bottom-to-top falling sand with alternating direction to prevent drift.
+  function update() {
+    // Shake mode: randomly nudge grains sideways
+    if (shakeFrames > 0) {
+      shakeFrames--;
+      for (let i = 0; i < GW*GH; i++) {
+        if (!grid[i] || Math.random() > 0.05) continue;
+        const y = Math.floor(i / GW), x = i % GW;
+        const nx = x + Math.round((Math.random() - 0.5) * 6);
+        if (nx >= 0 && nx < GW && !grid[y*GW+nx]) {
+          grid[y*GW+nx] = grid[i]; grid[i] = 0;
+        }
+      }
+    }
+
+    // Gravity pass — alternate scan direction each frame for natural spreading
+    const dir = frame % 2 ? 1 : -1;
+    for (let y = GH - 2; y >= 0; y--) {
+      for (let xi = 0; xi < GW; xi++) {
+        const x = dir === 1 ? xi : GW - 1 - xi;
+        const idx = y*GW + x;
+        if (!grid[idx]) continue;
+
+        const bIdx = (y+1)*GW + x;
+        if (!grid[bIdx]) {
+          grid[bIdx] = grid[idx]; grid[idx] = 0; continue;
+        }
+        // Try diagonal slides — prefer the scan direction for natural pile shapes
+        const lx = x - dir, rx = x + dir;
+        const lOk = lx >= 0 && lx < GW && !grid[(y+1)*GW+lx];
+        const rOk = rx >= 0 && rx < GW && !grid[(y+1)*GW+rx];
+        if (lOk && rOk) {
+          const tx = Math.random() < 0.5 ? lx : rx;
+          grid[(y+1)*GW+tx] = grid[idx]; grid[idx] = 0;
+        } else if (lOk) {
+          grid[(y+1)*GW+lx] = grid[idx]; grid[idx] = 0;
+        } else if (rOk) {
+          grid[(y+1)*GW+rx] = grid[idx]; grid[idx] = 0;
+        }
+      }
+    }
+  }
+
+  // ── Render ───────────────────────────────────────────────────
+  // Each 2×2 cell gets 4 slightly different brightness levels
+  // (top-lighter, bottom-darker) giving a subtle 3-D grain look.
+  function render() {
+    pixBuf.fill(BG);
+    for (let y = 0; y < GH; y++) {
+      for (let x = 0; x < GW; x++) {
+        const c = grid[y*GW + x];
+        if (!c) continue;
+        const tl = shade(c, 1.22); const tr = shade(c, 1.10);
+        const bl = shade(c, 0.86); const br = shade(c, 0.76);
+        const base = y*CELL*CW + x*CELL;
+        pixBuf[base]         = tl;
+        pixBuf[base + 1]     = tr;
+        pixBuf[base + CW]    = bl;
+        pixBuf[base + CW+1]  = br;
+      }
+    }
+    ctx.putImageData(imgData, 0, 0);
+  }
+
+  // ── Main loop ────────────────────────────────────────────────
+  function tick() {
+    if (isPouring && lastGX >= 0) pourAt(lastGX, lastGY);
+    update();
+    render();
+    frame++;
+    requestAnimationFrame(tick);
+  }
+
+  // ── Canvas pointer events ────────────────────────────────────
+  function onDown(cx, cy) {
+    isPouring = true;
+    [lastGX, lastGY] = toGrid(cx, cy);
+    pourAt(lastGX, lastGY);
+  }
+  function onMove(cx, cy) {
+    if (!isPouring) return;
+    const [gx, gy] = toGrid(cx, cy);
+    pourLine(lastGX, lastGY, gx, gy);
+    lastGX = gx; lastGY = gy;
+  }
+  function onUp() { isPouring = false; }
+
+  canvas.addEventListener('mousedown',  e => onDown(e.clientX, e.clientY));
+  canvas.addEventListener('mousemove',  e => onMove(e.clientX, e.clientY));
+  canvas.addEventListener('mouseup',    onUp);
+  canvas.addEventListener('mouseleave', onUp);
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); onDown(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+  canvas.addEventListener('touchmove',  e => { e.preventDefault(); onMove(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+  canvas.addEventListener('touchend',   e => { e.preventDefault(); onUp(); }, { passive: false });
+
+  // ── Strip pointer events ─────────────────────────────────────
+  let stripActive = false;
+  function onStripAt(clientX, clientY) {
+    const r = stripWrap.getBoundingClientRect();
+    sampleStrip(clientX - r.left, clientY - r.top);
+  }
+  stripWrap.addEventListener('mousedown',  e => { stripActive = true; onStripAt(e.clientX, e.clientY); });
+  window.addEventListener('mousemove',     e => { if (stripActive) onStripAt(e.clientX, e.clientY); });
+  window.addEventListener('mouseup',       () => { stripActive = false; });
+  stripWrap.addEventListener('touchstart', e => { e.preventDefault(); onStripAt(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+  stripWrap.addEventListener('touchmove',  e => { e.preventDefault(); onStripAt(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+
+  // ── Control events ───────────────────────────────────────────
+  clearBtn && clearBtn.addEventListener('click', () => {
+    grid.fill(0);
+    hasSand = false;
+    hintEl && hintEl.classList.remove('gone');
+  });
+  shakeBtn && shakeBtn.addEventListener('click', () => { shakeFrames = 55; });
+  flowRange && flowRange.addEventListener('input', () => {
+    brushSize = +flowRange.value;
+    if (flowValueEl) flowValueEl.textContent = String(brushSize);
+  });
+
+  downloadBtn && downloadBtn.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'sand-canvas.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    if (hasSand && typeof window.showGameComplete === 'function') {
+      window.setTimeout(() => window.showGameComplete('sand'), 600);
+    }
+  });
+
+  // ── Init: set initial color + start ─────────────────────────
+  setColor(cr, cg, cb);
+  thumbEl.style.left = '4%';
+  thumbEl.style.top  = '50%'; // start at vivid row (midpoint)
+  tick();
 }

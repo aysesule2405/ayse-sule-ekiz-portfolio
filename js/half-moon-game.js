@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
       statusEl.textContent = `Great! Now find: ${next.label}.`;
     } else {
       statusEl.textContent = "You completed the full lunar cycle! 🌕🌙";
+      if (typeof window.showGameComplete === 'function') {
+        window.setTimeout(function () { window.showGameComplete('halfmoon'); }, 700);
+      }
     }
   }
 

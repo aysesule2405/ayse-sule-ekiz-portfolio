@@ -1,5 +1,5 @@
 /* Playfair Display (headings) + Inter (body) */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100..900&display=swap');
 
 /* Base for BOTH themes */
 :root {
@@ -1600,12 +1600,329 @@ html[data-theme="dark"] .social-icon-circle {
   color: var(--color-accent) !important;
 }
 
+.about-tagline {
+  color: var(--color-accent);
+}
+
+.about-hero-btn {
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  color: var(--color-text-soft);
+  display: inline-flex;
+  font-size: 0.88rem;
+  font-weight: 800;
+  gap: 0.45rem;
+  padding: 0.65rem 0.95rem;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.about-hero-btn:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-border-strong);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.about-hero-btn-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+.about-hero-btn-primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: var(--color-accent-foreground);
+}
+
+.about-snapshot-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-snapshot-card,
+.about-focus-card {
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--color-accent-warm) 12%, transparent), transparent 42%),
+    var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  color: var(--color-text);
+  padding: 1.15rem;
+}
+
+.about-snapshot-kicker {
+  color: var(--color-accent-warm);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+}
+
+.about-snapshot-card h2,
+.about-focus-card h2 {
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+.about-snapshot-card p:not(.about-snapshot-kicker),
+.about-focus-card p:not(.about-snapshot-kicker) {
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.about-focus-card {
+  align-items: start;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1.5fr) minmax(12rem, 0.8fr);
+}
+
+.about-focus-list {
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  justify-content: center;
+}
+
+.about-focus-list span {
+  background: var(--color-accent-soft);
+  border: 1.5px solid color-mix(in srgb, var(--color-accent) 22%, var(--color-border));
+  border-radius: 9999px;
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.55rem 1.1rem;
+}
+
+.about-highlight-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.about-highlight-list article {
+  align-items: flex-start;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  display: flex;
+  gap: 0.85rem;
+  padding: 1rem;
+}
+
+.about-highlight-list i {
+  color: var(--color-accent);
+  flex: 0 0 auto;
+  margin-top: 0.12rem;
+}
+
+.about-highlight-list h3 {
+  color: var(--color-text);
+  font-size: 0.96rem;
+  font-weight: 900;
+  margin-bottom: 0.2rem;
+}
+
+.about-highlight-list p {
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.about-open-to {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.about-open-to span {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  color: var(--color-text-soft);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.38rem 0.62rem;
+}
+
+.about-story-grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-story-grid article {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  box-shadow: 0 14px 32px -28px rgba(149, 35, 20, 0.35);
+  color: var(--color-text);
+  padding: 1rem;
+}
+
+.about-story-grid h3 {
+  color: var(--color-text);
+  font-size: 0.98rem;
+  font-weight: 900;
+  line-height: 1.35;
+  margin-bottom: 0.25rem;
+}
+
+.about-story-grid p {
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.about-quote-card {
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--color-accent-warm) 14%, transparent), transparent 42%),
+    var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  color: var(--color-text);
+  padding: 1.2rem;
+}
+
+.about-quote-card h2 {
+  color: var(--color-text);
+  font-family: "Old Standard TT", var(--font-serif);
+  font-size: clamp(1.12rem, 2.4vw, 1.45rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 0.85rem;
+}
+
+.about-quote-card p:not(.about-snapshot-kicker) {
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.about-quote-card .poem-reflection {
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.75;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.poetry-sheet {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.08)),
+    color-mix(in srgb, var(--color-bg) 74%, var(--color-surface));
+  border: 1px solid var(--color-border);
+  border-radius: 0.45rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 14px 30px -28px rgba(42, 18, 12, 0.26);
+  margin: 0.9rem auto 1.05rem;
+  max-width: 41rem;
+  overflow: hidden;
+  padding: clamp(1.2rem, 3.6vw, 2.35rem);
+  position: relative;
+  text-rendering: optimizeLegibility;
+}
+
+.poetry-sheet::before {
+  background: color-mix(in srgb, var(--color-accent-warm) 52%, transparent);
+  content: "";
+  height: 1px;
+  inset: 0.85rem 1.1rem auto;
+  opacity: 0.5;
+  position: absolute;
+  width: auto;
+}
+
+.poem-line,
+.poem-break {
+  color: var(--color-text) !important;
+  font-family: "Old Standard TT", var(--font-serif);
+  font-size: clamp(0.86rem, 1.25vw, 1rem) !important;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.42 !important;
+  margin: 0;
+  opacity: 0.94;
+}
+
+.poem-break {
+  margin-top: 1.25rem;
+}
+
+.poem-left {
+  text-align: left;
+}
+
+.poem-center {
+  text-align: left;
+}
+
+.poem-indent-1 {
+  padding-left: 2.25rem;
+}
+
+.poem-indent-2 {
+  padding-left: 4.5rem;
+}
+
+html[data-theme="dark"] .poetry-sheet {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+    var(--color-surface-raised);
+}
+
+.about-art-links {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-art-links a {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  color: var(--color-text);
+  font-size: 0.88rem;
+  font-weight: 900;
+  padding: 1rem;
+  text-align: center;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.about-art-links a:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-border-strong);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
 /* "What I Create" cards on about page */
 html[data-theme="dark"] .what-i-create-card {
   background-color: var(--color-surface) !important;
   border-color: var(--color-border) !important;
 }
 html[data-theme="dark"] .what-i-create-card h3 { color: var(--color-text) !important; }
+
+.what-i-create-card p {
+  color: var(--color-text-muted) !important;
+}
 
 /* About page: tools and mediums chips */
 .medium-chip {
@@ -2241,12 +2558,85 @@ html[data-theme="dark"] .back-to-top-btn {
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
+/* Theme-aware Playground teaser cards */
+.playground-teaser {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--color-accent-soft) 72%, transparent), transparent),
+    var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  position: relative;
+}
+
+.playground-teaser:hover {
+  border-color: var(--color-border-strong);
+  transform: translateY(-0.1rem);
+}
+
+.playground-teaser-icon {
+  background: color-mix(in srgb, var(--color-accent-warm) 18%, transparent);
+  color: var(--color-accent);
+}
+
+.playground-teaser:hover .playground-teaser-icon {
+  background: color-mix(in srgb, var(--color-accent-warm) 34%, transparent);
+}
+
+.playground-teaser-kicker {
+  color: var(--color-accent-warm);
+}
+
+.playground-teaser-title {
+  color: var(--color-text);
+}
+
+.playground-teaser-copy {
+  color: var(--color-text-muted);
+}
+
+.playground-teaser-arrow {
+  color: var(--color-accent);
+}
+
+html[data-theme="dark"] .playground-teaser {
+  background:
+    linear-gradient(135deg, rgba(6, 182, 212, 0.12), transparent 52%),
+    var(--color-surface);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
+}
+
+html[data-theme="dark"] .playground-teaser:hover {
+  border-color: var(--color-accent);
+}
+
 @media (max-width: 640px) {
   .back-to-top-btn {
     bottom: 1rem;
     height: 2.75rem;
     right: 1rem;
     width: 2.75rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-snapshot-grid,
+  .about-focus-card {
+    grid-template-columns: 1fr;
+  }
+
+  .about-story-grid,
+  .about-art-links {
+    grid-template-columns: 1fr;
+  }
+
+  .poem-center,
+  .poem-left {
+    text-align: left;
+  }
+
+  .poem-indent-1,
+  .poem-indent-2 {
+    padding-left: 0;
   }
 }
 
@@ -2264,4 +2654,41 @@ html[data-theme="dark"] .resume-header-card::before {
 html[data-theme="dark"] .timeline::before,
 html[data-theme="dark"] .leadership-card::before {
   background: linear-gradient(180deg, #FFA618 0%, #f3eadb 100%) !important;
+}
+
+/* ===========================
+   DECORATIVE BACKGROUND IMAGES
+   =========================== */
+
+.page-bg-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  inset: 0;
+  opacity: 0.14;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.page-bg-orange {
+  background-image: url('../images/orange-horizontal.svg');
+}
+
+@media (max-width: 768px) {
+  .page-bg-orange { background-image: url('../images/orange-vertical.svg'); }
+}
+
+html[data-theme="dark"] .page-bg-image {
+  opacity: 0.08;
+}
+
+html[data-theme="dark"] .page-bg-orange {
+  background-image: url('../images/blue-horizontal.svg');
+}
+
+@media (max-width: 768px) {
+  html[data-theme="dark"] .page-bg-orange {
+    background-image: url('../images/blue-vertical.svg');
+  }
 }
