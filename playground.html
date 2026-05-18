@@ -899,9 +899,19 @@
       margin-bottom: 0.6rem;
     }
     .game-complete-icon {
-      font-size: 2.6rem;
       margin-bottom: 0.6rem;
       line-height: 1;
+      display: flex;
+      justify-content: center;
+    }
+    .game-complete-icon img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+    }
+    html[data-theme="dark"] .game-complete-icon img {
+      filter: brightness(0) invert(1);
+      opacity: 0.88;
     }
     .game-complete-title {
       font-size: 1.5rem;
@@ -1033,7 +1043,7 @@
 
     <section id="playground">
       <h2 class="page-title">The <em>Playground</em></h2>
-      <p class="playground-intro leading-relaxed mb-8 font-serif tracking-wide italic text-gray-600 text-base">
+      <p class="playground-intro leading-relaxed mb-8 font-serif tracking-wide italic text-gray-600 text-lg">
         Colour theory games, a sand-physics canvas, and a card game built with the same care as the rest of the portfolio. This page is a small studio for interaction, mood, and playful systems.
       </p>
       <nav class="playground-game-index" aria-label="Playground games">
@@ -1281,14 +1291,14 @@
     var GAME_DATA = {
       halfmoon: {
         kicker: 'Half Moon',
-        icon: '🌕',
+        icon: '<img src="images/icons/Night-Moon-Full--Streamline-Freehand.png" alt="">',
         title: 'Lunar cycle complete.',
         body: 'All eight phases in order — from the darkest new moon to the last waning crescent. The sky would agree.',
         actions: [{ label: 'Play again', targetId: 'hm-restart' }]
       },
       oracle: {
         kicker: 'Palette Oracle',
-        icon: '🎨',
+        icon: '<img src="images/icons/Fortune-Telling-Hand-Orb--Streamline-Freehand.png" alt="">',
         getTitle: function (score) {
           return score >= 8 ? 'Excellent eye.' : score >= 5 ? 'Good run.' : 'Keep training.';
         },
@@ -1303,7 +1313,7 @@
       },
       sand: {
         kicker: 'Sand Canvas',
-        icon: '🏖️',
+        icon: '<img src="images/icons/Playground-Beach--Streamline-Ultimate.png" alt="">',
         title: 'Canvas saved.',
         body: 'A physical impression made from light and physics. Every grain placed by hand — nothing algorithmic about the shape you made.',
         actions: [{ label: 'Keep going', close: true }]
@@ -1318,7 +1328,7 @@
 
       var score = (opts && opts.score != null) ? opts.score : 0;
       document.getElementById('game-complete-kicker').textContent = data.kicker;
-      document.getElementById('game-complete-icon').textContent = data.icon;
+      document.getElementById('game-complete-icon').innerHTML = data.icon;
       document.getElementById('game-complete-title').textContent = data.getTitle ? data.getTitle(score) : data.title;
       document.getElementById('game-complete-body').textContent = data.getBody ? data.getBody(score) : data.body;
 

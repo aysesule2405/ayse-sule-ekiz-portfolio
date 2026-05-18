@@ -322,12 +322,16 @@
       max-width: 860px;
       width: 100%;
       max-height: 88vh;
-      overflow-y: auto;
+      overflow: hidden;
       transform: translateY(32px) scale(0.97);
       transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       border: 1px solid var(--color-border);
       box-shadow: 0 32px 80px -12px rgba(0,0,0,0.6);
+    }
+    .catalog-scroll-inner {
+      overflow-y: auto;
+      max-height: 88vh;
     }
     .catalog-overlay.open .catalog-panel {
       transform: none;
@@ -438,9 +442,9 @@
     }
     @media (max-width: 640px) { .catalog-body { padding: 0 1.25rem 2rem; } }
     /* Thin scrollbar on panel */
-    .catalog-panel::-webkit-scrollbar { width: 5px; }
-    .catalog-panel::-webkit-scrollbar-track { background: transparent; }
-    .catalog-panel::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: 99px; }
+    .catalog-scroll-inner::-webkit-scrollbar { width: 5px; }
+    .catalog-scroll-inner::-webkit-scrollbar-track { background: transparent; }
+    .catalog-scroll-inner::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: 99px; }
     .catalog-context {
       font-size: 0.82rem;
       font-weight: 700;
@@ -492,6 +496,101 @@
       flex-wrap: wrap;
       gap: 0.65rem;
     }
+
+    /* Per-project panel themes */
+    .catalog-panel.catalog-theme-openstax {
+      background: linear-gradient(160deg, #f4f0ff 0%, #eef5e8 100%);
+      border-color: rgba(58,32,128,0.22);
+    }
+    .catalog-panel.catalog-theme-obi {
+      background: linear-gradient(160deg, #fffaf0 0%, #fff5dc 100%);
+      border-color: rgba(240,160,48,0.28);
+    }
+    .catalog-panel.catalog-theme-whisperwind {
+      background: linear-gradient(160deg, #f5f0e5 0%, #eaf2e2 100%);
+      border-color: rgba(138,170,114,0.32);
+    }
+    .catalog-panel.catalog-theme-reverie {
+      background: linear-gradient(160deg, #f0f2ff 0%, #e6e9ff 100%);
+      border-color: rgba(32,36,160,0.22);
+    }
+    .catalog-panel.catalog-theme-ghibli {
+      background: linear-gradient(160deg, #fff8e7 0%, #e8f4dc 52%, #e0f2f7 100%);
+      border-color: rgba(89,130,73,0.28);
+    }
+    .catalog-panel.catalog-theme-nau {
+      background: linear-gradient(160deg, #f0f2ff 0%, #e4e8ff 100%);
+      border-color: rgba(42,58,176,0.26);
+    }
+    html[data-theme="dark"] .catalog-panel.catalog-theme-openstax {
+      background: linear-gradient(160deg, rgba(58,32,128,0.18) 0%, rgba(60,96,32,0.14) 100%);
+      border-color: rgba(58,32,128,0.35);
+    }
+    html[data-theme="dark"] .catalog-panel.catalog-theme-obi {
+      background: linear-gradient(160deg, rgba(240,160,48,0.12) 0%, rgba(240,180,48,0.08) 100%);
+      border-color: rgba(240,160,48,0.32);
+    }
+    html[data-theme="dark"] .catalog-panel.catalog-theme-whisperwind {
+      background: linear-gradient(160deg, rgba(100,80,48,0.16) 0%, rgba(60,96,40,0.16) 100%);
+      border-color: rgba(138,170,114,0.32);
+    }
+    html[data-theme="dark"] .catalog-panel.catalog-theme-reverie {
+      background: linear-gradient(160deg, rgba(32,36,160,0.18) 0%, rgba(40,48,200,0.12) 100%);
+      border-color: rgba(32,36,160,0.36);
+    }
+    html[data-theme="dark"] .catalog-panel.catalog-theme-ghibli {
+      background: linear-gradient(160deg, rgba(160,120,40,0.16) 0%, rgba(60,96,40,0.16) 52%, rgba(40,96,120,0.14) 100%);
+      border-color: rgba(89,130,73,0.34);
+    }
+    html[data-theme="dark"] .catalog-panel.catalog-theme-nau {
+      background: linear-gradient(160deg, rgba(42,58,176,0.18) 0%, rgba(42,58,200,0.12) 100%);
+      border-color: rgba(42,58,176,0.36);
+    }
+    .sl-icon { display: inline-block; vertical-align: middle; }
+    html[data-theme="dark"] .sl-icon { filter: brightness(0) invert(1); opacity: 0.88; }
+    /* Logo badge — top-left corner of visual */
+    .project-logo-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 3;
+      background: white;
+      border-radius: 10px;
+      padding: 5px 13px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+    }
+    .masonry-item .project-logo-badge img {
+      height: 34px !important;
+      width: auto !important;
+      object-fit: contain;
+      display: block;
+    }
+    /* Center Streamline icon — themed colored circle */
+    .project-center-icon {
+      position: relative;
+      z-index: 2;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+    .masonry-item .project-center-icon img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+    .card-openstax .project-center-icon { background: rgba(58,32,128,0.75); box-shadow: 0 4px 22px rgba(58,32,128,0.38); }
+    .card-obi      .project-center-icon { background: rgba(232,149,42,0.80); box-shadow: 0 4px 22px rgba(232,149,42,0.38); }
+    .card-whisperwind .project-center-icon { background: rgba(61,92,46,0.75); box-shadow: 0 4px 22px rgba(61,92,46,0.38); }
+    .card-reverie  .project-center-icon { background: rgba(32,36,160,0.75); box-shadow: 0 4px 22px rgba(32,36,160,0.38); }
+    .card-ghibli   .project-center-icon { background: rgba(89,130,73,0.75); box-shadow: 0 4px 22px rgba(89,130,73,0.38); }
+    .card-nau      .project-center-icon { background: rgba(42,58,176,0.75); box-shadow: 0 4px 22px rgba(42,58,176,0.38); }
+    .catalog-project-icon { width: 36px; height: 36px; object-fit: contain; display: none; }
+    html[data-theme="dark"] .catalog-project-icon { filter: brightness(0) invert(1); opacity: 0.8; }
   </style>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -567,8 +666,8 @@
     <section id="projects">
 
       <h2 class="page-title">Projects &amp; <em>Technical Work</em></h2>
-      <p class="leading-relaxed mb-6 font-serif tracking-wide italic text-gray-600 text-base">
-        From hackathon floors to senior capstones, these projects sit at the intersection of software engineering, data, and design. Each one started as a problem worth solving and ended as something I'd stand behind — built for real people, used by real people.
+      <p class="leading-relaxed mb-6 font-serif tracking-wide italic text-gray-600 text-lg">
+        Some of these started on a hackathon floor with 36 hours on the clock. One grew into a full senior capstone with four playable worlds and AI companions. Another has been running on a live campus since 2024. What they share: a problem I couldn't stop thinking about, and no tolerance for "good enough."
       </p>
 
       <!-- FEATURED -->
@@ -580,15 +679,18 @@
           <div class="project-visual">
             <img src="projects/OpenStaxAlign/bg.png" alt="OpenStaxAlign background" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(8,70,90,0.35);"></div>
-            <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.25);">
-              <img src="projects/OpenStaxAlign/logo.png" alt="OpenStaxAlign" style="height:56px;width:auto;object-fit:contain;display:block;">
+            <div class="project-logo-badge">
+              <img src="projects/OpenStaxAlign/logo.png" alt="OpenStaxAlign">
             </div>
-            <span class="project-award" style="z-index:3;">2nd Place · Rice Datathon</span>
+            <div class="project-center-icon">
+              <img src="images/icons/Book-Bookmark--Streamline-Freehand.png" alt="">
+            </div>
+            <span class="project-award" style="z-index:3;">OpenStax Track Winner · Rice Datathon</span>
           </div>
           <div class="meta p-5">
             <div class="mb-1">
               <h3 class="text-xl font-bold text-gray-800">OpenStaxAlign</h3>
-              <p class="text-sm text-[#850F01] font-semibold mt-0.5">Rice Datathon 2026 · 2nd Place Overall</p>
+              <p class="text-sm text-[#850F01] font-semibold mt-0.5">Rice Datathon 2026 · OpenStax Track Winner · 2nd Place Overall</p>
             </div>
             <div class="flex flex-wrap gap-1.5 my-3">
               <span class="tag tag-python">Python</span>
@@ -598,7 +700,7 @@
               <span class="tag tag-db">MongoDB</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              ML pipeline that maps educational content to OpenStax curriculum standards, reaching 75% accuracy on multi-class prediction and placing 2nd overall at Rice Datathon 2026.
+              Curriculum alignment means mapping textbook sections to educational standards, and it's hours of manual work per document. This pipeline automates it end to end: TF-IDF + class-weighted Linear SVM hitting 75% accuracy, built in a single hackathon day. Won the OpenStax Track, 2nd overall at Rice Datathon 2026.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -619,25 +721,29 @@
           <div class="project-visual" data-bg-images='["projects/Obi/homepage.png","projects/Obi/chat_search.png"]'>
             <img src="projects/Obi/homepage.png" alt="Obi background" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(15,12,40,0.45);"></div>
-            <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.35);">
-              <img src="projects/Obi/logo.png" alt="Obi" style="height:56px;width:auto;object-fit:contain;display:block;">
+            <div class="project-logo-badge">
+              <img src="projects/Obi/logo.png" alt="Obi">
             </div>
-            <span class="project-award" style="z-index:3;">Figma UI Challenge Winner</span>
+            <div class="project-center-icon">
+              <img src="images/icons/Board-Game-Catan--Streamline-Freehand.png" alt="">
+            </div>
+            <span class="project-award" style="z-index:3;">Figma Make Challenge Winner</span>
           </div>
           <div class="meta p-5">
             <div class="mb-1">
               <h3 class="text-xl font-bold text-gray-800">Obi: Local AI Desktop Assistant</h3>
-              <p class="text-sm text-[#850F01] font-semibold mt-0.5">LA Hacks 2026 · Figma UI Challenge Winner</p>
+              <p class="text-sm text-[#850F01] font-semibold mt-0.5">LA Hacks 2026 · Figma Make Challenge Winner</p>
             </div>
             <div class="flex flex-wrap gap-1.5 my-3">
               <span class="tag tag-sys">Electron</span>
+              <span class="tag tag-react">TypeScript</span>
               <span class="tag tag-js">Vite</span>
               <span class="tag tag-ai">Gemma LLM</span>
-              <span class="tag tag-ml">RAG Pipeline</span>
-              <span class="tag tag-ml">Local AI</span>
+              <span class="tag tag-ml">Hybrid RAG</span>
+              <span class="tag tag-db">sqlite-vec</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              Cross-platform AI desktop assistant built in 36 hours. Runs a locally-hosted Gemma LLM with sub-second contextual responses and zero cloud dependency. Won the Figma UI Challenge.
+              Your files hold more context than any cloud AI sees. Obi indexes them in real time and retrieves only what's relevant — hybrid keyword + semantic search, zero data off-device. Won the Figma Make Challenge at LA Hacks 2026.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -667,8 +773,11 @@
           <div class="project-visual" data-bg-images='["projects/Whisperwind Grove/whisperwind-grove.copy.jpg","projects/Whisperwind Grove/spirit-drift copy.png","projects/Whisperwind Grove/rise-of-the-half-moon copy.png","projects/Whisperwind Grove/delivery-on-the-wind copy.png","projects/Whisperwind Grove/spirit-sapling copy.png"]'>
             <img src="projects/Whisperwind%20Grove/whisperwind-grove.copy.jpg" alt="Whisperwind Grove background" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(5,20,15,0.45);"></div>
-            <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.35);">
-              <img src="projects/Whisperwind%20Grove/logo.png" alt="Whisperwind Grove" style="height:56px;width:auto;object-fit:contain;display:block;">
+            <div class="project-logo-badge">
+              <img src="projects/Whisperwind%20Grove/logo.png" alt="Whisperwind Grove">
+            </div>
+            <div class="project-center-icon">
+              <img src="images/icons/Organic-Tree-Grow--Streamline-Freehand.png" alt="">
             </div>
             <span class="project-award" style="z-index:3;">CS Senior Capstone</span>
           </div>
@@ -687,7 +796,7 @@
               <span class="tag tag-ml">ElevenLabs</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              Full-stack browser game platform with four handcrafted mini-games, persistent player identity, a shared achievement system, AI-evaluated gameplay moments, and AI-generated guardian voices.
+              A wind arcade, a Kiki-inspired delivery run, a sapling whose AI conversations change how the game responds, and a strategy card game — four worlds, one shared player identity and achievement system. Built from scratch as a CS senior capstone. Full marks across all evaluation categories.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -708,8 +817,11 @@
           <div class="project-visual" data-bg-images='["projects/Reverie/Screenshot 1 - Home Screen 1 copy.png","projects/Reverie/Screenshot 2 - Home Screen 2 copy.png","projects/Reverie/Screenshot 5 - My Spaces copy.png","projects/Reverie/Screenshot 6 - Community copy.png","projects/Reverie/Screenshot 8 - Timeline copy.png"]'>
             <img src="projects/Reverie/Screenshot%201%20-%20Home%20Screen%201%20copy.png" alt="Reverie background" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(91,33,182,0.25);"></div>
-            <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.2);">
-              <img src="projects/Reverie/logo.jpg" alt="Reverie" style="height:56px;width:auto;object-fit:contain;display:block;">
+            <div class="project-logo-badge">
+              <img src="projects/Reverie/logo.jpg" alt="Reverie">
+            </div>
+            <div class="project-center-icon">
+              <img src="images/icons/Vegetable-Artichoke--Streamline-Freehand.png" alt="">
             </div>
           </div>
           <div class="meta p-5">
@@ -718,14 +830,15 @@
               <p class="text-sm text-[#850F01] font-semibold mt-0.5">Full-Stack Web App · Personal Project</p>
             </div>
             <div class="flex flex-wrap gap-1.5 my-3">
-              <span class="tag tag-react">React</span>
+              <span class="tag tag-react">React 18</span>
+              <span class="tag tag-react">TypeScript</span>
               <span class="tag tag-sys">Node.js / Express</span>
               <span class="tag tag-db">MongoDB</span>
+              <span class="tag tag-sys">JWT Auth</span>
               <span class="tag tag-design">Figma</span>
-              <span class="tag tag-data">UX Design</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              A personal mood sanctuary where you curate the feelings that define you. Save mood boards, reflections, soundtracks, and emotions in beautifully organized spaces.
+              A full-stack mood curation app where you build named emotional spaces from music, imagery, video, and reflection — each with its own color palette and AI prompt field. Community feed, timeline view, ambient music player. Built solo from Figma to MERN stack.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -746,8 +859,11 @@
           <div class="project-visual" data-bg-images='["projects/Ghibli Guardians/dashboard.png","projects/Ghibli Guardians/mobile.png","projects/Ghibli Guardians/backend.png"]'>
             <img src="projects/Ghibli%20Guardians/dashboard.png" alt="Ghibli Guardians dashboard" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(35,70,45,0.38);"></div>
-            <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.25);">
-              <img src="projects/Ghibli%20Guardians/logo.png" alt="Ghibli Guardians" style="height:56px;width:auto;object-fit:contain;display:block;">
+            <div class="project-logo-badge">
+              <img src="projects/Ghibli%20Guardians/logo.png" alt="Ghibli Guardians">
+            </div>
+            <div class="project-center-icon">
+              <img src="images/icons/Privacy-User-Profile-Protected--Streamline-Freehand.png" alt="">
             </div>
             <span class="project-award" style="z-index:3;">Rutgers HackHERS</span>
           </div>
@@ -765,7 +881,7 @@
               <span class="tag tag-design">Emotional UX</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              A warm safety companion that helps users assess risky situations, generate emergency messages, and get calming guardian-style guidance when they feel alone or unsure.
+              Safety apps feel clinical — exactly wrong when you're already scared. Ghibli Guardians leads with warmth: a character-driven companion that assesses real risk, generates emergency messages with your location, and talks you through it. Built at Rutgers HackHERS.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -786,25 +902,28 @@
           <div class="project-visual" data-bg-images='["projects/NAU Portal/Dashboard.png","projects/NAU Portal/Statistics.png"]'>
             <img src="projects/NAU%20Portal/Dashboard.png" alt="NAU Portal background" class="project-visual-img">
             <div class="project-visual-overlay" style="background:rgba(20,40,100,0.4);"></div>
-            <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.3);">
-              <img src="projects/NAU%20Portal/logo.jpg" alt="NAU Portal" style="height:56px;width:auto;object-fit:contain;display:block;">
+            <div class="project-logo-badge">
+              <img src="projects/NAU%20Portal/logo.jpg" alt="NAU Portal">
+            </div>
+            <div class="project-center-icon">
+              <img src="images/icons/E-Learning-Student-Global--Streamline-Freehand.png" alt="">
             </div>
             <span class="project-award" style="z-index:3;">Live in Production</span>
           </div>
           <div class="meta p-5">
             <div class="mb-1">
               <h3 class="text-xl font-bold text-gray-800">NAU Athletics &amp; Student Portal</h3>
-              <p class="text-sm text-[#850F01] font-semibold mt-0.5">Full-Stack Platform · Live since Sep 2024</p>
+              <p class="text-sm text-[#850F01] font-semibold mt-0.5">UX Design & Development · Live since Sep 2024</p>
             </div>
             <div class="flex flex-wrap gap-1.5 my-3">
-              <span class="tag tag-react">React</span>
+              <span class="tag tag-sys">WordPress</span>
               <span class="tag tag-design">Figma</span>
               <span class="tag tag-design">Design Systems</span>
               <span class="tag tag-data">UX Research</span>
               <span class="tag tag-sys">WCAG 2.1 AA</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              Full-stack athletics and student portal serving the entire NAU campus, live since September 2024. Owned end-to-end from UX research and Figma design system through developer handoff.
+              Athletics and student portal serving the entire NAU campus — schedules, rosters, and team pages for eight sports programs. Owned end-to-end: user research, Figma design system, WCAG accessibility audit, and developer handoff. Live since September 2024.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -845,27 +964,34 @@
       <button class="catalog-close" id="catalogClose" aria-label="Close project details">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-      <div class="catalog-img-container" id="catalogImgContainer">
-        <img id="catalogHeroImg" class="catalog-hero" src="" alt="Project screenshot">
-        <button class="catalog-img-arrow catalog-img-arrow-prev" id="catalogPrev" aria-label="Previous image" style="display:none;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="catalog-img-arrow catalog-img-arrow-next" id="catalogNext" aria-label="Next image" style="display:none;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-        <div class="catalog-img-dot-bar" id="catalogDotBar"></div>
-      </div>
-      <div class="catalog-body">
-        <div class="catalog-context" id="catalogContext"></div>
-        <div class="catalog-title" id="catalogTitle"></div>
-        <div class="catalog-section-label">Tools &amp; Stack</div>
-        <div class="catalog-tools" id="catalogTools"></div>
-        <div class="catalog-section-label">The Problem</div>
-        <div class="catalog-text" id="catalogProblem"></div>
-        <div class="catalog-section-label">Achievements &amp; Accomplishments</div>
-        <div class="catalog-text" id="catalogAchievements"></div>
-        <div class="catalog-section-label">Links</div>
-        <div class="catalog-links" id="catalogLinks"></div>
+      <div class="catalog-scroll-inner" id="catalogScrollInner">
+        <div class="catalog-img-container" id="catalogImgContainer">
+          <img id="catalogHeroImg" class="catalog-hero" src="" alt="Project screenshot">
+          <button class="catalog-img-arrow catalog-img-arrow-prev" id="catalogPrev" aria-label="Previous image" style="display:none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="catalog-img-arrow catalog-img-arrow-next" id="catalogNext" aria-label="Next image" style="display:none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="catalog-img-dot-bar" id="catalogDotBar"></div>
+        </div>
+        <div class="catalog-body">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.1rem;">
+            <img id="catalogProjectIcon" class="catalog-project-icon" src="" alt="">
+            <div style="flex:1;min-width:0;">
+              <div class="catalog-context" id="catalogContext"></div>
+              <div class="catalog-title" id="catalogTitle"></div>
+            </div>
+          </div>
+          <div class="catalog-section-label">Tools &amp; Stack</div>
+          <div class="catalog-tools" id="catalogTools"></div>
+          <div class="catalog-section-label">The Problem</div>
+          <div class="catalog-text" id="catalogProblem"></div>
+          <div class="catalog-section-label">Achievements &amp; Accomplishments</div>
+          <div class="catalog-text" id="catalogAchievements"></div>
+          <div class="catalog-section-label">Links</div>
+          <div class="catalog-links" id="catalogLinks"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -893,7 +1019,8 @@
     var CATALOG = {
       openstax: {
         title: 'OpenStaxAlign',
-        context: '2nd Place Overall · Rice Datathon 2026',
+        context: 'OpenStax Track Winner · 2nd Place Overall · Rice Datathon 2026',
+        icon: 'images/icons/Book-Bookmark--Streamline-Freehand.png',
         images: ['projects/OpenStaxAlign/bg.png'],
         tools: [
           { label: 'Python', cls: 'tag-python' },
@@ -904,8 +1031,8 @@
           { label: 'Logistic Regression', cls: 'tag-ml' },
           { label: 'NLP', cls: 'tag-data' }
         ],
-        problem: 'Educational content spanning thousands of items needed to be accurately mapped to OpenStax curriculum standards — a multi-class classification problem with no existing labeled pipeline. The challenge was to ingest raw JSON datasets, extract meaningful text features, and build a model capable of predicting the correct curriculum standard from a large label space, all within a datathon weekend.',
-        achievements: '• Achieved 75% accuracy on multi-class educational standard prediction using a tuned Linear SVM\n• Designed the full TF-IDF vectorization and model pipeline from raw JSON ingestion\n• Built all MongoDB analytics views that turned model outputs into a legible curriculum story\n• Placed 2nd out of all competing teams at Rice Datathon 2026\n• Data narrative in the final presentation recognized by judges across all tracks',
+        problem: 'Curriculum alignment means mapping textbook sections to educational standards, and it\'s hours of manual work per document, done inconsistently across institutions. The challenge was to automate it: ingest raw JSON datasets, extract features that preserved hierarchical document context, handle severe class imbalance across a large label space, and ship a complete end-to-end pipeline within a single hackathon day.',
+        achievements: '• Won the OpenStax Track at Rice Datathon 2026, placing 2nd overall across all competing teams\n• 75% validation accuracy on multi-class educational standard prediction\n• Full pipeline: raw JSON ingestion → TF-IDF vectorization → class-weighted Linear SVM → stratified cross-validation\n• Preserving hierarchical document context was the key accuracy insight — flat extraction underperformed significantly\n• Class imbalance solved by filtering rare standards and tuning class weights\n• MongoDB analytics views turned model outputs into a curriculum story educators could actually read\n• Completed under API rate-limit constraints in a single hackathon day',
         links: [
           { href: 'https://github.com/iremdmrc/datathon-openstax', label: 'GitHub', icon: 'github', cls: 'project-btn-github' },
           { href: 'https://devpost.com/software/openstaxalign', label: 'Devpost', icon: 'devpost', cls: 'project-btn-live' }
@@ -913,27 +1040,31 @@
       },
       obi: {
         title: 'Obi: Local AI Desktop Assistant',
-        context: 'Figma UI Challenge Winner · LA Hacks 2026',
+        context: 'Figma Make Challenge Winner · LA Hacks 2026',
+        icon: 'images/icons/Board-Game-Catan--Streamline-Freehand.png',
         images: ['projects/Obi/homepage.png', 'projects/Obi/chat_search.png'],
         tools: [
           { label: 'Electron', cls: 'tag-sys' },
+          { label: 'TypeScript', cls: 'tag-react' },
           { label: 'Vite', cls: 'tag-js' },
           { label: 'Gemma LLM', cls: 'tag-ai' },
-          { label: 'RAG Pipeline', cls: 'tag-ml' },
-          { label: 'Local AI', cls: 'tag-ml' },
+          { label: 'llama.cpp', cls: 'tag-ml' },
+          { label: 'sqlite-vec', cls: 'tag-db' },
+          { label: 'Hybrid RAG', cls: 'tag-ml' },
           { label: 'Figma', cls: 'tag-design' }
         ],
-        problem: 'Most AI assistants require cloud access, introduce latency, and send personal files off-device. The challenge: build a desktop assistant that provides intelligent, contextual answers about a user\'s local files and documents with zero internet dependency and sub-second response times — and ship it in 36 hours at a hackathon.',
-        achievements: '• Won the dedicated Figma UI Challenge at LA Hacks 2026 — judges rated it production-ready among all competing teams\n• Built a fully functional Electron app with a locally-run Gemma LLM in under 36 hours\n• RAG pipeline enables natural-language search across local files with no data leaving the device\n• Zero cloud dependency — works fully offline, no subscriptions required\n• Interaction model designed from scratch to feel immediate and human, not transactional',
+        problem: 'Most AI assistants are bottlenecked by retrieval quality, not generation quality — they blast entire datasets at the model instead of surfacing what\'s actually relevant. The challenge was to build a local-first desktop assistant that indexes files in real time, retrieves only the relevant chunks via hybrid search, and runs entirely on-device with no cloud dependency. Then ship it in 36 hours at a hackathon.',
+        achievements: '• Won the Figma Make Challenge at LA Hacks 2026 — judges rated it production-ready among all competing teams\n• Hybrid retrieval combining keyword and semantic search (sqlite-vec) outperforms standard RAG for local file search\n• Real-time indexing via chokidar — files update in the index the moment they change, zero manual refresh\n• Local inference: Gemma (quantized GGUF) via llama.cpp; Nomic Embed v2 for text, CLIP for image context\n• Zero cloud dependency — works fully offline, no API keys, no subscriptions, no data leaving the device\n• Reduces AI agent token costs by surfacing only relevant context rather than entire datasets\n• Built with React, TypeScript, Electron, and SQLite — full desktop app shipped in 36 hours',
         links: [
           { href: 'https://github.com/LAHacks2026/Obi_Laptop', label: 'GitHub', icon: 'github', cls: 'project-btn-github' },
           { href: 'https://devpost.com/software/obi-mise-en-place-for-your-data', label: 'Devpost', icon: 'devpost', cls: 'project-btn-live' },
-          { href: 'https://sadly-camp-78163766.figma.site', label: 'Figma Presentation', icon: 'figma', cls: 'project-btn-github' }
+          { href: 'https://sadly-camp-78163766.figma.site', label: 'Figma Make Submission', icon: 'figma', cls: 'project-btn-github' }
         ]
       },
       whisperwind: {
         title: 'Whisperwind Grove',
         context: 'CS Senior Capstone · North American University · Spring 2026',
+        icon: 'images/icons/Organic-Tree-Grow--Streamline-Freehand.png',
         images: [
           'projects/Whisperwind Grove/whisperwind-grove.copy.jpg',
           'projects/Whisperwind Grove/spirit-drift copy.png',
@@ -951,8 +1082,8 @@
           { label: 'ElevenLabs', cls: 'tag-ml' },
           { label: 'Vite 7', cls: 'tag-js' }
         ],
-        problem: 'Design and ship a full-stack game platform hosting four distinct playable worlds — with shared player identity, a persistent achievement system, leaderboards, AI-evaluated gameplay, and AI-generated character voices — as a capstone project within a single semester, meeting production-quality standards.',
-        achievements: '• Full marks across all evaluation categories: systems integration, AI implementation, and production-quality architecture\n• Four complete playable mini-games: Spirit Drift, Delivery on the Wind, Spirit Sapling, Rise of the Half Moon\n• AI evaluation of in-game moments via Gemini 2.0 Flash (Spirit Sapling kindness scoring and Half Moon move selection)\n• ElevenLabs voice generation for per-guardian audio clips, making companions feel alive\n• Idempotent badge logic, animated unlock toasts, and real-time leaderboard updates across all four games\n• Full TypeScript monorepo: Vite 7 + React 19 frontend, Node.js + Express 5 backend, MongoDB + Mongoose 9',
+        problem: 'Design and ship a full-stack game platform hosting four complete, distinct playable worlds, each with its own mechanics, soundtrack, and AI integration, while sharing one persistent player identity, one achievement system, and one profile layer. Meet production-quality standards as a graded senior capstone, within a single semester.',
+        achievements: '• Full marks across all capstone evaluation categories: systems integration, AI implementation, and production-quality architecture\n• Spirit Drift: arcade wind spirit with combo scoring; Delivery on the Wind: Kiki\'s Delivery Service-inspired time run with leaderboards; Spirit Sapling: nurturing game where Gemini AI conversations adjust game mechanics based on emotional tone; Rise of the Half Moon: three-level strategy card game with optional AI moves\n• Spirit Sapling\'s AI goes beyond chat — the sapling\'s emotional responses change how the game actually progresses\n• ElevenLabs voice synthesis gives each guardian companion a distinct voice and personality\n• JWT authentication, customizable profiles (avatars, status, music preferences), per-game audio, and accessibility settings\n• Idempotent badge logic, animated achievement unlock toasts, and real-time leaderboard updates across all four worlds\n• Full TypeScript monorepo: Vite 7 + React 19 frontend, Node.js + Express 5 backend, MongoDB + Mongoose 9',
         links: [
           { href: 'https://github.com/aysesule2405/WW', label: 'GitHub', icon: 'github', cls: 'project-btn-github' },
           { href: 'https://fiesta-busy-93311900.figma.site', label: 'Figma Presentation', icon: 'figma', cls: 'project-btn-github' }
@@ -961,6 +1092,7 @@
       reverie: {
         title: 'Reverie',
         context: 'Full-Stack Web App · Personal Project',
+        icon: 'images/icons/Vegetable-Artichoke--Streamline-Freehand.png',
         images: [
           'projects/Reverie/Screenshot 1 - Home Screen 1 copy.png',
           'projects/Reverie/Screenshot 2 - Home Screen 2 copy.png',
@@ -969,14 +1101,16 @@
           'projects/Reverie/Screenshot 8 - Timeline copy.png'
         ],
         tools: [
-          { label: 'React', cls: 'tag-react' },
+          { label: 'React 18', cls: 'tag-react' },
+          { label: 'TypeScript', cls: 'tag-react' },
           { label: 'Node.js / Express', cls: 'tag-sys' },
           { label: 'MongoDB', cls: 'tag-db' },
-          { label: 'Figma', cls: 'tag-design' },
-          { label: 'UX Design', cls: 'tag-data' }
+          { label: 'Multer', cls: 'tag-sys' },
+          { label: 'JWT Auth', cls: 'tag-sys' },
+          { label: 'Figma', cls: 'tag-design' }
         ],
-        problem: 'There is no good digital space to capture the textures of your inner life — the moods, memories, and feelings that make you who you are. The challenge was to design and build an app that treats emotional self-expression with the same care as a physical journal, while adding community and timeline dimensions that a notebook cannot offer.',
-        achievements: '• Full CRUD for named emotional spaces with mood tagging (cozy, dreamy, melancholic, joyful, and more)\n• Community discovery feed surfacing public spaces from other users\n• Timeline view showing a user\'s emotional history at a glance\n• User authentication, space creation, saved collections, and image plus reflection storage\n• Figma-first design process translated directly to React with faithful implementation',
+        problem: 'Most mood tracking is either a spreadsheet or a social media post. Neither holds the actual texture of your inner life. The challenge was to design and build an app that treats emotional self-expression with the care of a physical journal: private, personal, and visually yours, with community, timeline, and media dimensions that a notebook cannot offer.',
+        achievements: '• Named emotional spaces with color palette builders, AI prompt fields for mood board generation, and private/public visibility settings\n• Media library supporting image, video (mp4, webm, mov), and audio uploads via Multer\n• Ambient music player in the sidebar — background sound that persists across the whole app\n• Community discovery feed with likes, saves, and comments on public spaces\n• Timeline view with date and mood filtering — a personal emotional history at a glance\n• JWT authentication with per-user data isolation and bcryptjs-protected routes\n• Built solo from Figma design to full MERN stack (React 18, TypeScript, Node.js, MongoDB Atlas)',
         links: [
           { href: 'https://github.com/aysesule2405/reverie', label: 'GitHub', icon: 'github', cls: 'project-btn-github' },
           { href: 'https://record-poppy-86285822.figma.site', label: 'Figma Presentation', icon: 'figma', cls: 'project-btn-github' }
@@ -985,6 +1119,7 @@
       ghibli: {
         title: 'Ghibli Guardians',
         context: 'Safety Companion App · Rutgers University HackHERS Hackathon',
+        icon: 'images/icons/Privacy-User-Profile-Protected--Streamline-Freehand.png',
         images: [
           'projects/Ghibli Guardians/dashboard.png',
           'projects/Ghibli Guardians/mobile.png',
@@ -995,12 +1130,12 @@
           { label: 'Vite', cls: 'tag-js' },
           { label: 'Node.js / Express', cls: 'tag-sys' },
           { label: 'ElevenLabs', cls: 'tag-ai' },
+          { label: 'Google Maps API', cls: 'tag-data' },
           { label: 'REST API', cls: 'tag-data' },
-          { label: 'Emotional UX', cls: 'tag-design' },
-          { label: 'Google Maps API', cls: 'tag-data' }
+          { label: 'Emotional UX', cls: 'tag-design' }
         ],
-        problem: 'Safety apps tend to feel cold and alarming — exactly the wrong tone for someone already in a stressful situation. The challenge was to build a safety companion that evaluates real risk, generates actionable emergency messages, and delivers guidance through a warm, character-driven interface that calms rather than escalates.',
-        achievements: '• Risk evaluation engine assessing time of day, lighting, environment type, and whether the user is alone\n• Trusted guardian management with real-time coordinate storage\n• Personalized emergency messages with Google Maps links, shareable in one tap\n• ElevenLabs voice playback for calming, character-driven guidance\n• Chatbot-style interaction model with music and copy/share actions\n• Full React + Node.js implementation built in a hackathon sprint at Rutgers HackHERS',
+        problem: 'Safety apps tend to feel like emergency buttons — cold, alarming, exactly the wrong tone for someone already scared. The challenge was to build a companion that evaluates real risk, generates actionable emergency messages with location data, and delivers guidance through a warm, character-driven interface that calms rather than escalates. The added constraint: ship it in a hackathon sprint, with a backup plan ready when third-party APIs fail.',
+        achievements: '• Risk evaluation engine assessing time of day, lighting, environment type, and whether the user is alone\n• Emergency messages generated with real-time Google Maps coordinates, shareable in one tap\n• ElevenLabs voice playback for calm, character-driven guardian guidance\n• When primary AI integrations failed mid-hackathon, pivoted to rule-based fallbacks rather than blocking the feature — reliability over complexity in safety-critical applications\n• Chatbot-style interaction with music and copy/share actions\n• Trusted guardian contact management with real-time coordinate storage\n• Built with React, Vite, Node.js, and Express at Rutgers University HackHERS',
         links: [
           { href: 'https://github.com/aysesule2405/G-Guardians', label: 'GitHub', icon: 'github', cls: 'project-btn-github' },
           { href: 'https://devpost.com/software/ghibli-guardians', label: 'Devpost', icon: 'devpost', cls: 'project-btn-live' }
@@ -1008,22 +1143,24 @@
       },
       nau: {
         title: 'NAU Athletics & Student Portal',
-        context: 'Full-Stack Platform · Live since September 2024',
+        context: 'Design & UX · Live since September 2024',
+        icon: 'images/icons/E-Learning-Student-Global--Streamline-Freehand.png',
         images: [
           'projects/NAU Portal/Dashboard.png',
           'projects/NAU Portal/Statistics.png'
         ],
         tools: [
-          { label: 'React', cls: 'tag-react' },
+          { label: 'WordPress', cls: 'tag-sys' },
           { label: 'Figma', cls: 'tag-design' },
           { label: 'Design Systems', cls: 'tag-design' },
           { label: 'UX Research', cls: 'tag-data' },
           { label: 'WCAG 2.1 AA', cls: 'tag-sys' },
           { label: 'Component Library', cls: 'tag-design' },
-          { label: 'Accessibility Audit', cls: 'tag-sys' }
+          { label: 'Accessibility Audit', cls: 'tag-sys' },
+          { label: 'Journey Mapping', cls: 'tag-data' }
         ],
-        problem: 'NAU needed a unified athletics and student portal that could serve the entire campus population — from players and coaches to administrators and visitors — with clear navigation, accessible design, and a consistent visual identity, all owned end-to-end by a single designer from research through developer handoff.',
-        achievements: '• Platform shipped and in daily campus-wide use since September 2024\n• Full accessibility audit passing WCAG 2.1 AA standards\n• Figma design system with reusable, documented components for developer handoff\n• End-to-end ownership: user research, journey mapping, UI delivery, and handoff\n• Ongoing usability testing and ad-conversion tracking across social channels\n• User research findings translated into product requirements acted on by administrators',
+        problem: 'NAU needed a unified athletics and student portal that could serve the entire campus — players, coaches, administrators, and visitors — with clear navigation, accessible design, and a consistent visual identity. The constraint: one designer, responsible for everything from user research and journey mapping to Figma design system, accessibility audit, and developer handoff.',
+        achievements: '• Platform live and in daily campus-wide use since September 2024\n• End-to-end ownership: user research, journey mapping, Figma design system, component documentation, and developer handoff\n• Full accessibility audit passing WCAG 2.1 AA standards across all pages\n• Documented component library enabling consistent developer implementation\n• Ongoing usability testing and ad-conversion tracking across social channels\n• User research findings translated directly into product requirements, acted on by university administrators',
         links: [
           { href: 'https://stallions.na.edu/', label: 'Visit Live Site', icon: 'external-link', cls: 'project-btn-live' }
         ]
@@ -1107,6 +1244,15 @@
       setDot(0);
       startSlideshow();
 
+      var iconEl = document.getElementById('catalogProjectIcon');
+      if (d.icon) {
+        iconEl.src = d.icon;
+        iconEl.style.display = 'block';
+      } else {
+        iconEl.src = '';
+        iconEl.style.display = 'none';
+      }
+
       document.getElementById('catalogContext').textContent = d.context;
       document.getElementById('catalogTitle').textContent = d.title;
 
@@ -1126,15 +1272,19 @@
           '</a>';
       }).join('');
 
+      panel.className = panel.className.replace(/\bcatalog-theme-\S+/g, '').trim();
+      panel.classList.add('catalog-theme-' + id);
+
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
-      panel.scrollTop = 0;
+      document.getElementById('catalogScrollInner').scrollTop = 0;
     }
 
     function closeCatalog() {
       overlay.classList.remove('open');
       document.body.style.overflow = '';
       clearInterval(imgTimer);
+      panel.className = panel.className.replace(/\bcatalog-theme-\S+/g, '').trim();
     }
 
     prevBtn.addEventListener('click', function () {
