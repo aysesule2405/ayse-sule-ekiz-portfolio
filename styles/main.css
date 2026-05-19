@@ -368,15 +368,16 @@ html[data-theme="dark"] .home-hero-card {
 }
 
 .page-title::before {
-  color: var(--color-accent);
-  content: "§";
+  content: "";
   display: block;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.22em;
-  line-height: 1;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/icons/Video-Game-The-Sims--Streamline-Freehand.png');
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-bottom: 0.7rem;
+  /* #941B0C */
+  filter: brightness(0) invert(27%) sepia(100%) saturate(287%) hue-rotate(328deg) brightness(102%);
 }
 
 .page-title::after {
@@ -393,6 +394,11 @@ html[data-theme="dark"] .home-hero-card {
 .page-title em {
   color: var(--color-accent);
   font-style: italic;
+}
+
+html[data-theme="dark"] .page-title::before {
+  /* #FFA618 */
+  filter: brightness(0) invert(48%) sepia(100%) saturate(452%) hue-rotate(359deg) brightness(100%);
 }
 
 html[data-theme="dark"] .page-title::after {
@@ -480,30 +486,68 @@ html[data-theme="dark"] #home .interest-card {
 
 /* Half Moon game cards */
 /* Half Moon game cards — styled to match site palette */
+/* ── Half Moon — 3-D flip card ───────────────────────────────── */
+
 .hm-card {
+  position: relative;
+  perspective: 900px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
   border-radius: 1rem;
-  padding: 0.6rem 0.6rem 0.5rem;
-  background: var(--color-surface-raised);
+  display: block;
+  transition: transform 0.18s ease;
+}
+
+.hm-card:hover:not(:disabled):not(.hm-card--locked) {
+  transform: translateY(-3px);
+}
+
+/* The rotating inner wrapper */
+.hm-card__inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 1rem;
+}
+
+.hm-card.hm-card--face-down .hm-card__inner {
+  transform: rotateY(180deg);
+}
+
+/* Shared face styles */
+.hm-card__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 1rem;
   border: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
   box-shadow: 0 18px 45px rgba(133, 15, 1, 0.10);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 0;
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    background-color 0.18s ease,
-    border-color 0.18s ease;
-  cursor: pointer;
+  padding: 0.6rem 0.6rem 0.5rem;
+  overflow: hidden;
+  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
 }
 
-.hm-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 22px 55px rgba(133, 15, 1, 0.18);
+/* Back face — closed card image fills it */
+.hm-card__back {
+  transform: rotateY(180deg);
+  padding: 0;
+  justify-content: center;
+}
+
+/* Hover highlight on whichever face is visible */
+.hm-card:hover:not(:disabled):not(.hm-card--locked) .hm-card__face {
   border-color: var(--color-accent);
   background: var(--color-accent-soft);
+  box-shadow: 0 22px 55px rgba(133, 15, 1, 0.18);
 }
 
 .hm-card__img {
@@ -515,6 +559,16 @@ html[data-theme="dark"] #home .interest-card {
   margin-bottom: 0.4rem;
 }
 
+/* Back image fills the full face */
+.hm-card__back-img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: unset;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin: 0;
+}
+
 .hm-card__label {
   font-size: 0.65rem;
   text-transform: uppercase;
@@ -523,10 +577,11 @@ html[data-theme="dark"] #home .interest-card {
   text-align: center;
   line-height: 1.3;
   padding-bottom: 0.15rem;
+  margin-top: auto;
 }
 
-/* Correct / finished states */
-.hm-card--correct {
+/* Correct state */
+.hm-card--correct .hm-card__front {
   background: #E5F9ED;
   border-color: #16A34A;
   box-shadow: 0 20px 50px rgba(22, 163, 74, 0.22);
@@ -534,25 +589,27 @@ html[data-theme="dark"] #home .interest-card {
 
 .hm-card--locked {
   cursor: default;
-  opacity: 0.95;
 }
 
 /* Wrong click feedback */
 .hm-card--wrong {
-  animation: hm-shake 0.25s ease;
+  animation: hm-shake 0.28s ease;
+}
+
+.hm-card--wrong .hm-card__front {
   border-color: #DC2626;
   background: #FEE2E2;
 }
 
 @keyframes hm-shake {
   0%   { transform: translateX(0); }
-  25%  { transform: translateX(-3px); }
-  50%  { transform: translateX(3px); }
-  75%  { transform: translateX(-2px); }
+  25%  { transform: translateX(-4px); }
+  55%  { transform: translateX(4px); }
+  80%  { transform: translateX(-2px); }
   100% { transform: translateX(0); }
 }
 
-/* Dark theme adjustments */
+/* Dark theme */
 [data-theme="dark"] #half-moon-game-section .bg-\[\#FFF7F0\] {
   background-color: var(--color-surface) !important;
   border-color: var(--color-border) !important;
@@ -562,14 +619,14 @@ html[data-theme="dark"] #home .interest-card {
   color: var(--color-text-soft);
 }
 
-[data-theme="dark"] .hm-card {
+[data-theme="dark"] .hm-card__face {
   background: var(--color-surface-raised);
   border-color: var(--color-border);
   color: var(--color-text);
   box-shadow: var(--shadow-soft);
 }
 
-[data-theme="dark"] .hm-card:hover {
+[data-theme="dark"] .hm-card:hover:not(:disabled):not(.hm-card--locked) .hm-card__face {
   background: var(--color-accent-soft);
   border-color: var(--color-accent);
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
@@ -579,12 +636,12 @@ html[data-theme="dark"] #home .interest-card {
   color: var(--color-text-muted);
 }
 
-[data-theme="dark"] .hm-card--correct {
+[data-theme="dark"] .hm-card--correct .hm-card__front {
   background: #064E3B;
   border-color: #22C55E;
 }
 
-[data-theme="dark"] .hm-card--wrong {
+[data-theme="dark"] .hm-card--wrong .hm-card__front {
   background: #3F1A1A;
   border-color: #F97373;
 }

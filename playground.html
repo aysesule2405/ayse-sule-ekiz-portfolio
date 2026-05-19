@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Playground | Ayse Sule Ekiz</title>
+    <link rel="icon" type="image/png" href="images/logo-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="images/logo-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" href="images/logo-light.png">
+    <meta name="theme-color" content="#941b0c" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#FFA618" media="(prefers-color-scheme: dark)">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles/main.css">
@@ -997,6 +1002,7 @@
   <script src="js/theme-toggle.js"></script>
   <script src="js/nav-enhancements.js"></script>
   <script src="js/scroll-animations.js" defer></script>
+  <script src="js/sfx.js"></script>
   <script src="js/half-moon-game.js" defer></script>
   <script src="js/portfolio-mini-games.js" defer></script>
 </head>
@@ -1066,7 +1072,15 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
 
     <section id="playground">
-      <h2 class="page-title">The <em>Playground</em></h2>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+        <h2 class="page-title" style="flex:1;min-width:0;">The <em>Playground</em></h2>
+        <button id="sfx-mute-btn" title="Toggle sound" aria-label="Toggle sound effects"
+          style="flex-shrink:0;margin-top:0.5rem;background:none;border:1.5px solid var(--color-border,#e5e7eb);border-radius:999px;padding:6px 14px;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-soft,#6b7280);transition:all 0.18s ease;">
+          <i data-lucide="volume-2" style="width:14px;height:14px;" id="sfx-icon-on"></i>
+          <i data-lucide="volume-x" style="width:14px;height:14px;display:none;" id="sfx-icon-off"></i>
+          <span id="sfx-label">Sound On</span>
+        </button>
+      </div>
       <p class="playground-intro leading-relaxed mb-8 font-serif tracking-wide italic text-gray-600 text-lg">
         Colour theory games, a sand-physics canvas, and a card game built with the same care as the rest of the portfolio. This page is a small studio for interaction, mood, and playful systems.
       </p>
@@ -1383,6 +1397,7 @@
         actionsEl.appendChild(btn);
       });
 
+      window.SFX?.complete();
       requestAnimationFrame(function () { overlay.classList.add('is-visible'); });
     }
 
@@ -1393,11 +1408,27 @@
 
     document.addEventListener('DOMContentLoaded', function () {
       var closeBtn = document.getElementById('game-complete-close');
-      var overlay = document.getElementById('game-complete-overlay');
+      var overlay  = document.getElementById('game-complete-overlay');
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
       if (overlay) {
         overlay.addEventListener('click', function (e) {
           if (e.target === overlay) closeModal();
+        });
+      }
+
+      // Mute toggle
+      var muteBtn   = document.getElementById('sfx-mute-btn');
+      var iconOn    = document.getElementById('sfx-icon-on');
+      var iconOff   = document.getElementById('sfx-icon-off');
+      var muteLabel = document.getElementById('sfx-label');
+      if (muteBtn) {
+        muteBtn.addEventListener('click', function () {
+          var nowMuted = !window.SFX?.muted;
+          window.SFX?.setMuted(nowMuted);
+          iconOn.style.display  = nowMuted ? 'none'         : '';
+          iconOff.style.display = nowMuted ? ''             : 'none';
+          muteLabel.textContent = nowMuted ? 'Sound Off'    : 'Sound On';
+          muteBtn.style.opacity = nowMuted ? '0.5'          : '1';
         });
       }
     });

@@ -1,8 +1,17 @@
-# Ayse Sule Ekiz — Portfolio
+<p align="center">
+  <img src="images/logo-light.png" alt="Ayse Sule Ekiz" width="80" height="80" style="border-radius:50%;">
+</p>
 
-A hand-crafted, multi-page personal portfolio for **software projects, visual art, ceramics, painting, charcoal, and graphic design**. Built entirely with vanilla HTML, CSS, and JavaScript — no framework, no build step.
+<h1 align="center">Ayse Sule Ekiz — Portfolio</h1>
 
-The visual identity pairs a warm cream-and-crimson light mode with an amber-accented dark mode, and runs through every page: masonry gallery cards, project catalog pop-ups, interactive mini-games, and a hand-illustrated moon motif.
+<p align="center">
+  A hand-crafted, multi-page personal portfolio for <strong>software projects, visual art, ceramics, painting, charcoal, and graphic design</strong>.<br>
+  Built entirely with vanilla HTML, CSS, and JavaScript — no framework, no build step.
+</p>
+
+<p align="center">
+  The visual identity pairs a warm cream-and-crimson light mode with an amber-accented dark mode, running through every page: masonry gallery cards, project catalog pop-ups, interactive mini-games, and a hand-illustrated moon motif.
+</p>
 
 ---
 
@@ -10,7 +19,7 @@ The visual identity pairs a warm cream-and-crimson light mode with an amber-acce
 
 | Page | Description |
 |---|---|
-| `index.html` | Landing page with animated hero, palette oracle game, and navigation |
+| `index.html` | Landing page with animated hero and editorial art section |
 | `projects.html` | Technical project cards with expandable catalog pop-ups |
 | `about.html` | Personal story, roots, contact form, and sand canvas game |
 | `playground.html` | Three interactive mini-games (Half Moon, Oracle, Sand Canvas) |
@@ -18,13 +27,12 @@ The visual identity pairs a warm cream-and-crimson light mode with an amber-acce
 | `graphicdesign.html` | Graphic design gallery (masonry layout) |
 | `ceramics.html` | Ceramics gallery |
 | `painting.html` | Painting gallery |
-| `charcoal.html` | Charcoal drawing gallery |
 
 ---
 
 ## Projects Showcased
 
-### OpenStaxAlign — Rice Datathon 2026
+### <img src="projects/OpenStaxAlign/logo.png" height="22" align="center" alt=""> OpenStaxAlign — Rice Datathon 2026
 **OpenStax Track Winner · 2nd Place Overall**
 
 ![OpenStaxAlign dashboard](projects/OpenStaxAlign/bg.png)
@@ -35,19 +43,20 @@ An NLP pipeline that maps textbook sections to educational standards automatical
 
 ---
 
-### Obi — AI Board Game Companion
+### <img src="projects/Obi/logo.png" height="22" align="center" alt=""> Obi — Local AI Desktop Assistant
+**LA Hacks 2026 · Figma UI Challenge Winner**
 
 | Homepage | Chat & Search |
 |---|---|
 | ![Obi homepage](projects/Obi/homepage.png) | ![Obi chat](projects/Obi/chat_search.png) |
 
-A full-stack web app that gives board game players an intelligent companion: rule lookups, strategy tips, and community Q&A powered by Claude AI. Features real-time chat, a searchable game library, and a community forum.
+Cross-platform AI desktop assistant with a locally-hosted Gemma LLM, sub-second contextual responses, and zero cloud dependency. Winner of the Figma UI Challenge at LA Hacks 2026.
 
-**Stack:** React · Node.js · Express · MongoDB · Claude API · Tailwind CSS
+**Stack:** Electron · Vite · Gemma LLM · RAG Pipeline · Local AI
 
 ---
 
-### Whisperwind Grove — Narrative Game
+### <img src="projects/Whisperwind%20Grove/logo.png" height="22" align="center" alt=""> Whisperwind Grove — CS Senior Capstone
 
 ![Whisperwind Grove](projects/Whisperwind%20Grove/whisperwind-grove.copy.jpg)
 
@@ -55,17 +64,17 @@ A full-stack web app that gives board game players an intelligent companion: rul
 |---|---|---|
 | ![Scene 1](projects/Whisperwind%20Grove/delivery-on-the-wind%20copy.png) | ![Scene 2](projects/Whisperwind%20Grove/rise-of-the-half-moon%20copy.png) | ![Scene 3](projects/Whisperwind%20Grove/spirit-drift%20copy.png) |
 
-An original narrative game with hand-illustrated environments, branching story paths, and a spirit-growth mechanic. Built as a solo project exploring interactive storytelling through custom art direction and event-driven game logic.
+A full-stack capstone platform with four playable worlds, achievements, leaderboards, and AI-assisted interactions. Full marks for systems integration.
 
-**Stack:** JavaScript · HTML Canvas · Custom sprite animation · Original art
+**Stack:** React · TypeScript · Phaser · Gemini AI
 
 ---
 
-### Reverie — Social Reading App
+### <img src="projects/Reverie/logo.jpg" height="22" align="center" alt=""> Reverie — Social Reading App
 
 | Home | My Spaces | Community | Timeline |
 |---|---|---|---|
-| ![Home 1](projects/Reverie/Screenshot%201%20-%20Home%20Screen%201%20copy.png) | ![Spaces](projects/Reverie/Screenshot%205%20-%20My%20Spaces%20copy.png) | ![Community](projects/Reverie/Screenshot%206%20-%20Community%20copy.png) | ![Timeline](projects/Reverie/Screenshot%208%20-%20Timeline%20copy.png) |
+| ![Home](projects/Reverie/Screenshot%201%20-%20Home%20Screen%201%20copy.png) | ![Spaces](projects/Reverie/Screenshot%205%20-%20My%20Spaces%20copy.png) | ![Community](projects/Reverie/Screenshot%206%20-%20Community%20copy.png) | ![Timeline](projects/Reverie/Screenshot%208%20-%20Timeline%20copy.png) |
 
 A mobile-first social platform for readers: curated reading spaces, community discussion threads, personal timelines, and a saved-books library. Designed with an emphasis on calm, editorial UI and genuine community feel.
 
@@ -73,19 +82,19 @@ A mobile-first social platform for readers: curated reading spaces, community di
 
 ---
 
-### Ghibli Guardians — Data Dashboard
+### <img src="projects/Ghibli%20Guardians/logo.png" height="22" align="center" alt=""> Ghibli Guardians — Data Dashboard
 
 | Dashboard | Statistics | Mobile |
 |---|---|---|
 | ![Dashboard](projects/Ghibli%20Guardians/dashboard.png) | ![Stats](projects/Ghibli%20Guardians/backend.png) | ![Mobile](projects/Ghibli%20Guardians/mobile.png) |
 
-An analytics dashboard styled around Studio Ghibli's visual language, built to explore environmental and ecological data. Privacy-first design with protected user profiles and a responsive layout that works across all screen sizes.
+An analytics dashboard styled around Studio Ghibli's visual language, built to explore environmental and ecological data. Privacy-first design with protected user profiles and a responsive layout across all screen sizes.
 
 **Stack:** React · D3.js · Node.js · PostgreSQL · Tailwind CSS
 
 ---
 
-### NAU Portal — University Platform
+### <img src="projects/NAU%20Portal/logo.jpg" height="22" align="center" alt=""> NAU Portal — University Platform
 
 | Dashboard | Statistics |
 |---|---|
@@ -100,7 +109,7 @@ A student portal for Northern Arizona University that consolidates course manage
 ## Interactive Mini-Games
 
 ### Half Moon
-A memory-and-logic tile-flip puzzle built around the lunar cycle. Flip the grid to reveal matching moon phases — each win advances a procedural moon rising across a star field. Includes a palette oracle that generates color stories from botanical/natural themes.
+A memory game built around the lunar cycle. All 8 moon phase cards are revealed for a brief memorisation period, then flip face-down. The player must click them back in correct lunar order from memory.
 
 ### Palette Oracle
 Guess which color in a curated 5-swatch palette is the "story color" — the most distinctive hue in the palette's narrative. 100+ palettes with names like *Kiln Garden*, *Moonlit Conservatory*, and *Velvet Debug*.
@@ -108,12 +117,10 @@ Guess which color in a curated 5-swatch palette is the "story color" — the mos
 ### Sand Canvas
 A real-time falling-sand physics simulation inspired by [thisissand.com](https://thisissand.com).
 
-![Sand Canvas](images/sand-canvas.png)
-
-- **Single colors** — pick from presets or the color spectrum strip, save to your personal palette
-- **Gradient builder** — accumulate 2–8 colors, save as a gradient swatch; grains cycle through the gradient in a ping-pong sweep (forward → reverse → forward)
-- **Double-tap to lock** — double-tap the canvas to enter continuous-pour mode without holding; a pulsing outline confirms the lock
-- **Shake to scatter** — tilt/shake (mobile) or press the shake button to redistribute grains
+- **Single colors** — pick from presets or the spectrum strip, save to your palette
+- **Gradient builder** — accumulate 2–8 colors, save as a gradient swatch; grains cycle in a ping-pong sweep
+- **Double-tap to lock** — continuous-pour mode without holding; pulsing outline confirms the lock
+- **Shake to scatter** — tilt/shake (mobile) or the shake button to redistribute grains
 - Palette supports mixed single-color and gradient swatches side-by-side
 
 ---
@@ -125,24 +132,24 @@ A real-time falling-sand physics simulation inspired by [thisissand.com](https:/
 | Markup | HTML5 (semantic, ARIA-labeled) |
 | Styling | CSS3 · Tailwind CSS (CDN) · CSS custom properties |
 | Scripting | Vanilla JavaScript (no framework) |
-| Icons | Streamline Freehand & Ultimate (PNG) · Lucide (UI chrome) · Iconify (brand logos) |
-| Fonts | Inter (Google Fonts) |
+| Audio | Web Audio API · HTML Audio (MP3) |
+| Icons | Streamline Freehand & Ultimate (PNG) · Lucide · Iconify |
+| Fonts | Playfair Display · Inter (Google Fonts) |
 | Contact | Web3Forms API |
-| Hosting | Static — no build step required |
+| Hosting | GitHub Pages — no build step required |
 
 ---
 
 ## Theming
 
-The site has a full **light / dark mode** toggle stored in `localStorage`. CSS custom properties in `styles/main.css` define the palette for both themes:
+Full **light / dark mode** toggle stored in `localStorage`. CSS custom properties in `styles/main.css` define both themes:
 
 | Token | Light | Dark |
 |---|---|---|
 | `--color-accent` | `#941b0c` (crimson) | `#FFA618` (amber) |
-| `--color-accent-warm` | `#ffad1f` | `#FFA618` |
-| `--color-bg` | `#fffaf4` (cream) | `#0f0d0b` |
-| `--color-surface` | `#ffffff` | `#1a1713` |
-| `--color-text` | `#1f1713` | `#f5ede0` |
+| `--color-bg` | `#fff7ed` (cream) | `#020617` |
+| `--color-surface` | `#fffdf9` | `#0f172a` |
+| `--color-text` | `#2a120c` | `#ffffff` |
 
 ---
 
@@ -153,7 +160,7 @@ ayse-sule-ekiz-portfolio/
 ├── index.html              # Landing / home
 ├── projects.html           # Technical projects + catalog pop-ups
 ├── about.html              # About, contact, sand canvas game
-├── playground.html         # All three mini-games
+├── playground.html         # Three mini-games
 ├── resume.html             # Résumé viewer
 ├── graphicdesign.html      # Graphic design gallery
 ├── ceramics.html           # Ceramics gallery
@@ -162,30 +169,34 @@ ayse-sule-ekiz-portfolio/
 ├── styles/
 │   ├── main.css            # Global theme tokens, dark mode, header/footer
 │   ├── cards.css           # Masonry grid + card styles for gallery pages
-│   ├── animations.css      # Scroll-reveal, hover, and keyframe animations
-│   └── nav-dropdown.css    # Mobile navigation dropdown
+│   ├── animations.css      # Scroll-reveal and keyframe animations
+│   └── nav-dropdown.css    # Mobile navigation
 │
 ├── js/
-│   ├── portfolio-mini-games.js   # Half Moon, Oracle, Sand Canvas logic
-│   ├── theme.js                  # Light/dark toggle + persistence
-│   └── animations.js             # Intersection observer scroll reveals
+│   ├── portfolio-mini-games.js   # Palette Oracle + Sand Canvas logic
+│   ├── half-moon-game.js         # Half Moon memory game
+│   ├── sfx.js                    # Web Audio sound effects
+│   ├── theme-toggle.js           # Light/dark toggle + persistence
+│   └── scroll-animations.js     # Intersection observer scroll reveals
 │
 ├── images/
+│   ├── logo-light.png      # Site logo (light mode)
+│   ├── logo-dark.png       # Site logo (dark mode)
 │   ├── icons/              # Streamline Freehand/Ultimate PNGs
-│   ├── ceramics/           # Ceramics artwork images
-│   ├── paintings/          # Painting images
-│   ├── graphic_design/     # Graphic design images
-│   └── ...
+│   ├── ceramics/
+│   ├── paintings/
+│   └── dijital_art/
 │
 ├── projects/
-│   ├── OpenStaxAlign/      # Screenshots, logo, links
+│   ├── OpenStaxAlign/
 │   ├── Obi/
 │   ├── Whisperwind Grove/
 │   ├── Reverie/
 │   ├── Ghibli Guardians/
 │   └── NAU Portal/
 │
-└── moon_phases/            # Moon phase images for Half Moon game
+├── moon_phases/            # Moon phase images for Half Moon game
+└── sfx/                    # MP3 audio files for Sand Canvas
 ```
 
 ---
@@ -202,7 +213,7 @@ python3 -m http.server 8000
 npx serve .
 
 # VS Code
-# Install the "Live Server" extension and click "Go Live"
+# Install "Live Server" and click "Go Live"
 ```
 
 Then visit `http://localhost:8000`.
@@ -212,6 +223,7 @@ Then visit `http://localhost:8000`.
 ## Design Notes
 
 - **No JavaScript frameworks** — every interaction (game loops, palette state, drag-and-drop, modal animations) is vanilla JS
-- **Masonry layout** — CSS `column-count` multi-column, no JS library; cards use `break-inside: avoid`
-- **Icon color matching** — Streamline PNG icons are colorized to match the accent token using computed CSS `filter` chains rather than SVG fills
-- **Sand canvas physics** — 2×2 pixel cells packed into a `Uint32Array` for performance; gravity pass alternates scan direction each frame to prevent drift; gradient cycling uses a deterministic `gradientPhase` counter ping-ponging at 0.0025 per frame (~6 s per sweep)
+- **Masonry layout** — CSS `column-count`, no JS library; cards use `break-inside: avoid`
+- **Icon colorization** — Streamline PNG icons are tinted to match accent tokens using computed CSS `filter` chains rather than SVG fills
+- **Sand canvas physics** — 2×2 pixel cells packed into a `Uint32Array`; gravity pass alternates scan direction each frame to prevent drift; gradient cycling uses a deterministic `gradientPhase` counter ping-ponging at 0.0025 per frame
+- **Sound design** — Web Audio API synthesis for all game sounds; MP3 loops with JS fade-in/out for sand pour; global mute toggle

@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayse Sule Ekiz | Home</title>
+    <link rel="icon" type="image/png" href="images/logo-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="images/logo-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" href="images/logo-light.png">
+    <meta name="theme-color" content="#941b0c" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#FFA618" media="(prefers-color-scheme: dark)">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles/main.css">
@@ -598,6 +603,7 @@
         }
         /* dark mode */
         html[data-theme="dark"] .art-section-tag  { color: var(--color-accent); }
+        html[data-theme="dark"] .sims-tag-icon { filter: brightness(0) invert(48%) sepia(100%) saturate(452%) hue-rotate(359deg) brightness(100%) !important; }
         html[data-theme="dark"] .art-section-title { color: var(--color-text); }
         html[data-theme="dark"] .art-section-title em { color: var(--color-accent); }
         html[data-theme="dark"] .art-section-note  { color: var(--color-text-soft); border-color: var(--color-border); }
@@ -883,15 +889,13 @@
       <!-- Darker center for text, lighter sides for the image details -->
       <div class="hero-overlay"></div>
 
-      <div class="hero-skill hero-skill-left">———      Visual Art      ———</div>
-      <div class="hero-skill hero-skill-right">———      Software Engineering      ———</div>
       <a href="#interests" class="hero-side-cta hero-side-cta-art">
         <span>Visual Work</span>
-        <strong>Explore Art <i data-lucide="arrow-left" style="width:15px;height:15px;"></i></strong>
+        <strong>Explore Art <i data-lucide="arrow-down" style="width:15px;height:15px;"></i></strong>
       </a>
       <a href="projects.html" class="hero-side-cta hero-side-cta-projects">
         <span>Software Work</span>
-        <strong>View Projects <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></strong>
+        <strong>View Projects <i data-lucide="arrow-down" style="width:15px;height:15px;"></i></strong>
       </a>
 
       <!-- Centered headline -->
@@ -902,10 +906,10 @@
                    font-weight:900;color:white;line-height:1.2;
                    margin-bottom:1.5rem;
                    text-shadow:0 2px 28px rgba(0,0,0,0.65);">
-          I build with <em style="color:#FFA618;">code</em>.<br>I think with <em style="color:#FFA618;">art</em>.
+          I build with <em style="color:#FFA618;">code.</em><br>I think with <em style="color:#FFA618;">art.</em>
         </h1>
         <p class="hero-subtitle" style="color:rgba(255,255,255,0.82);font-size:1rem;max-width:460px;line-height:1.72;margin-bottom:2.5rem;">
-          Art taught me to see. Computer science gave me new ways to make.
+          This portfolio demonstrates how I make sense of the world through both technical and artistic perspectives.
         </p>
       </div>
 
@@ -924,11 +928,11 @@
         <div class="currently-grid">
           <div class="currently-item">
             <span class="currently-kicker">Studying</span>
-            <p>Computer Science at NAU, with a focus on full-stack systems, data, and usable interfaces.</p>
+            <p>Computer Science at NAU, with a focus on full-stack systems, data, AI, and usable interfaces.</p>
           </div>
           <div class="currently-item">
             <span class="currently-kicker">Building</span>
-            <p>Project work that turns messy information into tools people can understand and actually use.</p>
+            <p>Tools that bring clarity to complex problems, from data pipelines to full-stack platforms.</p>
           </div>
           <div class="currently-item">
             <span class="currently-kicker">Making</span>
@@ -948,12 +952,12 @@
 
       <!-- Text: left side with diagonal clip -->
       <div class="intro-split-text">
-        <p class="art-section-tag">&sect; 00 &middot; Me</p>
+        <p class="art-section-tag"><img src="images/icons/Video-Game-The-Sims--Streamline-Freehand.png" alt="" style="display:inline-block;width:13px;height:13px;object-fit:contain;vertical-align:middle;margin-right:2px;filter:brightness(0) invert(27%) sepia(100%) saturate(287%) hue-rotate(328deg) brightness(102%);" class="sims-tag-icon"> 00 &middot; Me</p>
         <h2 class="art-section-title" style="margin-bottom:1.25rem;">
-          Get to know me<br>through my <em>work.</em>
+          Get to know me<br>through my <em>art.</em>
         </h2>
         <p style="font-size:1rem;line-height:1.78;margin-bottom:1.75rem;max-width:460px;color:#4b5563;">
-          I move between software and visual work because both ask for structure, attention, and feeling. This site is where those two practices meet: full-stack projects shaped by design thinking, and artwork shaped by the same patience I bring to code.
+          I move between software and visual work because both ask for structure, attention, and feeling. This site is where those two practices meet: full-stack projects shaped by design thinking, and artwork shaped by the same patience I bring to code. Do you want to know more about my journey, process, or the person behind the pixels? Let's dive in together.
         </p>
         <a href="about.html"
            style="display:inline-flex;align-items:center;gap:0.4rem;
@@ -961,7 +965,7 @@
                   border-radius:0.75rem;font-size:0.875rem;font-weight:700;
                   text-decoration:none;transition:background 0.2s;
                   box-shadow:0 4px 16px rgba(0,0,0,0.25);">
-          Explore My Journey <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+          About Me <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
         </a>
       </div>
 
@@ -973,10 +977,10 @@
 
         <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;">
           <div>
-            <p class="art-section-tag">&sect; 01 &middot; Work</p>
+            <p class="art-section-tag"><img src="images/icons/Video-Game-The-Sims--Streamline-Freehand.png" alt="" style="display:inline-block;width:13px;height:13px;object-fit:contain;vertical-align:middle;margin-right:2px;filter:brightness(0) invert(27%) sepia(100%) saturate(287%) hue-rotate(328deg) brightness(102%);" class="sims-tag-icon"> 01 &middot; Code</p>
             <h2 class="art-section-title">My <em>Projects</em></h2>
             <p style="margin-top:0.85rem;max-width:560px;color:var(--color-text-soft);line-height:1.7;">
-              A mix of full-stack tools, data projects, AI prototypes, and design systems shaped by visual thinking.
+              Full-stack tools, competition wins, and AI systems, each one shaped by both engineering rigour and visual intuition. Discover the stories behind the screens and the pixels.
             </p>
           </div>
           <a href="projects.html" style="font-size:0.63rem;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:var(--color-accent);text-decoration:none;white-space:nowrap;padding-bottom:0.35rem;transition:letter-spacing 0.2s;" onmouseover="this.style.letterSpacing='0.19em'" onmouseout="this.style.letterSpacing='0.13em'">View All &rarr;</a>
@@ -1119,7 +1123,7 @@
         <!-- Section header -->
         <div class="art-section-header">
           <div>
-            <p class="art-section-tag">&sect; 02 &middot; Practice</p>
+            <p class="art-section-tag"><img src="images/icons/Video-Game-The-Sims--Streamline-Freehand.png" alt="" style="display:inline-block;width:13px;height:13px;object-fit:contain;vertical-align:middle;margin-right:2px;filter:brightness(0) invert(27%) sepia(100%) saturate(287%) hue-rotate(328deg) brightness(102%);" class="sims-tag-icon"> 02 &middot; Art</p>
             <h2 class="art-section-title">My <em>Interests</em></h2>
           </div>
           <p class="art-section-note">Three threads of the same practice.<br>Each medium teaches the others something new.</p>
@@ -1140,7 +1144,7 @@
                 <h3 class="art-interest-title">Graphic Design &amp;<br>Digital Art</h3>
                 <a href="graphicdesign.html" class="art-interest-link">View Gallery &rarr;</a>
               </div>
-              <p class="art-interest-desc">Blending technology with visual storytelling. Compositions that communicate ideas with clarity and intent.</p>
+              <p class="art-interest-desc">Typography, layout, and digital illustration built around a specific feeling — not just a message to convey, but an atmosphere to create.</p>
             </div>
           </div>
 
@@ -1183,11 +1187,11 @@
     <!-- ── FINAL CTA ─────────────────────────────── -->
     <section class="home-final-cta">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="art-section-tag" style="margin-bottom:0.75rem;">&sect; 03 &middot; Next</p>
-        <h2 class="art-section-title">Want the <em>full picture?</em></h2>
+        <p class="art-section-tag" style="margin-bottom:0.75rem;"><img src="images/icons/Video-Game-The-Sims--Streamline-Freehand.png" alt="" style="display:inline-block;width:13px;height:13px;object-fit:contain;vertical-align:middle;margin-right:2px;filter:brightness(0) invert(27%) sepia(100%) saturate(287%) hue-rotate(328deg) brightness(102%);" class="sims-tag-icon"> 03 &middot; Next</p>
+        <h2 class="art-section-title">Where it all <em>connects.</em></h2>
         <p>
-          My work makes the most sense when you see the technical projects and the visual practice together.
-          Here is the longer story, plus the resume version when you need the quick read.
+          The technical projects and the visual practice are part of the same way of thinking.
+          The about page is where that story lives — the resume is there when you need the quick version.
         </p>
         <div class="home-final-actions">
           <a href="about.html" class="home-final-btn home-final-btn-primary">

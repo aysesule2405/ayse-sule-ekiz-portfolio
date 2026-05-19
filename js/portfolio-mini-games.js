@@ -600,6 +600,7 @@ function initializePaletteOracle() {
     renderDots();
 
     if (isCorrect) {
+      window.SFX?.oracleCorrect();
       correct += 1;
       option.classList.add("is-correct");
       currentMissingEl?.classList.remove("is-drop-target");
@@ -611,6 +612,7 @@ function initializePaletteOracle() {
       statusEl.textContent = "Correct — this swatch completes the palette.";
       showResult(true, color);
     } else {
+      window.SFX?.oracleWrong();
       option.classList.add("is-wrong");
       currentMissingEl?.classList.remove("is-drop-target");
       currentMissingEl?.classList.add("is-wrong-drop");
@@ -625,6 +627,7 @@ function initializePaletteOracle() {
 
     function advance() {
       window.clearTimeout(roundTimer);
+      window.SFX?.advance();
       optionsEl.dataset.locked = "false";
       roundIndex += 1;
       renderRound();
@@ -792,9 +795,11 @@ function initializePaletteStudio() {
   function toggleLock(index) {
     if (lockedIndices.has(index)) {
       lockedIndices.delete(index);
+      window.SFX?.unlock();
       statusEl.textContent = "Color unlocked — Surprise Me will shuffle it.";
     } else {
       lockedIndices.add(index);
+      window.SFX?.lock();
       statusEl.textContent = "Color locked — Surprise Me will keep this one.";
     }
     renderStudio();
@@ -875,6 +880,7 @@ function initializePaletteStudio() {
   }
 
   function randomizePalette() {
+    window.SFX?.shuffle();
     const preset = presets[Math.floor(Math.random() * presets.length)];
     const newColors = preset.colors.map((c) => shiftColor(c, Math.floor(Math.random() * 23) - 11));
     colors = colors.map((c, i) => lockedIndices.has(i) ? c : newColors[i]);
@@ -895,6 +901,7 @@ function initializePaletteStudio() {
   }
 
   async function copyPalette() {
+    window.SFX?.copy();
     const text = colors.map((c) => c.toUpperCase()).join("  ");
     try {
       await navigator.clipboard.writeText(text);
@@ -1063,6 +1070,7 @@ function initializeSandCanvas() {
     const d  = stripEl.getContext('2d').getImageData(px, py, 1, 1).data;
     activeEntryIdx = -1;
     pourMode = 'single';
+    window.SFX?.colorPick();
     setColor(d[0], d[1], d[2]);
     thumbEl.style.left = Math.max(0, Math.min(100, (ex / sw) * 100)) + '%';
     thumbEl.style.top  = Math.max(0, Math.min(100, (ey / sh) * 100)) + '%';
@@ -1119,6 +1127,7 @@ function initializeSandCanvas() {
       dot.addEventListener('click', () => {
         activeEntryIdx = -1;
         pourMode = 'single';
+        window.SFX?.colorPick();
         setColor(p.r, p.g, p.b);
         dot.classList.add('active');
         thumbEl.style.background = swatchEl.style.background;
@@ -1306,6 +1315,7 @@ function initializeSandCanvas() {
     if (paletteEntries.some(e => e.type === 'single' && e.hex === hex)) return;
     if (paletteEntries.length >= MAX_PAL) return;
     paletteEntries.push({ type: 'single', hex });
+    window.SFX?.paletteSave();
     renderPaletteArea();
   }
 
@@ -1313,6 +1323,7 @@ function initializeSandCanvas() {
     const hex = rgbToHex(cr, cg, cb);
     if (gradientBuilder.includes(hex) || gradientBuilder.length >= 8) return;
     gradientBuilder.push(hex);
+    window.SFX?.gradientAdd();
     renderPaletteArea();
   }
 
@@ -1320,6 +1331,7 @@ function initializeSandCanvas() {
     if (gradientBuilder.length < 2) return;
     paletteEntries.push({ type: 'gradient', colors: [...gradientBuilder] });
     gradientBuilder.length = 0;
+    window.SFX?.gradientSave();
     renderPaletteArea();
   }
 
@@ -1492,7 +1504,14 @@ function initializeSandCanvas() {
       continuousPouring = !continuousPouring;
       lastTapTime = 0;
       isPouring = continuousPouring;
-      if (continuousPouring) [lastGX, lastGY] = toGrid(cx, cy);
+      if (continuousPouring) {
+        [lastGX, lastGY] = toGrid(cx, cy);
+        window.SFX?.continuousLock();
+        window.SFX?.pourStart();
+      } else {
+        window.SFX?.continuousLock();
+        window.SFX?.pourStop();
+      }
       updateContinuousIndicator();
       return;
     }
@@ -1503,6 +1522,7 @@ function initializeSandCanvas() {
     }
     isPouring = true;
     [lastGX, lastGY] = toGrid(cx, cy);
+    window.SFX?.pourStart();
     pourAt(lastGX, lastGY);
   }
   function onMove(cx, cy) {
@@ -1512,7 +1532,10 @@ function initializeSandCanvas() {
     lastGX = gx; lastGY = gy;
   }
   function onUp() {
-    if (!continuousPouring) isPouring = false;
+    if (!continuousPouring) {
+      isPouring = false;
+      window.SFX?.pourStop();
+    }
   }
 
   canvas.addEventListener('mousedown',  e => onDown(e.clientX, e.clientY));
@@ -1537,11 +1560,12 @@ function initializeSandCanvas() {
 
   // ── Control events ───────────────────────────────────────────
   clearBtn && clearBtn.addEventListener('click', () => {
+    window.SFX?.clear();
     grid.fill(0);
     hasSand = false;
     hintEl && hintEl.classList.remove('gone');
   });
-  shakeBtn && shakeBtn.addEventListener('click', () => { shakeFrames = 55; });
+  shakeBtn && shakeBtn.addEventListener('click', () => { window.SFX?.shake(); shakeFrames = 55; });
   flowRange && flowRange.addEventListener('input', () => {
     brushSize = +flowRange.value;
     if (flowValueEl) flowValueEl.textContent = String(brushSize);
