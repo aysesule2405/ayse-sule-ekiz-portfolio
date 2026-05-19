@@ -104,8 +104,16 @@
       font-style: italic;
       margin: 0;
     }
-    .sl-icon { display: inline-block; vertical-align: middle; }
-    html[data-theme="dark"] .sl-icon { filter: brightness(0) invert(1); opacity: 0.88; }
+    .sl-icon {
+      display: inline-block;
+      vertical-align: middle;
+      /* #941B0C */
+      filter: brightness(0) invert(27%) sepia(100%) saturate(287%) hue-rotate(328deg) brightness(102%);
+    }
+    html[data-theme="dark"] .sl-icon {
+      /* #FFA618 */
+      filter: brightness(0) invert(48%) sepia(100%) saturate(452%) hue-rotate(359deg) brightness(100%);
+    }
   </style>
 
   <!-- Icons + scripts -->

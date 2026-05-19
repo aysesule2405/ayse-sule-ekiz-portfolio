@@ -450,7 +450,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       color: var(--color-accent);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0;
       margin-top: 1.5rem;
       text-transform: uppercase;
     }
@@ -589,8 +589,8 @@
     .card-reverie  .project-center-icon { background: rgba(32,36,160,0.75); box-shadow: 0 4px 22px rgba(32,36,160,0.38); }
     .card-ghibli   .project-center-icon { background: rgba(89,130,73,0.75); box-shadow: 0 4px 22px rgba(89,130,73,0.38); }
     .card-nau      .project-center-icon { background: rgba(42,58,176,0.75); box-shadow: 0 4px 22px rgba(42,58,176,0.38); }
-    .catalog-project-icon { width: 36px; height: 36px; object-fit: contain; display: none; }
-    html[data-theme="dark"] .catalog-project-icon { filter: brightness(0) invert(1); opacity: 0.8; }
+    .catalog-project-icon { width: 44px; height: 44px; object-fit: contain; display: none; flex-shrink: 0; }
+    html[data-theme="dark"] .catalog-project-icon { filter: brightness(0) invert(48%) sepia(100%) saturate(452%) hue-rotate(359deg) brightness(100%); }
   </style>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -976,10 +976,10 @@
           <div class="catalog-img-dot-bar" id="catalogDotBar"></div>
         </div>
         <div class="catalog-body">
-          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.1rem;">
-            <img id="catalogProjectIcon" class="catalog-project-icon" src="" alt="">
-            <div style="flex:1;min-width:0;">
-              <div class="catalog-context" id="catalogContext"></div>
+          <div style="margin-bottom:0.25rem;">
+            <div class="catalog-context" id="catalogContext"></div>
+            <div style="display:flex;align-items:center;gap:0.65rem;margin-top:0.3rem;">
+              <img id="catalogProjectIcon" class="catalog-project-icon" src="" alt="">
               <div class="catalog-title" id="catalogTitle"></div>
             </div>
           </div>

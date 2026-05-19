@@ -399,6 +399,30 @@
       line-height: 1; padding: 0; z-index: 2;
     }
     .ss-pal-slot:hover .ss-pal-remove { display: flex; }
+    .ss-pal-gradient-slot {
+      width: 96px; height: 36px; border-radius: 18px;
+      flex-shrink: 0; transition: transform 0.15s, border-color 0.15s;
+    }
+    .ss-pal-gradient-slot:hover { transform: scale(1.06); }
+    .ss-pal-gradient-slot.active { border-color: rgba(255,255,255,0.88); outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    .ss-add-row { display: flex; gap: 5px; justify-content: center; }
+    .ss-add-btn-grad { border-color: rgba(133,15,1,0.28); color: var(--color-accent); font-size: 12px; }
+    .ss-add-btn-grad:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); transform: scale(1.2); }
+    .ss-grad-builder-section { margin-bottom: 0.6rem; }
+    .ss-grad-builder-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.3rem; }
+    .ss-save-grad-btn { font-size: 0.68rem; font-weight: 700; color: var(--color-accent); background: transparent; border: 1.5px solid var(--color-accent); border-radius: 8px; padding: 2px 9px; cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .ss-save-grad-btn:hover:not(:disabled) { background: var(--color-accent); color: #fff; }
+    .ss-save-grad-btn:disabled { opacity: 0.32; cursor: default; }
+    .ss-grad-slots { display: flex; flex-wrap: wrap; gap: 5px; padding: 7px 8px; border: 1.5px dashed var(--color-border); border-radius: 10px; min-height: 36px; align-items: center; }
+    .ss-grad-color-dot { width: 24px; height: 24px; border-radius: 50%; position: relative; flex-shrink: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.22); }
+    .ss-grad-color-dot .ss-pal-remove { display: none; }
+    .ss-grad-color-dot:hover .ss-pal-remove { display: flex; }
+    .ss-grad-preview { flex: 1; min-width: 40px; height: 20px; border-radius: 10px; margin-left: 4px; }
+    .ss-canvas-wrap.is-continuous { outline: 2px solid var(--color-accent); animation: ss-continuous-pulse 1.4s ease-in-out infinite; }
+    @keyframes ss-continuous-pulse {
+      0%, 100% { outline-color: var(--color-accent); }
+      50%       { outline-color: transparent; }
+    }
     .ss-toolbar {
       display: flex;
       align-items: center;
@@ -1203,7 +1227,10 @@
             <div class="ss-swatch-wrap">
               <div class="ss-swatch" id="ss-swatch" draggable="true" title="Drag to My Palette · or click + below"></div>
               <span id="ss-current-label" class="ss-current-label">Terracotta</span>
-              <button class="ss-add-btn" id="ss-add" title="Save colour to My Palette" aria-label="Add colour to palette">+</button>
+              <div class="ss-add-row">
+                <button class="ss-add-btn" id="ss-add" title="Save as single colour" aria-label="Add single colour">+</button>
+                <button class="ss-add-btn ss-add-btn-grad" id="ss-add-grad" title="Add to gradient builder" aria-label="Add to gradient builder">→</button>
+              </div>
             </div>
           </div>
 
@@ -1212,9 +1239,16 @@
           </div>
 
           <div>
+            <div id="ss-grad-builder-section" class="ss-grad-builder-section" style="display:none">
+              <div class="ss-grad-builder-header">
+                <span class="ss-label">Gradient Builder</span>
+                <button id="ss-save-grad" class="ss-save-grad-btn" disabled>Save gradient →</button>
+              </div>
+              <div id="ss-grad-slots" class="ss-grad-slots"></div>
+            </div>
             <div class="ss-palette-header">
               <span class="ss-label">My Palette</span>
-              <span class="ss-palette-sub">save 2+ colours for gradient sand &middot; hover to remove</span>
+              <span class="ss-palette-sub">+ single colour &middot; → add to gradient builder &middot; hover swatch to remove</span>
             </div>
             <div class="ss-custom-palette" id="ss-custom-palette">
               <span class="ss-pal-hint" id="ss-pal-hint">your saved colours will appear here</span>

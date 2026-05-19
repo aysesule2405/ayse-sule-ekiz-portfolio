@@ -963,12 +963,17 @@ function initializeSandCanvas() {
 
   // ── State ────────────────────────────────────────────────────
   let isPouring = false;
+  let continuousPouring = false;
+  let lastTapTime = 0;
+  const DOUBLE_TAP_MS = 280;
   let lastGX = -1, lastGY = -1;
   let brushSize = 4;
   let frame = 0;
   let hasSand = false;
   let shakeFrames = 0;
-  let grainCursor = 0;
+  let gradientPhase = 0;
+  let gradientDir = 1;
+  const GRADIENT_SPEED = 0.0025;
   let cr = 194, cg = 74, cb = 55; // current RGB (default: terracotta)
   let pourMode = 'single';
 
@@ -1056,6 +1061,7 @@ function initializeSandCanvas() {
     const px = Math.round(Math.max(0, Math.min(STRIP_W - 1, ex * (STRIP_W / sw))));
     const py = Math.round(Math.max(0, Math.min(STRIP_H - 1, ey * (STRIP_H / sh))));
     const d  = stripEl.getContext('2d').getImageData(px, py, 1, 1).data;
+    activeEntryIdx = -1;
     pourMode = 'single';
     setColor(d[0], d[1], d[2]);
     thumbEl.style.left = Math.max(0, Math.min(100, (ex / sw) * 100)) + '%';
@@ -1111,6 +1117,7 @@ function initializeSandCanvas() {
       dot.setAttribute('aria-label', p.name);
       dot.style.background = `rgb(${p.r},${p.g},${p.b})`;
       dot.addEventListener('click', () => {
+        activeEntryIdx = -1;
         pourMode = 'single';
         setColor(p.r, p.g, p.b);
         dot.classList.add('active');
@@ -1121,15 +1128,22 @@ function initializeSandCanvas() {
   }
 
   // ── Custom palette ───────────────────────────────────────────
-  const customColors = [];
-  const MAX_PAL = 16;
+  const paletteEntries = []; // { type:'single', hex } | { type:'gradient', colors:[] }
+  const gradientBuilder = [];
+  let activeEntryIdx = -1;
+  const MAX_PAL = 24;
 
   function getActivePourColors() {
-    return pourMode === 'gradient' && customColors.length > 1 ? customColors : [rgbToHex(cr, cg, cb)];
+    if (pourMode === 'gradient' && activeEntryIdx >= 0) {
+      const e = paletteEntries[activeEntryIdx];
+      if (e && e.type === 'gradient' && e.colors.length > 1) return e.colors;
+    }
+    return [rgbToHex(cr, cg, cb)];
   }
 
   function updatePourControls() {
-    const canGradient = customColors.length > 1;
+    const activeEntry = activeEntryIdx >= 0 ? paletteEntries[activeEntryIdx] : null;
+    const canGradient = activeEntry?.type === 'gradient' && activeEntry.colors.length > 1;
     if (!canGradient && pourMode === 'gradient') pourMode = 'single';
 
     singleModeBtn?.classList.toggle('is-active', pourMode === 'single');
@@ -1139,12 +1153,12 @@ function initializeSandCanvas() {
     if (gradientModeBtn) gradientModeBtn.disabled = !canGradient;
 
     if (modeHintEl) {
-      if (pourMode === 'gradient') {
-        modeHintEl.innerHTML = `<strong>Gradient mode:</strong> pouring from ${customColors.length} saved colours with soft natural variation.`;
+      if (pourMode === 'gradient' && activeEntry) {
+        modeHintEl.innerHTML = `<strong>Gradient mode:</strong> cycling ${activeEntry.colors.length} colours — forward then back. Double-tap canvas to lock the pour.`;
       } else if (canGradient) {
-        modeHintEl.innerHTML = `<strong>Single mode:</strong> pouring the selected colour. Switch to Gradient to blend My Palette.`;
+        modeHintEl.innerHTML = `<strong>Single mode.</strong> Click a gradient swatch to cycle its colours. Double-tap canvas to lock the pour.`;
       } else {
-        modeHintEl.textContent = 'Pick a colour, then pour. Save two or more colours to unlock gradient mode.';
+        modeHintEl.textContent = 'Pick a colour and pour. Use + to save singles, → to build gradients. Double-tap canvas to lock the pour.';
       }
     }
   }
@@ -1163,26 +1177,55 @@ function initializeSandCanvas() {
     }
   }
 
-  function samplePourColor(x, y) {
+  function samplePourColor() {
     const colors = getActivePourColors();
     if (colors.length === 1) return hexToRgb(colors[0]);
 
-    grainCursor += 0.17;
-    const wave = (Math.sin((x * 0.09) + (y * 0.05) + grainCursor) + 1) / 2;
-    const jitter = Math.random() * 0.18;
-    const t = (wave * 0.82 + jitter) % 1;
-    const scaled = t * colors.length;
-    const i = Math.floor(scaled) % colors.length;
-    const next = (i + 1) % colors.length;
-    return mixColor(hexToRgb(colors[i]), hexToRgb(colors[next]), scaled - Math.floor(scaled));
+    const n = colors.length;
+    const scaled = gradientPhase * (n - 1);
+    const i = Math.min(Math.floor(scaled), n - 2);
+    const frac = scaled - i;
+    const base = mixColor(hexToRgb(colors[i]), hexToRgb(colors[i + 1]), frac);
+    const v = Math.round((Math.random() - 0.5) * 14);
+    return [clamp(base[0] + v), clamp(base[1] + v), clamp(base[2] + v)];
   }
 
-  function renderPalette() {
+  function renderPaletteArea() {
+    // ── Gradient builder section ──
+    const builderSection = document.getElementById('ss-grad-builder-section');
+    const slotsEl = document.getElementById('ss-grad-slots');
+    const saveGradBtn = document.getElementById('ss-save-grad');
+    if (builderSection && slotsEl) {
+      builderSection.style.display = gradientBuilder.length > 0 ? '' : 'none';
+      slotsEl.innerHTML = '';
+      gradientBuilder.forEach((hex, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'ss-grad-color-dot';
+        dot.style.background = hex;
+        dot.title = hex;
+        const rm = document.createElement('button');
+        rm.className = 'ss-pal-remove';
+        rm.innerHTML = '&times;';
+        rm.setAttribute('aria-label', 'Remove');
+        rm.addEventListener('click', () => { gradientBuilder.splice(i, 1); renderPaletteArea(); });
+        dot.appendChild(rm);
+        slotsEl.appendChild(dot);
+      });
+      if (gradientBuilder.length >= 2) {
+        const preview = document.createElement('div');
+        preview.className = 'ss-grad-preview';
+        preview.style.background = `linear-gradient(90deg, ${gradientBuilder.join(', ')})`;
+        slotsEl.appendChild(preview);
+      }
+    }
+    if (saveGradBtn) saveGradBtn.disabled = gradientBuilder.length < 2;
+
+    // ── Palette entries ──
     if (!palEl) return;
     palEl.innerHTML = '';
-    palEl.classList.toggle('has-gradient', customColors.length > 1);
+    palEl.classList.toggle('has-gradient', paletteEntries.some(e => e.type === 'gradient'));
     updatePourControls();
-    if (customColors.length === 0) {
+    if (paletteEntries.length === 0) {
       const hint = document.createElement('span');
       hint.className = 'ss-pal-hint';
       hint.textContent = 'your saved colours will appear here';
@@ -1190,41 +1233,94 @@ function initializeSandCanvas() {
       updatePourPreview();
       return;
     }
-    customColors.forEach((hex, i) => {
-      const slot = document.createElement('button');
-      slot.className = 'ss-pal-slot';
-      slot.style.background = hex;
-      slot.title = hex;
-      const rm = document.createElement('button');
-      rm.className = 'ss-pal-remove';
-      rm.innerHTML = '&times;';
-      rm.setAttribute('aria-label', 'Remove');
-      rm.addEventListener('click', e => {
-        e.stopPropagation();
-        customColors.splice(i, 1);
-        renderPalette();
-      });
-      slot.appendChild(rm);
-      slot.addEventListener('click', () => {
-        pourMode = 'single';
-        const r = parseInt(hex.slice(1, 3), 16);
-        const g = parseInt(hex.slice(3, 5), 16);
-        const b = parseInt(hex.slice(5, 7), 16);
-        setColor(r, g, b);
-        palEl.querySelectorAll('.ss-pal-slot').forEach(s => s.classList.remove('active'));
-        slot.classList.add('active');
-      });
-      palEl.appendChild(slot);
+    paletteEntries.forEach((entry, i) => {
+      if (entry.type === 'single') {
+        const slot = document.createElement('button');
+        slot.className = 'ss-pal-slot';
+        if (activeEntryIdx === i && pourMode === 'single') slot.classList.add('active');
+        slot.style.background = entry.hex;
+        slot.title = entry.hex;
+        const rm = document.createElement('button');
+        rm.className = 'ss-pal-remove';
+        rm.innerHTML = '&times;';
+        rm.setAttribute('aria-label', 'Remove');
+        rm.addEventListener('click', e => {
+          e.stopPropagation();
+          paletteEntries.splice(i, 1);
+          if (activeEntryIdx === i) { activeEntryIdx = -1; pourMode = 'single'; }
+          else if (activeEntryIdx > i) activeEntryIdx--;
+          renderPaletteArea();
+        });
+        slot.appendChild(rm);
+        slot.addEventListener('click', () => {
+          activeEntryIdx = i;
+          pourMode = 'single';
+          const [r, g, b] = hexToRgb(entry.hex);
+          cr = r; cg = g; cb = b;
+          thumbEl.style.background = entry.hex;
+          if (currentLabelEl) currentLabelEl.textContent = getNearestColorName(r, g, b);
+          updatePourPreview();
+          updatePourControls();
+          palEl.querySelectorAll('.ss-pal-slot').forEach(s => s.classList.remove('active'));
+          slot.classList.add('active');
+        });
+        palEl.appendChild(slot);
+      } else {
+        const gradSlot = document.createElement('button');
+        gradSlot.className = 'ss-pal-slot ss-pal-gradient-slot';
+        if (activeEntryIdx === i && pourMode === 'gradient') gradSlot.classList.add('active');
+        gradSlot.style.background = `linear-gradient(90deg, ${entry.colors.join(', ')})`;
+        gradSlot.title = `Gradient · ${entry.colors.length} colours`;
+        const rm = document.createElement('button');
+        rm.className = 'ss-pal-remove';
+        rm.innerHTML = '&times;';
+        rm.setAttribute('aria-label', 'Remove gradient');
+        rm.addEventListener('click', e => {
+          e.stopPropagation();
+          paletteEntries.splice(i, 1);
+          if (activeEntryIdx === i) { activeEntryIdx = -1; pourMode = 'single'; }
+          else if (activeEntryIdx > i) activeEntryIdx--;
+          renderPaletteArea();
+          updatePourPreview();
+        });
+        gradSlot.appendChild(rm);
+        gradSlot.addEventListener('click', () => {
+          activeEntryIdx = i;
+          pourMode = 'gradient';
+          gradientPhase = 0;
+          gradientDir = 1;
+          updatePourPreview();
+          updatePourControls();
+          palEl.querySelectorAll('.ss-pal-slot').forEach(s => s.classList.remove('active'));
+          gradSlot.classList.add('active');
+        });
+        palEl.appendChild(gradSlot);
+      }
     });
     updatePourPreview();
   }
+  const renderPalette = renderPaletteArea; // alias for any remaining calls
 
-  function addCurrentToPalette() {
+  function addCurrentAsSingle() {
     const hex = rgbToHex(cr, cg, cb);
-    if (customColors.includes(hex) || customColors.length >= MAX_PAL) return;
-    customColors.push(hex);
-    if (customColors.length > 1) pourMode = 'gradient';
-    renderPalette();
+    if (paletteEntries.some(e => e.type === 'single' && e.hex === hex)) return;
+    if (paletteEntries.length >= MAX_PAL) return;
+    paletteEntries.push({ type: 'single', hex });
+    renderPaletteArea();
+  }
+
+  function addToGradientBuilder() {
+    const hex = rgbToHex(cr, cg, cb);
+    if (gradientBuilder.includes(hex) || gradientBuilder.length >= 8) return;
+    gradientBuilder.push(hex);
+    renderPaletteArea();
+  }
+
+  function saveGradientEntry() {
+    if (gradientBuilder.length < 2) return;
+    paletteEntries.push({ type: 'gradient', colors: [...gradientBuilder] });
+    gradientBuilder.length = 0;
+    renderPaletteArea();
   }
 
   // Drag from swatch → drop onto palette
@@ -1244,10 +1340,9 @@ function initializeSandCanvas() {
       e.preventDefault();
       palEl.classList.remove('drag-over');
       const hex = e.dataTransfer.getData('text/plain');
-      if (/^#[0-9a-f]{6}$/i.test(hex) && !customColors.includes(hex) && customColors.length < MAX_PAL) {
-        customColors.push(hex);
-        if (customColors.length > 1) pourMode = 'gradient';
-        renderPalette();
+      if (/^#[0-9a-f]{6}$/i.test(hex) && !paletteEntries.some(en => en.type === 'single' && en.hex === hex) && paletteEntries.length < MAX_PAL) {
+        paletteEntries.push({ type: 'single', hex });
+        renderPaletteArea();
       }
     });
   }
@@ -1259,14 +1354,16 @@ function initializeSandCanvas() {
   });
 
   gradientModeBtn?.addEventListener('click', () => {
-    if (customColors.length < 2) return;
+    if (!(activeEntryIdx >= 0 && paletteEntries[activeEntryIdx]?.type === 'gradient')) return;
     pourMode = 'gradient';
     updatePourPreview();
     updatePourControls();
   });
 
-  addBtn && addBtn.addEventListener('click', addCurrentToPalette);
-  renderPalette();
+  addBtn && addBtn.addEventListener('click', addCurrentAsSingle);
+  document.getElementById('ss-add-grad')?.addEventListener('click', addToGradientBuilder);
+  document.getElementById('ss-save-grad')?.addEventListener('click', saveGradientEntry);
+  renderPaletteArea();
 
   // ── Pouring ──────────────────────────────────────────────────
   function toGrid(clientX, clientY) {
@@ -1287,7 +1384,7 @@ function initializeSandCanvas() {
         if (Math.random() > 0.68 + falloff * 0.22) continue;
         const nx = gx + dx, ny = gy + dy;
         if (nx < 0 || nx >= GW || ny < 0 || ny >= GH || grid[ny*GW+nx]) continue;
-        const [sr, sg, sb] = samplePourColor(nx, ny);
+        const [sr, sg, sb] = samplePourColor();
         const v = Math.round((Math.random() - 0.5) * 18);
         grid[ny*GW+nx] = pack(clamp(sr+v), clamp(sg+v), clamp(sb+v));
       }
@@ -1373,6 +1470,11 @@ function initializeSandCanvas() {
   // ── Main loop ────────────────────────────────────────────────
   function tick() {
     if (isPouring && lastGX >= 0) pourAt(lastGX, lastGY);
+    if (pourMode === 'gradient' && getActivePourColors().length > 1) {
+      gradientPhase += gradientDir * GRADIENT_SPEED;
+      if (gradientPhase >= 1) { gradientPhase = 1; gradientDir = -1; }
+      if (gradientPhase <= 0) { gradientPhase = 0; gradientDir = 1; }
+    }
     update();
     render();
     frame++;
@@ -1380,7 +1482,25 @@ function initializeSandCanvas() {
   }
 
   // ── Canvas pointer events ────────────────────────────────────
+  function updateContinuousIndicator() {
+    canvas.parentElement.classList.toggle('is-continuous', continuousPouring);
+  }
+
   function onDown(cx, cy) {
+    const now = Date.now();
+    if (now - lastTapTime < DOUBLE_TAP_MS) {
+      continuousPouring = !continuousPouring;
+      lastTapTime = 0;
+      isPouring = continuousPouring;
+      if (continuousPouring) [lastGX, lastGY] = toGrid(cx, cy);
+      updateContinuousIndicator();
+      return;
+    }
+    lastTapTime = now;
+    if (continuousPouring) {
+      [lastGX, lastGY] = toGrid(cx, cy);
+      return;
+    }
     isPouring = true;
     [lastGX, lastGY] = toGrid(cx, cy);
     pourAt(lastGX, lastGY);
@@ -1391,7 +1511,9 @@ function initializeSandCanvas() {
     pourLine(lastGX, lastGY, gx, gy);
     lastGX = gx; lastGY = gy;
   }
-  function onUp() { isPouring = false; }
+  function onUp() {
+    if (!continuousPouring) isPouring = false;
+  }
 
   canvas.addEventListener('mousedown',  e => onDown(e.clientX, e.clientY));
   canvas.addEventListener('mousemove',  e => onMove(e.clientX, e.clientY));
