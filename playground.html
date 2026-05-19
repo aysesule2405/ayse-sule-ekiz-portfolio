@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Playground | Ayse Sule Ekiz</title>
-    <link rel="icon" type="image/png" href="images/logo-light.png" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" href="images/logo-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="images/logo-light.png" id="site-favicon">
     <link rel="apple-touch-icon" href="images/logo-light.png">
     <meta name="theme-color" content="#941b0c" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#FFA618" media="(prefers-color-scheme: dark)">
@@ -1341,7 +1340,7 @@
         kicker: 'Half Moon',
         icon: '<img src="images/icons/Night-Moon-Full--Streamline-Freehand.png" alt="">',
         title: 'Lunar cycle complete.',
-        body: 'All eight phases in order — from the darkest new moon to the last waning crescent. The sky would agree.',
+        body: 'All eight phases in order, from the darkest new moon to the last waning crescent. The sky would agree.',
         actions: [{ label: 'Play again', targetId: 'hm-restart' }]
       },
       oracle: {
@@ -1352,10 +1351,10 @@
         },
         getBody: function (score) {
           return score >= 8
-            ? score + ' of 10 palettes matched. You read the mood fast — the colors didn\'t fool you.'
+            ? score + ' of 10 palettes matched. You read the mood fast; the colors didn\'t fool you.'
             : score >= 5
             ? score + ' of 10 palettes matched. A few more rounds will sharpen the eye.'
-            : score + ' of 10 palettes matched. Color intuition takes practice — restart to sharpen it.';
+            : score + ' of 10 palettes matched. Color intuition takes practice; restart to sharpen it.';
         },
         actions: [{ label: 'Play again', targetId: 'po-new-round' }]
       },
@@ -1363,7 +1362,7 @@
         kicker: 'Sand Canvas',
         icon: '<img src="images/icons/Playground-Beach--Streamline-Ultimate.png" alt="">',
         title: 'Canvas saved.',
-        body: 'A physical impression made from light and physics. Every grain placed by hand — nothing algorithmic about the shape you made.',
+        body: 'A physical impression made from light and physics. Every grain placed by hand, nothing algorithmic about the shape you made.',
         actions: [{ label: 'Keep going', close: true }]
       }
     };

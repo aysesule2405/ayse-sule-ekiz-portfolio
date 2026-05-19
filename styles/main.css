@@ -1696,7 +1696,7 @@ html[data-theme="dark"] .social-icon-circle {
 
 .about-snapshot-grid {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -1709,7 +1709,7 @@ html[data-theme="dark"] .social-icon-circle {
   border-radius: 1rem;
   box-shadow: var(--shadow-card);
   color: var(--color-text);
-  padding: 1.15rem;
+  padding: 1.6rem 1.5rem;
 }
 
 .about-snapshot-kicker {
@@ -1815,31 +1815,57 @@ html[data-theme="dark"] .social-icon-circle {
 
 .about-story-grid {
   display: grid;
-  gap: 0.85rem;
+  gap: 1.25rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .about-story-grid article {
+  position: relative;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 1rem;
-  box-shadow: 0 14px 32px -28px rgba(149, 35, 20, 0.35);
-  color: var(--color-text);
-  padding: 1rem;
+  overflow: hidden;
+  padding: 1.85rem 1.6rem 1.6rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.about-story-grid article::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent-warm), var(--color-accent));
+}
+
+.about-story-grid article:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+.about-story-num {
+  display: block;
+  color: var(--color-accent);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
 }
 
 .about-story-grid h3 {
   color: var(--color-text);
-  font-size: 0.98rem;
-  font-weight: 900;
-  line-height: 1.35;
-  margin-bottom: 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
 }
 
 .about-story-grid p {
   color: var(--color-text-soft);
   font-size: 0.9rem;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .about-quote-card {
@@ -1850,7 +1876,7 @@ html[data-theme="dark"] .social-icon-circle {
   border-radius: 1rem;
   box-shadow: var(--shadow-card);
   color: var(--color-text);
-  padding: 1.2rem;
+  padding: 2rem 1.85rem;
 }
 
 .about-quote-card h2 {
@@ -1860,7 +1886,7 @@ html[data-theme="dark"] .social-icon-circle {
   font-style: italic;
   font-weight: 700;
   line-height: 1.25;
-  margin: 0 0 0.85rem;
+  margin: 0 0 1.1rem;
 }
 
 .about-quote-card p:not(.about-snapshot-kicker) {
@@ -1870,13 +1896,18 @@ html[data-theme="dark"] .social-icon-circle {
 }
 
 .about-quote-card .poem-reflection {
-  border-top: 1px solid var(--color-border);
   color: var(--color-text-soft);
   font-size: 0.9rem;
   font-style: italic;
-  line-height: 1.75;
-  margin-top: 1rem;
-  padding-top: 1rem;
+  line-height: 1.78;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.about-quote-card .poem-reflection + .poem-reflection {
+  border-top: 1px solid var(--color-border);
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
 }
 
 .poetry-sheet {

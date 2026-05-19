@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayse Sule Ekiz | Home</title>
-    <link rel="icon" type="image/png" href="images/logo-light.png" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" href="images/logo-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="images/logo-light.png" id="site-favicon">
     <link rel="apple-touch-icon" href="images/logo-light.png">
     <meta name="theme-color" content="#941b0c" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#FFA618" media="(prefers-color-scheme: dark)">
@@ -39,12 +38,17 @@
 
         /* ── Hero split ─────────────────────────────── */
         .hero-split {
-            height: 94vh;
-            min-height: 680px;
-            max-height: 1080px;
+            width: 100%;
+            aspect-ratio: 1800 / 1040;
+            min-height: 58vh;
+            max-height: 96vh;
             position: relative;
             overflow: hidden;
-            background: #120f0d;
+            background: #faf3e8;
+            margin-top: -5rem; /* pull behind sticky nav (h-20 = 5rem) */
+        }
+        html[data-theme="dark"] .hero-split {
+            background: #040a18;
         }
         .hero-split::before,
         .hero-split::after {
@@ -60,11 +64,11 @@
         }
         .hero-split::before {
             left: 0;
-            background: radial-gradient(ellipse at 28% 52%, rgba(255,166,24,0.18), transparent 58%);
+            background: radial-gradient(ellipse at 28% 52%, rgba(255,255,255,0.26), transparent 58%);
         }
         .hero-split::after {
             right: 0;
-            background: radial-gradient(ellipse at 72% 52%, rgba(6,182,212,0.16), transparent 58%);
+            background: radial-gradient(ellipse at 72% 52%, rgba(148,27,12,0.15), transparent 58%);
         }
         .hero-split:has(.hero-side-cta-art:hover)::before,
         .hero-split:has(.hero-hover-left:hover)::before {
@@ -79,13 +83,12 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            object-position: center center;
-            transform: scaleX(1.03) scaleY(1.09);
-            transition: transform 0.6s ease, filter 0.6s ease;
+            object-fit: cover;
+            object-position: top center;
+            transition: filter 0.6s ease;
         }
         .hero-split:hover .hero-background {
-            filter: saturate(1.06) contrast(1.04);
+            filter: saturate(1.04) contrast(1.02);
         }
         .hero-hover-field {
             position: absolute;
@@ -117,8 +120,7 @@
 
         @media (max-width: 767px) {
             .hero-split {
-                min-height: 580px;
-                height: 82svh;
+                min-height: 44vw; /* keeps aspect ratio on small screens */
             }
         }
 
@@ -161,9 +163,41 @@
             inset: 0;
             z-index: 7;
             pointer-events: none;
+            /* Light mode: cream/white tint — mirrors the dark overlay, reversed */
             background:
-                radial-gradient(ellipse at center, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.5) 34%, rgba(0,0,0,0.18) 68%, rgba(0,0,0,0.08) 100%),
-                linear-gradient(90deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.22) 34%, rgba(0,0,0,0.5) 47%, rgba(0,0,0,0.5) 53%, rgba(0,0,0,0.24) 66%, rgba(0,0,0,0.3) 100%);
+                radial-gradient(ellipse at center, rgba(255,247,237,0.62) 0%, rgba(255,247,237,0.48) 34%, rgba(255,247,237,0.16) 68%, rgba(255,247,237,0.06) 100%),
+                linear-gradient(90deg, rgba(255,247,237,0.28) 0%, rgba(255,247,237,0.20) 34%, rgba(255,247,237,0.46) 47%, rgba(255,247,237,0.46) 53%, rgba(255,247,237,0.22) 66%, rgba(255,247,237,0.28) 100%);
+        }
+        html[data-theme="dark"] .hero-overlay {
+            background:
+                radial-gradient(ellipse at center, rgba(2,6,20,0.66) 0%, rgba(2,6,20,0.52) 34%, rgba(2,6,20,0.20) 68%, rgba(2,6,20,0.08) 100%),
+                linear-gradient(90deg, rgba(2,6,20,0.32) 0%, rgba(2,6,20,0.24) 34%, rgba(2,6,20,0.52) 47%, rgba(2,6,20,0.52) 53%, rgba(2,6,20,0.26) 66%, rgba(2,6,20,0.32) 100%);
+        }
+        html[data-theme="dark"] .hero-split::before {
+            background: radial-gradient(ellipse at 28% 52%, rgba(255,166,24,0.18), transparent 58%);
+        }
+        html[data-theme="dark"] .hero-split::after {
+            background: radial-gradient(ellipse at 72% 52%, rgba(6,182,212,0.16), transparent 58%);
+        }
+
+        /* ── Hero text: light mode ─────────────────── */
+        .hero-kicker { color: #941b0c !important; }
+        .hero-heading { color: #2a120c !important; text-shadow: none !important; }
+        .hero-heading em { color: #941b0c !important; }
+        .hero-subtitle { color: rgba(42,18,12,0.70) !important; }
+        .hero-skill { color: rgba(42,18,12,0.70); text-shadow: none; }
+
+        /* ── Hero text: dark mode ──────────────────── */
+        html[data-theme="dark"] .hero-kicker { color: #FFA618 !important; }
+        html[data-theme="dark"] .hero-heading { color: #ffffff !important; text-shadow: 0 2px 28px rgba(0,0,0,0.65) !important; }
+        html[data-theme="dark"] .hero-heading em { color: #FFA618 !important; }
+        html[data-theme="dark"] .hero-subtitle { color: rgba(255,255,255,0.82) !important; }
+        html[data-theme="dark"] .hero-skill { color: rgba(255,255,255,0.84); text-shadow: 0 2px 18px rgba(0,0,0,0.6); }
+
+        /* ── Hero text backdrop ────────────────────── */
+        .hero-text-block {
+            background: transparent;
+            padding: 0;
         }
         .hero-side-cta {
             position: absolute;
@@ -190,6 +224,9 @@
             line-height: 1;
             margin-bottom: 0.28rem;
             text-transform: uppercase;
+            color: rgba(42,18,12,0.60);
+        }
+        html[data-theme="dark"] .hero-side-cta span {
             color: rgba(255,255,255,0.74);
         }
         .hero-side-cta strong {
@@ -204,25 +241,41 @@
         .hero-side-cta-art {
             left: 24%;
             transform: translateX(-50%);
-            border: 2px solid rgba(255,166,24,0.55);
-            color: #FFA618;
-            background: rgba(255,166,24,0.08);
+            border: 2px solid rgba(148,27,12,0.45);
+            color: #941b0c;
+            background: rgba(255,247,237,0.72);
             backdrop-filter: blur(8px);
         }
         .hero-side-cta-art:hover {
             transform: translateX(-50%) translateY(-2px);
-            background: rgba(255,166,24,0.18);
-            border-color: #FFA618;
+            background: rgba(255,247,237,0.90);
+            border-color: #941b0c;
         }
         .hero-side-cta-projects {
             right: 24%;
             transform: translateX(50%);
-            border: 2px solid rgba(255,166,24,0.55);
-            color: #FFA618;
-            background: rgba(255,166,24,0.08);
+            border: 2px solid rgba(148,27,12,0.45);
+            color: #941b0c;
+            background: rgba(255,247,237,0.72);
             backdrop-filter: blur(8px);
         }
         .hero-side-cta-projects:hover {
+            transform: translateX(50%) translateY(-2px);
+            background: rgba(255,247,237,0.90);
+            border-color: #941b0c;
+        }
+        html[data-theme="dark"] .hero-side-cta-art,
+        html[data-theme="dark"] .hero-side-cta-projects {
+            border: 2px solid rgba(255,166,24,0.55);
+            color: #FFA618;
+            background: rgba(255,166,24,0.08);
+        }
+        html[data-theme="dark"] .hero-side-cta-art:hover {
+            transform: translateX(-50%) translateY(-2px);
+            background: rgba(255,166,24,0.18);
+            border-color: #FFA618;
+        }
+        html[data-theme="dark"] .hero-side-cta-projects:hover {
             transform: translateX(50%) translateY(-2px);
             background: rgba(255,166,24,0.18);
             border-color: #FFA618;
@@ -302,8 +355,7 @@
 
         @media (max-width: 480px) {
             .hero-split {
-                min-height: 540px;
-                height: 80svh;
+                min-height: 44vw;
             }
             .hero-center-content {
                 padding-bottom: 5.5rem !important;
@@ -692,7 +744,7 @@
                 radial-gradient(circle at 18% 22%, rgba(255,173,31,0.22), transparent 32%),
                 radial-gradient(circle at 82% 20%, rgba(148,27,12,0.18), transparent 34%),
                 linear-gradient(rgba(15,23,42,0.82), rgba(15,23,42,0.82)),
-                url('./images/orange-horizontal.svg') center / cover no-repeat;
+                url('./images/blue-horizontal.svg') center / cover no-repeat;
         }
         @media (max-width: 768px) {
             .home-final-cta {
@@ -882,7 +934,10 @@
 
     <!-- ── HERO ───────────────────────────────────── -->
     <section class="hero-split">
-      <img src="images/home-background.jpg" alt="Ayse Sule Ekiz portfolio background" class="hero-background">
+      <img src="images/home-background-light.jpg"
+           data-logo-light="images/home-background-light.jpg"
+           data-logo-dark="images/home-background-dark.jpg"
+           alt="Ayse Sule Ekiz portfolio background" class="hero-background">
       <div class="hero-hover-field hero-hover-left" aria-hidden="true"></div>
       <div class="hero-hover-field hero-hover-right" aria-hidden="true"></div>
 
@@ -900,17 +955,18 @@
 
       <!-- Centered headline -->
       <div class="hero-center-content" style="position:absolute;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;pointer-events:none;">
-        <p class="hero-kicker" style="color:#FFA618;font-size:0.78rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:1.25rem;">— Ayse Sule Ekiz —</p>
-        <h1 class="hero-heading" style="font-family:'Playfair Display',Georgia,serif;
-                   font-size:clamp(2rem,5.5vw,4.25rem);
-                   font-weight:900;color:white;line-height:1.2;
-                   margin-bottom:1.5rem;
-                   text-shadow:0 2px 28px rgba(0,0,0,0.65);">
-          I build with <em style="color:#FFA618;">code.</em><br>I think with <em style="color:#FFA618;">art.</em>
-        </h1>
-        <p class="hero-subtitle" style="color:rgba(255,255,255,0.82);font-size:1rem;max-width:460px;line-height:1.72;margin-bottom:2.5rem;">
-          This portfolio demonstrates how I make sense of the world through both technical and artistic perspectives.
-        </p>
+        <div class="hero-text-block" style="text-align:center;">
+          <p class="hero-kicker" style="font-size:0.78rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:1.25rem;">Hi, this is Ayse Sule</p>
+          <h1 class="hero-heading" style="font-family:'Playfair Display',Georgia,serif;
+                     font-size:clamp(2rem,5.5vw,4.25rem);
+                     font-weight:900;line-height:1.2;
+                     margin-bottom:1.5rem;">
+            I build with <em>code.</em><br>I think with <em>art.</em>
+          </h1>
+          <p class="hero-subtitle" style="font-size:1rem;max-width:460px;line-height:1.72;margin:0 auto;">
+            This portfolio demonstrates how I make sense of the world through both technical and artistic perspectives.
+          </p>
+        </div>
       </div>
 
       <!-- Scroll indicator -->
@@ -1144,7 +1200,7 @@
                 <h3 class="art-interest-title">Graphic Design &amp;<br>Digital Art</h3>
                 <a href="graphicdesign.html" class="art-interest-link">View Gallery &rarr;</a>
               </div>
-              <p class="art-interest-desc">Typography, layout, and digital illustration built around a specific feeling — not just a message to convey, but an atmosphere to create.</p>
+              <p class="art-interest-desc">Typography, layout, and digital illustration built around a specific feeling, not just a message to convey, but an atmosphere to create.</p>
             </div>
           </div>
 
@@ -1191,7 +1247,7 @@
         <h2 class="art-section-title">Where it all <em>connects.</em></h2>
         <p>
           The technical projects and the visual practice are part of the same way of thinking.
-          The about page is where that story lives — the resume is there when you need the quick version.
+          The about page is where that story lives; the resume is there when you need the quick version.
         </p>
         <div class="home-final-actions">
           <a href="about.html" class="home-final-btn home-final-btn-primary">

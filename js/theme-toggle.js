@@ -44,6 +44,11 @@
       }
     });
 
+    const favicon = document.getElementById('site-favicon');
+    if (favicon) {
+      favicon.href = isDark ? 'images/logo-dark.png' : 'images/logo-light.png';
+    }
+
     // Update all toggle buttons + icons
     document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
       btn.setAttribute('aria-pressed', String(isDark));

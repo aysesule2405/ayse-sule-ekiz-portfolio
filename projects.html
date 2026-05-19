@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ayse Sule Ekiz | Projects</title>
-    <link rel="icon" type="image/png" href="images/logo-light.png" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" href="images/logo-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="images/logo-light.png" id="site-favicon">
     <link rel="apple-touch-icon" href="images/logo-light.png">
     <meta name="theme-color" content="#941b0c" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#FFA618" media="(prefers-color-scheme: dark)">
@@ -748,7 +747,7 @@
               <span class="tag tag-db">sqlite-vec</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              Your files hold more context than any cloud AI sees. Obi indexes them in real time and retrieves only what's relevant — hybrid keyword + semantic search, zero data off-device. Won the Figma Make Challenge at LA Hacks 2026.
+              Your files hold more context than any cloud AI sees. Obi indexes them in real time and retrieves only what's relevant: hybrid keyword + semantic search, zero data off-device. Won the Figma Make Challenge at LA Hacks 2026.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -801,7 +800,7 @@
               <span class="tag tag-ml">ElevenLabs</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              A wind arcade, a Kiki-inspired delivery run, a sapling whose AI conversations change how the game responds, and a strategy card game — four worlds, one shared player identity and achievement system. Built from scratch as a CS senior capstone. Full marks across all evaluation categories.
+              A wind arcade, a Kiki-inspired delivery run, a sapling whose AI conversations change how the game responds, and a strategy card game, four worlds, one shared player identity and achievement system. Built from scratch as a CS senior capstone. Full marks across all evaluation categories.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -843,7 +842,7 @@
               <span class="tag tag-design">Figma</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              A full-stack mood curation app where you build named emotional spaces from music, imagery, video, and reflection — each with its own color palette and AI prompt field. Community feed, timeline view, ambient music player. Built solo from Figma to MERN stack.
+              A full-stack mood curation app where you build named emotional spaces from music, imagery, video, and reflection, each with its own color palette and AI prompt field. Community feed, timeline view, ambient music player. Built solo from Figma to MERN stack.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -886,7 +885,7 @@
               <span class="tag tag-design">Emotional UX</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              Safety apps feel clinical — exactly wrong when you're already scared. Ghibli Guardians leads with warmth: a character-driven companion that assesses real risk, generates emergency messages with your location, and talks you through it. Built at Rutgers HackHERS.
+              Safety apps feel clinical, exactly wrong when you're already scared. Ghibli Guardians leads with warmth: a character-driven companion that assesses real risk, generates emergency messages with your location, and talks you through it. Built at Rutgers HackHERS.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -928,7 +927,7 @@
               <span class="tag tag-sys">WCAG 2.1 AA</span>
             </div>
             <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-              Athletics and student portal serving the entire NAU campus — schedules, rosters, and team pages for eight sports programs. Owned end-to-end: user research, Figma design system, WCAG accessibility audit, and developer handoff. Live since September 2024.
+              Athletics and student portal serving the entire NAU campus, covering schedules, rosters, and team pages for eight sports programs. Owned end-to-end: user research, Figma design system, WCAG accessibility audit, and developer handoff. Live since September 2024.
             </p>
             <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-2">
               <div class="flex gap-2">
@@ -1037,7 +1036,7 @@
           { label: 'NLP', cls: 'tag-data' }
         ],
         problem: 'Curriculum alignment means mapping textbook sections to educational standards, and it\'s hours of manual work per document, done inconsistently across institutions. The challenge was to automate it: ingest raw JSON datasets, extract features that preserved hierarchical document context, handle severe class imbalance across a large label space, and ship a complete end-to-end pipeline within a single hackathon day.',
-        achievements: '• Won the OpenStax Track at Rice Datathon 2026, placing 2nd overall across all competing teams\n• 75% validation accuracy on multi-class educational standard prediction\n• Full pipeline: raw JSON ingestion → TF-IDF vectorization → class-weighted Linear SVM → stratified cross-validation\n• Preserving hierarchical document context was the key accuracy insight — flat extraction underperformed significantly\n• Class imbalance solved by filtering rare standards and tuning class weights\n• MongoDB analytics views turned model outputs into a curriculum story educators could actually read\n• Completed under API rate-limit constraints in a single hackathon day',
+        achievements: '• Won the OpenStax Track at Rice Datathon 2026, placing 2nd overall across all competing teams\n• 75% validation accuracy on multi-class educational standard prediction\n• Full pipeline: raw JSON ingestion → TF-IDF vectorization → class-weighted Linear SVM → stratified cross-validation\n• Preserving hierarchical document context was the key accuracy insight; flat extraction underperformed significantly\n• Class imbalance solved by filtering rare standards and tuning class weights\n• MongoDB analytics views turned model outputs into a curriculum story educators could actually read\n• Completed under API rate-limit constraints in a single hackathon day',
         links: [
           { href: 'https://github.com/iremdmrc/datathon-openstax', label: 'GitHub', icon: 'github', cls: 'project-btn-github' },
           { href: 'https://devpost.com/software/openstaxalign', label: 'Devpost', icon: 'devpost', cls: 'project-btn-live' }
@@ -1058,8 +1057,8 @@
           { label: 'Hybrid RAG', cls: 'tag-ml' },
           { label: 'Figma', cls: 'tag-design' }
         ],
-        problem: 'Most AI assistants are bottlenecked by retrieval quality, not generation quality — they blast entire datasets at the model instead of surfacing what\'s actually relevant. The challenge was to build a local-first desktop assistant that indexes files in real time, retrieves only the relevant chunks via hybrid search, and runs entirely on-device with no cloud dependency. Then ship it in 36 hours at a hackathon.',
-        achievements: '• Won the Figma Make Challenge at LA Hacks 2026 — judges rated it production-ready among all competing teams\n• Hybrid retrieval combining keyword and semantic search (sqlite-vec) outperforms standard RAG for local file search\n• Real-time indexing via chokidar — files update in the index the moment they change, zero manual refresh\n• Local inference: Gemma (quantized GGUF) via llama.cpp; Nomic Embed v2 for text, CLIP for image context\n• Zero cloud dependency — works fully offline, no API keys, no subscriptions, no data leaving the device\n• Reduces AI agent token costs by surfacing only relevant context rather than entire datasets\n• Built with React, TypeScript, Electron, and SQLite — full desktop app shipped in 36 hours',
+        problem: 'Most AI assistants are bottlenecked by retrieval quality, not generation quality; they blast entire datasets at the model instead of surfacing what\'s actually relevant. The challenge was to build a local-first desktop assistant that indexes files in real time, retrieves only the relevant chunks via hybrid search, and runs entirely on-device with no cloud dependency. Then ship it in 36 hours at a hackathon.',
+        achievements: '• Won the Figma Make Challenge at LA Hacks 2026, rated production-ready among all competing teams\n• Hybrid retrieval combining keyword and semantic search (sqlite-vec) outperforms standard RAG for local file search\n• Real-time indexing via chokidar; files update in the index the moment they change, zero manual refresh\n• Local inference: Gemma (quantized GGUF) via llama.cpp; Nomic Embed v2 for text, CLIP for image context\n• Zero cloud dependency, works fully offline, no API keys, no subscriptions, no data leaving the device\n• Reduces AI agent token costs by surfacing only relevant context rather than entire datasets\n• Built with React, TypeScript, Electron, and SQLite; full desktop app shipped in 36 hours',
         links: [
           { href: 'https://github.com/LAHacks2026/Obi_Laptop', label: 'GitHub', icon: 'github', cls: 'project-btn-github' },
           { href: 'https://devpost.com/software/obi-mise-en-place-for-your-data', label: 'Devpost', icon: 'devpost', cls: 'project-btn-live' },
@@ -1088,7 +1087,7 @@
           { label: 'Vite 7', cls: 'tag-js' }
         ],
         problem: 'Design and ship a full-stack game platform hosting four complete, distinct playable worlds, each with its own mechanics, soundtrack, and AI integration, while sharing one persistent player identity, one achievement system, and one profile layer. Meet production-quality standards as a graded senior capstone, within a single semester.',
-        achievements: '• Full marks across all capstone evaluation categories: systems integration, AI implementation, and production-quality architecture\n• Spirit Drift: arcade wind spirit with combo scoring; Delivery on the Wind: Kiki\'s Delivery Service-inspired time run with leaderboards; Spirit Sapling: nurturing game where Gemini AI conversations adjust game mechanics based on emotional tone; Rise of the Half Moon: three-level strategy card game with optional AI moves\n• Spirit Sapling\'s AI goes beyond chat — the sapling\'s emotional responses change how the game actually progresses\n• ElevenLabs voice synthesis gives each guardian companion a distinct voice and personality\n• JWT authentication, customizable profiles (avatars, status, music preferences), per-game audio, and accessibility settings\n• Idempotent badge logic, animated achievement unlock toasts, and real-time leaderboard updates across all four worlds\n• Full TypeScript monorepo: Vite 7 + React 19 frontend, Node.js + Express 5 backend, MongoDB + Mongoose 9',
+        achievements: '• Full marks across all capstone evaluation categories: systems integration, AI implementation, and production-quality architecture\n• Spirit Drift: arcade wind spirit with combo scoring; Delivery on the Wind: Kiki\'s Delivery Service-inspired time run with leaderboards; Spirit Sapling: nurturing game where Gemini AI conversations adjust game mechanics based on emotional tone; Rise of the Half Moon: three-level strategy card game with optional AI moves\n• Spirit Sapling\'s AI goes beyond chat: the sapling\'s emotional responses change how the game actually progresses\n• ElevenLabs voice synthesis gives each guardian companion a distinct voice and personality\n• JWT authentication, customizable profiles (avatars, status, music preferences), per-game audio, and accessibility settings\n• Idempotent badge logic, animated achievement unlock toasts, and real-time leaderboard updates across all four worlds\n• Full TypeScript monorepo: Vite 7 + React 19 frontend, Node.js + Express 5 backend, MongoDB + Mongoose 9',
         links: [
           { href: 'https://github.com/aysesule2405/WW', label: 'GitHub', icon: 'github', cls: 'project-btn-github' },
           { href: 'https://fiesta-busy-93311900.figma.site', label: 'Figma Presentation', icon: 'figma', cls: 'project-btn-github' }
@@ -1115,7 +1114,7 @@
           { label: 'Figma', cls: 'tag-design' }
         ],
         problem: 'Most mood tracking is either a spreadsheet or a social media post. Neither holds the actual texture of your inner life. The challenge was to design and build an app that treats emotional self-expression with the care of a physical journal: private, personal, and visually yours, with community, timeline, and media dimensions that a notebook cannot offer.',
-        achievements: '• Named emotional spaces with color palette builders, AI prompt fields for mood board generation, and private/public visibility settings\n• Media library supporting image, video (mp4, webm, mov), and audio uploads via Multer\n• Ambient music player in the sidebar — background sound that persists across the whole app\n• Community discovery feed with likes, saves, and comments on public spaces\n• Timeline view with date and mood filtering — a personal emotional history at a glance\n• JWT authentication with per-user data isolation and bcryptjs-protected routes\n• Built solo from Figma design to full MERN stack (React 18, TypeScript, Node.js, MongoDB Atlas)',
+        achievements: '• Named emotional spaces with color palette builders, AI prompt fields for mood board generation, and private/public visibility settings\n• Media library supporting image, video (mp4, webm, mov), and audio uploads via Multer\n• Ambient music player in the sidebar, background sound that persists across the whole app\n• Community discovery feed with likes, saves, and comments on public spaces\n• Timeline view with date and mood filtering, a personal emotional history at a glance\n• JWT authentication with per-user data isolation and bcryptjs-protected routes\n• Built solo from Figma design to full MERN stack (React 18, TypeScript, Node.js, MongoDB Atlas)',
         links: [
           { href: 'https://github.com/aysesule2405/reverie', label: 'GitHub', icon: 'github', cls: 'project-btn-github' },
           { href: 'https://record-poppy-86285822.figma.site', label: 'Figma Presentation', icon: 'figma', cls: 'project-btn-github' }
@@ -1139,8 +1138,8 @@
           { label: 'REST API', cls: 'tag-data' },
           { label: 'Emotional UX', cls: 'tag-design' }
         ],
-        problem: 'Safety apps tend to feel like emergency buttons — cold, alarming, exactly the wrong tone for someone already scared. The challenge was to build a companion that evaluates real risk, generates actionable emergency messages with location data, and delivers guidance through a warm, character-driven interface that calms rather than escalates. The added constraint: ship it in a hackathon sprint, with a backup plan ready when third-party APIs fail.',
-        achievements: '• Risk evaluation engine assessing time of day, lighting, environment type, and whether the user is alone\n• Emergency messages generated with real-time Google Maps coordinates, shareable in one tap\n• ElevenLabs voice playback for calm, character-driven guardian guidance\n• When primary AI integrations failed mid-hackathon, pivoted to rule-based fallbacks rather than blocking the feature — reliability over complexity in safety-critical applications\n• Chatbot-style interaction with music and copy/share actions\n• Trusted guardian contact management with real-time coordinate storage\n• Built with React, Vite, Node.js, and Express at Rutgers University HackHERS',
+        problem: 'Safety apps tend to feel like emergency buttons, cold and alarming, exactly the wrong tone for someone already scared. The challenge was to build a companion that evaluates real risk, generates actionable emergency messages with location data, and delivers guidance through a warm, character-driven interface that calms rather than escalates. The added constraint: ship it in a hackathon sprint, with a backup plan ready when third-party APIs fail.',
+        achievements: '• Risk evaluation engine assessing time of day, lighting, environment type, and whether the user is alone\n• Emergency messages generated with real-time Google Maps coordinates, shareable in one tap\n• ElevenLabs voice playback for calm, character-driven guardian guidance\n• When primary AI integrations failed mid-hackathon, pivoted to rule-based fallbacks rather than blocking the feature, reliability over complexity in safety-critical applications\n• Chatbot-style interaction with music and copy/share actions\n• Trusted guardian contact management with real-time coordinate storage\n• Built with React, Vite, Node.js, and Express at Rutgers University HackHERS',
         links: [
           { href: 'https://github.com/aysesule2405/G-Guardians', label: 'GitHub', icon: 'github', cls: 'project-btn-github' },
           { href: 'https://devpost.com/software/ghibli-guardians', label: 'Devpost', icon: 'devpost', cls: 'project-btn-live' }
@@ -1164,7 +1163,7 @@
           { label: 'Accessibility Audit', cls: 'tag-sys' },
           { label: 'Journey Mapping', cls: 'tag-data' }
         ],
-        problem: 'NAU needed a unified athletics and student portal that could serve the entire campus — players, coaches, administrators, and visitors — with clear navigation, accessible design, and a consistent visual identity. The constraint: one designer, responsible for everything from user research and journey mapping to Figma design system, accessibility audit, and developer handoff.',
+        problem: 'NAU needed a unified athletics and student portal that could serve the entire campus, serving players, coaches, administrators, and visitors, with clear navigation, accessible design, and a consistent visual identity. The constraint: one designer, responsible for everything from user research and journey mapping to Figma design system, accessibility audit, and developer handoff.',
         achievements: '• Platform live and in daily campus-wide use since September 2024\n• End-to-end ownership: user research, journey mapping, Figma design system, component documentation, and developer handoff\n• Full accessibility audit passing WCAG 2.1 AA standards across all pages\n• Documented component library enabling consistent developer implementation\n• Ongoing usability testing and ad-conversion tracking across social channels\n• User research findings translated directly into product requirements, acted on by university administrators',
         links: [
           { href: 'https://stallions.na.edu/', label: 'Visit Live Site', icon: 'external-link', cls: 'project-btn-live' }
