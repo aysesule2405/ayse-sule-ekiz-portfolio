@@ -50,7 +50,7 @@
 ### <img src="projects/OpenStaxAlign/logo.png" height="20" align="center" alt=""> OpenStaxAlign — Rice Datathon 2026
 **OpenStax Track Winner · 2nd Place Overall**
 
-![OpenStaxAlign dashboard](projects/OpenStaxAlign/bg.png)
+<img src="projects/OpenStaxAlign/bg.png" width="640" alt="OpenStaxAlign dashboard">
 
 An NLP pipeline that maps textbook sections to educational standards automatically. Built end-to-end in a single hackathon day: raw JSON ingestion → TF-IDF vectorization → class-weighted Linear SVM → stratified cross-validation. Achieved **75% validation accuracy** on a severely imbalanced multi-class label space.
 
@@ -63,7 +63,7 @@ An NLP pipeline that maps textbook sections to educational standards automatical
 
 | Homepage | Chat & Search |
 |---|---|
-| ![Obi homepage](projects/Obi/homepage.png) | ![Obi chat](projects/Obi/chat_search.png) |
+| <img src="projects/Obi/homepage.png" width="200" alt="Obi homepage"> | <img src="projects/Obi/chat_search.png" width="200" alt="Obi chat"> |
 
 Cross-platform AI desktop assistant with a locally-hosted Gemma LLM, sub-second contextual responses, and zero cloud dependency.
 
@@ -73,11 +73,11 @@ Cross-platform AI desktop assistant with a locally-hosted Gemma LLM, sub-second 
 
 ### <img src="projects/Whisperwind%20Grove/logo.png" height="20" align="center" alt=""> Whisperwind Grove — CS Senior Capstone
 
-![Whisperwind Grove](projects/Whisperwind%20Grove/whisperwind-grove.copy.jpg)
+<img src="projects/Whisperwind%20Grove/whisperwind-grove.copy.jpg" width="640" alt="Whisperwind Grove">
 
 | Delivery on the Wind | Rise of the Half Moon | Spirit Drift | Spirit Sapling |
 |---|---|---|---|
-| ![Delivery on the Wind](projects/Whisperwind%20Grove/delivery-on-the-wind%20copy.png) | ![Rise of the Half Moon](projects/Whisperwind%20Grove/rise-of-the-half-moon%20copy.png) | ![Spirit Drift](projects/Whisperwind%20Grove/spirit-drift%20copy.png) | ![Spirit Sapling](projects/Whisperwind%20Grove/spirit-sapling%20copy.png) |
+| <img src="projects/Whisperwind%20Grove/delivery-on-the-wind%20copy.png" width="200" alt="Delivery on the Wind"> | <img src="projects/Whisperwind%20Grove/rise-of-the-half-moon%20copy.png" width="200" alt="Rise of the Half Moon"> | <img src="projects/Whisperwind%20Grove/spirit-drift%20copy.png" width="200" alt="Spirit Drift"> | <img src="projects/Whisperwind%20Grove/spirit-sapling%20copy.png" width="200" alt="Spirit Sapling"> |
 
 Full-stack capstone platform with four playable worlds, achievements, leaderboards, and AI-assisted interactions. Received full marks for systems integration.
 
@@ -89,7 +89,7 @@ Full-stack capstone platform with four playable worlds, achievements, leaderboar
 
 | Home | My Spaces | Community | Timeline |
 |---|---|---|---|
-| ![Home](projects/Reverie/Screenshot%201%20-%20Home%20Screen%201%20copy.png) | ![Spaces](projects/Reverie/Screenshot%205%20-%20My%20Spaces%20copy.png) | ![Community](projects/Reverie/Screenshot%206%20-%20Community%20copy.png) | ![Timeline](projects/Reverie/Screenshot%208%20-%20Timeline%20copy.png) |
+| <img src="projects/Reverie/Screenshot%201%20-%20Home%20Screen%201%20copy.png" width="200" alt="Home"> | <img src="projects/Reverie/Screenshot%205%20-%20My%20Spaces%20copy.png" width="200" alt="My Spaces"> | <img src="projects/Reverie/Screenshot%206%20-%20Community%20copy.png" width="200" alt="Community"> | <img src="projects/Reverie/Screenshot%208%20-%20Timeline%20copy.png" width="200" alt="Timeline"> |
 
 Mobile-first social platform for readers — curated reading spaces, community threads, personal timelines, and a saved-books library. Designed for calm, editorial UI with genuine community feel.
 
@@ -101,7 +101,7 @@ Mobile-first social platform for readers — curated reading spaces, community t
 
 | Dashboard | Statistics | Mobile |
 |---|---|---|
-| ![Dashboard](projects/Ghibli%20Guardians/dashboard.png) | ![Stats](projects/Ghibli%20Guardians/backend.png) | ![Mobile](projects/Ghibli%20Guardians/mobile.png) |
+| <img src="projects/Ghibli%20Guardians/dashboard.png" width="200" alt="Dashboard"> | <img src="projects/Ghibli%20Guardians/backend.png" width="200" alt="Statistics"> | <img src="projects/Ghibli%20Guardians/mobile.png" width="200" alt="Mobile"> |
 
 Analytics dashboard styled around Studio Ghibli's visual language, built to explore environmental and ecological data. Privacy-first design with protected user profiles and a fully responsive layout.
 
@@ -113,7 +113,7 @@ Analytics dashboard styled around Studio Ghibli's visual language, built to expl
 
 | Dashboard | Statistics |
 |---|---|
-| ![NAU Dashboard](projects/NAU%20Portal/Dashboard.png) | ![NAU Stats](projects/NAU%20Portal/Statistics.png) |
+| <img src="projects/NAU%20Portal/Dashboard.png" width="200" alt="NAU Dashboard"> | <img src="projects/NAU%20Portal/Statistics.png" width="200" alt="NAU Statistics"> |
 
 Student portal for Northern Arizona University consolidating course management, academic statistics, and campus resources into one cohesive interface. Designed with accessibility and international student needs in mind.
 
