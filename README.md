@@ -75,9 +75,9 @@ Cross-platform AI desktop assistant with a locally-hosted Gemma LLM, sub-second 
 
 ![Whisperwind Grove](projects/Whisperwind%20Grove/whisperwind-grove.copy.jpg)
 
-| Delivery on the Wind | Rise of the Half Moon | Spirit Drift |
-|---|---|---|
-| ![Scene 1](projects/Whisperwind%20Grove/delivery-on-the-wind%20copy.png) | ![Scene 2](projects/Whisperwind%20Grove/rise-of-the-half-moon%20copy.png) | ![Scene 3](projects/Whisperwind%20Grove/spirit-drift%20copy.png) |
+| Delivery on the Wind | Rise of the Half Moon | Spirit Drift | Spirit Sapling |
+|---|---|---|---|
+| ![Delivery on the Wind](projects/Whisperwind%20Grove/delivery-on-the-wind%20copy.png) | ![Rise of the Half Moon](projects/Whisperwind%20Grove/rise-of-the-half-moon%20copy.png) | ![Spirit Drift](projects/Whisperwind%20Grove/spirit-drift%20copy.png) | ![Spirit Sapling](projects/Whisperwind%20Grove/spirit-sapling%20copy.png) |
 
 Full-stack capstone platform with four playable worlds, achievements, leaderboards, and AI-assisted interactions. Received full marks for systems integration.
 
