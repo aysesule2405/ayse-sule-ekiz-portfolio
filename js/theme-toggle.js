@@ -46,7 +46,8 @@
 
     const favicon = document.getElementById('site-favicon');
     if (favicon) {
-      favicon.href = isDark ? 'images/logo-dark.png' : 'images/logo-light.png';
+      const base = isDark ? 'images/logo-dark.png' : 'images/logo-light.png';
+      favicon.href = base + '?t=' + Date.now();
     }
 
     // Update all toggle buttons + icons

@@ -85,9 +85,16 @@
           </button>
         </nav>
 
-        <button id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false" class="lg:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg" aria-label="Toggle navigation menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-        </button>
+        <div class="lg:hidden flex items-center gap-1">
+          <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                  class="text-gray-600 hover:text-[#B23600] p-2 rounded-lg focus:outline-none">
+            <i data-lucide="sun"  data-theme-icon="sun"  class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+          <button id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false" class="text-gray-600 hover:text-[#B23600] p-2 rounded-lg" aria-label="Toggle navigation menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+          </button>
+        </div>
       </div>
     </div>
 

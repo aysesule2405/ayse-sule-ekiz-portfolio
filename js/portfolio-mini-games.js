@@ -9,96 +9,96 @@ const EXTRA_PALETTES = [
   { title: "Lichen Study", story: "Aged paper, airy cyan, lichen yellow-green, and muted field notes.", colors: ["#F8F3DD", "#B9DDE5", "#C7C58A", "#A2A866", "#5C919B"] },
   { title: "Kiln Garden", story: "Cream slip, moss glaze, fired rust, and dark botanical edges.", colors: ["#F6EFD4", "#A9B76F", "#7F8C45", "#BE644C", "#6E281B"] },
   { title: "Olive Nocturne", story: "Moonlit cream, antique olive, dark leaves, and walnut shadow.", colors: ["#F4EDCF", "#B9C995", "#849B59", "#546538", "#20170B"] },
-  { title: "Moonlit Conservatory", story: "Pale parchment, aqua glass, dusty rose, and violet night plants.", colors: ["#FBF6DE", "#7ED6D3", "#59A9A4", "#E9A7AF", "#171126"] },
-  { title: "Pressed Petals", story: "Cream herbarium paper, teal stems, pressed pink, and rose shadow.", colors: ["#FAF4DA", "#7DD7D2", "#5BAAA5", "#E9A7AF", "#AC5F6B"] },
+  { title: "Moonlit Conservatory", story: "Pale parchment, aqua glass, violet night plants, dusty rose, and deep night.", colors: ["#FBF6DE", "#7ED6D3", "#9860B8", "#E9A7AF", "#171126"] },
+  { title: "Pressed Petals", story: "Cream herbarium paper, teal stems, soft pressed lavender, and a dried rose.", colors: ["#FAF4DA", "#7DD7D2", "#8858A8", "#E9A7AF", "#AC5F6B"] },
   { title: "Fern & Ink", story: "Graphite green, pistachio light, ink-dark fern, and old notebook cream.", colors: ["#F5EED1", "#BBCB92", "#82985A", "#596B3D", "#08090B"] },
-  { title: "Cold Lake Field Notes", story: "Lake blues, fogged paper, and quiet natural-history neutrals.", colors: ["#F8F2D7", "#B6D9D5", "#84AEAA", "#67AEDF", "#3F5F8E"] },
+  { title: "Cold Lake Field Notes", story: "Fogged paper, aquamarine wash, lake blue, deep water, and a warm amber specimen pin.", colors: ["#F8F2D7", "#B6D9D5", "#67AEDF", "#3F5F8E", "#C4884A"] },
   { title: "Rust Botany", story: "Botanical greens warmed by rust pins, clay notes, and cream margins.", colors: ["#F6F0D7", "#C3C784", "#9FA75F", "#C4664C", "#762C1E"] },
   { title: "Twilight Herbarium", story: "Aqua glass, pressed rose, violet ink, and a near-black evening base.", colors: ["#FFF9E1", "#7ED3D1", "#E7A4B1", "#453C72", "#100B1F"] },
   { title: "Amber Atlas", story: "Map-paper neutrals, old ink, amber roads, and deep ocean pins.", colors: ["#2f1b12", "#7c3f1d", "#d99a3d", "#f5e6c8", "#0f4c5c"] },
   { title: "Blue Hour Letter", story: "Soft evening paper, fountain pen blue, and the last warm window light.", colors: ["#0f172a", "#1d4ed8", "#93c5fd", "#f8fafc", "#f59e0b"] },
   { title: "Apricot Circuit", story: "Warm product light wrapped around crisp code and quiet hardware gray.", colors: ["#1f2937", "#475569", "#ffb703", "#fb8500", "#fff7ed"] },
   { title: "Forest Archive", story: "A library corner of moss greens, aged paper, and polished wood.", colors: ["#1b4332", "#40916c", "#95d5b2", "#f1faee", "#7f4f24"] },
-  { title: "Velvet Debug", story: "Dark editor velvet, electric traces, and a small violet highlight.", colors: ["#09090b", "#18181b", "#22d3ee", "#a78bfa", "#f4f4f5"] },
+  { title: "Velvet Debug", story: "Dark editor ground, ember error glow, electric cyan trace, soft violet highlight, and bright white text.", colors: ["#09090b", "#c84b28", "#22d3ee", "#a78bfa", "#f4f4f5"] },
   { title: "Peach Kiln", story: "Peach clay, soft ash, terracotta edges, and sage glaze.", colors: ["#5c2e1f", "#c56a43", "#ffcab0", "#f8ead8", "#7a8f63"] },
   { title: "Rainy Terminal", story: "Terminal greens through rainy glass and midnight blue reflections.", colors: ["#020617", "#064e3b", "#10b981", "#a7f3d0", "#38bdf8"] },
   { title: "Paper Lantern", story: "Cream paper, candle gold, red silk, and dusky violet shadow.", colors: ["#3b0a0a", "#991b1b", "#f59e0b", "#fff7ed", "#6d28d9"] },
   { title: "Ocean Schema", story: "Structured ocean blues, foam white, and a coral annotation.", colors: ["#082f49", "#0369a1", "#7dd3fc", "#f0f9ff", "#fb7185"] },
   { title: "Fig Orchard", story: "Fig skins, garden leaves, cream linen, and ripe amber fruit.", colors: ["#3b0764", "#7e22ce", "#365314", "#fef3c7", "#f59e0b"] },
-  { title: "Rose Algorithm", story: "A romantic UI palette with rose glass and precise charcoal text.", colors: ["#111827", "#be123c", "#fb7185", "#ffe4e6", "#f8fafc"] },
+  { title: "Rose Algorithm", story: "Charcoal type, deep rose, soft pink glass, pale blush, and a precise warm gold accent.", colors: ["#111827", "#be123c", "#fb7185", "#ffe4e6", "#d97706"] },
   { title: "Juniper Notebook", story: "Juniper ink, soft ruled paper, and a brass bookmark.", colors: ["#0f2f2f", "#0f766e", "#99f6e4", "#f8fafc", "#b45309"] },
-  { title: "Saffron Graph", story: "Analytical grays warmed by saffron data points and cream space.", colors: ["#1f2937", "#6b7280", "#e5e7eb", "#f59e0b", "#fff7ed"] },
+  { title: "Saffron Graph", story: "Dark axes, mid gray, cool silver, saffron data points, and a teal trend line.", colors: ["#1f2937", "#6b7280", "#e5e7eb", "#f59e0b", "#0ea5e9"] },
   { title: "Lilac Console", story: "Cool console panels softened with lilac, mist, and moon white.", colors: ["#111827", "#4338ca", "#a5b4fc", "#e0e7ff", "#f8fafc"] },
   { title: "Terra Prototype", story: "Grounded terracotta, practical neutrals, and a clean blue action.", colors: ["#431407", "#9a3412", "#fed7aa", "#f5f5f4", "#2563eb"] },
-  { title: "Mint Thesis", story: "Academic dark green, mint diagrams, and quiet ivory margins.", colors: ["#052e16", "#15803d", "#86efac", "#f7fee7", "#334155"] },
+  { title: "Mint Thesis", story: "Dark cover green, bright mint diagram, ivory margins, slate annotation, and warm academic gold.", colors: ["#052e16", "#86efac", "#f7fee7", "#334155", "#d4a040"] },
   { title: "Coral Dataset", story: "Clean data blues with coral outliers and paper-soft highlights.", colors: ["#0f172a", "#0284c7", "#bae6fd", "#fff7ed", "#f97316"] },
   { title: "Plum Interface", story: "A plush dark product palette with plum panels and warm focus rings.", colors: ["#1e1b4b", "#581c87", "#c084fc", "#faf5ff", "#f59e0b"] },
   { title: "Golden Blueprint", story: "Blueprint navy, drafting lines, and precise golden measurements.", colors: ["#0c1b33", "#1d4ed8", "#bfdbfe", "#fef3c7", "#d97706"] },
   { title: "Sage Portfolio", story: "Soft sage, warm cream, red-brown signature, and gallery charcoal.", colors: ["#1f2937", "#6b705c", "#a5a58d", "#ffe8d6", "#850f01"] },
-  { title: "Cherry Terminal", story: "A dark terminal warmed by cherry alerts and pink command glow.", colors: ["#09090b", "#27272a", "#e11d48", "#fb7185", "#f4f4f5"] },
+  { title: "Cherry Terminal", story: "Dark terminal ground, cool panel blue, deep cherry alert, soft pink glow, and bright white output.", colors: ["#09090b", "#3a4a58", "#e11d48", "#fb7185", "#f4f4f5"] },
   { title: "Cloud Ceramic", story: "Cloud glaze, pale clay, mineral blue, and kiln-smoke gray.", colors: ["#334155", "#94a3b8", "#e2e8f0", "#f5e6c8", "#2563eb"] },
   { title: "Olive Diagram", story: "Olive structure, inked labels, cream boards, and orange emphasis.", colors: ["#1c1917", "#4d7c0f", "#a3e635", "#fefce8", "#ea580c"] },
   { title: "Vermilion Grid", story: "Poster red, layout cream, charcoal type, and a bright cyan guide.", colors: ["#1f1f1f", "#b91c1c", "#ef4444", "#fff7ed", "#06b6d4"] },
   { title: "Iris Research", story: "Research-night blues, iris violet, and a clear annotation yellow.", colors: ["#020617", "#312e81", "#818cf8", "#eef2ff", "#facc15"] },
-  { title: "Honeyed Clay", story: "Honey glaze, dark clay, toasted edges, and linen display light.", colors: ["#3b2417", "#78350f", "#d97706", "#fde68a", "#fff7ed"] },
+  { title: "Honeyed Clay", story: "Dark clay, raw umber, honey amber, pale golden glaze, and a sage ceramic accent.", colors: ["#3b2417", "#78350f", "#d97706", "#fde68a", "#6a9060"] },
   { title: "Cypress Lab", story: "Cypress greens, sterile lab white, and one controlled amber signal.", colors: ["#022c22", "#047857", "#6ee7b7", "#ecfdf5", "#f59e0b"] },
   { title: "Ink Bloom", story: "Spreading blue-black ink with bloom pink and paper white.", colors: ["#020617", "#1e3a8a", "#60a5fa", "#fdf2f8", "#db2777"] },
   { title: "Tangerine Model", story: "A warm ML dashboard palette with tangerine insight and slate structure.", colors: ["#0f172a", "#334155", "#f8fafc", "#fb923c", "#14b8a6"] },
   { title: "Lavender Studio", story: "Lavender shadows, cream table light, and a grounded brown accent.", colors: ["#3b0764", "#8b5cf6", "#ddd6fe", "#fff7ed", "#7c2d12"] },
-  { title: "Pine Presentation", story: "Confident pine, crisp slides, cream backgrounds, and gold emphasis.", colors: ["#052e16", "#166534", "#bbf7d0", "#fffbeb", "#ca8a04"] },
-  { title: "Ruby Product", story: "Ruby action states over clean product neutrals and soft blush.", colors: ["#111827", "#9f1239", "#e11d48", "#ffe4e6", "#f8fafc"] },
+  { title: "Pine Presentation", story: "Dark pine, crisp mint slides, cream background, warm gold emphasis, and a confident blue accent.", colors: ["#052e16", "#bbf7d0", "#fffbeb", "#ca8a04", "#1d4ed8"] },
+  { title: "Ruby Product", story: "Dark charcoal, deep ruby, vivid crimson, soft blush, and a clean blue interaction state.", colors: ["#111827", "#9f1239", "#e11d48", "#ffe4e6", "#3b82f6"] },
   { title: "Slate Garden", story: "Slate UI panels with garden green, dew blue, and morning cream.", colors: ["#0f172a", "#334155", "#16a34a", "#93c5fd", "#fefce8"] },
-  { title: "Marigold Poster", story: "Marigold ink, tomato red, cream paper, and a deep graphic outline.", colors: ["#1f1f1f", "#dc2626", "#f59e0b", "#fde68a", "#fff7ed"] },
+  { title: "Marigold Poster", story: "Deep graphic outline, tomato red, marigold ink, cream paper, and a print green.", colors: ["#1f1f1f", "#dc2626", "#f59e0b", "#fefce8", "#2a7a2a"] },
   { title: "Arctic Notebook", story: "Icy notes, blue-gray shadows, and a sharp cyan underline.", colors: ["#0f172a", "#475569", "#cbd5e1", "#f8fafc", "#22d3ee"] },
   { title: "Cocoa Interface", story: "Cocoa surfaces, caramel accents, and a restrained blue interaction.", colors: ["#2a120c", "#5d3124", "#a16207", "#fff7ed", "#0ea5e9"] },
   { title: "Frosted Plum", story: "Frosty lavender highlights over plum shadows and snow white.", colors: ["#2e1065", "#6b21a8", "#d8b4fe", "#faf5ff", "#94a3b8"] },
-  { title: "Signal Sunset", story: "Sunset orange, signal cyan, and dark navy for high-contrast systems.", colors: ["#020617", "#0f172a", "#06b6d4", "#f97316", "#ffedd5"] },
+  { title: "Signal Sunset", story: "Deep night sky, dark navy, vivid signal cyan, sunset orange, and warm cream horizon.", colors: ["#020617", "#1a3a5a", "#06b6d4", "#f97316", "#ffedd5"] },
   { title: "Botanical Wireframe", story: "Wireframe gray with fresh botanical green and cream UI space.", colors: ["#18181b", "#71717a", "#d4d4d8", "#84cc16", "#fefce8"] },
   { title: "Mulberry Sketch", story: "Mulberry ink, sketchbook paper, dusty rose, and graphite marks.", colors: ["#3f0f2f", "#9d174d", "#f9a8d4", "#fff7ed", "#374151"] },
   { title: "Cobalt Ceramic", story: "Cobalt glaze, white porcelain, and warm kiln shadow.", colors: ["#172554", "#1d4ed8", "#bfdbfe", "#f8fafc", "#92400e"] },
-  { title: "Sunlit Query", story: "Database darks lit by yellow query highlights and mint success.", colors: ["#030712", "#1f2937", "#facc15", "#dcfce7", "#22c55e"] },
-  { title: "Blush Framework", story: "Blush cards, burgundy structure, and cool blue interaction states.", colors: ["#450a0a", "#9f1239", "#fecdd3", "#fff1f2", "#2563eb"] },
-  { title: "Topaz Dashboard", story: "Dark dashboard panels with topaz alerts and glassy blue charts.", colors: ["#111827", "#1f2937", "#38bdf8", "#fbbf24", "#f8fafc"] },
-  { title: "Fern Collage", story: "Cut-paper greens, warm scraps, and a red-brown portfolio stamp.", colors: ["#14532d", "#4d7c0f", "#d9f99d", "#fff7ed", "#850f01"] },
-  { title: "Night Gallery", story: "Gallery-black walls, pale spotlights, and a single cyan placard.", colors: ["#030712", "#18181b", "#e5e7eb", "#f8fafc", "#06b6d4"] },
-  { title: "Copper Function", story: "Copper code comments, dark editor chrome, and creamy string literals.", colors: ["#0c0a09", "#292524", "#c2410c", "#fed7aa", "#fef3c7"] },
-  { title: "Seaglass Flow", story: "Sea-glass greens, foam, deep teal, and a tiny coral marker.", colors: ["#042f2e", "#0f766e", "#5eead4", "#f0fdfa", "#fb7185"] },
+  { title: "Sunlit Query", story: "Deep database dark, warm yellow query highlight, pale mint result, fresh green success, and a red error row.", colors: ["#030712", "#facc15", "#dcfce7", "#22c55e", "#e11d48"] },
+  { title: "Blush Framework", story: "Dark burgundy, soft mauve, blush cards, pale lavender surface, and a cool blue action.", colors: ["#450a0a", "#c084aa", "#fecdd3", "#f4f0ff", "#2563eb"] },
+  { title: "Topaz Dashboard", story: "Dark dashboard ground, amber alert, glassy topaz blue, bright readout, and a red warning pulse.", colors: ["#111827", "#d97706", "#38bdf8", "#f8fafc", "#ef4444"] },
+  { title: "Fern Collage", story: "Deep fern, bright lime cutout, warm cream backing, portfolio red stamp, and amber washi tape.", colors: ["#14532d", "#d9f99d", "#fff7ed", "#850f01", "#c8a040"] },
+  { title: "Night Gallery", story: "Gallery-black walls, warm amber track light, cool gray panel, pale plaster, and a single cyan placard.", colors: ["#030712", "#b87820", "#9898a0", "#f0ece8", "#06b6d4"] },
+  { title: "Copper Function", story: "Near-black editor, copper code comment, warm amber string, pale cream background, and a vivid green function call.", colors: ["#0c0a09", "#c2410c", "#fed7aa", "#fef3c7", "#22c55e"] },
+  { title: "Seaglass Flow", story: "Deep sea teal, bright sea-glass, white foam, warm sand, and a tiny coral marker.", colors: ["#042f2e", "#5eead4", "#f0fdfa", "#d4b880", "#fb7185"] },
   { title: "Orchid Sprint", story: "Sprint-board purples, focused navy, and optimistic orange tags.", colors: ["#111827", "#4c1d95", "#a78bfa", "#f5f3ff", "#f97316"] },
   { title: "Linen Wire", story: "Linen backgrounds, ink wires, rust pins, and cool blue references.", colors: ["#1f2937", "#6b7280", "#f5f5dc", "#b45309", "#2563eb"] },
   { title: "Electric Sage", story: "Sage greens energized by electric cyan and almost-black structure.", colors: ["#020617", "#365314", "#84cc16", "#ccfbf1", "#06b6d4"] },
   { title: "Ember Meeting", story: "Warm meeting-room light, ember red notes, and polished charcoal.", colors: ["#1c1917", "#44403c", "#b91c1c", "#fb923c", "#fff7ed"] },
   { title: "Azure Ceramic", story: "Azure glaze, pale slip, gray clay, and sunny studio trim.", colors: ["#0c4a6e", "#0284c7", "#bae6fd", "#f8fafc", "#f59e0b"] },
-  { title: "Pomegranate UI", story: "Pomegranate reds, blush states, cream surfaces, and deep type.", colors: ["#2a120c", "#7f1d1d", "#dc2626", "#fee2e2", "#fff7ed"] },
+  { title: "Pomegranate UI", story: "Dark skin, deep crimson, vivid red seed, blush pink inner wall, and leafy green stem.", colors: ["#1a0808", "#8a2018", "#e83838", "#f8c8d8", "#4a8048"] },
   { title: "Mint Compiler", story: "Compiler-dark panels with mint syntax and a soft white output pane.", colors: ["#020617", "#111827", "#34d399", "#d1fae5", "#f8fafc"] },
   { title: "Ochre Roadmap", story: "Roadmap ochre, planning grays, and blue milestone markers.", colors: ["#1f2937", "#6b7280", "#fef3c7", "#d97706", "#2563eb"] },
   { title: "Dusk Weave", story: "Dusk violet, woven rose, warm cream, and a navy base.", colors: ["#111827", "#4c1d95", "#be185d", "#fbcfe8", "#fff7ed"] },
-  { title: "Basil Grid", story: "Basil greens organized on a quiet cream grid with dark labels.", colors: ["#052e16", "#166534", "#86efac", "#f7fee7", "#1f2937"] },
+  { title: "Basil Grid", story: "Deep basil, bright mint, pale cream grid, warm gold rules, and dark charcoal labels.", colors: ["#052e16", "#86efac", "#f7fee7", "#c8a830", "#1f2937"] },
   { title: "Quartz Product", story: "Quartz white cards, cool grays, cyan actions, and amber moments.", colors: ["#111827", "#64748b", "#e2e8f0", "#f8fafc", "#06b6d4"] },
   { title: "Spiced Interface", story: "Spiced orange, soft cream, brown ink, and a crisp teal accent.", colors: ["#2a120c", "#9a3412", "#fdba74", "#fff7ed", "#0f766e"] },
   { title: "Night Orchard", story: "Dark orchard greens, plum fruit, and moonlit cream highlights.", colors: ["#052e16", "#14532d", "#581c87", "#c084fc", "#fefce8"] },
-  { title: "Cyan Monograph", story: "Minimal black and white interrupted by a precise cyan signature.", colors: ["#09090b", "#27272a", "#f4f4f5", "#ffffff", "#06b6d4"] },
-  { title: "Rosewood Lab", story: "Rosewood cabinets, lab glass, pale notes, and controlled green.", colors: ["#3f1d1d", "#7f1d1d", "#fecaca", "#f8fafc", "#16a34a"] },
+  { title: "Cyan Monograph", story: "Pure black, dark charcoal, neutral mid-gray, soft white, and one precise cyan signature.", colors: ["#09090b", "#4a4a4e", "#a8a8b0", "#f4f4f5", "#06b6d4"] },
+  { title: "Rosewood Lab", story: "Dark rosewood cabinet, dusty rose glass, pale pink notes, fresh lab white, and a controlled green signal.", colors: ["#3f1d1d", "#a06070", "#fecaca", "#f0f8f0", "#16a34a"] },
   { title: "Butterfly Query", story: "Butterfly blue, lilac query trails, and a warm nectar accent.", colors: ["#172554", "#2563eb", "#c4b5fd", "#f5f3ff", "#f59e0b"] },
   { title: "Stone Fruit", story: "Peach, plum, stone gray, and leafy green for warm editorial pages.", colors: ["#3f0f2f", "#be185d", "#fed7aa", "#78716c", "#4d7c0f"] },
   { title: "Graphite Sunrise", story: "Graphite foundations with sunrise orange and pale yellow lift.", colors: ["#111827", "#374151", "#f97316", "#fde68a", "#f8fafc"] },
   { title: "Indigo Clay", story: "Indigo shadows, brown clay, pale glaze, and a quiet sky highlight.", colors: ["#1e1b4b", "#4338ca", "#8a4f2a", "#f4e0bd", "#93c5fd"] },
   { title: "Lemon Syntax", story: "Dark syntax, lemon highlights, and cool green confirmation.", colors: ["#020617", "#1e293b", "#fef08a", "#84cc16", "#f8fafc"] },
-  { title: "Cranberry Board", story: "Cranberry sections, paper cards, slate notes, and warm dividers.", colors: ["#111827", "#881337", "#e11d48", "#ffe4e6", "#f8fafc"] },
+  { title: "Cranberry Board", story: "Charcoal base, deep cranberry, vivid red section, pale blush card, and a cool slate divider.", colors: ["#111827", "#881337", "#e11d48", "#ffe4e6", "#94a3b8"] },
   { title: "Blue Porcelain", story: "Porcelain white, blue ornament, and a small gold rim.", colors: ["#172554", "#1d4ed8", "#bfdbfe", "#f8fafc", "#d97706"] },
   { title: "Lush Wireframe", story: "A lush green wireframe over charcoal with bright lime nodes.", colors: ["#09090b", "#27272a", "#166534", "#a3e635", "#f7fee7"] },
   { title: "Paprika Sprint", story: "Paprika planning notes, warm cards, slate structure, and sky tags.", colors: ["#1e293b", "#b45309", "#f97316", "#ffedd5", "#38bdf8"] },
-  { title: "Museum Teal", story: "Museum teal walls, cream labels, polished wood, and gold lights.", colors: ["#042f2e", "#0f766e", "#ccfbf1", "#fff7ed", "#a16207"] },
+  { title: "Museum Teal", story: "Deep teal walls, soft mint air, pale cream labels, warm gold light, and dark polished wood.", colors: ["#042f2e", "#ccfbf1", "#fff7ed", "#a16207", "#5a3820"] },
   { title: "Berry Dataset", story: "Berry chart marks, dark axes, and pale interface canvas.", colors: ["#111827", "#701a75", "#d946ef", "#fae8ff", "#f8fafc"] },
-  { title: "Candlelit Repo", story: "A candlelit code repository with amber diffs and deep brown chrome.", colors: ["#1c1917", "#292524", "#92400e", "#f59e0b", "#fef3c7"] },
+  { title: "Candlelit Repo", story: "Dark wood desk, git-green addition, amber diff, warm gold light, and cream page.", colors: ["#1c1917", "#2e7d32", "#92400e", "#f59e0b", "#fef3c7"] },
   { title: "Glacier Method", story: "Glacier blues, precise gray, and a small warm proof mark.", colors: ["#082f49", "#0284c7", "#e0f2fe", "#f8fafc", "#f97316"] },
   { title: "Persimmon Form", story: "Persimmon buttons, cream fields, cedar text, and cool validation.", colors: ["#2a120c", "#c2410c", "#fb923c", "#fff7ed", "#0e7490"] },
   { title: "Pistachio Sketch", story: "Pistachio paper, graphite lines, soft cream, and a red correction.", colors: ["#1f2937", "#6b7280", "#d9f99d", "#fefce8", "#dc2626"] },
   { title: "Midnight Ceramic", story: "Midnight glaze, cream slip, cobalt depth, and ember reflection.", colors: ["#020617", "#172554", "#1d4ed8", "#fff7ed", "#f97316"] },
   { title: "Raspberry Console", story: "Raspberry console alerts on dark panels with cool blue clarity.", colors: ["#09090b", "#1f2937", "#be123c", "#f9a8d4", "#38bdf8"] },
-  { title: "Golden Garden", story: "Golden wildflowers, dark leaves, and cream afternoon air.", colors: ["#14532d", "#4d7c0f", "#facc15", "#fef3c7", "#fff7ed"] },
+  { title: "Golden Garden", story: "Dark forest green, olive leaves, golden wildflowers, pale petals, and a warm sunset orange.", colors: ["#14532d", "#4d7c0f", "#facc15", "#fef3c7", "#f97316"] },
   { title: "Steel Blossom", story: "Steel UI neutrals softened by blossom pink and fresh cyan.", colors: ["#111827", "#475569", "#cbd5e1", "#f9a8d4", "#06b6d4"] },
   { title: "Cinnamon Docs", story: "Documentation cream, cinnamon headings, and reliable navy links.", colors: ["#1e293b", "#7c2d12", "#c2410c", "#fed7aa", "#fff7ed"] },
-  { title: "Peacock Query", story: "Peacock teal, jewel blue, cream output, and orange caret.", colors: ["#042f2e", "#0f766e", "#1d4ed8", "#f0fdfa", "#f97316"] },
+  { title: "Peacock Query", story: "Deep peacock teal, jewel blue, pale foam output, vivid orange caret, and warm terracotta accent.", colors: ["#042f2e", "#1d4ed8", "#f0fdfa", "#f97316", "#9a4a20"] },
   { title: "Amethyst Demo", story: "Amethyst presentation panels with white space and golden applause.", colors: ["#1e1b4b", "#7e22ce", "#c084fc", "#faf5ff", "#f59e0b"] },
   { title: "Willow Interface", story: "Willow greens, cloud gray, and a quiet rose accent.", colors: ["#365314", "#65a30d", "#d9f99d", "#f8fafc", "#e11d48"] },
   { title: "Bronze Monitor", story: "Bronze metrics over dark monitoring panels with blue status.", colors: ["#0c0a09", "#292524", "#a16207", "#fde68a", "#0ea5e9"] },
@@ -116,8 +116,147 @@ const EXTRA_PALETTES = [
   { title: "Harvest Console", story: "Harvest gold console messages against deep graphite panels.", colors: ["#0c0a09", "#27272a", "#ca8a04", "#fde68a", "#f8fafc"] },
   { title: "Aqua Collage", story: "Aqua cutouts, white borders, midnight text, and coral tape.", colors: ["#082f49", "#0891b2", "#67e8f9", "#f8fafc", "#fb7185"] },
   { title: "Rosemary Launch", story: "Rosemary greens, cream landing space, and a confident red CTA.", colors: ["#052e16", "#166534", "#bbf7d0", "#fff7ed", "#b91c1c"] },
-  { title: "Sienna Notebook", story: "Sienna covers, ivory pages, slate ink, and blue margin notes.", colors: ["#1f2937", "#7c2d12", "#c2410c", "#fed7aa", "#2563eb"] }
+  { title: "Sienna Notebook", story: "Sienna covers, ivory pages, slate ink, and blue margin notes.", colors: ["#1f2937", "#7c2d12", "#c2410c", "#fed7aa", "#2563eb"] },
+
+  // — Nature & seasons —
+  // 4 pale blue-gray neutrals + 1 vivid dusty rose horizon line
+  { title: "Salt Flats", story: "Blinding white expanse, pale sky, cool haze, distant mountain, and a single dusty rose horizon.", colors: ["#F2EFE9", "#D8E0E8", "#A8B8C8", "#708090", "#C07878"] },
+  // 4 warm wheat/gold tones + 1 saturated olive hill on the horizon
+  { title: "Late August Wheat", story: "Dark soil furrow, warm straw, ripe wheat gold, pale chaff, and a strip of harvest-green hill.", colors: ["#2B1B0E", "#8B6914", "#D4A843", "#F0D897", "#6A9040"] },
+  // 4 blue-teal tones + 1 warm kelp-brown contrast
+  { title: "Tide Pool", story: "Dark sea rock, gray stone, sea-glass aqua, shallow teal, and a strand of warm kelp brown.", colors: ["#3C3B3A", "#6E7C7C", "#8ABFBF", "#A8D5C2", "#C4A882"] },
+  // 4 dark/neutral tones + 1 vivid turquoise wave
+  { title: "Volcanic Shore", story: "Black lava sand, dark iron seam, bleached bone, pale shore, and a single turquoise wave.", colors: ["#1A1A1A", "#3A2A2A", "#6A5040", "#C4AB8A", "#2EC4C4"] },
+  // 4 cool blue-white tones + 1 vivid red berry
+  { title: "First Snow", story: "Untouched snow, pale gray sky, ice shadow, pine dark, and one solitary red berry.", colors: ["#F8F9FA", "#D0D9E0", "#8AA4B0", "#3E5B6A", "#C0392B"] },
+  // 4 warm brown/amber tones + 1 dark violet treeline
+  { title: "Marshland Dusk", story: "Reed gold, amber marsh light, brown water, warm bank, and a violet distant treeline.", colors: ["#E8CEAA", "#D4A85A", "#9C6E3A", "#4A3728", "#3A1848"] },
+  // 4 ocean blue tones + 1 vivid living coral
+  { title: "Coral Atoll", story: "Deep ocean navy, reef blue, shallow teal, white sand, and a burst of living coral.", colors: ["#0B2545", "#1B6CA8", "#51C4C4", "#F8F0E3", "#FF6B6B"] },
+  // 4 stone/gray neutrals + 1 vivid yellow-green lichen
+  { title: "Lichen on Stone", story: "Dark shadow, iron oxide, worn stone, pale limestone, and a patch of vivid yellow-green lichen.", colors: ["#5C5A48", "#7A6A58", "#AFAA8C", "#D6CCBD", "#7AAA28"] },
+  // 4 warm amber/bark tones + 1 cool pearl-blue mist
+  { title: "Autumn Fog", story: "Dark wet bark, deep amber leaves, warm fog, pale mist, and a single pearl-blue sky.", colors: ["#3A2418", "#8C6040", "#C4A87A", "#E8E0D8", "#88A8C8"] },
+  // 4 warm sand/earth tones + 1 dark indigo sky
+  { title: "Desert Night", story: "Pale moonlit sand, warm sandstone, cool sand, deep dune, and a dark indigo sky.", colors: ["#E8E0C4", "#D4BFA0", "#A08B6E", "#5A4A30", "#0D0D2B"] },
+  // 4 dark blue/green tones + 1 vivid gold sunbeam
+  { title: "Kelp Forest", story: "Dark sea floor, deep water, forest green canopy, light sage, and one shaft of gold light.", colors: ["#0A1628", "#1B4D6A", "#2E8B57", "#8FBC8F", "#F4C842"] },
+  // 4 cold blue-gray tones + 1 vivid amber sun
+  { title: "Tundra Thaw", story: "Dark frozen blue, deep slate, lichen gray, pale ice, and the one amber sun close to the horizon.", colors: ["#2A3A48", "#4A7080", "#8C9070", "#C8C8C0", "#D4903A"] },
+
+  // — Art studio & craft —
+  // 4 warm paper/cream tones + 1 vivid prussian blue pigment
+  { title: "Wet Watercolor", story: "Fresh paper, damp ivory, warm grain, aged cream, and a bloom of prussian blue pigment.", colors: ["#F5EDD8", "#EADFC8", "#D8CEB4", "#C4B898", "#4A7AA8"] },
+  // 4 warm paper/ivory tones + 1 vivid red ink impression
+  { title: "Lino Block Print", story: "Cream paper, off-white sheet, ivory grain, aged tan, and one deep red print.", colors: ["#F8F0E0", "#E8D8C0", "#D0C0A0", "#A89070", "#B83A2A"] },
+  // 4 dark bronze/gold tones + 1 vivid forge-orange flame
+  { title: "Bronze Foundry", story: "Midnight workshop, dark iron, weathered bronze, hammered gold, and forge-orange fire.", colors: ["#1A1208", "#3A2818", "#6A5028", "#9A7840", "#E07820"] },
+  // 4 dark-to-medium indigo tones + 1 pale resist-white
+  { title: "Indigo Vat", story: "Deep indigo cloth, dark blue dye, medium vat blue, soft woad haze, and the resist-white pattern.", colors: ["#0D1B3A", "#1E3A6E", "#4A6EA8", "#A8C4D8", "#F0EAD8"] },
+  // 4 warm neutral tones + 1 vivid red smear of paint
+  { title: "Sketchbook Spread", story: "Warm page cream, old paper, graphite gray, deep pencil, and a smear of red paint.", colors: ["#F0E8D8", "#C8B898", "#6A5A4A", "#3A3028", "#B84040"] },
+  // 4 dark navy tones + 1 vivid molten-orange glow
+  { title: "Glassblower's Glow", story: "Midnight studio, night cobalt, deep blue glass, cooled indigo, and one fierce molten-orange glow.", colors: ["#0A0A14", "#1A1A3A", "#2A4A8A", "#4A6AAA", "#E07820"] },
+  // 4 warm wood/amber tones + 1 vivid red block-print ink
+  { title: "Relief Woodcut", story: "Pale uncarved cream, warm wood grain, amber block, dark carved edge, and a vivid red ink impression.", colors: ["#F2E8D0", "#C4A870", "#6A4E28", "#2A1E10", "#C03A18"] },
+  // full warm gradient — charcoal to beeswax, each step a distinct encaustic layer
+  { title: "Encaustic Panel", story: "Charred black base, dark wax ground, burnt umber layer, damar gold, and beeswax cream surface.", colors: ["#0C0804", "#3A2A0A", "#8C5A1A", "#D4A84A", "#F4E8C4"] },
+
+  // — Travel & architecture —
+  // 4 warm terracotta/amber tones + 1 vivid mosaic teal
+  { title: "Marrakech Noon", story: "Deep shadow, terracotta wall, brass lantern gold, pale plaster, and a single mosaic blue-green.", colors: ["#1A0A04", "#8C3A1A", "#D4843A", "#F0E0C0", "#4A8C8C"] },
+  // 4 green/moss tones + 1 vivid persimmon red gate
+  { title: "Kyoto Rainy Season", story: "Dark temple moss, bamboo green, silver rain, wet stone gray, and a persimmon gate.", colors: ["#2A3A1A", "#4A6A3A", "#8AB080", "#C0C8B8", "#D43A18"] },
+  // 4 warm brown/gold tones + 1 vivid mint-green wall
+  { title: "Havana Afternoon", story: "Dark cobblestone, tobacco brown, sun-bleached gold, pale cream, and a peeling mint-green wall.", colors: ["#1A1408", "#6A5028", "#C4A83A", "#E8D4B0", "#6AAA8A"] },
+  // 4 dark wood tones + 1 vivid Swedish red
+  { title: "Nordic Cabin", story: "Tarred black wood, dark bark, cedar brown, birch cream, and painted Swedish red.", colors: ["#1A1410", "#4A3020", "#7A5028", "#E8E0D0", "#9A2A1A"] },
+  // 4 blue tones + 1 warm gold stone
+  { title: "Aegean Afternoon", story: "Deep Mediterranean blue, cobalt dome, mid-blue sea, sky haze, and warm gold stone.", colors: ["#0A1E4A", "#1A4A9A", "#5A8ACA", "#A8C8E8", "#D4AA5A"] },
+  // 4 warm spice tones + 1 vivid indigo cloth
+  { title: "Cairo Souq", story: "Dark shadow, clay tile, spice saffron, dusty rose, and a bolt of worn indigo cloth.", colors: ["#1A1208", "#6A3A1A", "#C48A28", "#B04A3A", "#4A4870"] },
+  // 4 warm stone/mortar tones + 1 vivid cobalt azulejo
+  { title: "Lisbon Tiles", story: "Whitewashed wall, warm mortar, worn stone, aged wood, and a single cobalt azulejo.", colors: ["#F0EDE4", "#D4C4A8", "#B8A888", "#8A7858", "#2A6AA8"] },
+
+  // — Emotion & atmosphere —
+  // 4 dark blue tones + 1 warm amber lamp
+  { title: "3AM Insomnia", story: "Dark blue ceiling, deep blue shadow, gray sheets, pale glow, and one warm amber lamp.", colors: ["#080C18", "#141E30", "#2A3A50", "#8898A8", "#C47A28"] },
+  // 4 dark green tones + 1 faded lavender
+  { title: "Grief Garden", story: "Dark overgrown green, deep leaf, muted sage, grey stone, and a forgotten lavender.", colors: ["#1A2010", "#3A4A28", "#7A8A6A", "#B8B8C8", "#8A78A0"] },
+  // 4 warm neutral tones + 1 pale Sunday-sky blue
+  { title: "Quiet Sunday", story: "Warm dust, soft cream, pale morning light, a faint tea amber, and a quiet window of pale sky.", colors: ["#F4EEE4", "#E0D4C0", "#C8B898", "#A89878", "#7898B8"] },
+  // 4 very dark panel tones + 1 vivid cursor green
+  { title: "Deep Focus", story: "Near-black panel, deep editor dark, dark slate, cool gray, and one single cursor green.", colors: ["#0A0C0E", "#141A20", "#2A3040", "#3A4858", "#2DA44E"] },
+  // 4 faded neutral tones + 1 vivid toy red
+  { title: "Childhood Bedroom", story: "Faded wallpaper, old cream, worn linen, dusty wood, and one bright toy-red accent.", colors: ["#F0ECE4", "#D8C8B0", "#A89880", "#786858", "#C02828"] },
+  // 4 dark blue-gray tones + 1 vivid yellow-green sky
+  { title: "Storm Rolling In", story: "Deep storm dark, steel cloud, rain-blue dusk, slate horizon, and a pale yellow-green sky.", colors: ["#1A1E28", "#384050", "#3A5A6A", "#6A7868", "#C8C870"] },
+  // dark to golden gradient — each step is a clearly different tone
+  { title: "Golden Hour Drive", story: "Night asphalt, dark leather, warm shadow, amber glow, and vivid golden-hour light.", colors: ["#0A0808", "#3A2010", "#7A4818", "#C07830", "#E8A020"] },
+  // 4 warm neutral tones + 1 cool steam blue-gray
+  { title: "Sauna Steam", story: "Cedar brown, warm amber, birch cream, pale wood, and a drift of cool steam blue-gray.", colors: ["#3A3028", "#6A5A48", "#D4A868", "#F4EEE0", "#88A8C0"] },
+
+  // — Food & warmth —
+  // 4 warm bread tones + 1 vivid olive-green (caraway)
+  { title: "Sourdough Morning", story: "Crust brown, warm crumb, pale dough, flour-dust white, and a pop of caraway olive.", colors: ["#6A3818", "#B47840", "#E0C898", "#F8F4EC", "#4A7840"] },
+  // 4 green matcha tones + 1 warm tan bowl
+  { title: "Matcha Ritual", story: "Dark forest, bamboo green, ceremonial matcha, pale foam, and the warm tan of an earthen bowl.", colors: ["#1E2A10", "#3A5A20", "#7A9A50", "#C8D4A8", "#D4B888"] },
+  // 4 dark chocolate tones + 1 vivid gold foil
+  { title: "Dark Chocolate", story: "Cacao black, dark cocoa, warm chocolate, cream dust, and a shimmer of gold foil.", colors: ["#120A04", "#3A2010", "#7A4820", "#D4A870", "#C8C030"] },
+  // 4 red-pink cherry tones + 1 vivid glass-jar blue
+  { title: "Cherry Jam", story: "Deep cherry crimson, vivid red, sugar-blush pink, pale cream, and the tint of a glass jar.", colors: ["#6A0A14", "#B81830", "#E86878", "#F8D8D8", "#3A7898"] },
+  // 4 warm espresso/coffee tones + 1 vivid tile blue
+  { title: "Afternoon Café", story: "Espresso dark, roast brown, cinnamon steam, worn wood, and a glimpse of glazed tile blue.", colors: ["#1A0E08", "#4A2E18", "#9A6830", "#D4A870", "#4888A8"] },
+
+  // — Digital & moody —
+  // 4 dark warm tones + 1 vivid play-button green
+  { title: "Cassette Dub", story: "Tape black, magnetic brown, faded label cream, marker orange, and a play-button green.", colors: ["#1A1410", "#4A3820", "#C4A868", "#E07820", "#4A8A5A"] },
+  // 4 very dark green tones + 1 vivid hot amber pixel
+  { title: "CRT Phosphor", story: "CRT black, phosphor void, scan-line dark, glowing green, and one hot amber pixel.", colors: ["#050A05", "#0A180A", "#1E4A1E", "#3A8A3A", "#C87820"] },
+  // 4 dark purple tones + 1 vivid hot pink neon
+  { title: "Synthwave Bleed", story: "Deep purple night, dark void, indigo haze, electric violet, and a hot pink neon line.", colors: ["#0D0118", "#2A0A40", "#4A0878", "#7A28A8", "#D4007A"] },
+  // 4 warm dark tones + 1 vivid tape-label blue
+  { title: "Analog Warmth", story: "Vinyl black, tape grain, warm amber, dusty rose, and a faded tape-label blue.", colors: ["#1A1208", "#4A3828", "#B87840", "#E0B090", "#4A7898"] },
+  // 4 gray-neutral tones + 1 vivid fluorescent orange tab
+  { title: "Floppy Archive", story: "Rubber black, plastic gray, label off-white, cream case, and one fluorescent orange tab.", colors: ["#2A2A2A", "#4A4A48", "#D0CCB8", "#F4F0E4", "#E87820"] },
+  // 4 dark/neutral tones + 1 vivid success green
+  { title: "Error Log", story: "Terminal black, error red, warning amber, white output, and one success green.", colors: ["#080808", "#B81818", "#D48018", "#F0F0F0", "#28A028"] }
 ];
+
+function hexLuma(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000;
+}
+
+function hexToHSL(hex) {
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  const l = (max + min) / 2;
+  if (max === min) return [0, 0, l * 100];
+  const d = max - min;
+  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  let h;
+  if (max === r) h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
+  else if (max === g) h = ((b - r) / d + 2) / 6;
+  else h = ((r - g) / d + 4) / 6;
+  return [h * 360, s * 100, l * 100];
+}
+
+function hslToHex(h, s, l) {
+  h = ((h % 360) + 360) % 360;
+  s = Math.max(0, Math.min(100, s)) / 100;
+  l = Math.max(0, Math.min(100, l)) / 100;
+  const a = s * Math.min(l, 1 - l);
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    return Math.round(255 * (l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1)))).toString(16).padStart(2, "0");
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
 
 function pickBestAnswerIndex(colors, fallbackOffset) {
   function hexComponents(hex) {
@@ -430,7 +569,8 @@ function initializePaletteOracle() {
     }
 
     current = roundQueue[roundIndex];
-    const missingIndex = current.colors.indexOf(current.answer);
+    const sortedColors = [...current.colors].sort((a, b) => hexLuma(a) - hexLuma(b));
+    const missingIndex = sortedColors.indexOf(current.answer);
 
     titleEl.textContent    = current.title;
     storyEl.textContent    = current.story;
@@ -443,7 +583,7 @@ function initializePaletteOracle() {
     optionsEl.replaceChildren();
     renderDots();
 
-    current.colors.forEach((color, index) => {
+    sortedColors.forEach((color, index) => {
       const swatch = document.createElement("div");
       swatch.className = "palette-swatch palette-wheel-swatch";
       swatch.style.setProperty("--slot-index", index);
@@ -953,11 +1093,11 @@ function initializeSandCanvas() {
   if (!canvas || !stripEl) return;
 
   // ── Grid constants ───────────────────────────────────────────
-  const CELL = 2;           // pixels per grid cell
+  const CELL = 1;           // pixels per grid cell
   const CW = 560, CH = 500; // canvas pixel dimensions
   canvas.width = CW; canvas.height = CH;
-  const GW = CW / CELL;     // 280 grid columns
-  const GH = CH / CELL;     // 250 grid rows
+  const GW = CW / CELL;     // 560 grid columns
+  const GH = CH / CELL;     // 500 grid rows
 
   const ctx = canvas.getContext('2d');
   ctx.imageSmoothingEnabled = false;
@@ -966,7 +1106,14 @@ function initializeSandCanvas() {
   const grid = new Uint32Array(GW * GH);
   const imgData = ctx.createImageData(CW, CH);
   const pixBuf  = new Uint32Array(imgData.data.buffer);
-  const BG      = 0xFFE0F7FF; // #fff7e0, packed ABGR
+
+  // Pre-computed noisy background (warm cream with subtle grain)
+  const bgBuf = new Uint32Array(GW * GH);
+  for (let i = 0; i < GW * GH; i++) {
+    const n = Math.floor(Math.random() * 10) - 5;
+    bgBuf[i] = (0xFF << 24) | ((clampBg(224 + n)) << 16) | ((clampBg(247 + n)) << 8) | clampBg(255 + n);
+  }
+  function clampBg(v) { return v < 0 ? 0 : v > 255 ? 255 : v; }
 
   // ── State ────────────────────────────────────────────────────
   let isPouring = false;
@@ -974,7 +1121,9 @@ function initializeSandCanvas() {
   let lastTapTime = 0;
   const DOUBLE_TAP_MS = 280;
   let lastGX = -1, lastGY = -1;
-  let brushSize = 4;
+  let prevPourX = -1, prevPourY = -1; // position poured at last frame, for path interpolation
+  const brushSize = 16;   // spray radius in grid cells — fixed, controls spread width
+  let pourDensity = 0.30; // Gaussian centre probability — controlled by flow slider
   let frame = 0;
   let hasSand = false;
   let shakeFrames = 0;
@@ -1391,14 +1540,17 @@ function initializeSandCanvas() {
     for (let dy = -r; dy <= r; dy++) {
       for (let dx = -r; dx <= r; dx++) {
         const dist = dx*dx + dy*dy;
-        if (dist > r*r + 0.5) continue;
-        const falloff = 1 - Math.sqrt(dist) / (r + 0.6);
-        if (Math.random() > 0.68 + falloff * 0.22) continue;
+        if (dist > r*r) continue;
+        // Gaussian falloff: dense centre (~30%), scattered sparse edge (~1%)
+        // gives the natural spray cone instead of a visible disc blob
+        const norm = Math.sqrt(dist) / r;
+        if (Math.random() > pourDensity * Math.exp(-3.5 * norm * norm)) continue;
         const nx = gx + dx, ny = gy + dy;
         if (nx < 0 || nx >= GW || ny < 0 || ny >= GH || grid[ny*GW+nx]) continue;
         const [sr, sg, sb] = samplePourColor();
-        const v = Math.round((Math.random() - 0.5) * 18);
-        grid[ny*GW+nx] = pack(clamp(sr+v), clamp(sg+v), clamp(sb+v));
+        const v = Math.round((Math.random() - 0.5) * 16);
+        const sparkle = Math.random() < 0.025 ? 40 : 0;
+        grid[ny*GW+nx] = pack(clamp(sr+v+sparkle), clamp(sg+v+sparkle), clamp(sb+v+sparkle));
       }
     }
     if (!hasSand) { hasSand = true; hintEl && hintEl.classList.add('gone'); }
@@ -1406,8 +1558,11 @@ function initializeSandCanvas() {
 
   function pourLine(x0, y0, x1, y1) {
     const dx = x1-x0, dy = y1-y0;
-    const steps = Math.max(Math.abs(dx), Math.abs(dy)) * 1.65;
-    if (!steps) { pourAt(x0, y0); return; }
+    const dist = Math.max(Math.abs(dx), Math.abs(dy));
+    // Space samples by half the brush radius so coverage is gapless but not
+    // redundant. Old multiplier (×1.65) predates the larger brush and caused
+    // massive over-deposition on fast pointer moves.
+    const steps = Math.max(1, Math.round(dist / (brushSize * 0.5)));
     for (let i = 0; i <= steps; i++) {
       const t = i / steps;
       pourAt(Math.round(x0 + dx*t), Math.round(y0 + dy*t));
@@ -1415,10 +1570,14 @@ function initializeSandCanvas() {
   }
 
   // ── Physics update ───────────────────────────────────────────
-  // Classic bottom-to-top falling sand with alternating direction to prevent drift.
-  function update() {
-    // Shake mode: randomly nudge grains sideways
-    if (shakeFrames > 0) {
+  // Two-phase per grain:
+  //   1. Free-fall: move 1 cell straight down, stop. Keeps the falling stream
+  //      dense — consecutive pour events stay within brush-width of each other.
+  //   2. Landing roll: once resting, cascade diagonally up to ROLL_LIMIT times
+  //      so grains flow naturally down slopes rather than locking into steep piles.
+  const ROLL_LIMIT = 4;
+  function update(doShake, sub) {
+    if (doShake && shakeFrames > 0) {
       shakeFrames--;
       for (let i = 0; i < GW*GH; i++) {
         if (!grid[i] || Math.random() > 0.05) continue;
@@ -1430,64 +1589,88 @@ function initializeSandCanvas() {
       }
     }
 
-    // Gravity pass — alternate scan direction each frame for natural spreading
-    const dir = frame % 2 ? 1 : -1;
+    const dir = (frame + sub) % 2 ? 1 : -1;
     for (let y = GH - 2; y >= 0; y--) {
       for (let xi = 0; xi < GW; xi++) {
         const x = dir === 1 ? xi : GW - 1 - xi;
-        const idx = y*GW + x;
-        if (!grid[idx]) continue;
+        if (!grid[y*GW+x]) continue;
 
-        const bIdx = (y+1)*GW + x;
-        if (!grid[bIdx]) {
-          grid[bIdx] = grid[idx]; grid[idx] = 0; continue;
+        const col = grid[y*GW+x];
+
+        // Phase 1 — free-fall: stochastic rate + slight drift breaks up blob patterns
+        // 82% fall probability staggers grains from the same pour event vertically;
+        // 6% horizontal drift fans the stream into a natural widening cone.
+        if (!grid[(y+1)*GW+x]) {
+          if (Math.random() < 0.82) {
+            let nx = x;
+            if (Math.random() < 0.06) nx += Math.random() < 0.5 ? -1 : 1;
+            if (nx < 0 || nx >= GW || grid[(y+1)*GW+nx]) nx = x;
+            grid[y*GW+x] = 0;
+            grid[(y+1)*GW+nx] = col;
+          }
+          continue;
         }
-        // Try diagonal slides — prefer the scan direction for natural pile shapes
-        const lx = x - dir, rx = x + dir;
-        const lOk = lx >= 0 && lx < GW && !grid[(y+1)*GW+lx];
-        const rOk = rx >= 0 && rx < GW && !grid[(y+1)*GW+rx];
-        if (lOk && rOk) {
-          const tx = Math.random() < 0.5 ? lx : rx;
-          grid[(y+1)*GW+tx] = grid[idx]; grid[idx] = 0;
-        } else if (lOk) {
-          grid[(y+1)*GW+lx] = grid[idx]; grid[idx] = 0;
-        } else if (rOk) {
-          grid[(y+1)*GW+rx] = grid[idx]; grid[idx] = 0;
+
+        // Phase 2 — landing roll: cascade down slopes until settled
+        let gx = x, gy = y;
+        for (let roll = 0; roll < ROLL_LIMIT; roll++) {
+          if (gy + 1 >= GH) break;
+          // If open below after a diagonal move, keep falling
+          if (!grid[(gy+1)*GW+gx]) { gy++; continue; }
+          const l = gx - 1, r = gx + 1;
+          const sl = l >= 0 && !grid[(gy+1)*GW+l];
+          const sr = r < GW  && !grid[(gy+1)*GW+r];
+          if      (sl && sr) { gx = Math.random() < 0.5 ? l : r; gy++; }
+          else if (sl)       { gx = l; gy++; }
+          else if (sr)       { gx = r; gy++; }
+          else               { break; }
+        }
+
+        if (gx !== x || gy !== y) {
+          grid[y*GW+x] = 0;
+          grid[gy*GW+gx] = col;
         }
       }
     }
   }
 
   // ── Render ───────────────────────────────────────────────────
-  // Each 2×2 cell gets 4 slightly different brightness levels
-  // (top-lighter, bottom-darker) giving a subtle 3-D grain look.
+  // 1-pixel grains with ambient occlusion: top-exposed = bright, buried = dark.
   function render() {
-    pixBuf.fill(BG);
+    pixBuf.set(bgBuf);
     for (let y = 0; y < GH; y++) {
+      const rowBase = y * GW;
       for (let x = 0; x < GW; x++) {
-        const c = grid[y*GW + x];
+        const i = rowBase + x;
+        const c = grid[i];
         if (!c) continue;
-        const tl = shade(c, 1.22); const tr = shade(c, 1.10);
-        const bl = shade(c, 0.86); const br = shade(c, 0.76);
-        const base = y*CELL*CW + x*CELL;
-        pixBuf[base]         = tl;
-        pixBuf[base + 1]     = tr;
-        pixBuf[base + CW]    = bl;
-        pixBuf[base + CW+1]  = br;
+        const aboveEmpty = y === 0 || !grid[i - GW];
+        pixBuf[i] = aboveEmpty ? shade(c, 1.08) : c;
       }
     }
     ctx.putImageData(imgData, 0, 0);
   }
 
   // ── Main loop ────────────────────────────────────────────────
+  const SUBSTEPS = 6; // physics passes per rendered frame — drives free-fall speed
   function tick() {
-    if (isPouring && lastGX >= 0) pourAt(lastGX, lastGY);
+    if (isPouring && lastGX >= 0) {
+      if (prevPourX >= 0 && (prevPourX !== lastGX || prevPourY !== lastGY)) {
+        // Pointer moved since last frame — interpolate along the path so no gaps
+        pourLine(prevPourX, prevPourY, lastGX, lastGY);
+      } else {
+        pourAt(lastGX, lastGY);
+      }
+      prevPourX = lastGX; prevPourY = lastGY;
+    } else if (!isPouring) {
+      prevPourX = -1; prevPourY = -1;
+    }
     if (pourMode === 'gradient' && getActivePourColors().length > 1) {
       gradientPhase += gradientDir * GRADIENT_SPEED;
       if (gradientPhase >= 1) { gradientPhase = 1; gradientDir = -1; }
       if (gradientPhase <= 0) { gradientPhase = 0; gradientDir = 1; }
     }
-    update();
+    for (let s = 0; s < SUBSTEPS; s++) update(s === 0, s);
     render();
     frame++;
     requestAnimationFrame(tick);
@@ -1522,14 +1705,13 @@ function initializeSandCanvas() {
     }
     isPouring = true;
     [lastGX, lastGY] = toGrid(cx, cy);
+    prevPourX = lastGX; prevPourY = lastGY;
     window.SFX?.pourStart();
     pourAt(lastGX, lastGY);
   }
   function onMove(cx, cy) {
     if (!isPouring) return;
-    const [gx, gy] = toGrid(cx, cy);
-    pourLine(lastGX, lastGY, gx, gy);
-    lastGX = gx; lastGY = gy;
+    [lastGX, lastGY] = toGrid(cx, cy);
   }
   function onUp() {
     if (!continuousPouring) {
@@ -1567,8 +1749,9 @@ function initializeSandCanvas() {
   });
   shakeBtn && shakeBtn.addEventListener('click', () => { window.SFX?.shake(); shakeFrames = 55; });
   flowRange && flowRange.addEventListener('input', () => {
-    brushSize = +flowRange.value;
-    if (flowValueEl) flowValueEl.textContent = String(brushSize);
+    // Map slider 1–20 → density 0.04–0.60; value 10 ≈ default 0.30
+    pourDensity = 0.04 + (+flowRange.value - 1) * (0.56 / 19);
+    if (flowValueEl) flowValueEl.textContent = flowRange.value;
   });
 
   downloadBtn && downloadBtn.addEventListener('click', () => {

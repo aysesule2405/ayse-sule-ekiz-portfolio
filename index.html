@@ -45,7 +45,6 @@
             position: relative;
             overflow: hidden;
             background: #faf3e8;
-            margin-top: -5rem; /* pull behind sticky nav (h-20 = 5rem) */
         }
         html[data-theme="dark"] .hero-split {
             background: #040a18;
@@ -120,7 +119,9 @@
 
         @media (max-width: 767px) {
             .hero-split {
-                min-height: 44vw; /* keeps aspect ratio on small screens */
+                aspect-ratio: unset;
+                height: 82svh;
+                min-height: 500px;
             }
         }
 
@@ -137,6 +138,8 @@
             z-index: 10;
             animation: bobDown 1.8s ease-in-out infinite;
         }
+        .scroll-caret { color: #941b0c; }
+        html[data-theme="dark"] .scroll-caret { color: #FFA618; }
         .hero-skill {
             position: absolute;
             top: 50%;
@@ -355,7 +358,9 @@
 
         @media (max-width: 480px) {
             .hero-split {
-                min-height: 44vw;
+                aspect-ratio: unset;
+                height: 78svh;
+                min-height: 460px;
             }
             .hero-center-content {
                 padding-bottom: 5.5rem !important;
@@ -518,10 +523,25 @@
             background: var(--color-accent-hover);
         }
 
+        /* ── Section spacing: tablet ──────────────────── */
+        @media (max-width: 900px) {
+            .home-section-white  { padding: 3.5rem 0 !important; }
+            .home-section-cream  { padding: 4rem 0 !important; }
+            .home-final-cta      { padding: 3.5rem 0 !important; }
+            .home-projects-header { margin-bottom: 2rem !important; }
+            .art-section-header  { margin-bottom: 2rem; }
+        }
+        /* ── Section spacing: mobile ──────────────────── */
         @media (max-width: 640px) {
             .projects-teaser-grid { grid-template-columns: 1fr !important; }
             .currently-grid { grid-template-columns: 1fr; }
             .project-visual { height: 200px; }
+            .home-section-white  { padding: 2.5rem 0 !important; }
+            .home-section-cream  { padding: 2.5rem 0 !important; }
+            .home-final-cta      { padding: 2.5rem 0 !important; }
+            .home-projects-header { margin-bottom: 1.5rem !important; }
+            .art-section-header  { margin-bottom: 1.25rem; }
+            .intro-split-text p  { max-width: 100% !important; }
         }
         @media (min-width: 641px) and (max-width: 1024px) {
             .projects-teaser-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -654,7 +674,7 @@
             line-height: 1.65;
         }
         /* dark mode */
-        html[data-theme="dark"] .art-section-tag  { color: var(--color-accent); }
+        html[data-theme="dark"] .art-section-tag  { color: var(--color-accent) !important; }
         html[data-theme="dark"] .sims-tag-icon { filter: brightness(0) invert(48%) sepia(100%) saturate(452%) hue-rotate(359deg) brightness(100%) !important; }
         html[data-theme="dark"] .art-section-title { color: var(--color-text); }
         html[data-theme="dark"] .art-section-title em { color: var(--color-accent); }
@@ -720,9 +740,17 @@
                 height: 300px;
             }
         }
+        @media (max-width: 480px) {
+            .intro-split-text {
+                padding: 2rem 1rem 2.5rem !important;
+            }
+            .intro-split-image {
+                height: 240px !important;
+            }
+        }
         html[data-theme="dark"] .intro-split,
         html[data-theme="dark"] .intro-split-text { background: var(--color-surface); }
-        html[data-theme="dark"] .intro-split-text p { color: var(--color-text-soft) !important; }
+        html[data-theme="dark"] .intro-split-text p:not(.art-section-tag) { color: var(--color-text-soft) !important; }
 
         /* ── Section heading / divider ──────────────── */
         .section-heading { font-size: 1.875rem; font-weight: 700; color: #111827; }
@@ -752,7 +780,7 @@
                     radial-gradient(circle at 18% 22%, rgba(255,173,31,0.22), transparent 32%),
                     radial-gradient(circle at 82% 20%, rgba(148,27,12,0.18), transparent 34%),
                     linear-gradient(rgba(255,250,244,0.80), rgba(255,250,244,0.80)),
-                    url('./images/orange-vertical.svg') center / cover no-repeat;
+                    url('./images/orange-horizontal.svg') center / cover no-repeat;
             }
         }
         .home-final-cta p {
@@ -901,12 +929,19 @@
           </button>
         </nav>
 
-        <button id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false" class="lg:hidden text-gray-600 hover:text-[#B23600] p-2 rounded-lg"
-                aria-label="Toggle navigation menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-          </svg>
-        </button>
+        <div class="lg:hidden flex items-center gap-1">
+          <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                  class="text-gray-600 hover:text-[#B23600] p-2 rounded-lg focus:outline-none">
+            <i data-lucide="sun"  data-theme-icon="sun"  class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+          <button id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false" class="text-gray-600 hover:text-[#B23600] p-2 rounded-lg"
+                  aria-label="Toggle navigation menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -971,9 +1006,9 @@
 
       <!-- Scroll indicator -->
       <div class="scroll-indicator">
-        <svg width="22" height="30" viewBox="0 0 22 30" fill="none">
-          <line x1="11" y1="3" x2="11" y2="22" stroke="rgba(255,255,255,0.42)" stroke-width="2" stroke-linecap="round"/>
-          <polyline points="4,16 11,23 18,16" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="22" height="30" viewBox="0 0 22 30" fill="none" class="scroll-caret">
+          <line x1="11" y1="3" x2="11" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <polyline points="4,16 11,23 18,16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
     </section>
@@ -1031,7 +1066,7 @@
     <section class="home-section-white" style="padding:4.5rem 0;">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;">
+        <div class="home-projects-header" style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;">
           <div>
             <p class="art-section-tag"><img src="images/icons/Video-Game-The-Sims--Streamline-Freehand.png" alt="" style="display:inline-block;width:13px;height:13px;object-fit:contain;vertical-align:middle;margin-right:2px;filter:brightness(0) invert(27%) sepia(100%) saturate(287%) hue-rotate(328deg) brightness(102%);" class="sims-tag-icon"> 01 &middot; Code</p>
             <h2 class="art-section-title">My <em>Projects</em></h2>
@@ -1193,7 +1228,7 @@
             <a href="graphicdesign.html" class="art-interest-img-wrap">
               <img src="images/dijital_art/Lilith - Symetrical Balance Poster.jpg" alt="Graphic Design &amp; Digital Art" style="object-position:center top;">
               <span class="art-interest-num">01</span>
-              <span class="art-interest-cat">Digital</span>
+              <span class="art-interest-cat">Design</span>
             </a>
             <div class="art-interest-body">
               <div class="art-interest-title-row">
@@ -1209,7 +1244,7 @@
             <a href="ceramics.html" class="art-interest-img-wrap">
               <img src="images/ceramics/head_figure_0.jpg" alt="Sculpting &amp; Ceramics" style="object-position:center 40%;">
               <span class="art-interest-num">02</span>
-              <span class="art-interest-cat">Tactile</span>
+              <span class="art-interest-cat">Ceramics</span>
             </a>
             <div class="art-interest-body">
               <div class="art-interest-title-row">
@@ -1225,7 +1260,7 @@
             <a href="painting.html" class="art-interest-img-wrap">
               <img src="images/paintings/girl&moon.jpg" alt="Painting &amp; Charcoal" style="object-position:center center;">
               <span class="art-interest-num">03</span>
-              <span class="art-interest-cat">Studies</span>
+              <span class="art-interest-cat">Painting</span>
             </a>
             <div class="art-interest-body">
               <div class="art-interest-title-row">
