@@ -424,6 +424,9 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         .home-project-card::before {
             content: "";
@@ -437,6 +440,17 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(133,15,1,0.2), 0 4px 6px -2px rgba(133,15,1,0.1);
         }
+        .home-project-card .meta {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+        .home-project-card .short-desc {
+            line-height: 1.48;
+        }
+        .home-project-card .home-card-actions {
+            margin-top: auto;
+        }
         .project-outcome {
             display: inline-flex;
             align-items: center;
@@ -445,6 +459,7 @@
             font-size: 0.78rem;
             font-weight: 800;
             margin-top: 0.7rem;
+            min-height: 1.4rem;
         }
         .project-visual {
             height: 240px;
@@ -466,6 +481,28 @@
             position: absolute;
             inset: 0;
         }
+        .home-project-icon-badge {
+            align-items: center;
+            background: rgba(255,255,255,0.94);
+            border-radius: 9999px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.28);
+            display: flex;
+            height: 78px;
+            justify-content: center;
+            padding: 16px;
+            position: relative;
+            width: 78px;
+            z-index: 2;
+        }
+        .home-project-icon-badge img {
+            display: block;
+            height: 100%;
+            object-fit: contain;
+            width: 100%;
+        }
+        .card-whisperwind .home-project-icon-badge { background: rgba(232,242,222,0.94); }
+        .card-framewise .home-project-icon-badge { background: rgba(255,226,209,0.95); }
+        .card-obi .home-project-icon-badge { background: rgba(255,240,208,0.95); }
         .project-award {
             position: absolute;
             top: 0.75rem;
@@ -481,6 +518,9 @@
             border: 1px solid #FDE68A;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             z-index: 3;
+            max-width: calc(100% - 1.5rem);
+            text-align: center;
+            white-space: normal;
         }
         .tag {
             display: inline-block;
@@ -834,14 +874,14 @@
         html[data-theme="dark"] .section-divider-cream { border-color: var(--color-border); }
 
         /* ── Per-project palettes (home featured cards) ── */
-        .card-openstax { background: linear-gradient(135deg, #f4f0ff 0%, #eef5e8 100%) !important; border-color: rgba(58,32,128,0.2) !important; }
-        .card-openstax::before { background: linear-gradient(90deg, #3a2080, #4a8c3c) !important; }
-        .card-openstax:hover { box-shadow: 0 10px 15px -3px rgba(58,32,128,0.22), 0 4px 6px -2px rgba(58,32,128,0.12) !important; }
-        .card-openstax .text-\[\#850F01\] { color: #c85a30 !important; }
-        .card-openstax .project-btn-github { background: #ece8ff !important; color: #2e1a6e !important; }
-        .card-openstax .project-btn-github:hover { background: #d8d0ff !important; }
-        .card-openstax .project-btn-live { background: #3a2080 !important; color: #f0c060 !important; }
-        .card-openstax .project-btn-live:hover { background: #4a30a0 !important; }
+        .card-framewise { background: linear-gradient(135deg, #fff1e4 0%, #ffe0cc 100%) !important; border-color: rgba(200,92,58,0.24) !important; }
+        .card-framewise::before { background: linear-gradient(90deg, #1b0c09, #f2a27f) !important; }
+        .card-framewise:hover { box-shadow: 0 10px 15px -3px rgba(200,92,58,0.24), 0 4px 6px -2px rgba(200,92,58,0.12) !important; }
+        .card-framewise .text-\[\#850F01\] { color: #b8563c !important; }
+        .card-framewise .project-btn-github { background: #ffe2d1 !important; color: #7b321f !important; }
+        .card-framewise .project-btn-github:hover { background: #ffd0b8 !important; }
+        .card-framewise .project-btn-live { background: #1b0c09 !important; color: #fff4e8 !important; }
+        .card-framewise .project-btn-live:hover { background: #3a1811 !important; }
 
         .card-obi { background: linear-gradient(135deg, #fffaf0 0%, #fff5dc 100%) !important; border-color: rgba(240,160,48,0.22) !important; }
         .card-obi::before { background: linear-gradient(90deg, #e8952a, #ffd080) !important; }
@@ -859,15 +899,15 @@
         .card-whisperwind .project-btn-github { background: #e4f0da !important; color: #3d5c2e !important; }
         .card-whisperwind .project-btn-github:hover { background: #cce4be !important; }
 
-        /* OpenStaxAlign dark */
-        html[data-theme="dark"] .card-openstax { background: linear-gradient(135deg, rgba(58,32,128,0.18) 0%, rgba(74,140,60,0.09) 100%) !important; border-color: rgba(100,80,200,0.22) !important; }
-        html[data-theme="dark"] .card-openstax:hover { box-shadow: 0 18px 40px rgba(58,32,128,0.25) !important; }
-        html[data-theme="dark"] .card-openstax h3 { color: #c0a8ff !important; }
-        html[data-theme="dark"] .card-openstax .text-\[\#850F01\] { color: #f0a880 !important; }
-        html[data-theme="dark"] .card-openstax .project-btn-github { background: rgba(58,32,128,0.25) !important; color: #c0a8ff !important; }
-        html[data-theme="dark"] .card-openstax .project-btn-github:hover { background: rgba(58,32,128,0.4) !important; }
-        html[data-theme="dark"] .card-openstax .project-btn-live { background: #5a3ca0 !important; color: #f0c060 !important; }
-        html[data-theme="dark"] .card-openstax .project-btn-live:hover { background: #6a4cb8 !important; }
+        /* Framewise dark */
+        html[data-theme="dark"] .card-framewise { background: linear-gradient(135deg, rgba(242,162,127,0.16) 0%, rgba(27,12,9,0.24) 100%) !important; border-color: rgba(242,162,127,0.25) !important; }
+        html[data-theme="dark"] .card-framewise:hover { box-shadow: 0 18px 40px rgba(242,162,127,0.18) !important; }
+        html[data-theme="dark"] .card-framewise h3 { color: #ffd8c5 !important; }
+        html[data-theme="dark"] .card-framewise .text-\[\#850F01\] { color: #f2a27f !important; }
+        html[data-theme="dark"] .card-framewise .project-btn-github { background: rgba(242,162,127,0.2) !important; color: #ffd8c5 !important; }
+        html[data-theme="dark"] .card-framewise .project-btn-github:hover { background: rgba(242,162,127,0.32) !important; }
+        html[data-theme="dark"] .card-framewise .project-btn-live { background: #f2a27f !important; color: #1b0c09 !important; }
+        html[data-theme="dark"] .card-framewise .project-btn-live:hover { background: #ffb998 !important; }
 
         /* Obi dark */
         html[data-theme="dark"] .card-obi { background: linear-gradient(135deg, rgba(240,160,48,0.14) 0%, rgba(255,208,128,0.06) 100%) !important; border-color: rgba(240,160,48,0.22) !important; }
@@ -1084,8 +1124,8 @@
             <div class="project-visual">
               <img src="projects/Whisperwind%20Grove/whisperwind-grove.copy.jpg" alt="Whisperwind Grove background" class="project-visual-img">
               <div class="project-visual-overlay" style="background:rgba(5,20,15,0.45);"></div>
-              <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.35);">
-                <img src="projects/Whisperwind%20Grove/logo.png" alt="Whisperwind Grove" style="height:56px;width:auto;object-fit:contain;display:block;">
+              <div class="home-project-icon-badge" aria-hidden="true">
+                <img src="images/icons/Organic-Tree-Grow--Streamline-Freehand.png" alt="">
               </div>
               <span class="project-award">CS Senior Capstone</span>
             </div>
@@ -1107,10 +1147,13 @@
                 <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
                 Full marks for systems integration
               </div>
-              <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-3">
+              <div class="home-card-actions flex justify-between items-center pt-3 border-t border-gray-100 mt-3">
                 <div class="flex gap-2">
                   <a href="https://github.com/aysesule2405/WW" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
                     <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
+                  </a>
+                  <a href="https://ww-seven-ruby.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-live">
+                    <iconify-icon icon="lucide:external-link" width="14" height="14"></iconify-icon> Live
                   </a>
                 </div>
                 <a href="projects.html" class="text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">Details</a>
@@ -1118,40 +1161,40 @@
             </div>
           </article>
 
-          <!-- OpenStaxAlign -->
-          <article class="home-project-card card-openstax">
+          <!-- Framewise -->
+          <article class="home-project-card card-framewise">
             <div class="project-visual">
-              <img src="projects/OpenStaxAlign/bg.png" alt="OpenStaxAlign background" class="project-visual-img">
-              <div class="project-visual-overlay" style="background:rgba(8,70,90,0.45);"></div>
-              <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.35);">
-                <img src="projects/OpenStaxAlign/logo.png" alt="OpenStaxAlign" style="height:56px;width:auto;object-fit:contain;display:block;">
+              <img src="projects/Framewise/framewise%20photos.001.jpeg" alt="Framewise presentation cover" class="project-visual-img">
+              <div class="project-visual-overlay" style="background:rgba(27,12,9,0.34);"></div>
+              <div class="home-project-icon-badge" aria-hidden="true">
+                <img src="images/icons/Transfer-Pictures-Laptop-Smartphone--Streamline-Freehand.png" alt="">
               </div>
-              <span class="project-award">2nd Place · Rice Datathon</span>
+              <span class="project-award">Best AI · Best MongoDB Atlas</span>
             </div>
             <div class="meta p-5">
               <div class="mb-1">
-                <h3 class="text-xl font-bold text-gray-800">OpenStaxAlign</h3>
-                <p class="text-sm text-[#850F01] font-semibold mt-0.5">Rice Datathon 2026 · 2nd Place Overall</p>
+                <h3 class="text-xl font-bold text-gray-800">Framewise</h3>
+                <p class="text-sm text-[#850F01] font-semibold mt-0.5">HackHCC Winner · AI video + dance practice</p>
               </div>
               <div class="flex flex-wrap gap-1.5 my-3">
-                <span class="tag tag-python">Python</span>
-                <span class="tag tag-ml">TF-IDF</span>
-                <span class="tag tag-ml">Linear SVM</span>
-                <span class="tag tag-data">Curriculum Data</span>
+                <span class="tag tag-js">React</span>
+                <span class="tag tag-ai">Gemini 2.5</span>
+                <span class="tag tag-sys">MongoDB Atlas</span>
+                <span class="tag tag-ml">MoveNet</span>
               </div>
               <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
-                ML pipeline mapping educational content to OpenStax curriculum standards with 75% accuracy, earning 2nd place overall.
+                Web app + Chrome extension for searchable timelines, AI chat, captions, quizzes, saved notes, and MoveNet dance practice.
               </p>
               <div class="project-outcome">
-                <i data-lucide="trophy" style="width:14px;height:14px;"></i>
-                2nd place overall
+                <i data-lucide="film" style="width:14px;height:14px;"></i>
+                Best Use of AI + MongoDB Atlas
               </div>
-              <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-3">
+              <div class="home-card-actions flex justify-between items-center pt-3 border-t border-gray-100 mt-3">
                 <div class="flex gap-2">
-                  <a href="https://github.com/iremdmrc/datathon-openstax" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                  <a href="https://github.com/aysesule2405/framewise" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
                     <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub
                   </a>
-                  <a href="https://devpost.com/software/openstaxalign" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-live">
+                  <a href="https://devpost.com/software/framwise" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-live">
                     <iconify-icon icon="simple-icons:devpost" width="14" height="14"></iconify-icon> Devpost
                   </a>
                 </div>
@@ -1165,8 +1208,8 @@
             <div class="project-visual">
               <img src="projects/Obi/homepage.png" alt="Obi background" class="project-visual-img">
               <div class="project-visual-overlay" style="background:rgba(15,12,40,0.45);"></div>
-              <div style="position:relative;z-index:2;background:white;border-radius:12px;padding:8px 18px;box-shadow:0 6px 24px rgba(0,0,0,0.35);">
-                <img src="projects/Obi/logo.png" alt="Obi" style="height:56px;width:auto;object-fit:contain;display:block;">
+              <div class="home-project-icon-badge" aria-hidden="true">
+                <img src="images/icons/Board-Game-Catan--Streamline-Freehand.png" alt="">
               </div>
               <span class="project-award">Figma UI Challenge Winner</span>
             </div>
@@ -1180,7 +1223,6 @@
                 <span class="tag tag-js">Vite</span>
                 <span class="tag tag-ai">Gemma LLM</span>
                 <span class="tag tag-ml">RAG Pipeline</span>
-                <span class="tag tag-ml">Local AI</span>
               </div>
               <p class="short-desc text-gray-700 text-sm mt-1 mb-2">
                 Cross-platform AI desktop assistant with a locally-hosted Gemma LLM, sub-second contextual responses, and zero cloud dependency.
@@ -1189,7 +1231,7 @@
                 <i data-lucide="award" style="width:14px;height:14px;"></i>
                 Figma UI Challenge winner
               </div>
-              <div class="flex justify-between items-center pt-3 border-t border-gray-100 mt-3">
+              <div class="home-card-actions flex justify-between items-center pt-3 border-t border-gray-100 mt-3">
                 <div class="flex gap-2">
                   <a href="https://github.com/LAHacks2026/Obi_Laptop" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
                     <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon> GitHub

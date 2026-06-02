@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 4) CARD DETAIL TOGGLES
-  document.querySelectorAll('.view-details-btn').forEach((btn) => {
+  document.querySelectorAll('.view-details-btn:not([data-catalog])').forEach((btn) => {
     btn.addEventListener('click', (event) => {
       const button = event.currentTarget;
       const article = button.closest('.masonry-item');
