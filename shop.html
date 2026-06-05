@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayse Sule Ekiz | Art Print Shop</title>
+  <link rel="icon" type="image/png" href="images/logo-light.png" id="site-favicon">
+  <link rel="apple-touch-icon" href="images/logo-light.png">
+  <meta name="theme-color" content="#941b0c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#FFA618" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Original art prints by Ayse Sule Ekiz — paintings, monotypes, digital illustrations, and poster designs. Archival quality, $10–$30, ships in 5–7 days.">
+  <meta property="og:title" content="Art Print Shop — Ayse Sule Ekiz">
+  <meta property="og:description" content="30 original artworks available as archival prints. Paintings, printmaking, digital illustrations, and poster designs. $10–$30.">
+  <meta property="og:image" content="https://aysesule2405.github.io/ayse-sule-ekiz-portfolio/images/paintings/girl&moon.jpg">
+  <meta property="og:url" content="https://aysesule2405.github.io/ayse-sule-ekiz-portfolio/shop.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://aysesule2405.github.io/ayse-sule-ekiz-portfolio/shop.html">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/cards.css">
+
+  <style>
+    .nav-link { color: #4b5563; transition: color 0.2s, background-color 0.2s; }
+    .nav-link:hover { background-color: #fce7f3; color: #850F01; }
+    .nav-link.active { background-color: #FFA618; color: #FFF; }
+    .logo-background-pattern {
+      background-image: url('./images/logo.jpg');
+      background-repeat: repeat;
+      background-blend-mode: multiply;
+      opacity: 0.1;
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; z-index: -1;
+    }
+
+    /* ── Buy section inside masonry cards ── */
+    .buy-row {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #e5e7eb;
+    }
+    [data-theme="dark"] .buy-row { border-color: #2d2d2d; }
+
+    .buy-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 0.45rem;
+    }
+    [data-theme="dark"] .buy-label { color: #6b7280; }
+
+    .buy-sizes {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .buy-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.25rem;
+      background: #850F01;
+      color: #fff;
+      border: none;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: background 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .buy-btn:hover { background: #B23600; transform: translateY(-1px); color: #fff; }
+    .buy-btn:active { transform: translateY(0); }
+
+    [data-theme="dark"] .buy-btn { background: #FFA618; color: #111; }
+    [data-theme="dark"] .buy-btn:hover { background: #e8941a; }
+
+    /* ── Hero ── */
+    .shop-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      background-color: var(--color-bg, #fffaf4);
+    }
+    .shop-hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #850F01;
+      margin-bottom: 0.75rem;
+    }
+    [data-theme="dark"] .shop-hero-eyebrow { color: #FFA618; }
+    .shop-hero-title {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--color-text, #1f1713);
+      margin-bottom: 1rem;
+    }
+    .shop-hero-title em { font-style: italic; color: #850F01; }
+    [data-theme="dark"] .shop-hero-title em { color: #FFA618; }
+    .shop-hero-desc {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--color-text-muted, #4b5563);
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+      font-family: var(--font-body, 'Inter', sans-serif);
+    }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: rgba(133,15,1,0.08);
+      border: 1px solid rgba(133,15,1,0.18);
+      border-radius: 2rem;
+      color: #850F01;
+      padding: 0.3rem 0.85rem; font-size: 0.75rem; margin: 0 0.2rem 0.4rem;
+      font-weight: 500;
+    }
+    [data-theme="dark"] .hero-pill {
+      background: rgba(255,166,24,0.1);
+      border-color: rgba(255,166,24,0.25);
+      color: #FFA618;
+    }
+  </style>
+
+  <link rel="stylesheet" href="styles/nav-dropdown.css">
+  <link rel="stylesheet" href="styles/animations.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/theme-toggle.js"></script>
+  <script src="js/nav-enhancements.js"></script>
+  <script src="js/scroll-animations.js" defer></script>
+</head>
+<body class="min-h-screen">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white shadow-lg relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+    <div class="page-bg-image page-bg-orange"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex-shrink-0 flex items-center space-x-2">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img src="images/logo-light.png" data-logo-light="images/logo-light.png" data-logo-dark="images/logo-dark.png" alt="Ayse Sule Ekiz Logo" class="h-10 w-10 rounded-full border-2 border-[#850F01]">
+            <span class="text-2xl font-extrabold text-[#850F01] tracking-tight hidden sm:inline">Ayse Sule Ekiz</span>
+          </a>
+        </div>
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Home</a>
+          <a href="projects.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Projects</a>
+          <a href="playground.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Playground</a>
+          <a href="graphicdesign.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Graphic Design</a>
+          <a href="ceramics.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Ceramics</a>
+          <a href="painting.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Painting</a>
+          <a href="resume.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">Resume</a>
+          <a href="about.html" class="nav-link px-2.5 py-2 rounded-lg font-medium text-sm">About</a>
+          <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                  class="ml-2 inline-flex items-center px-3 py-2 rounded-lg focus:outline-none">
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+        </nav>
+        <div class="lg:hidden flex items-center gap-1">
+          <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                  class="text-gray-600 hover:text-[#B23600] p-2 rounded-lg focus:outline-none">
+            <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5"></i>
+            <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 hidden"></i>
+          </button>
+          <button id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false"
+                  class="text-gray-600 hover:text-[#B23600] p-2 rounded-lg" aria-label="Toggle navigation menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 relative z-10">
+      <a href="index.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Home</a>
+      <a href="projects.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Projects</a>
+      <a href="playground.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Playground</a>
+      <a href="graphicdesign.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Graphic Design &amp; Digital Art</a>
+      <a href="ceramics.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Sculpting &amp; Ceramics</a>
+      <a href="painting.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Painting &amp; Charcoal</a>
+      <a href="resume.html" class="nav-link block px-4 py-3 text-sm font-medium border-b">Resume</a>
+      <a href="about.html" class="nav-link block px-4 py-3 text-sm font-medium">About / Contact</a>
+      <div class="px-4 py-3 border-t">
+        <button data-theme-toggle aria-label="Toggle color theme" aria-pressed="false"
+                class="w-full inline-flex items-center justify-center px-3 py-2 rounded-lg">
+          <i data-lucide="sun" data-theme-icon="sun" class="w-5 h-5 mr-2"></i>
+          <i data-lucide="moon" data-theme-icon="moon" class="w-5 h-5 mr-2 hidden"></i>
+          <span class="text-sm">Toggle theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="shop-hero">
+    <div class="page-bg-image page-bg-orange"></div>
+    <div style="position:relative;z-index:1;">
+      <p class="shop-hero-eyebrow">Art Print Shop</p>
+      <h1 class="shop-hero-title">Original Art, <em>Yours to Keep</em></h1>
+      <p class="shop-hero-desc">Archival-quality prints of original paintings, printmaking, and digital illustrations — each one made with care and shipped straight to your door.</p>
+      <div>
+        <span class="hero-pill">Premium archival paper</span>
+        <span class="hero-pill">Ships in 5–7 business days (US)</span>
+        <span class="hero-pill">Secure checkout via Stripe</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 page-content">
+    <section>
+      <p class="leading-relaxed mb-6 font-serif tracking-wide text-gray-600 text-lg">
+        Each piece here is available as an archival print on premium paper. Paintings are limited edition; printmaking and digital works are open edition. Select a size below any piece to go straight to checkout.
+      </p>
+
+      <!-- ── PAINTINGS ──────────────────────────────────────────────────── -->
+      <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">Paintings</h3>
+      <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20">
+        Original oil, acrylic, gouache, pastel, and graphite works — limited editions of 20–30 prints each on premium archival paper.
+      </p>
+
+      <div class="masonry">
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/paintings/girl&moon.jpg" alt="Girl & Moon" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Girl &amp; Moon</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Oil on canvas. Moonlit figure, cool lunar blues against warm skin tones. Edition of 25.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Painted during a full moon night after watching <em>The Tale of Princess Kaguya</em>. The girl and the moon mirror each other — one in the sky, one on earth — quietly sharing the same lonely glow. Soft edges, dark blues, and warm highlights meant to feel like a dream you don't want to let go of.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/14A00kfl72B0a7x5vOgw01v" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/5kQbJ2c8V1wW3J94rKgw01w" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/28EcN6eh3grQgvV7DWgw01x" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/paintings/pastel1.jpg" alt="Coastal Town / Pastel #1" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Pastel / #1</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Soft pastel on blue watercolor paper. Inspired by Manarola — glowing windows, stacked houses by the water. Edition of 30.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Using a blue base let the lights of the coastal town glow more intensely, almost like they're floating on the water. A place I've never visited in person, but often visit in my imagination — a quiet, dreamy maze of light and shadow.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/8x24gAa0NcbA5Rh1fygw01y" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/14A28s4Gt8Zo3J9f6ogw01z" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/cNi5kE8WJejI5Rh0bugw01A" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/paintings/pastel2.jpg" alt="Mountain Memory / Pastel #2" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Pastel / #2</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Soft pastel on blue watercolor paper. Childhood mountains in soft pastels — the feeling of going home. Edition of 30.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">These mountains come from childhood memory more than reality. I wanted the sky to feel wide and the land to feel small, like the world is both familiar and a little overwhelming. A quiet landscape that holds the feeling of going home after a long time away.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/6oU9AU5Kx0sSbbB0bugw01B" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/4gMeVe2ylfnMfrR0bugw01C" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/00w00k3Cp8Zo93te2kgw01D" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/paintings/angel&moon.jpg" alt="Angel & Moon" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Angel &amp; Moon</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Pastel on toned paper. Glowing angel in moonlight — dark pencil sketch with vibrant pastel sky. Edition of 25.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">An angel that can only rest when wrapped in moonlight, as if the sky keeps her secrets safe. The glowing halo and soft wing folds create a quiet, weightless moment. Dark pencil sketch against vibrant pastels makes her feel otherworldly.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/bJe14ob4R8Zoa7x1fygw01E" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/8x228s6OB0sScfF7DWgw01F" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/bJe14o7SF3F45Rhf6ogw01G" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/paintings/the hike.JPG" alt="The Hike" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">The Hike</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Acrylic on canvas. Glacial lake, ancient trees, snow-dusted peaks, pink wildflowers. Edition of 30.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">A longing for places that feel untouched. Two trees frame the eye toward the mountain and glowing lake below. Pink wildflowers dot the foreground like sparks of joy — that moment you break through the treeline and everything goes quiet.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/dRmcN64Gt1wWcfF7DWgw01H" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/fZu5kEc8VgrQ3J94rKgw01I" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/14A4gA2yl0sScfF1fygw01J" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/paintings/night sea_1.jpg" alt="Night Sea" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Night Sea</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Acrylic. Moonlit sea, luminous cyan sky, a single streak of gold crossing the dark water. Edition of 25.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Standing somewhere dark and vast where the only light is above and its reflection below. The moon reveals more than it illuminates — the sea dark and unknowable except for that single streak of gold. Small bright flecks on the water feel like stars that got tired and fell.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/9B65kEeh34J86Vl2jCgw01K" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/fZu5kEb4R0sSdjJ5vOgw01L" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/4gM4gAc8Va3scfF8I0gw01M" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/paintings/venus_1.jpg" alt="Venus After Botticelli" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Venus After Botticelli</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Colored pencil. Botticelli's Venus reinterpreted with bold outlines and teal-green hair. Edition of 20.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Bold outlines and flat color fields rather than the soft gradients of the original. The teal and deep green hair feels more alive — something between mythological and contemporary. She's still Venus, but she's also her own person now.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/aFa5kEfl73F4frR0bugw01N" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/bJecN65KxejIa7xaQ8gw01O" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/6oU14o8WJ2B0enN1fygw01P" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/paintings/sketch 3_1.jpg" alt="Unraveling" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Unraveling</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Graphite. Three weeping eyes, continuous flowing lines — grief without a name. Edition of 20.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Three eyes that weep in a single continuous line, each connected to the next without lifting the pen. Grief as a physical thread, unraveling from inside. The repetition of the motif makes it feel both relentless and somehow quiet.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/7sY9AUb4R5Nca7xbUcgw01Q" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/aFa4gA3CpejI1B16zSgw01R" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/6oUdRac8V0sS3J97DWgw01S" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ── PRINTMAKING ────────────────────────────────────────────────── -->
+      <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">Printmaking — Monotypes</h3>
+      <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20">
+        Monotype is a one-of-a-kind printmaking process — a single pull from an inked plate, never exactly repeatable. These prints are open edition but each impression carries its own subtle variations.
+      </p>
+
+      <div class="masonry">
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/graphic_design/monotype_1.jpg" alt="Rain: Monotype Print #1" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Rain: Monotype Print #1</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Monotype on dry watercolor paper. Sharp-edged rain-like streaks and cut-out shapes. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Printed on dry watercolor paper, the ink doesn't bleed or mix. The rough surface creates sharp edges around each shape, giving a cut-out feeling — more graphic and defined than the wet-paper version.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/5kQ7sMdcZ3F40wX5vOgw01T" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/00wcN60qd3F4djJ2jCgw01U" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/3cI7sM5KxdfEgvV8I0gw01V" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/graphic_design/monotype_2.jpg" alt="After Rain: Monotype Print #2" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">After Rain: Monotype Print #2</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Monotype on wet watercolor paper. Saturated color bleeding into fiber — soft and atmospheric. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">The wet watercolor paper absorbed nearly all of the ink from the plate, resulting in rich, saturated color. Edges of the forms softened as pigments spread into the fibers — a dreamy, atmospheric effect that contrasts with the sharper dry-paper print.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/7sYdRagpb7Vk5Rh7DWgw01W" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/4gMcN62ylcbA0wX0bugw01X" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/6oU28s8WJ1wWa7xgasgw01Y" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/graphic_design/freeform_monotype.jpg" alt="Freeform Monotype" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Freeform Monotype</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Expressive monotype exploring color, gesture, and spontaneous marks. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">An experiment in letting go of detailed planning. Layered colors and loose brushstrokes on a smooth plate, transferred in a single pull. The result captures the energy of the process and the way chance shapes the final image.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/bJe28s2yl3F493t0bugw01Z" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/3cI28s5KxfnM3J9bUcgw020" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/6oU14ofl7grQfrR1fygw021" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ── 2D ART PORTFOLIO ───────────────────────────────────────────── -->
+      <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">2D Art Portfolio</h3>
+      <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20">
+        My AP 2D Art Portfolio focuses on <span class="font-semibold">culture, community, and shared traditions</span> — telling the story of making yaprak sarması through digital illustration, from gathering grape leaves to the final table. Open edition digital prints.
+      </p>
+
+      <div class="masonry">
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/ap_art_portfolio_5.jpg" alt="Reaching to the Grapes" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Reaching to the Grapes</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Digital illustration. A joyful pause — reaching for grapes before the work begins. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Before the leaves are gathered, the figure takes a moment to reach up and enjoy the grapes themselves. Bright colors and upward movement suggest growth and playfulness — traditions can be as rewarding in their small moments as in the final meal.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/dRm00k0qd6Rg5Rhgasgw022" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/6oU7sMb4Rb7w7ZpbUcgw023" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/3cI9AU6OB7Vka7x0bugw024" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/ap_art_portfolio_7.jpg" alt="Women Gathered" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Women Gathered</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Digital illustration. Turkish women stacking grape leaves — community and patience. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Gathered around a cloth in the front yard to stack grape leaves from the garden — an activity I've taken part in from childhood. It is a reminder that traditions often begin outside, in nature, before they reach the kitchen table.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/7sYcN63Cpa3scfF0bugw025" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/aFa7sMdcZb7w0wX6zSgw026" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/00w9AUc8VcbAdjJ7DWgw027" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/ap_art_portfolio_2.jpg" alt="From My Mother's Hands" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">From My Mother's Hands</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Digital illustration. My mom's practiced technique preparing yaprak sarması. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Her way of rolling takes years of practice and expertise — quiet determination creating something meaningful with her hands. I felt it was important to showcase that skill and the deeper sense of purpose that comes from it.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/8x24gAfl7fnM5Rhe2kgw028" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/14A00kc8VcbAdjJcYggw029" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/5kQ3cwc8V8Zoa7x2jCgw02a" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/ap_art_portfolio_3.jpg" alt="From My Hands" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">From My Hands</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Digital illustration. A first-person view of rolling yaprak sarması. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Rolling each sarma by hand — the step where the dish truly comes together. My own hands, framed to highlight the care taken in folding each leaf. My favorite dish, my favorite step.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/8x29AU4Gt8Zoa7xaQ8gw02b" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/5kQbJ25Kx4J893t1fygw02c" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/6oUdRaa0N3F4frR4rKgw02d" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/ap_art_portfolio_1.jpg" alt="Imece" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Imece</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Digital illustration. Community work — hands, bowls, cooking as a collective act of care. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">In Turkish, <em>imece</em> means community work — people coming together to help each other. The arrangement of hands, bowls, and ingredients emphasizes cooperation and the warmth of working side by side, turning cooking into a collective act of care.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/4gMcN6b4Ra3s7ZpbUcgw02e" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/28E00kb4R3F4enN5vOgw02f" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/fZu7sMdcZdfEgvVe2kgw02g" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/ap_art_portfolio_4.jpg" alt="Setting the Table" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Setting the Table</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Digital illustration. The final plate — outcome of community, time, and love. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">The result after all the steps and shared labor are complete. The presentation of the food, the arrangement of the plate — all emphasizing that this is more than a meal; it is the outcome of community, time, and love invested into the process.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/aFa6oI3Cp8Zo93t3nGgw02h" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/7sY28s8WJ1wWbbBaQ8gw02i" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/00w7sM3Cp0sSenNf6ogw02j" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/ap_art_portfolio_6.jpg" alt="Carpet" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Carpet</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Digital illustration. Modern Turkish carpet patterns — layered motifs and rich color. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Repeating patterns, rich colors, and symbolic designs found in modern Turkish carpets. Layered motifs and textures echo traditional weaving while keeping a contemporary, graphic feel. Connecting the idea of home and culture to the surfaces we live with every day.</p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/7sY7sM7SF5Nc5Rh2jCgw02k" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/dRm3cwb4R8Zo0wX0bugw02l" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/28EbJ28WJa3s93te2kgw02m" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ── POSTER DESIGNS ─────────────────────────────────────────────── -->
+      <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 mt-10 border-b pb-2">Poster Designs</h3>
+      <p class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden leading-relaxed mb-6 font-serif tracking-wide italic p-4 rounded-md border border-[#850F01]/20">
+        Each poster translates a song from my playlist into a visual statement, one design principle at a time — movement, contrast, rhythm, white space. Open edition digital prints.
+      </p>
+
+      <div class="masonry">
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/Chambers - Emphasis Poster.jpg" alt="Chambers - Tamino" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Chambers — Tamino</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Emphasis. The heart as a physical space; central focus, layered shapes. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">The heart imagined as both a physical space and an emotional chamber that traps memories and feelings. Strong central emphasis, a figure captured, limited color — reflecting the tension and vulnerability of the song. <a href="https://open.spotify.com/track/3jEQyVN86oRO1ML7krPmsR" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/5kQ7sMc8VgrQ1B1gasgw02n" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/aFacN6a0N2B0a7x9M4gw02o" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/4gM14oa0NdfE2F5bUcgw02p" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/Forgotten - Movement Poster.jpg" alt="Forgotten - Aytekin Ataş" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Forgotten — Aytekin Ataş</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Movement. Perspective lines echo the feeling of being carried forward. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Perspective lines and dull colors show how memories drift, blur, and slip away. The motion mirrors the feeling of being carried forward while something important is left behind. <a href="https://open.spotify.com/track/5oAIheLXqmwiXtUiDlnelj" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/eVq5kE0qd8Zo2F50bugw02q" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/4gM6oIeh3grQenN1fygw02r" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/7sY9AUc8V4J83J95vOgw02s" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/Four Seasons - Contrast Poster.jpg" alt="Four Seasons - Taeyeon" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Four Seasons — Taeyeon</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Contrast. Four seasons, four emotional states, four shifting palettes. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Divided into four sections to represent the times of year, with shifting palettes and shapes to echo themes of changing love and perspective. The visual contrast between sections reflects the emotional contrasts in the lyrics. <a href="https://open.spotify.com/track/4ytyLpIwUXbdFsNOvgNnmP" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/8x27sMeh3grQ93t0bugw02t" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/00w4gAdcZb7w5RhbUcgw02u" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/fZu3cw2ylfnMgvVbUcgw02v" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/Juicy Skies - Repetition Poster.jpg" alt="Juicy Skies - LAZY GHOST" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Juicy Skies — LAZY GHOST</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Repetition. Looping motifs and a bright dreamy palette. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Repeating visual motifs mirror the looping, relaxed feeling of the song, drawn especially from its repetitive lyrics. Vibrant colors and playful composition capture a dreamy, surreal atmosphere — light and slightly mysterious. <a href="https://open.spotify.com/track/2jQusXvLCzT5cFRnBNatab" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/eVq3cw7SF0sSfrRaQ8gw02w" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/bJe00k5Kx1wW4Nd1fygw02x" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/cNi6oIb4Rb7wa7xcYggw02y" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/Lilith - Symetrical Balance Poster.jpg" alt="Lilith - Saint Avangeline" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Lilith — Saint Avangeline</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Symmetrical Balance. Stained-glass Lilith; power, mystery, sacred femininity. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Lilith as a central, iconic figure framed in stained-glass–like shapes, using mirrored forms and glowing color to express power, mystery, and sacred femininity. Symmetry gives calm structure while the details remain intense and emotionally charged. <a href="https://open.spotify.com/track/4RF4iaYoM1XBbdvmC6zRtD" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/5kQ6oI1uh5Nc0wXf6ogw02z" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/fZu4gA6OB4J81B1gasgw02A" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/9B67sMdcZfnMfrRcYggw02B" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/The Willow Maid - Patern Poster.jpg" alt="The Willow Maid - Erutan" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">The Willow Maid — Erutan</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Pattern. Organic branching forms and stained-glass textures. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Organic, branching shapes and stained-glass textures echo the natural setting and folk-like quality of the song. Repeating forms suggest both tangled roots and protective branches, wrapping the central figure in a quiet, enchanted atmosphere. <a href="https://open.spotify.com/track/0dhSUYnVoqqEdgrvDjHjSS" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/9B6fZifl76Rg0wXf6ogw02C" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/9B6cN65Kx6Rg93t5vOgw02D" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/28EfZic8V1wWgvV0bugw02E" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/Monocro No Kiss - Hierarchy Poster.jpg" alt="Monocro No Kiss - SID" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Monocro No Kiss — SID</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Hierarchy. Floral shapes, layered type, a monochrome directional portrait. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Floral shapes, layered type, and a strong directional profile guide the viewer's eye from the main focal point to supporting details. Monochrome palette and structured layout reflect the tension and drama in the music. <a href="https://open.spotify.com/track/09ChiDNRVMvXcNnToAHCxA" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/eVq8wQ1uh7Vk6Vl5vOgw02F" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/7sYfZi6OB5Nc4Nd1fygw02G" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/8x2cN6fl7a3s4Nd3nGgw02H" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/The Mystic's Dream - Proportion Poster.jpg" alt="The Mystic's Dream - Loreena McKennitt" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">The Mystic's Dream — Loreena McKennitt</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Proportion. Oversized mythic figure in a desert landscape. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">A giant female figure within a natural desert setting — an unusual scale relationship suggesting she is part of something larger and timeless, like a dream or a legend. <a href="https://open.spotify.com/track/4TxTJHRsqoNII6p5Jfav2e" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/00w14o1uh3F4cfFgasgw02I" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/4gMdRa1uhb7w3J93nGgw02J" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/fZu00kfl7b7wa7xaQ8gw02K" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/134340 - White Space Poster.jpg" alt="134340 - BTS" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">134340 — BTS</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — White Space. Minimal, silent, about distance and reclassification. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Large empty areas speak for feelings of isolation — Pluto renamed as asteroid 134340, an analogy for the names we give to past relationships we distance ourselves from. The minimal layout suggests silence, distance, and a quiet search for place and meaning. <a href="https://open.spotify.com/track/1MX0g22bQkr9HDVe37fLnN" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/3cI5kEgpb5NccfF4rKgw02L" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/dRm5kE2ylb7w6Vl0bugw02M" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/aFacN6dcZ1wW2F5bUcgw02N" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/Nantes - Rhythm Poster.jpg" alt="Nantes - Beirut" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Nantes — Beirut</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Rhythm. Trumpets, layered lines, a visual beat through the city. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Repeating shapes of trumpets, layered lines, and a bright color palette create a visual beat that moves the eye around the composition. The song's blend of melancholy and liveliness — as if the music is weaving through a city as the woman dances. <a href="https://open.spotify.com/track/1WBSFlSLyOZnSa8fj7a5yC" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/eVqeVe3Cp8Zo3J9cYggw02O" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/9B64gA6OB8Zo1B14rKgw02P" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/bJe6oI0qd0sScfF5vOgw02Q" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/The Truth Untold - Unity Poster.jpg" alt="The Truth Untold - BTS" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">The Truth Untold — BTS</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Unity. Overlapping shapes, feelings hidden behind a mask. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Color transitions and overlapping shapes show how separate pieces come together to form a whole. Reflects the emotional honesty of the song and the idea of feelings and self we hide, afraid of rejection. <a href="https://open.spotify.com/track/4eP8Syl3aBEQw3Jy5Bhq0D" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/28EaEY3CpfnM1B17DWgw02R" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/3cI9AU0qdcbA6VlaQ8gw02S" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/dRm00kb4Rb7wcfF2jCgw02T" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="masonry-item hover:shadow-2xl transition duration-300 bg-white rounded-lg overflow-hidden">
+          <figure><img src="images/dijital_art/Wolven Storm -  Variety Poster.jpg" alt="Wolven Storm - Marcin Przybyłowicz" loading="lazy"></figure>
+          <div class="meta p-4">
+            <h3 class="text-xl font-bold text-gray-800">Wolven Storm — Marcin Przybyłowicz</h3>
+            <p class="short-desc text-gray-700 text-base mt-1 mb-2">Poster design — Variety. Medieval imagery, a fox at lavender fields, dramatic storytelling. Open edition.</p>
+            <p class="long-description text-gray-600 text-sm mb-3">Different visual elements (figures, colors, text blocks) unified through strong alignment and framing. Medieval-inspired imagery of a fox at a lavender field combined with contemporary graphic structure reflects the song's storytelling roots and dramatic tone. <a href="https://open.spotify.com/track/0zCqrZ8SEdkzSmhFlRTHlQ" target="_blank" rel="noopener" class="text-[#850F01] font-semibold hover:underline">Listen</a></p>
+            <div class="flex justify-between items-center pt-2">
+              <button aria-expanded="false" class="view-details-btn text-sm font-semibold text-[#FFA618] hover:text-[#B23600]">View Details</button>
+            </div>
+                                                <div class="buy-row">
+              <p class="buy-label">Buy a print</p>
+              <div class="buy-sizes">
+                <a class="buy-btn" href="https://buy.stripe.com/eVqcN6gpb4J82F5e2kgw02U" target="_blank" rel="noopener">5×7"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/00w4gA2ylfnM3J94rKgw02V" target="_blank" rel="noopener">8×10"</a>
+                <a class="buy-btn" href="https://buy.stripe.com/6oU00kb4Ra3sfrRbUcgw02W" target="_blank" rel="noopener">11×14"</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ── POLICIES ───────────────────────────────────────────────────── -->
+      <div class="mt-12 bg-white rounded-2xl shadow p-6 sm:p-8 grid sm:grid-cols-3 gap-6 text-sm text-gray-600">
+        <div>
+          <div class="font-semibold text-gray-800 mb-1">Shipping</div>
+          US orders ship in 5–7 business days. International available — email <a href="mailto:ase2327ekiz@gmail.com" class="text-[#850F01] underline">ase2327ekiz@gmail.com</a>.
+        </div>
+        <div>
+          <div class="font-semibold text-gray-800 mb-1">Returns</div>
+          All sales are final. If your print arrives damaged, email a photo within 7 days and I'll make it right.
+        </div>
+        <div>
+          <div class="font-semibold text-gray-800 mb-1">Commissions</div>
+          Interested in a custom piece? <a href="mailto:ase2327ekiz@gmail.com" class="text-[#850F01] underline">Reach out</a>.
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-gray-200 mt-12 relative overflow-hidden">
+    <div class="logo-background-pattern"></div>
+    <div class="page-bg-image page-bg-orange"></div>
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="flex justify-center space-x-6 mb-4">
+        <a href="https://www.instagram.com/aysule_2327/" target="_blank" rel="noopener noreferrer" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+        <a href="https://www.linkedin.com/in/ayse-sule-ekiz-52892a1b6/" target="_blank" rel="noopener noreferrer" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+        <a href="https://github.com/aysesule2405" target="_blank" rel="noopener noreferrer" class="text-[#850F01] hover:text-[#FFA618] transition duration-150" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+      </div>
+      <p class="text-sm text-gray-500">&copy; 2026 Ayse Sule Ekiz. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

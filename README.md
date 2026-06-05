@@ -5,13 +5,14 @@
 <h1 align="center">Ayse Sule Ekiz — Portfolio</h1>
 
 <p align="center">
-  A hand-crafted personal portfolio spanning <strong>software engineering, visual art, ceramics, painting, and graphic design</strong>.<br>
-  Built entirely with vanilla HTML, CSS, and JavaScript — no framework, no build step, no dependencies.
+  A hand-crafted personal portfolio spanning <strong>software engineering, visual art, ceramics, painting, and graphic design</strong> — with a fully integrated art print shop powered by Stripe.<br>
+  Built entirely with vanilla HTML, CSS, and JavaScript — no framework, no build step, no runtime dependencies.
 </p>
 
 <p align="center">
   <a href="https://aysesule2405.github.io/ayse-sule-ekiz-portfolio/">Live Site</a> &nbsp;·&nbsp;
   <a href="#pages">Pages</a> &nbsp;·&nbsp;
+  <a href="#art-print-shop">Print Shop</a> &nbsp;·&nbsp;
   <a href="#projects-showcased">Projects</a> &nbsp;·&nbsp;
   <a href="#interactive-mini-games">Mini-Games</a> &nbsp;·&nbsp;
   <a href="#run-locally">Run Locally</a>
@@ -22,6 +23,7 @@
 ## Highlights
 
 - **Zero build step** — open any `.html` file directly in a browser or serve statically
+- **Art print shop** — 30 original artworks available in 3 sizes, with Stripe-hosted checkout and post-purchase redirect
 - **Full light / dark mode** — CSS custom properties, `localStorage` persistence, OS preference detection, and instant favicon swap
 - **Three interactive mini-games** — a physics sand canvas, a color palette quiz, and a lunar memory game
 - **Masonry galleries** — pure CSS `column-count`, no JS layout library
@@ -37,11 +39,61 @@
 | `index.html` | Landing page — animated hero, editorial art preview, tools showcase |
 | `projects.html` | Technical project cards with expandable detail pop-ups |
 | `playground.html` | Three interactive mini-games |
-| `about.html` | Personal story, background, and contact form |
+| `about.html` | Personal story, background, and contact form (+ shop CTA) |
 | `resume.html` | Inline résumé viewer with download link |
-| `graphicdesign.html` | Graphic design & digital art gallery (masonry) |
-| `ceramics.html` | Sculpting & ceramics gallery |
-| `painting.html` | Painting & charcoal gallery |
+| `graphicdesign.html` | Graphic design & digital art gallery (masonry) + shop CTA |
+| `ceramics.html` | Sculpting & ceramics gallery + shop CTA |
+| `painting.html` | Painting & charcoal gallery + shop CTA |
+| `shop.html` | Art print shop — 30 prints × 3 sizes, Stripe checkout |
+| `success.html` | Post-purchase confirmation page |
+
+---
+
+## Art Print Shop
+
+**[shop.html](shop.html)** is a full storefront built directly into the static site — no server required.
+
+### How it works
+
+Purchases use **Stripe Payment Links** — pre-built hosted checkout pages that require zero server-side code. Each link is a unique URL that:
+1. Collects the customer's shipping address (US domestic)
+2. Processes payment securely on Stripe's infrastructure
+3. Redirects back to `success.html` after a completed purchase
+
+### Available prints
+
+| Category | Items | Edition |
+|---|---|---|
+| Paintings | Girl & Moon, Pastel #1 & #2, Angel & Moon, The Hike, Night Sea, Venus After Botticelli, Unraveling | Limited (20–30) |
+| Printmaking (Monotypes) | Rain: Monotype Print #1, After Rain: Monotype Print #2, Freeform Monotype | Open edition |
+| 2D Art Portfolio | Reaching to the Grapes, Women Gathered, From My Mother's Hands, From My Hands, Imece, Setting the Table, Carpet | Open edition |
+| Poster Designs | Chambers, Forgotten, Four Seasons, Juicy Skies, Lilith, The Willow Maid, Monocro No Kiss, The Mystic's Dream, 134340, Nantes, The Truth Untold, Wolven Storm | Open edition |
+
+### Pricing
+
+| Size | Price |
+|---|---|
+| 5×7" | $10 |
+| 8×10" | $20 |
+| 11×14" | $30 |
+
+### Stripe setup
+
+Payment links live in `scripts/` (gitignored). To regenerate them (e.g. when switching from test → live mode):
+
+```bash
+cd scripts
+npm install        # installs stripe SDK
+node reprice.js    # creates products + prices + payment links, prints new URLs
+```
+
+Then paste the output URLs into `shop.html` buy-row `href` attributes. The secret key stays in `scripts/` and is never committed.
+
+> **Test vs Live:** All current links use Stripe test mode (`buy.stripe.com/test_…`). Replace with live-mode links before going public.
+
+### Shop entry points
+
+The shop is intentionally not in the main navigation. Instead, each art page and the About page end with a **"Did anything catch your eye?"** CTA banner that links to `shop.html` and `about.html` (for commission requests).
 
 ---
 
@@ -91,7 +143,7 @@ Full-stack capstone platform with four playable worlds, achievements, leaderboar
 |---|---|---|---|
 | <img src="projects/Reverie/Screenshot%201%20-%20Home%20Screen%201%20copy.png" width="200" alt="Home"> | <img src="projects/Reverie/Screenshot%205%20-%20My%20Spaces%20copy.png" width="200" alt="My Spaces"> | <img src="projects/Reverie/Screenshot%206%20-%20Community%20copy.png" width="200" alt="Community"> | <img src="projects/Reverie/Screenshot%208%20-%20Timeline%20copy.png" width="200" alt="Timeline"> |
 
-Mobile-first social platform for readers — curated reading spaces, community threads, personal timelines, and a saved-books library. Designed for calm, editorial UI with genuine community feel.
+Mobile-first social platform for readers — curated reading spaces, community threads, personal timelines, and a saved-books library.
 
 **Stack:** React Native · Node.js · Express · MongoDB · JWT Auth
 
@@ -103,7 +155,7 @@ Mobile-first social platform for readers — curated reading spaces, community t
 |---|---|---|
 | <img src="projects/Ghibli%20Guardians/dashboard.png" width="200" alt="Dashboard"> | <img src="projects/Ghibli%20Guardians/backend.png" width="200" alt="Statistics"> | <img src="projects/Ghibli%20Guardians/mobile.png" width="200" alt="Mobile"> |
 
-Analytics dashboard styled around Studio Ghibli's visual language, built to explore environmental and ecological data. Privacy-first design with protected user profiles and a fully responsive layout.
+Analytics dashboard styled around Studio Ghibli's visual language, built to explore environmental and ecological data.
 
 **Stack:** React · D3.js · Node.js · PostgreSQL · Tailwind CSS
 
@@ -115,7 +167,7 @@ Analytics dashboard styled around Studio Ghibli's visual language, built to expl
 |---|---|
 | <img src="projects/NAU%20Portal/Dashboard.png" width="200" alt="NAU Dashboard"> | <img src="projects/NAU%20Portal/Statistics.png" width="200" alt="NAU Statistics"> |
 
-Student portal for Northern Arizona University consolidating course management, academic statistics, and campus resources into one cohesive interface. Designed with accessibility and international student needs in mind.
+Student portal consolidating course management, academic statistics, and campus resources into one cohesive interface.
 
 **Stack:** React · Node.js · PostgreSQL · REST API · Tailwind CSS
 
@@ -124,23 +176,13 @@ Student portal for Northern Arizona University consolidating course management, 
 ## Interactive Mini-Games
 
 ### Half Moon
-A lunar memory game. All 8 moon phase cards are revealed for a brief memorisation window, then flip face-down. The player must tap them back in correct lunar order from memory. Timed scoring with a perfect-round bonus.
+A lunar memory game. All 8 moon phase cards are revealed for a brief memorisation window, then flip face-down. The player must tap them back in correct lunar order from memory.
 
 ### Palette Oracle
-A color intuition quiz. Each round presents a 5-swatch palette with one color hidden — the player picks which of four options completes the palette's story. Every palette has a title and narrative theme; the correct answer is the most chromatically distinctive hue. 100+ handcrafted palettes across categories from *Kiln Garden* and *Moonlit Conservatory* to *Velvet Debug*.
+A color intuition quiz. Each round presents a 5-swatch palette with one color hidden — the player picks which of four options completes the palette's story. 100+ handcrafted palettes.
 
 ### Sand Canvas
-A real-time falling-sand physics simulation inspired by [thisissand.com](https://thisissand.com). Key mechanics:
-
-| Feature | Detail |
-|---|---|
-| **Physics** | 1 px grains in a `Uint32Array` grid; 6 physics substeps per frame with free-fall + landing roll cascade |
-| **Flow control** | Gaussian spray brush with adjustable density (slider 1–20); rate-limited to one brush stamp per rendered frame so speed is consistent whether the pointer is still or moving |
-| **Colors** | Pick from spectrum strip or presets; save singles or build multi-stop gradients (2–8 colors) |
-| **Gradient mode** | Saved gradients sweep in a ping-pong cycle controlled by a deterministic `gradientPhase` counter |
-| **Continuous pour** | Double-tap canvas to lock pour on; pulsing outline confirms the lock |
-| **Shake** | Redistributes settled grains randomly |
-| **Export** | Save canvas as PNG |
+A real-time falling-sand physics simulation. 1 px grains in a `Uint32Array` grid, 6 physics substeps per frame, Gaussian spray brush, gradient mode, shake, and PNG export.
 
 ---
 
@@ -151,7 +193,8 @@ A real-time falling-sand physics simulation inspired by [thisissand.com](https:/
 | Markup | HTML5 — semantic elements, ARIA roles and labels throughout |
 | Styling | CSS3 · Tailwind CSS (CDN) · CSS custom properties for theming |
 | Scripting | Vanilla JavaScript — no framework, no bundler |
-| Audio | Web Audio API (synthesised SFX) · HTML Audio (MP3 loops with JS fade) |
+| Payments | Stripe Payment Links (static, no server required) |
+| Audio | Web Audio API (synthesised SFX) · HTML Audio (MP3 loops) |
 | Icons | Streamline Freehand & Ultimate (PNG) · Lucide · Iconify |
 | Fonts | Playfair Display · Inter (Google Fonts) |
 | Contact | Web3Forms API |
@@ -161,7 +204,7 @@ A real-time falling-sand physics simulation inspired by [thisissand.com](https:/
 
 ## Theming
 
-Full **light / dark mode** with `localStorage` persistence and OS preference detection. Switching also updates the browser tab favicon instantly via cache-busting. CSS custom properties in `styles/main.css`:
+Full **light / dark mode** with `localStorage` persistence and OS preference detection. CSS custom properties in `styles/main.css`:
 
 | Token | Light | Dark |
 |---|---|---|
@@ -176,73 +219,64 @@ Full **light / dark mode** with `localStorage` persistence and OS preference det
 
 ```
 ayse-sule-ekiz-portfolio/
-├── index.html                    # Landing / home
-├── projects.html                 # Technical projects + detail pop-ups
-├── playground.html               # Three mini-games
-├── about.html                    # About + contact form
-├── resume.html                   # Résumé viewer
-├── graphicdesign.html            # Graphic design gallery
-├── ceramics.html                 # Ceramics gallery
-├── painting.html                 # Painting gallery
+├── index.html
+├── projects.html
+├── playground.html
+├── about.html
+├── resume.html
+├── graphicdesign.html
+├── ceramics.html
+├── painting.html
+├── shop.html                     # Art print shop (30 prints × 3 sizes)
+├── success.html                  # Post-purchase + contact form confirmation
 │
 ├── styles/
-│   ├── main.css                  # Theme tokens, dark mode, header/footer
-│   ├── cards.css                 # Masonry grid + gallery card styles
-│   ├── animations.css            # Scroll-reveal keyframes
-│   └── nav-dropdown.css          # Mobile navigation drawer
+│   ├── main.css
+│   ├── cards.css
+│   ├── animations.css
+│   └── nav-dropdown.css
 │
 ├── js/
-│   ├── portfolio-mini-games.js   # Palette Oracle + Sand Canvas
-│   ├── half-moon-game.js         # Half Moon memory game
-│   ├── sfx.js                    # Web Audio sound effects
-│   ├── theme-toggle.js           # Light/dark toggle + favicon swap
-│   └── scroll-animations.js      # Intersection Observer scroll reveals
+│   ├── portfolio-mini-games.js
+│   ├── half-moon-game.js
+│   ├── sfx.js
+│   ├── theme-toggle.js
+│   └── scroll-animations.js
 │
 ├── images/
-│   ├── logo-light.png            # Site logo (light mode)
-│   ├── logo-dark.png             # Site logo (dark mode)
-│   ├── icons/                    # Streamline PNG icons
-│   ├── ceramics/
 │   ├── paintings/
-│   └── dijital_art/
+│   ├── dijital_art/
+│   ├── graphic_design/
+│   └── ceramics/
 │
-├── projects/                     # Per-project assets (logo, screenshots)
-│   ├── OpenStaxAlign/
-│   ├── Obi/
-│   ├── Whisperwind Grove/
-│   ├── Reverie/
-│   ├── Ghibli Guardians/
-│   └── NAU Portal/
+├── scripts/                      # gitignored — Stripe setup scripts + node_modules
+│   ├── setup-stripe.js           # Initial 21-print setup
+│   ├── setup-stripe-new.js       # Added 14 new prints
+│   └── reprice.js                # Repriced all 30 prints ($10/$20/$30)
 │
-├── moon_phases/                  # Moon phase images for Half Moon game
-└── sfx/                          # MP3 audio files for Sand Canvas
+└── projects/
 ```
 
 ---
 
 ## Run Locally
 
-No build step required — open any page directly or serve the directory:
+No build step required:
 
 ```bash
-# Python
 python3 -m http.server 8000
-
-# Node
+# or
 npx serve .
-
-# VS Code
-# Install "Live Server" → click "Go Live"
 ```
 
-Then open `http://localhost:8000`.
+Open `http://localhost:8000`.
 
 ---
 
-## Design Notes
+## Going Live with Stripe
 
-- **No JavaScript frameworks** — every interaction (game loops, palette state, drag-and-drop, modal animations) is vanilla JS with no runtime dependencies
-- **Masonry layout** — pure CSS `column-count` with `break-inside: avoid`; no JS layout library
-- **Icon colorization** — Streamline PNG icons are tinted to match accent tokens via computed CSS `filter` chains rather than SVG fills, so they respond to theme changes automatically
-- **Sand canvas physics** — 1 px grains packed into a `Uint32Array` buffer; gravity runs 6 substeps per frame; each grain free-falls one cell per substep then cascades diagonally up to 4 times on landing; Gaussian brush spray gives a natural cone rather than a hard disc
-- **Sound design** — Web Audio API synthesis for all in-game sounds; MP3 loops with JS fade-in/out for sand pour audio; global mute persists across pages
+1. Create a live-mode Stripe account and get your live secret key
+2. Update the key in `scripts/reprice.js`
+3. Run `node reprice.js` — this creates live products + payment links
+4. Replace all `buy.stripe.com/test_…` URLs in `shop.html` with the live URLs
+5. Update `success.html` redirect URL in the script to your production domain
